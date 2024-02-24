@@ -429,6 +429,14 @@ const SignUp = () => {
                           نعم، أريد الاشتراك. أوافق على تطبيق{' '}
                           <Link to={'/terms-condition'}>الشروط والأحكام</Link>.
                         </label>
+                        <div className="mb-3 form-check">
+                          <Link
+                            className="nav-link navli text-primary"
+                            to={'/auth/login'}
+                          >
+                            لديك حساب ؟ سجل الدخول الان
+                          </Link>
+                        </div>
                       </div>
                       <div className="d-grid gap-2">
                         <button
