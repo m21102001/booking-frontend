@@ -1,81 +1,23 @@
-export const doctors = [
+import brainstorming from '@/assets/brainstorming.webp';
+import income from '@/assets/income.webp';
+import investor from '@/assets/investor.webp';
+export const aboutthats = [
   {
-    doctorId: 1,
-    doctorName: 'Dr. Rashid',
-    experience: '15',
-    specialist: 'Gestriologist',
-    patientsReviews: 1500,
-    satisfactionRate: '99%',
-    image: '/images/doctor.jpg',
+    id: 1,
+    image: brainstorming,
+    title: 'رؤية الشركة',
+    body: `رؤيتنا هي أن نكون الوجهة الرئيسية للعملاء الساعين للحصول على استشارات ذات جودة عالية وموثوقة في مختلف المجالات. نسعى جاهدين لتوفير تجربة استشارية مميزة تلبي احتياجات وتطلعات عملائنا بأفضل الحلول والتوجيهات.    `,
   },
   {
-    doctorId: 2,
-    doctorName: 'Dr. Shireen Rehmat Ullah',
-    experience: '5',
-    specialist: 'Dermatologist',
-    patientsReviews: 70,
-    satisfactionRate: '91%',
-    image: '/images/d4.jpg',
+    id: 2,
+    image: income,
+    title: 'رسالة الشركة',
+    body: `في شركتنا، نجمع بين الخبرة والاحترافية لنقدم استشارات مخصصة ومتخصصة لعملائنا. نحن نؤمن بقيم الشفافية والتفاني في خدمة العملاء، ونعمل بجد لنكون شركاء حقيقيين في نجاحهم. مهمتنا هي تمكين عملائنا لتحقيق أهدافهم وتجاوز توقعاتهم.`,
   },
   {
-    doctorId: 3,
-    doctorName: 'Dr. Zeba Anwar',
-    experience: '12',
-    specialist: 'Physiotherapist',
-    patientsReviews: 230,
-    satisfactionRate: '90%',
-    image: '/images/d3.jpg',
-  },
-  {
-    doctorId: 4,
-    doctorName: 'Dr. Iqbal Nabi Soomro',
-    experience: '20',
-    specialist: 'Gynecologist',
-    patientsReviews: 450,
-    satisfactionRate: '94%',
-    image: '/images/d2.png',
-  },
-];
-export const specialists = [
-  {
-    specialistiD: 1,
-    specialistTitle: 'Gynecologist',
-    image: '/images/icons/Gynecologist.png',
-  },
-  {
-    specialistiD: 2,
-    specialistTitle: 'Child Specialist',
-    image: '/images/icons/Child Specialist.png',
-  },
-  {
-    specialistiD: 3,
-    specialistTitle: 'Consultant Physician',
-    image: '/images/icons/Consultant Physician.png',
-  },
-
-  {
-    specialistiD: 4,
-    specialistTitle: 'Neurologist',
-    image: '/images/icons/Neurologist.png',
-  },
-  {
-    specialistiD: 5,
-    specialistTitle: 'Psychiatrist',
-    image: '/images/icons/Psychiatrist.png',
-  },
-  {
-    specialistiD: 6,
-    specialistTitle: 'Dentist',
-    image: '/images/icons/Dentist.png',
-  },
-  {
-    specialistiD: 7,
-    specialistTitle: 'Gestroenterologist',
-    image: '/images/icons/Gestroenterologist.png',
-  },
-  {
-    specialistiD: 8,
-    specialistTitle: 'Speech Therapist',
-    image: '/images/icons/Speech Therapist.png',
+    id: 3,
+    image: investor,
+    title: 'هدفنا؟',
+    body: 'نحن هنا لتوجيهك ومساعدتك في اتخاذ القرارات الصائبة وتحقيق أهدافك بثقة. تقديم الاستشارات ذات الجودة العالية والتي تلبي احتياجاتك بشكل فعّال هو هدفنا الأسمى. نحن نعمل بجد لنكون شركاءك الموثوقين في رحلتك نحو النجاح والتطور المستدام.',
   },
 ];

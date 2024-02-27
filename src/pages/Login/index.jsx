@@ -1,9 +1,39 @@
-import { Link } from 'react-router-dom';
-import './login.scss';
+import { Link, useNavigate } from 'react-router-dom'
+import './login.scss'
+import { useState } from 'react';
+import axios from '@/api/axios';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [isPending, setIsPending] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+    setIsPending(true);
+    try {
+      const { data } = await axios.post(
+        '/auth/login',
+        {
+          email: email,
+          password: password
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      setIsPending(false);
+    } catch (err) {
+      setIsPending(false);
+      console.log('response', err);
+    }
+  };
   return (
     <section className="h-100 bg-light">
+      {isPending && <div className="loading"></div>}
       <div className="h-100">
         <div className="row d-flex justify-content-center align-items-center h-100 mx-0">
           <div className="col px-0">

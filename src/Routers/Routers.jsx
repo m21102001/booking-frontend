@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import { ErrorPage, Home, Login, Payment, Shop, SignUp, TermsCondition } from '@/pages';
 import { Navbar } from '@/layout';
+import ContactUs from '@/pages/ContactUS';
 
 const Routers = () => {
   return (
@@ -9,6 +10,7 @@ const Routers = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />

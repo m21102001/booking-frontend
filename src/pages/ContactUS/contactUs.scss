@@ -1,0 +1,55 @@
+.contactUs {
+  .Container {
+    span {
+      z-index: 0;
+      background-color: var(--main-color);
+      width: 30px;
+      height: 3px;
+      margin: auto 20px;
+    }
+  }
+
+  .card-form {
+    .send {
+      padding: 0.5rem 6rem;
+    }
+  }
+}
+
+.StartElectronicEcommerce {
+  .card-style {
+    .card-border {
+      .image-card {
+        max-width: min-content;
+        max-height: min-content;
+        margin: auto;
+      }
+
+      .card-body {
+        .card-title {
+          font-size: 1.5rem !important;
+          font-weight: 700;
+          color: var(--gold-color2);
+        }
+
+        .card-text {
+          color: var(--swiper-theme-color);
+          font-weight: 700 !important;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .StartElectronicEcommerce {
+    .card-style {
+      flex-wrap: wrap;
+
+      .card-border {
+        padding: 0 !important;
+      }
+    }
+  }
+}
