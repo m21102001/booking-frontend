@@ -60,10 +60,10 @@ const Navbar = () => {
             </ul>
             <div className='d-flex text-light'>
               <Link to={'/auth/login'}>
-              <button type="button" className="mx-2 btn btn-outline-primary bg-dark:hover">سجل دخول</button>
+              <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
               </Link>
               <Link to={'/auth/sign-up'}>
-                <button type="button" className="mx-2 btn btn-outline-primary" >انشاء حساب</button>
+                <button type="button" className="mx-2 btn btn-primary" >انشاء حساب</button>
               </Link>
             </div>
           </div>
