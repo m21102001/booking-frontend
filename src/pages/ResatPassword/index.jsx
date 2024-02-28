@@ -1,13 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
-import './login.scss'
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import axios from '@/api/axios';
 
-const Login = () => {
-  const navigate = useNavigate();
+const ResatPassword = () => {
   const [isPending, setIsPending] = useState(false);
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -16,8 +14,8 @@ const Login = () => {
       const { data } = await axios.post(
         '/auth/login',
         {
-          email: email,
-          password: password
+          password: password,
+          passwordConfirm: passwordConfirm,
         },
         {
           headers: {
@@ -42,25 +40,12 @@ const Login = () => {
                 <div className="col-xl-6 text-end">
                   <div className="card-body p-md-5 color-mainColor ">
                     <h3 className="text-center mb-4 text-uppercase">
-                      تسجيل الدخول
+                      تغيير كلمة المرور الخاصة بك
                     </h3>
-                    <h5 className="text-center mb-5">
-                      مرحبًا بك مرة أخرى ، لقد اشتقنا إليك!
+                    <h5 className="text-center text-danger mb-5">
+                      تأكد من مطابقة الرقمين السريين بشكل صحيح *
                     </h5>
                     <form className="pb-5 pt-2" onSubmit={handelSubmit}>
-                      <div className="form-outline mb-4">
-                        <label className="form-label" htmlFor="form3Example1m1">
-                          البريد الالكترونى
-                        </label>
-                        <input
-                          type="text"
-                          id="form3Example8"
-                          className="form-control form-control-lg"
-                          value={email}
-                          required
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                      </div>
                       <div className="form-outline mb-4">
                         <label className="form-label" htmlFor="form3Example4cg">
                           الرقم السري
@@ -69,29 +54,43 @@ const Login = () => {
                           type="password"
                           id="form3Example4cg"
                           className="form-control form-control-lg"
+                          placeholder="xxxxxxx"
                           value={password}
                           required
                           onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
-                      <div className="mb-3 form-check">
-                        <Link className="nav-link navli" to={'/auth/forget-password'}>
-                          نسيت كلمة المرور ؟
-                        </Link>
+
+                      <div className="form-outline mb-4">
+                        <label
+                          className="form-label"
+                          htmlFor="form3Example4cdg"
+                        >
+                          تأكيد الرقم السري
+                        </label>
+                        <input
+                          type="password"
+                          id="form3Example4cdg"
+                          className="form-control form-control-lg"
+                          placeholder="xxxxxxx"
+                          value={passwordConfirm}
+                          required
+                          onChange={(e) => setPasswordConfirm(e.target.value)}
+                        />
                       </div>
                       <div className="d-grid gap-2">
                         <button className="btn btn-primary fs-4" type="submit">
-                          تسجيل الدخول
+                          تغيير كلمة المرور
                         </button>
                       </div>
                     </form>
                     <div className="mb-3 d-flex ">
-                      ليس لديك حساب ؟
+                      هل لديك حساب بالفعل ؟
                       <Link
                         className="nav-link navli text-primary"
-                        to={'/auth/sign-up'}
+                        to={'/auth/login'}
                       >
-                        انشاء حساب جديد
+                        سجل الدخول الان
                       </Link>
                     </div>
                   </div>
@@ -116,4 +115,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResatPassword;

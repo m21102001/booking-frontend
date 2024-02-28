@@ -1,13 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom'
-import './login.scss'
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import axios from '@/api/axios';
 
-const Login = () => {
-  const navigate = useNavigate();
+const VerifyCode = () => {
   const [isPending, setIsPending] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -16,8 +13,7 @@ const Login = () => {
       const { data } = await axios.post(
         '/auth/login',
         {
-          email: email,
-          password: password
+          code: code,
         },
         {
           headers: {
@@ -42,56 +38,32 @@ const Login = () => {
                 <div className="col-xl-6 text-end">
                   <div className="card-body p-md-5 color-mainColor ">
                     <h3 className="text-center mb-4 text-uppercase">
-                      تسجيل الدخول
+                     ادخل الكود 
                     </h3>
-                    <h5 className="text-center mb-5">
-                      مرحبًا بك مرة أخرى ، لقد اشتقنا إليك!
-                    </h5>
                     <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                       <div className="form-outline mb-4">
                         <label className="form-label" htmlFor="form3Example1m1">
-                          البريد الالكترونى
+                        الكود المرسل
                         </label>
                         <input
-                          type="text"
+                          type="number"
                           id="form3Example8"
                           className="form-control form-control-lg"
-                          value={email}
-                          required
-                          onChange={(e) => setEmail(e.target.value)}
                         />
-                      </div>
-                      <div className="form-outline mb-4">
-                        <label className="form-label" htmlFor="form3Example4cg">
-                          الرقم السري
-                        </label>
-                        <input
-                          type="password"
-                          id="form3Example4cg"
-                          className="form-control form-control-lg"
-                          value={password}
-                          required
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                      </div>
-                      <div className="mb-3 form-check">
-                        <Link className="nav-link navli" to={'/auth/forget-password'}>
-                          نسيت كلمة المرور ؟
-                        </Link>
                       </div>
                       <div className="d-grid gap-2">
                         <button className="btn btn-primary fs-4" type="submit">
-                          تسجيل الدخول
+                        ارسال
                         </button>
                       </div>
                     </form>
                     <div className="mb-3 d-flex ">
-                      ليس لديك حساب ؟
+                      هل لديك حساب بالفعل ؟
                       <Link
                         className="nav-link navli text-primary"
-                        to={'/auth/sign-up'}
+                        to={'/auth/login'}
                       >
-                        انشاء حساب جديد
+                        سجل الدخول الان
                       </Link>
                     </div>
                   </div>
@@ -116,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default VerifyCode;

@@ -43,13 +43,8 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to="/book">
+                <NavLink className="nav-link navli text-light" to="/courses">
                   الكورسات
-                </NavLink>
-              </li>
-              <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to="/about-us">
-                  من نحن
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">

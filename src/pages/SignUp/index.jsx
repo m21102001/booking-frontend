@@ -30,10 +30,10 @@ const SignUp = () => {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    if (student) {
-      alert('Please check the student box to continue');
-      return;
-    }
+    // if (student) {
+    //   alert('Please check the student box to continue');
+    //   return;
+    // }
     try {
       await axios
         .post(
@@ -111,7 +111,7 @@ const SignUp = () => {
                               className="form-label"
                               htmlFor="form3Example1m"
                             >
-                              {' '}
+
                               الاسم الاول
                             </label>
                             <input
@@ -131,7 +131,7 @@ const SignUp = () => {
                               className="form-label"
                               htmlFor="form3Example1n"
                             >
-                              الاسم الاخير{' '}
+                              الاسم الاخير
                             </label>
                             <input
                               type="text"
@@ -169,14 +169,13 @@ const SignUp = () => {
                           <div className="form-outline">
                             <label
                               className="form-label"
-                              htmlFor="form3Example1n"
+                              htmlFor="form"
                             >
-                              {' '}
-                              رقم الهاتف{' '}
+                              رقم الهاتف
                             </label>
                             <input
                               type="text"
-                              id="form3Example1n"
+                              id="form"
                               className="form-control form-control-lg"
                               placeholder=" 01xx xxxx xxx"
                               value={phone}
@@ -238,13 +237,13 @@ const SignUp = () => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example92"
                             >
                               سعر الساعة
                             </label>
                             <input
                               type="number"
-                              id="form3Example99"
+                              id="form3Example92"
                               className="form-control form-control-lg"
                               placeholder="150 جنية/ساعة"
                               value={hourPrice}
@@ -255,14 +254,14 @@ const SignUp = () => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example98"
                             >
-                              {' '}
+
                               العنوان
                             </label>
                             <input
                               type="text"
-                              id="form3Example99"
+                              id="form3Example98"
                               className="form-control form-control-lg"
                               placeholder="123 Main St, City, Country"
                               value={address}
@@ -292,13 +291,13 @@ const SignUp = () => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example97"
                             >
                               تويتر (x)
                             </label>
                             <input
                               type="text"
-                              id="form3Example99"
+                              id="form3Example97"
                               className="form-control form-control-lg"
                               placeholder="https://www.x.com/watch?v=xxxxxxxx "
                               value={twitter}
@@ -310,13 +309,13 @@ const SignUp = () => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example96"
                             >
                               لينكدين
                             </label>
                             <input
                               type="text"
-                              id="form3Example99"
+                              id="form3Example96"
                               className="form-control form-control-lg"
                               placeholder="https://www.linkedin.com/in/xxxxxxxxx"
                               value={linkedin}
@@ -328,13 +327,13 @@ const SignUp = () => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example95"
                             >
-                              فيسبوك{' '}
+                              فيسبوك
                             </label>
                             <input
                               type="text"
-                              id="form3Example99"
+                              id="form3Example95"
                               className="form-control form-control-lg"
                               placeholder="https://www.facebook.com/xxxxxxxx "
                               value={facebook}
@@ -345,15 +344,15 @@ const SignUp = () => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example94"
                             >
-                              انستقرام{' '}
+                              انستقرام
                             </label>
                             <input
                               type="text"
-                              id="form3Example99"
+                              id="form3Example94"
                               className="form-control form-control-lg"
-                              placeholder="https://www.facebook.com/xxxxxxxx "
+                              placeholder="https://www.instagram.com/xxxxxxxx "
                               value={instagram}
                               required
                               onChange={(e) => setInstagram(e.target.value)}
@@ -366,13 +365,13 @@ const SignUp = () => {
                             </p>
                             <label
                               className="form-label"
-                              htmlFor="form3Example99"
+                              htmlFor="form3Example93"
                             >
                               رابط البلاي ليست
                             </label>
                             <input
                               type="text"
-                              id="form3Example99"
+                              id="form3Example93"
                               className="form-control form-control-lg"
                               placeholder="https://www.youtube.com/xxxxxxxx "
                               value={Video}
@@ -426,29 +425,29 @@ const SignUp = () => {
                           className="form-check-label me-3"
                           htmlFor="flexCheckDefault"
                         >
-                          نعم، أريد الاشتراك. أوافق على تطبيق{' '}
-                          <Link to={'/terms-condition'}>الشروط والأحكام</Link>.
+                          نعم، أريد الاشتراك. أوافق على تطبيق
+                          <Link to={'/terms-condition'}> الشروط والأحكام </Link>.
                         </label>
-                        <div className="mb-3 form-check">
-                          <Link
-                            className="nav-link navli text-primary"
-                            to={'/auth/login'}
-                          >
-                            لديك حساب ؟ سجل الدخول الان
-                          </Link>
-                        </div>
                       </div>
                       <div className="d-grid gap-2">
                         <button
                           type="submit"
-                          className={`btn btn-primary btn-lg ms-2 ${
-                            check ? '' : 'disabled'
-                          }`}
+                          className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
+                            }`}
                         >
                           انشاء حساب جديد
                         </button>
                       </div>
                     </form>
+                    <div className="mb-3 d-flex ">
+                      هل لديك حساب بالفعل ؟
+                      <Link
+                        className="nav-link navli text-primary"
+                        to={'/auth/login'}
+                      >
+                        سجل الدخول الان
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 <div className="col-xl-6 d-none d-xl-block">
@@ -473,21 +472,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-// "fname": "abc",
-//   "lname": "Doe",
-//   "email": "johndoe@example.com",
-//   "phone": "1234567890",
-//   "birthdate": "1990-01-01",
-//   "password": "123456",
-//   "role": "mentor",
-//   "address": "123 Main St, City, Country",
-//   "socialMedia": {
-//     "facebook": "https://www.facebook.com/johndoe",
-//     "twitter": "https://twitter.com/johndoe",
-//     "linkedin": "https://www.linkedin.com/in/johndoe",
-//     "instagram": "https://www.instagram.com/johndoe"
-//   },
-//   "image": "https://example.com/profile-picture.jpg",
-//   "description": "I am an experienced mentor in the field of technology.",
-//   "field": "Technology"
