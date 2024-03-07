@@ -89,7 +89,7 @@ const GoldStore = () => {
                     item?.option == value && item?.option !== 'selectAll' ? (
                       <Link
                         key={index}
-                        to={`/gold-news/${item._id}`}
+                        to={`/consault-store-item`}
                         state={{ item: item }}
                       >
                         <div className={styles['gold-div']}>

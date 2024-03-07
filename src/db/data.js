@@ -58,21 +58,21 @@ export const consalting = [
     type: [
       {
         id: 1,
-        image: `https://goldtodayprices.com/wp-content/uploads/2022/09/how-invest-in-gold-investors-guide.jpg`,
+        image: `https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/browse/domains/language_learning.png?auto=format%2Ccompress&dpr=1&fit=crop&h=100`,
         alt: ` قطاع الاستشارات المقدمه عبر الانترنت`,
         title: ` قطاع الاستشارات المقدمه عبر الانترنت`,
         desc: `قطاع الاستشارات المقدمه عبر الانترنت`,
       },
       {
         id: 2,
-        image: `https://fifreedomtoday.com/wp-content/uploads/2023/06/3rsvHgsdAoiCkX6VNVdBGU.jpg`,
+        image: `https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/browse/domains/physical_science_and_engineering.png?auto=format%2Ccompress&dpr=1&fit=crop&h=100`,
         alt: `قطاع الاستشارات عبر الرسائل`,
         title: ` قطاع الاستشارات عبر الرسائل`,
         desc: `قطاع الاستشارات المقدمه عبر الانترنت `,
       },
       {
         id: 3,
-        image: `https://misc-eg.com/wp-content/uploads/2022/02/%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D9%85%D8%A7%D9%84%D9%8A%D8%A9-750x458.jpg`,
+        image: `https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/browse/domains/arts_and_humanities.png?auto=format%2Ccompress&dpr=1&fit=crop&h=100`,
         alt: `قطاع الاستشارات عبر الهاتف`,
         title: ` قطاع الاستشارات عبر الهاتف`,
         desc: `قطاع الاستشارات المقدمه عبر الانترنت `,
