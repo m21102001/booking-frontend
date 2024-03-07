@@ -49,16 +49,16 @@ const ContactUs = () => {
       {/* {loading && <div className="loading"></div>} */}
       <div className='contactUs'>
         <div className="StartElectronicEcommerce" id="about-us">
-          <div>
+          <div> 
             <div className="Container">
               <div className="row align-items-start">
                 <div className="col-lg-12 col-md-12 px-5">
                   <div className='m-auto d-flex justify-content-center my-5'>
                     <span></span>
-                    <h2 className='text-center comunation fs-1 fw-bold text-dark'>من نحن ! </h2>
+                    <h2 className='text-center fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}>من نحن ! </h2>
                     <span></span>
                   </div>
-                  <h3 className="text-end mb-4">
+                  <h3 className="text-end text-light mb-4">
                     نحن فريق من المحترفين المتخصصين في مجالات متنوعة، نجمع بين
                     الخبرة والخبرة الواسعة في تقديم الاستشارات المبتكرة والمخصصة لعملائنا. تتمثل مهمتنا في توفير حلول
                     فريدة ومتميزة تلبي احتياجات العملاء وتساعدهم على تحقيق أهدافهم بكفاءة وفعالية. نحن نفخر بتوجيه
@@ -83,11 +83,10 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
-        </div>
         <div className='Container'>
           <div className='m-auto d-flex justify-content-center my-5'>
             <span></span>
-            <h2 className='text-center comunation fs-1 fw-bold text-dark'>اتصل بنا</h2>
+            <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}>اتصل بنا</h2>
             <span></span>
           </div>
           <div className='card-form form-control container rounded-4 text-end my-4'>
@@ -237,6 +236,7 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
         <Footer />
       </div>
