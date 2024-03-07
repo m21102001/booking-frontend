@@ -1,18 +1,31 @@
-import React from 'react'
-import styles from './home.module.css'
-import { Inputs, Modal, ToolTip } from '@/components'
-import { Header, Footer, Navbar } from '@/layout'
-
+import { Link } from 'react-router-dom'
+import { Footer, Header, Navbar } from '@/layout'
+import './home.scss'
+import {
+  AboutThat,
+  CoursesOpen,
+  DigitalMarkting,
+  GoldCard,
+  ServicesIncluded,
+  StartElectronicEcommerce,
+  WhyKambridage,
+  // GoldChart
+} from '@/components'
 const index = () => {
   return (
-    <div className={styles.root}>
+    <div className='home-header'>
+      <Navbar />
       <Header />
-      Home Pag
-      <br/>
-      {/* <Button/>
-      <Inputs/>
-      <Modal/>
-      <ToolTip/> */}
+      <CoursesOpen />
+      <GoldCard />
+      <DigitalMarkting />
+      <StartElectronicEcommerce />
+      <ServicesIncluded />
+      <WhyKambridage />
+      <AboutThat />
+      <Footer />
+
+      <Link to='/dash/dashboard' className='editIcon'>D</Link>
     </div>
   )
 }

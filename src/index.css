@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 :root {
-  --main-color: #330879;
+  --main-color: #2f3797;
   --word-dash: #413ea0;
-  --gold-color: var(--bs-indigo);
-  --gold-color2: rgb(222, 18, 161);
-  --darkblue-color: var(--bs-indigo);
+  --gold-color: #de9012;
+  --gold-color2: #de9012;
+  --darkblue-color: #161635;
   --shd: 0px 2px 50px 10px rgba(44, 43, 105, 0.59);
 }
 
@@ -42,9 +42,6 @@ textarea {
   border: 1px solid var(--gold-color) !important;
 }
 
-h2 {
-  color: #fff;
-}
 
 button {
   cursor: pointer;
@@ -76,7 +73,7 @@ button:hover {
   position: fixed;
   inset: 0;
   background-color: rgb(255, 255, 255);
-  display: grid;
+  display: none;
   color: var(--word-dash);
   text-align: center;
   z-index: 1000000;

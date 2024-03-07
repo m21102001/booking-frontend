@@ -1,4 +1,20 @@
 
-export { default as Inputs } from "./Inputs";
 export { default as Modal } from "./Modal";
-export { default as ToolTip } from "./ToolTip";
+export { default as TipsClub } from './TipsClub';
+export { default as GoldNews } from './GoldNews';
+export { default as GoldCard } from './GoldCard';
+export { default as GoldStore } from './GoldStore';
+export { default as LoginForm } from './LoginForm';
+export { default as AboutThat } from './AboutThat';
+export { default as Investmant } from './Investmant';
+export { default as WidgetCart } from './WidgetCart';
+export { default as CoursesOpen } from './CoursesOpen';
+export { default as ClubMembers } from './ClubMembers';
+export { default as PricePlannig } from './PricePlannig';
+export { default as WhyKambridage } from './WhyKambridage';
+export { default as DigitalMarkting } from './DigitalMarkting';
+export { default as ServicesIncluded } from './ServicesIncluded';
+export { default as InvestmentActive } from './InvestmentActive';
+export { default as InvestmentInActive } from './InvestmentInActive';
+export { default as Consulting } from './Consulting';
+export { default as StartElectronicEcommerce } from './StartElectronicEcommerce';

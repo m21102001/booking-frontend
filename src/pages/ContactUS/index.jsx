@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Footer } from '@/layout'
+import { Footer, Navbar } from '@/layout'
 import axios from '@/api/axios'
 import './contactUs.scss'
 import { aboutthats } from '@/db/data'
@@ -45,6 +45,7 @@ const ContactUs = () => {
   };
   return (
     <>
+      <Navbar />
       {/* {loading && <div className="loading"></div>} */}
       <div className='contactUs'>
         <div className="StartElectronicEcommerce" id="about-us">
@@ -195,7 +196,7 @@ const ContactUs = () => {
                 )}
                 {loading && (
                   <button className='d-flex m-auto send' disabled>
-                   جاري الارسال ...
+                    جاري الارسال ...
                   </button>
                 )}
 

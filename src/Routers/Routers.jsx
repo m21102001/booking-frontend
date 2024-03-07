@@ -4,7 +4,10 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 import {
+  ConsaultStore,
+  ConsaultStoreItem,
   ContactUS,
+  Dashboard,
   ErrorPage,
   ForgetPassword,
   Home,
@@ -16,16 +19,16 @@ import {
   TermsCondition,
   VerifyCode
 } from '@/pages';
-import { Navbar } from '@/layout';
 
 
 const Routers = () => {
   return (
     <div>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/consault-store" element={<ConsaultStore />} />
+          <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
@@ -35,6 +38,8 @@ const Routers = () => {
           <Route path="/auth/verify-code" element={<VerifyCode />} />
           <Route path="/auth/resat-password" element={<ResatPassword />} />
           <Route path="/terms-condition" element={<TermsCondition />} />
+          {/* --------------------Dashboard---------------------- */}
+          <Route path='/dash/dashboard' element={<Dashboard />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

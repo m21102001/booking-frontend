@@ -1,4 +1,5 @@
-import { Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 const Navbar = () => {
   return (
     <>
@@ -11,12 +12,13 @@ const Navbar = () => {
       >
         <div className="container-fluid">
           <NavLink className="navbar-brand" href="/">
-            <img
+            <LazyLoadImage
               className="img-logo"
-              src={`https://seeklogo.com/images/C/coursera-logo-16F431BFD5-seeklogo.com.png`}
+              src={`https://i.ibb.co/gt0pG6t/output.png`}
               alt=""
+              effect="blur"
               style={{
-                width: '10rem',
+                height: '3rem',
               }}
             />
           </NavLink>
@@ -43,6 +45,11 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
+                <NavLink className="nav-link navli text-light" to="/consault-store">
+                  المستشارين
+                </NavLink>
+              </li>
+              <li className="nav-item ms-2 ">
                 <NavLink className="nav-link navli text-light" to="/courses">
                   الكورسات
                 </NavLink>
@@ -55,7 +62,7 @@ const Navbar = () => {
             </ul>
             <div className='d-flex text-light'>
               <Link to={'/auth/login'}>
-              <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
+                <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
               </Link>
               <Link to={'/auth/sign-up'}>
                 <button type="button" className="mx-2 btn btn-primary" >انشاء حساب</button>
