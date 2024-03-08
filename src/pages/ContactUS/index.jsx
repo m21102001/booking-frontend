@@ -26,7 +26,7 @@ const ContactUs = () => {
           phone: phone,
           message: message,
           company: company,
-        })
+        },{credentials: true})
         .then((response) => {
           console.log('created successful', response.data);
           setName('')
