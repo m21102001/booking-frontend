@@ -18,9 +18,9 @@ const GoldStore = () => {
         setLoading(false)
         console.log(error);
       });
-    }, [])
-    
-    // console.log('ffff',message);
+  }, [])
+
+  // console.log('ffff',message);
   ////////////////pagination///////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -48,7 +48,7 @@ const GoldStore = () => {
     <div className='coursers-open goldNews py-5'>
       <div className='m-auto d-flex justify-content-center mb-5'>
         <span style={{ zIndex: "0", backgroundColor: "#f8d25c", width: "50px", height: "3px", margin: "auto 20px" }}></span>
-        <h2 className='text-center comunation fs-1 fw-bold'> التوصيات </h2>
+        <h2 className='text-center comunation fs-1 fw-bold'> نصايح المستشارين </h2>
         <span style={{ zIndex: "0", backgroundColor: "#f8d25c", width: "50px", height: "3px", margin: "auto 20px" }}></span>
       </div>
       <div className='m-auto d-flex justify-center'>
@@ -71,6 +71,60 @@ const GoldStore = () => {
                   </div>
                 ) : null
               ))}
+            </div>
+            {/* test only */}
+            <div className={styles['home-grid']}>
+              <div className="card text-end" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h5 className="card-title fw-bold" style={{ color: 'var(--main-color)' }}>
+                    <MdTipsAndUpdates size={40} color="#ffcc00" />
+                    محافظي البنوك المركزية. ارتفعت مبيعات التجزئة
+                  </h5>
+                  <p>
+                    أساس شهري في ديسمبر 2023، متجاوزة توقعات النمو بنسبة 0.4% ومضرة بفكرة التيسير النقدي في
+                    وقت سابق. في السابق، قال محافظ الاحتياطي الفيدرالي كريستوفر والر إنه
+                  </p>
+                  <div className="news-date d-flex flex-column text-primary">
+                    <label className="mx-2"> المستشار: احمد محمود</label>
+                    <label className="mx-2">تاريخ لاضافة : 23/10/2024 </label>
+                  </div>
+                </div>
+              </div>
+              <div className="card text-end" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h5 className="card-title fw-bold" style={{ color: 'var(--main-color)' }}>
+                    <MdTipsAndUpdates size={40} color="#ffcc00" />
+                    محافظي البنوك المركزية. ارتفعت مبيعات التجزئة
+                  </h5>
+                  <p>
+                    أساس شهري في ديسمبر 2023، متجاوزة توقعات النمو بنسبة 0.4% ومضرة بفكرة التيسير النقدي في
+                    وقت سابق. في السابق، قال محافظ الاحتياطي الفيدرالي كريستوفر والر إنه
+                    لا يرى سببًا لخفض أسعار الفائدة بالسرعة التي كان عليها في الماضي، مما
+                  </p>
+                  <div className="news-date d-flex flex-column text-primary">
+                    <label className="mx-2"> المستشار: احمد محمود</label>
+                    <label className="mx-2">تاريخ لاضافة : 23/10/2024 </label>
+                  </div>
+                </div>
+              </div>
+              <div className="card text-end" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h5 className="card-title fw-bold" style={{ color: 'var(--main-color)' }}>
+                    <MdTipsAndUpdates size={40} color="#ffcc00" />
+                    محافظي البنوك المركزية. ارتفعت مبيعات التجزئة
+                  </h5>
+                  <p>
+                    أساس شهري في ديسمبر 2023، متجاوزة توقعات النمو بنسبة 0.4% ومضرة بفكرة التيسير النقدي في
+                    وقت سابق. في السابق، قال محافظ الاحتياطي الفيدرالي كريستوفر والر إنه
+                    الفيدرالي في مارس، بانخفاض ملحوظ من 76.9% في الجلسة السابقة، وفقًا لأداة FedWatch التابعة لمجموعة
+                    CME. يتطلع المستثمرون الآن إلى المزيد من تعليقات بنك الاحتياطي الفيدرالي هذا الأسبوع
+                  </p>
+                  <div className="news-date d-flex flex-column text-primary">
+                    <label className="mx-2"> المستشار: احمد محمود</label>
+                    <label className="mx-2">تاريخ لاضافة : 23/10/2024 </label>
+                  </div>
+                </div>
+              </div>
             </div>
             < div className="pt-5 mt-5 d-flex justify-content-around " >
               <button className={`btn btn-outline-info ${next >= message?.length ? ('disabled') : ('')}`} onClick={handelNext}> next</button>

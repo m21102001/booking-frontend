@@ -55,6 +55,16 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
+                <NavLink className="nav-link navli text-light" to="/Advice-advisors">
+                  نصايح المستشارين
+                </NavLink>
+              </li>
+              <li className="nav-item ms-2 ">
+                <NavLink className="nav-link navli text-light" to="/question-and-answer">
+                  اسئلة شائعة
+                </NavLink>
+              </li>
+              <li className="nav-item ms-2 ">
                 <NavLink className="nav-link navli text-light" to={'/contactUS'}>
                   تواصل معنا
                 </NavLink>

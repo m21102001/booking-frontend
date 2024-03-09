@@ -4,15 +4,18 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 import {
+  AdviceAdvisors,
   ConsaultStore,
   ConsaultStoreItem,
   ContactUS,
+  Courses,
   Dashboard,
   ErrorPage,
   ForgetPassword,
   Home,
   Login,
   Payment,
+  QuestionAnswer,
   ResatPassword,
   ReservationTicket,
   Shop,
@@ -30,6 +33,9 @@ const Routers = () => {
           <Route path="/" element={<Home />} />
           <Route path="/consault-store" element={<ConsaultStore />} />
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
+          <Route path='question-and-answer' element={<QuestionAnswer />} />
+          <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
+          <Route path="/Courses" element={<Courses />} />
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />

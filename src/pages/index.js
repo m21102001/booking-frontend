@@ -14,4 +14,7 @@ export { default as GoldChart } from "./GoldChart";
 export { default as TermsCondition } from "./TermsCondition";
 export { default as ConsaultStore } from "./ConsaultStore";
 export { default as ConsaultStoreItem } from "./ConsaultStoreItem";
+export { default as AdviceAdvisors } from "./AdviceAdvisors";
 export { default as ReservationTicket } from "./ReservationTicket";
+export { default as QuestionAnswer } from "./QuestionAnswer";
+export { default as Courses } from "./Courses";
