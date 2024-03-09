@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Footer, Navbar } from "@/layout";
-import { Axios } from 'axios';
+import axios from '@/api/axios';
 import { useState } from 'react';
 import { Consulting } from '@/components';
 const ConsaultStoreItem = () => {
@@ -18,7 +18,7 @@ const ConsaultStoreItem = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await Axios
+      await axios
         .post(`/contact/`, {
           name: name,
           email: email,

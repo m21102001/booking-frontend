@@ -5,6 +5,7 @@ import { consalting } from "@/db/data"
 import './consalting.scss'
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
+import { CoursesOpenConsult } from "..";
 
 const Consulting = () => {
   return (
@@ -20,17 +21,18 @@ const Consulting = () => {
                     <h3 className="text-end text-light mb-4">{item?.desc}</h3>
                     <h3 className="text-end text-light mb-4">{item?.secterm}</h3>
                   </div>
+                  <CoursesOpenConsult />
                   <div className="row justify-content-center mt-5 card-style text-end">
                     <h2 className="text-center text-light fw-bold mb-5">{item?.conslatedType}</h2>
                     {item?.type?.map((item, index) => (
                       <Link
-                        to={''}
+                        to={'/auth/reservation-ticket'}
                         key={index} className="col-md-5 col-sm-12 mx-3 mb-5 p-0 card">
                         <LazyLoadImage src={item?.image} className="card-img-top" alt={item?.alt} />
                         <div className="card-body">
                           <h5 className="card-title">{item?.title}</h5>
                           <p className="card-text">{item?.desc}</p>
-                          {/* <button type="button" className="btn btn-outline-success"><TiTicket /> احجز استشارة</button> */}
+                          <button type="button" className="btn btn-outline-success"><TiTicket /> احجز استشارة</button>
                         </div>
                       </Link>
                     ))}

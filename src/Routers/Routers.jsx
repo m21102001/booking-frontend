@@ -14,6 +14,7 @@ import {
   Login,
   Payment,
   ResatPassword,
+  ReservationTicket,
   Shop,
   SignUp,
   TermsCondition,
@@ -33,7 +34,19 @@ const Routers = () => {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/auth/sign-up" element={<SignUp />} />
+          {/* -----------------------auth -------------------- */}
+          <Route
+            path="/auth/reservation-ticket"
+            element={
+              <ReservationTicket />
+            }
+          />
+          <Route
+            path="/auth/sign-up"
+            element={
+              <SignUp />
+            }
+          />
           <Route path="/auth/forget-password" element={<ForgetPassword />} />
           <Route path="/auth/verify-code" element={<VerifyCode />} />
           <Route path="/auth/resat-password" element={<ResatPassword />} />

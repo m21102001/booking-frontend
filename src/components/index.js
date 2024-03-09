@@ -17,4 +17,5 @@ export { default as ServicesIncluded } from './ServicesIncluded';
 export { default as InvestmentActive } from './InvestmentActive';
 export { default as InvestmentInActive } from './InvestmentInActive';
 export { default as Consulting } from './Consulting';
+export { default as CoursesOpenConsult } from './CoursesOpenConsult';
 export { default as StartElectronicEcommerce } from './StartElectronicEcommerce';
