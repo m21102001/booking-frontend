@@ -11,7 +11,10 @@ const Navbar = () => {
         }}
       >
         <div className="container-fluid">
-          <NavLink className="navbar-brand" href="/">
+          <NavLink
+            className="navbar-brand"
+            // href="/"
+          >
             <LazyLoadImage
               className="img-logo"
               src={`https://i.ibb.co/gt0pG6t/output.png`}
@@ -39,7 +42,7 @@ const Navbar = () => {
                 <NavLink
                   className={`nav-link navli active text-light`}
                   aria-current="page"
-                  to="/"
+                  // to="/"
                 >
                   الرئيسية
                 </NavLink>
@@ -50,22 +53,34 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to="/courses">
+                <NavLink 
+                className="nav-link navli text-light" 
+                // to="/courses"
+                >
                   الكورسات
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to="/Advice-advisors">
+                <NavLink 
+                className="nav-link navli text-light"
+                //  to="/Advice-advisors"
+                 >
                   نصايح المستشارين
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to="/question-and-answer">
+                <NavLink 
+                className="nav-link navli text-light" 
+                // to="/question-and-answer"
+                >
                   اسئلة شائعة
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to={'/contactUS'}>
+                <NavLink 
+                className="nav-link navli text-light"
+                //  to={'/contactUS'}
+                 >
                   تواصل معنا
                 </NavLink>
               </li>
