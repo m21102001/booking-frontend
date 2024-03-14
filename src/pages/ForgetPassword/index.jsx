@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '@/api/axios';
 import { Navbar } from '@/layout';
+import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ const ForgetPassword = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
+      toast.error('تأكد من البريد الالكتروني');
+
       console.log('response', err);
     }
   };
@@ -42,11 +45,15 @@ const ForgetPassword = () => {
                   <div className="col-xl-6 text-end">
                     <div className="card-body p-md-5 color-mainColor ">
                       <h3 className="text-center mb-4 text-uppercase">
-                        سوف يتم ارسال كود الي الايميل لتغيير كلمة المرور الخاصة بك
+                        سوف يتم ارسال كود الي الايميل لتغيير كلمة المرور الخاصة
+                        بك
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="form3Example1m1">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example1m1"
+                          >
                             البريد الالكترونى
                           </label>
                           <input
@@ -54,12 +61,15 @@ const ForgetPassword = () => {
                             id="form3Example8"
                             className="form-control form-control-lg"
                             value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                           />
                         </div>
                         <div className="d-grid gap-2">
-                          <button className="btn btn-primary fs-4" type="submit">
+                          <button
+                            className="btn btn-primary fs-4"
+                            type="submit"
+                          >
                             ارسال الكود
                           </button>
                         </div>
@@ -91,7 +101,7 @@ const ForgetPassword = () => {
             </div>
           </div>
         </div>
-      </section >
+      </section>
     </>
   );
 };
