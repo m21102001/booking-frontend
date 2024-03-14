@@ -12,9 +12,18 @@ const SignUpStudent = () => {
   const [lname, setLname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [validationMessage, setValidationMessage] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [showValidationMessage, setShowValidationMessage] = useState(true);
+
 
   const handelSubmit = async (e) => {
     e.preventDefault();
+    if (password !== passwordConfirm) {
+      alert("Passwords do not match")
+      return;
+    }
     try {
       await axios
         .post(
@@ -38,6 +47,22 @@ const SignUpStudent = () => {
     } catch (err) {
       setIsPending(false);
       console.log('response', err.response);
+    }
+  };
+  const validatePassword = () => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!password) {
+      setShowValidationMessage(false);
+      return;
+    }
+    if (passwordRegex.test(password)) {
+      setShowValidationMessage(false);
+    } else {
+      setShowValidationMessage(true);
+      setValidationMessage(
+        // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
+        "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
+      );
     }
   };
 
@@ -99,7 +124,7 @@ const SignUpStudent = () => {
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-md-12 mb-4">
+                          <div className="col-md-12 mb-2">
                             <div className="form-outline mb-4">
                               <label
                                 className="form-label"
@@ -124,16 +149,25 @@ const SignUpStudent = () => {
                             الرقم السري
                           </label>
                           <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="form3Example4cg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
+                            onInput={validatePassword}
                             value={password}
                             required
                             onChange={(e) => setPassword(e.target.value)}
                           />
+                          <button
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="password-button mt-3"
+                          >
+                            {showPassword ? "Hide password" : "Show password"}
+                          </button>
                         </div>
-
+                        {showValidationMessage && (
+                          <span className="validation-message">{validationMessage}</span>
+                        )}
                         <div className="form-outline mb-4">
                           <label
                             className="form-label"
@@ -142,7 +176,7 @@ const SignUpStudent = () => {
                             تأكيد الرقم السري
                           </label>
                           <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="form3Example4cdg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"

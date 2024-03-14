@@ -7,10 +7,7 @@ import { Navbar } from '@/layout';
 const SignUp = () => {
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false);
-  const [student, setStudent] = useState(true);
   const [check, setCheack] = useState(false);
-  const [terms, setTerms] = useState(false);
-
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [email, setEmail] = useState('');
@@ -18,7 +15,6 @@ const SignUp = () => {
   const [birthdate, setBirthdate] = useState('');
   const [hourPrice, setHourPrice] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
   const [address, setAddress] = useState('');
   const [facebook, setFacebook] = useState('');
   const [twitter, setTwitter] = useState('');
@@ -28,68 +24,77 @@ const SignUp = () => {
   const [description, setDdescription] = useState('');
   const [field, setField] = useState('');
   const [Video, setVideo] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [validationMessage, setValidationMessage] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [showValidationMessage, setShowValidationMessage] = useState(true);
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-    // if (student) {
-    //   alert('Please check the student box to continue');
-    //   return;
-    // }
-    try {
-      await axios
-        .post(
-          'auth/signup-mentor',
-          {
-            fname: fname,
-            lname: lname,
-            email: email,
-            phone: phone,
-            birthdate: birthdate,
-            password: password,
-            role: 'mentor',
-            address: address,
-            socialMedia: {
-              facebook: facebook,
-              twitter: twitter,
-              linkedin: linkedin,
-              instagram: instagram,
+    if (password !== passwordConfirm) {
+      alert("Passwords do not match")
+      return;
+    }
+    if ((!phone.match('[0-9]{10}'))) {
+      alert('من فضلك ادخل رقم هاتف صحيح');
+    } else {
+      try {
+        await axios
+          .post(
+            'auth/signup-mentor',
+            {
+              fname: fname,
+              lname: lname,
+              email: email,
+              phone: phone,
+              birthdate: birthdate,
+              password: password,
+              address: address,
+              socialMedia: {
+                facebook: facebook,
+                twitter: twitter,
+                linkedin: linkedin,
+                instagram: instagram,
+              },
+              image: image,
+              description: description,
+              field: field,
+              hourlyPrice: hourPrice
             },
-            image: image,
-            description: description,
-            field: field,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-        .then((response) => {
-          console.log(response);
-          navigate('/auth/verifyEmailCode');
-        });
-    } catch (err) {
-      setIsPending(false);
-      console.log('response', err.response);
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          )
+          .then((response) => {
+            console.log(response);
+            navigate('/auth/verifyEmailCode');
+          });
+      } catch (err) {
+        setIsPending(false);
+        console.log('response', err.response);
+      }
     }
   };
 
-  // const validatePassword = () => {
-  //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  //   if (!password) {
-  //     setShowValidationMessage(false);
-  //     return;
-  //   }
-  //   if (passwordRegex.test(password)) {
-  //     setShowValidationMessage(false);
-  //   } else {
-  //     setShowValidationMessage(true);
-  //     setValidationMessage(
-  //       // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
-  //       "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
-  //     );
-  //   }
-  // };
+  const validatePassword = () => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!password) {
+      setShowValidationMessage(false);
+      return;
+    }
+    if (passwordRegex.test(password)) {
+      setShowValidationMessage(false);
+    } else {
+      setShowValidationMessage(true);
+      setValidationMessage(
+        // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
+        "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
+      );
+    }
+  };
+
 
   return (
     <>
@@ -107,6 +112,22 @@ const SignUp = () => {
                         إنشاء حساب
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
+                        <div className="form-outline mb-4">
+                          <label className="form-label">
+                            اختر صورة شخصية <span className='text-danger fw-bold'>ك لينك حاليا</span> 
+                          </label>
+                          <input
+                            // type="file"
+                            type="text"
+                            name="image"
+                            className="form-control mb-3"
+                            id="image"
+                            placeholder="اضف صوره*"
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
+                          // onChange={(e) => setImage(e.target.files[0])}
+                          />
+                        </div>
                         <div className="row">
                           <div className="col-md-6 mb-4">
                             <div className="form-outline">
@@ -372,16 +393,25 @@ const SignUp = () => {
                             الرقم السري
                           </label>
                           <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="form3Example4cg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
+                            onInput={validatePassword}
                             value={password}
                             required
                             onChange={(e) => setPassword(e.target.value)}
                           />
+                          <button
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="password-button mt-3"
+                          >
+                            {showPassword ? "Hide password" : "Show password"}
+                          </button>
                         </div>
-
+                        {showValidationMessage && (
+                          <span className="validation-message">{validationMessage}</span>
+                        )}
                         <div className="form-outline mb-4">
                           <label
                             className="form-label"
@@ -390,10 +420,13 @@ const SignUp = () => {
                             تأكيد الرقم السري
                           </label>
                           <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="form3Example4cdg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
+                            value={passwordConfirm}
+                            onChange={e => setPasswordConfirm(e.target.value)}
+                            required
                           />
                         </div>
 
