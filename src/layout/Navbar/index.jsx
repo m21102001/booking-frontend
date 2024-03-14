@@ -94,7 +94,7 @@ const Navbar = () => {
                 عن طريق الربط بين افضل العروض المقدمة من اكفاء
                 الناقلين للمستخدمين / اصحاب الاعمال بكل أمن .
               </p>
-              <div className='d-flex flex-row'>
+              <div className='d-flex flex-row' data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
                 <Link
                   to={'/auth/sign-up/instractor'}
                   className="card mx-2"
@@ -103,7 +103,7 @@ const Navbar = () => {
                   <LazyLoadImage
                     src={'https://t3.ftcdn.net/jpg/02/94/21/42/360_F_294214205_ZmptWrtSwORSWadAIHSWqwSa319XlQiB.jpg'}
                     className="card-img-top"
-                    alt={'...'}
+                    alt={'تسجيل الدخول كمستشار'}
                   />
                   <div className="card-body">
                     <p className="card-text">تسجيل كمستشار</p>
@@ -117,7 +117,7 @@ const Navbar = () => {
                   <LazyLoadImage
                     src={'https://media.istockphoto.com/id/1336832660/photo/male-teenage-student-in-yellow-background-stock-photo.jpg?s=612x612&w=0&k=20&c=24LklaK0hoPbe7bGCSHZPbaWJKV6yH0F1b8lABbOS30='}
                     className="card-img-top"
-                    alt={'...'}
+                    alt={'تسجيل الدخول كطالب'}
                   />
                   <div className="card-body">
                     <p className="card-text">تسجيل كطالب</p>
@@ -125,9 +125,6 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            {/* <div className="modal-footer">
-              <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-            </div> */}
           </div>
         </div>
       </div >
