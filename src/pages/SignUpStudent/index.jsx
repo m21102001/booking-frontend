@@ -180,6 +180,9 @@ const SignUpStudent = () => {
                             id="form3Example4cdg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
+                            value={passwordConfirm}
+                            onChange={e => setPasswordConfirm(e.target.value)}
+                            required
                           />
                         </div>
 
