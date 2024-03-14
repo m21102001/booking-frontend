@@ -12,8 +12,8 @@ const ForgetPassword = () => {
     e.preventDefault();
     setIsPending(true);
     try {
-      const { data } = await axios.post(
-        '/auth/login',
+      await axios.post(
+        'auth/forgotPassword',
         {
           email: email,
         },
@@ -53,6 +53,9 @@ const ForgetPassword = () => {
                             type="text"
                             id="form3Example8"
                             className="form-control form-control-lg"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
                           />
                         </div>
                         <div className="d-grid gap-2">

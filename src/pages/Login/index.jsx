@@ -14,9 +14,10 @@ const Login = () => {
     e.preventDefault();
     setIsPending(true);
     try {
-      const { data } = await axios.post(
-        '/auth/login', { withCredentials: false },
+      await axios.post('auth/login',
         {
+          // email: "ahmedmedhat1231@gmail.com",
+          // password: "123456"
           email: email,
           password: password
         },
@@ -26,6 +27,8 @@ const Login = () => {
           },
         }
       );
+      alert('تم تسجيل الدخول بنجاح')
+      navigate('/');
       setIsPending(false);
     } catch (err) {
       setIsPending(false);

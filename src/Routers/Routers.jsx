@@ -20,8 +20,10 @@ import {
   ReservationTicket,
   Shop,
   SignUp,
+  SignUpStudent,
   TermsCondition,
-  VerifyCode
+  VerifyCode,
+  VerifyEmailCode
 } from '@/pages';
 
 
@@ -48,9 +50,21 @@ const Routers = () => {
             }
           />
           <Route
-            path="/auth/sign-up"
+            path="/auth/sign-up/student"
+            element={
+              <SignUpStudent />
+            }
+          />
+          <Route
+            path="/auth/sign-up/instractor"
             element={
               <SignUp />
+            }
+          />
+          <Route
+            path="/auth/verifyEmailCode"
+            element={
+              <VerifyEmailCode />
             }
           />
           <Route path="/auth/forget-password" element={<ForgetPassword />} />

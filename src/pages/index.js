@@ -16,5 +16,7 @@ export { default as ConsaultStore } from "./ConsaultStore";
 export { default as ConsaultStoreItem } from "./ConsaultStoreItem";
 export { default as AdviceAdvisors } from "./AdviceAdvisors";
 export { default as ReservationTicket } from "./ReservationTicket";
+export { default as SignUpStudent } from "./SignUpStudent";
 export { default as QuestionAnswer } from "./QuestionAnswer";
 export { default as Courses } from "./Courses";
+export { default as VerifyEmailCode } from "./VerifyEmailCode";

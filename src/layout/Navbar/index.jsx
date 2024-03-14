@@ -74,13 +74,63 @@ const Navbar = () => {
               <Link to={'/auth/login'}>
                 <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
               </Link>
-              <Link to={'/auth/sign-up'}>
-                <button type="button" className="mx-2 btn btn-primary" >انشاء حساب</button>
-              </Link>
+              {/* <Link to={'/auth/sign-up'}> */}
+              <button type="button" className="mx-2 btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" >انشاء حساب</button>
+              {/* </Link> */}
             </div>
           </div>
         </div>
       </nav>
+      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalToggleLabel">مرحباً بكم في سايس الابتكار</h1>
+              <button type="button" className="btn-close " data-bs-dismiss="modal" aria-label="Close" style={{ margin: 'initial' }}></button>
+            </div>
+            <div className="modal-body">
+              <p className='text-end'>
+                نحن منصة وطنية نهدف الى تقديم أفضل تجربة نقل للمستخدم والناقل ،
+                عن طريق الربط بين افضل العروض المقدمة من اكفاء
+                الناقلين للمستخدمين / اصحاب الاعمال بكل أمن .
+              </p>
+              <div className='d-flex flex-row'>
+                <Link
+                  to={'/auth/sign-up/instractor'}
+                  className="card mx-2"
+                  style={{ width: "18rem" }}
+                >
+                  <LazyLoadImage
+                    src={'https://t3.ftcdn.net/jpg/02/94/21/42/360_F_294214205_ZmptWrtSwORSWadAIHSWqwSa319XlQiB.jpg'}
+                    className="card-img-top"
+                    alt={'...'}
+                  />
+                  <div className="card-body">
+                    <p className="card-text">تسجيل كمستشار</p>
+                  </div>
+                </Link>
+                <Link
+                  to={'/auth/sign-up/student'}
+                  className="card mx-2"
+                  style={{ width: "18rem" }}
+                >
+                  <LazyLoadImage
+                    src={'https://media.istockphoto.com/id/1336832660/photo/male-teenage-student-in-yellow-background-stock-photo.jpg?s=612x612&w=0&k=20&c=24LklaK0hoPbe7bGCSHZPbaWJKV6yH0F1b8lABbOS30='}
+                    className="card-img-top"
+                    alt={'...'}
+                  />
+                  <div className="card-body">
+                    <p className="card-text">تسجيل كطالب</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            {/* <div className="modal-footer">
+              <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+            </div> */}
+          </div>
+        </div>
+      </div >
     </>
   );
 };

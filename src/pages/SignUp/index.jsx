@@ -66,7 +66,7 @@ const SignUp = () => {
         )
         .then((response) => {
           console.log(response);
-          navigate('/auth/verifyphoneCode');
+          navigate('/auth/verifyEmailCode');
         });
     } catch (err) {
       setIsPending(false);
@@ -204,186 +204,168 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-outline mb-4">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={student}
-                            onChange={() => setStudent(student ? false : true)}
-                            id="checkedOut"
-                          />
                           <label
-                            className="form-check-label me-3"
-                            htmlFor="flexCheckDefault"
+                            className="form-label"
+                            htmlFor="form3Example90"
                           >
-                            هل انت مستشار
+                            التخصص
                           </label>
+                          <select
+                            className="form-select form-select-lg mb-3"
+                            aria-label=".form-select-lg example"
+                          >
+                            <option selected>اختر تخصص</option>
+                            <option value="1">طب</option>
+                            <option value="2">هندسة</option>
+                            <option value="3">علوم طبيعيه</option>
+                          </select>
                         </div>
-                        {student == false ? (
-                          <>
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example90"
-                              >
-                                التخصص
-                              </label>
-                              <select
-                                className="form-select form-select-lg mb-3"
-                                aria-label=".form-select-lg example"
-                              >
-                                <option selected>اختر تخصص</option>
-                                <option value="1">طب</option>
-                                <option value="2">هندسة</option>
-                                <option value="3">علوم طبيعيه</option>
-                              </select>
-                            </div>
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example92"
-                              >
-                                سعر الساعة
-                              </label>
-                              <input
-                                type="number"
-                                id="form3Example92"
-                                className="form-control form-control-lg"
-                                placeholder="150 جنية/ساعة"
-                                value={hourPrice}
-                                required
-                                onChange={(e) => setHourPrice(e.target.value)}
-                              />
-                            </div>
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example98"
-                              >
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example92"
+                          >
+                            سعر الساعة
+                          </label>
+                          <input
+                            type="number"
+                            id="form3Example92"
+                            className="form-control form-control-lg"
+                            placeholder="150 جنية/ساعة"
+                            value={hourPrice}
+                            required
+                            onChange={(e) => setHourPrice(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example98"
+                          >
 
-                                العنوان
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example98"
-                                className="form-control form-control-lg"
-                                placeholder="123 Main St, City, Country"
-                                value={address}
-                                required
-                                onChange={(e) => setAddress(e.target.value)}
-                              />
-                            </div>
+                            العنوان
+                          </label>
+                          <input
+                            type="text"
+                            id="form3Example98"
+                            className="form-control form-control-lg"
+                            placeholder="123 Main St, City, Country"
+                            value={address}
+                            required
+                            onChange={(e) => setAddress(e.target.value)}
+                          />
+                        </div>
 
-                            <div className="mb-3">
-                              <label
-                                htmlFor="exampleFormControlTextarea1"
-                                className="form-label"
-                              >
-                                اضف نبذة عن نفسك
-                              </label>
-                              <textarea
-                                className="form-control"
-                                id="exampleFormControlTextarea1"
-                                rows="3"
-                                placeholder="محمد مهندس برمجيات اعمل لدى شركة x منذ عامين ....."
-                                value={description}
-                                required
-                                onChange={(e) => setDdescription(e.target.value)}
-                              />
-                            </div>
+                        <div className="mb-3">
+                          <label
+                            htmlFor="exampleFormControlTextarea1"
+                            className="form-label"
+                          >
+                            اضف نبذة عن نفسك
+                          </label>
+                          <textarea
+                            className="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows="3"
+                            placeholder="محمد مهندس برمجيات اعمل لدى شركة x منذ عامين ....."
+                            value={description}
+                            required
+                            onChange={(e) => setDdescription(e.target.value)}
+                          />
+                        </div>
 
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example97"
-                              >
-                                تويتر (x)
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example97"
-                                className="form-control form-control-lg"
-                                placeholder="https://www.x.com/watch?v=xxxxxxxx "
-                                value={twitter}
-                                required
-                                onChange={(e) => setTwitter(e.target.value)}
-                              />
-                            </div>
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example97"
+                          >
+                            تويتر (x)
+                          </label>
+                          <input
+                            type="text"
+                            id="form3Example97"
+                            className="form-control form-control-lg"
+                            placeholder="https://www.x.com/watch?v=xxxxxxxx "
+                            value={twitter}
+                            required
+                            onChange={(e) => setTwitter(e.target.value)}
+                          />
+                        </div>
 
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example96"
-                              >
-                                لينكدين
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example96"
-                                className="form-control form-control-lg"
-                                placeholder="https://www.linkedin.com/in/xxxxxxxxx"
-                                value={linkedin}
-                                required
-                                onChange={(e) => setLinkedin(e.target.value)}
-                              />
-                            </div>
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example96"
+                          >
+                            لينكدين
+                          </label>
+                          <input
+                            type="text"
+                            id="form3Example96"
+                            className="form-control form-control-lg"
+                            placeholder="https://www.linkedin.com/in/xxxxxxxxx"
+                            value={linkedin}
+                            required
+                            onChange={(e) => setLinkedin(e.target.value)}
+                          />
+                        </div>
 
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example95"
-                              >
-                                فيسبوك
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example95"
-                                className="form-control form-control-lg"
-                                placeholder="https://www.facebook.com/xxxxxxxx "
-                                value={facebook}
-                                required
-                                onChange={(e) => setFacebook(e.target.value)}
-                              />
-                            </div>
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example94"
-                              >
-                                انستقرام
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example94"
-                                className="form-control form-control-lg"
-                                placeholder="https://www.instagram.com/xxxxxxxx "
-                                value={instagram}
-                                required
-                                onChange={(e) => setInstagram(e.target.value)}
-                              />
-                            </div>
-                            <div className="form-outline mb-4">
-                              <p className="mt-5 text-danger">
-                                يجب ان تكون Unlisted وتحتوي علي فيديو تعرفي لا يقل
-                                عن دقيقتين وفيديوهين شرح لا يقل عن 4 دقائق *
-                              </p>
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example93"
-                              >
-                                رابط البلاي ليست
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example93"
-                                className="form-control form-control-lg"
-                                placeholder="https://www.youtube.com/xxxxxxxx "
-                                value={Video}
-                                required
-                                onChange={(e) => setVideo(e.target.value)}
-                              />
-                            </div>
-                          </>
-                        ) : null}
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example95"
+                          >
+                            فيسبوك
+                          </label>
+                          <input
+                            type="text"
+                            id="form3Example95"
+                            className="form-control form-control-lg"
+                            placeholder="https://www.facebook.com/xxxxxxxx "
+                            value={facebook}
+                            required
+                            onChange={(e) => setFacebook(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example94"
+                          >
+                            انستقرام
+                          </label>
+                          <input
+                            type="text"
+                            id="form3Example94"
+                            className="form-control form-control-lg"
+                            placeholder="https://www.instagram.com/xxxxxxxx "
+                            value={instagram}
+                            required
+                            onChange={(e) => setInstagram(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <p className="mt-5 text-danger">
+                            يجب ان تكون Unlisted وتحتوي علي فيديو تعرفي لا يقل
+                            عن دقيقتين وفيديوهين شرح لا يقل عن 4 دقائق *
+                          </p>
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example93"
+                          >
+                            رابط البلاي ليست
+                          </label>
+                          <input
+                            type="text"
+                            id="form3Example93"
+                            className="form-control form-control-lg"
+                            placeholder="https://www.youtube.com/xxxxxxxx "
+                            value={Video}
+                            required
+                            onChange={(e) => setVideo(e.target.value)}
+                          />
+                        </div>
+
 
                         <div className="form-outline mb-4">
                           <label className="form-label" htmlFor="form3Example4cg">
