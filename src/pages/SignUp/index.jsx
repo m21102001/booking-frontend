@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from '@/api/axios';
 import './signup.scss';
 import { Navbar } from '@/layout';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -25,18 +26,18 @@ const SignUp = () => {
   const [field, setField] = useState('');
   const [Video, setVideo] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [validationMessage, setValidationMessage] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [validationMessage, setValidationMessage] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [showValidationMessage, setShowValidationMessage] = useState(true);
 
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      alert("Passwords do not match")
+      toast.error('Passwords do not match');
       return;
     }
-    if ((!phone.match('[0-9]{10}'))) {
-      alert('من فضلك ادخل رقم هاتف صحيح');
+    if (!phone.match('[0-9]{10}')) {
+      toast.error('من فضلك ادخل رقم هاتف صحيح');
     } else {
       try {
         await axios
@@ -59,7 +60,7 @@ const SignUp = () => {
               image: image,
               description: description,
               field: field,
-              hourlyPrice: hourPrice
+              hourlyPrice: hourPrice,
             },
             {
               headers: {
@@ -68,18 +69,23 @@ const SignUp = () => {
             }
           )
           .then((response) => {
+            toast.success('تم التسجيل بنجاح');
+
             console.log(response);
             navigate('/auth/verifyEmailCode');
           });
       } catch (err) {
         setIsPending(false);
+        toast.error('تأكد من البيانات');
+
         console.log('response', err.response);
       }
     }
   };
 
   const validatePassword = () => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!password) {
       setShowValidationMessage(false);
       return;
@@ -90,11 +96,10 @@ const SignUp = () => {
       setShowValidationMessage(true);
       setValidationMessage(
         // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
-        "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
+        'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
       );
     }
   };
-
 
   return (
     <>
@@ -114,7 +119,10 @@ const SignUp = () => {
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="form-outline mb-4">
                           <label className="form-label">
-                            اختر صورة شخصية <span className='text-danger fw-bold'>ك لينك حاليا</span> 
+                            اختر صورة شخصية{' '}
+                            <span className="text-danger fw-bold">
+                              ك لينك حاليا
+                            </span>
                           </label>
                           <input
                             // type="file"
@@ -125,7 +133,7 @@ const SignUp = () => {
                             placeholder="اضف صوره*"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
-                          // onChange={(e) => setImage(e.target.files[0])}
+                            // onChange={(e) => setImage(e.target.files[0])}
                           />
                         </div>
                         <div className="row">
@@ -135,7 +143,6 @@ const SignUp = () => {
                                 className="form-label"
                                 htmlFor="form3Example1m"
                               >
-
                                 الاسم الاول
                               </label>
                               <input
@@ -191,10 +198,7 @@ const SignUp = () => {
                           </div>
                           <div className="col-md-6 mb-4">
                             <div className="form-outline">
-                              <label
-                                className="form-label"
-                                htmlFor="form"
-                              >
+                              <label className="form-label" htmlFor="form">
                                 رقم الهاتف
                               </label>
                               <input
@@ -263,7 +267,6 @@ const SignUp = () => {
                             className="form-label"
                             htmlFor="form3Example98"
                           >
-
                             العنوان
                           </label>
                           <input
@@ -387,13 +390,15 @@ const SignUp = () => {
                           />
                         </div>
 
-
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="form3Example4cg">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example4cg"
+                          >
                             الرقم السري
                           </label>
                           <input
-                            type={showPassword ? "text" : "password"}
+                            type={showPassword ? 'text' : 'password'}
                             id="form3Example4cg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
@@ -406,11 +411,13 @@ const SignUp = () => {
                             onClick={() => setShowPassword(!showPassword)}
                             className="password-button mt-3"
                           >
-                            {showPassword ? "Hide password" : "Show password"}
+                            {showPassword ? 'Hide password' : 'Show password'}
                           </button>
                         </div>
                         {showValidationMessage && (
-                          <span className="validation-message">{validationMessage}</span>
+                          <span className="validation-message">
+                            {validationMessage}
+                          </span>
                         )}
                         <div className="form-outline mb-4">
                           <label
@@ -420,12 +427,12 @@ const SignUp = () => {
                             تأكيد الرقم السري
                           </label>
                           <input
-                            type={showPassword ? "text" : "password"}
+                            type={showPassword ? 'text' : 'password'}
                             id="form3Example4cdg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
                             value={passwordConfirm}
-                            onChange={e => setPasswordConfirm(e.target.value)}
+                            onChange={(e) => setPasswordConfirm(e.target.value)}
                             required
                           />
                         </div>
@@ -444,14 +451,19 @@ const SignUp = () => {
                             htmlFor="flexCheckDefault"
                           >
                             نعم، أريد الاشتراك. أوافق على تطبيق
-                            <Link to={'/terms-condition'}> الشروط والأحكام </Link>.
+                            <Link to={'/terms-condition'}>
+                              {' '}
+                              الشروط والأحكام{' '}
+                            </Link>
+                            .
                           </label>
                         </div>
                         <div className="d-grid gap-2">
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
-                              }`}
+                            className={`btn btn-primary btn-lg ms-2 ${
+                              check ? '' : 'disabled'
+                            }`}
                           >
                             انشاء حساب جديد
                           </button>

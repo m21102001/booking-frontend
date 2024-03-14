@@ -1,8 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from '@/api/axios';
-import './login.scss'
+import './login.scss';
 import { Navbar } from '@/layout';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,12 +15,13 @@ const Login = () => {
     e.preventDefault();
     setIsPending(true);
     try {
-      await axios.post('auth/login',
+      await axios.post(
+        'auth/login',
         {
           // email: "ahmedmedhat1231@gmail.com",
           // password: "123456"
           email: email,
-          password: password
+          password: password,
         },
         {
           headers: {
@@ -27,11 +29,12 @@ const Login = () => {
           },
         }
       );
-      alert('تم تسجيل الدخول بنجاح')
+      toast.success('تم تسجيل الدخول بنجاح');
       navigate('/');
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
+      toast.error('تأكد من البريد الالكتروني او كلمة المرور');
       console.log('response', err);
     }
   };
@@ -55,7 +58,10 @@ const Login = () => {
                       </h5>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="form3Example1m1">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example1m1"
+                          >
                             البريد الالكترونى
                           </label>
                           <input
@@ -68,7 +74,10 @@ const Login = () => {
                           />
                         </div>
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="form3Example4cg">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example4cg"
+                          >
                             الرقم السري
                           </label>
                           <input
@@ -81,12 +90,18 @@ const Login = () => {
                           />
                         </div>
                         <div className="mb-3 form-check">
-                          <Link className="nav-link navli" to={'/auth/forget-password'}>
+                          <Link
+                            className="nav-link navli"
+                            to={'/auth/forget-password'}
+                          >
                             نسيت كلمة المرور ؟
                           </Link>
                         </div>
                         <div className="d-grid gap-2">
-                          <button className="btn btn-primary fs-4" type="submit">
+                          <button
+                            className="btn btn-primary fs-4"
+                            type="submit"
+                          >
                             تسجيل الدخول
                           </button>
                         </div>
@@ -118,7 +133,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </section >
+      </section>
     </>
   );
 };

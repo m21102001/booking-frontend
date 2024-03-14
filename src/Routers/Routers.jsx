@@ -1,8 +1,4 @@
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router
-} from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import {
   AdviceAdvisors,
   ConsaultStore,
@@ -23,9 +19,10 @@ import {
   SignUpStudent,
   TermsCondition,
   VerifyCode,
-  VerifyEmailCode
+  VerifyEmailCode,
 } from '@/pages';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Routers = () => {
   return (
@@ -35,7 +32,7 @@ const Routers = () => {
           <Route path="/" element={<Home />} />
           <Route path="/consault-store" element={<ConsaultStore />} />
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
-          <Route path='question-and-answer' element={<QuestionAnswer />} />
+          <Route path="question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/contactUs" element={<ContactUS />} />
@@ -45,37 +42,21 @@ const Routers = () => {
           {/* -----------------------auth -------------------- */}
           <Route
             path="/auth/reservation-ticket"
-            element={
-              <ReservationTicket />
-            }
+            element={<ReservationTicket />}
           />
-          <Route
-            path="/auth/sign-up/student"
-            element={
-              <SignUpStudent />
-            }
-          />
-          <Route
-            path="/auth/sign-up/instractor"
-            element={
-              <SignUp />
-            }
-          />
-          <Route
-            path="/auth/verifyEmailCode"
-            element={
-              <VerifyEmailCode />
-            }
-          />
+          <Route path="/auth/sign-up/student" element={<SignUpStudent />} />
+          <Route path="/auth/sign-up/instractor" element={<SignUp />} />
+          <Route path="/auth/verifyEmailCode" element={<VerifyEmailCode />} />
           <Route path="/auth/forget-password" element={<ForgetPassword />} />
           <Route path="/auth/verify-code" element={<VerifyCode />} />
           <Route path="/auth/resat-password" element={<ResatPassword />} />
           <Route path="/terms-condition" element={<TermsCondition />} />
           {/* --------------------Dashboard---------------------- */}
-          <Route path='/dash/dashboard' element={<Dashboard />} />
+          <Route path="/dash/dashboard" element={<Dashboard />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
+      <ToastContainer />
     </div>
   );
 };

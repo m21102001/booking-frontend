@@ -13,15 +13,14 @@ const SignUpStudent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [validationMessage, setValidationMessage] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [validationMessage, setValidationMessage] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [showValidationMessage, setShowValidationMessage] = useState(true);
-
 
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      alert("Passwords do not match")
+      toast.error('Passwords do not match');
       return;
     }
     try {
@@ -42,15 +41,20 @@ const SignUpStudent = () => {
         )
         .then((response) => {
           console.log(response);
+          toast.success('تم التسجيل بنجاح');
+
           navigate('/auth/verifyEmailCode');
         });
     } catch (err) {
       setIsPending(false);
+      toast.error('تأكد من البيانات');
+
       console.log('response', err.response);
     }
   };
   const validatePassword = () => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!password) {
       setShowValidationMessage(false);
       return;
@@ -61,7 +65,7 @@ const SignUpStudent = () => {
       setShowValidationMessage(true);
       setValidationMessage(
         // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
-        "Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long."
+        'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
       );
     }
   };
@@ -89,7 +93,6 @@ const SignUpStudent = () => {
                                 className="form-label"
                                 htmlFor="form3Example1m"
                               >
-
                                 الاسم الاول
                               </label>
                               <input
@@ -145,11 +148,14 @@ const SignUpStudent = () => {
                           </div>
                         </div>
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="form3Example4cg">
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example4cg"
+                          >
                             الرقم السري
                           </label>
                           <input
-                            type={showPassword ? "text" : "password"}
+                            type={showPassword ? 'text' : 'password'}
                             id="form3Example4cg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
@@ -162,11 +168,13 @@ const SignUpStudent = () => {
                             onClick={() => setShowPassword(!showPassword)}
                             className="password-button mt-3"
                           >
-                            {showPassword ? "Hide password" : "Show password"}
+                            {showPassword ? 'Hide password' : 'Show password'}
                           </button>
                         </div>
                         {showValidationMessage && (
-                          <span className="validation-message">{validationMessage}</span>
+                          <span className="validation-message">
+                            {validationMessage}
+                          </span>
                         )}
                         <div className="form-outline mb-4">
                           <label
@@ -176,12 +184,12 @@ const SignUpStudent = () => {
                             تأكيد الرقم السري
                           </label>
                           <input
-                            type={showPassword ? "text" : "password"}
+                            type={showPassword ? 'text' : 'password'}
                             id="form3Example4cdg"
                             className="form-control form-control-lg"
                             placeholder="xxxxxxx"
                             value={passwordConfirm}
-                            onChange={e => setPasswordConfirm(e.target.value)}
+                            onChange={(e) => setPasswordConfirm(e.target.value)}
                             required
                           />
                         </div>
@@ -200,7 +208,11 @@ const SignUpStudent = () => {
                             htmlFor="flexCheckDefault"
                           >
                             نعم، أريد الاشتراك. أوافق على تطبيق
-                            <Link to={'/terms-condition'}> الشروط والأحكام </Link>.
+                            <Link to={'/terms-condition'}>
+                              {' '}
+                              الشروط والأحكام{' '}
+                            </Link>
+                            .
                           </label>
                         </div>
                         <div
@@ -210,8 +222,9 @@ const SignUpStudent = () => {
                         >
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
-                              }`}
+                            className={`btn btn-primary btn-lg ms-2 ${
+                              check ? '' : 'disabled'
+                            }`}
                           >
                             انشاء حساب جديد
                           </button>
