@@ -9,8 +9,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false);
   const [check, setCheack] = useState(false);
-  const [fname, setFname] = useState('');
-  const [lname, setLname] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [birthdate, setBirthdate] = useState('');
@@ -44,8 +43,7 @@ const SignUp = () => {
           .post(
             'auth/signup-mentor',
             {
-              fname: fname,
-              lname: lname,
+              name: name,
               email: email,
               phone: phone,
               birthdate: birthdate,
@@ -134,11 +132,11 @@ const SignUp = () => {
                             placeholder="اضف صوره*"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
-                            // onChange={(e) => setImage(e.target.files[0])}
+                          // onChange={(e) => setImage(e.target.files[0])}
                           />
                         </div>
                         <div className="row">
-                          <div className="col-md-6 mb-4">
+                          <div className="col-md-12 mb-4">
                             <div className="form-outline">
                               <label
                                 className="form-label"
@@ -150,29 +148,10 @@ const SignUp = () => {
                                 type="text"
                                 id="form3Example1m"
                                 className="form-control form-control-lg"
-                                placeholder=" محمد"
-                                value={fname}
+                                placeholder=" محمد احمد"
+                                value={name}
                                 required
-                                onChange={(e) => setFname(e.target.value)}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-md-6 mb-4">
-                            <div className="form-outline">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example1n"
-                              >
-                                الاسم الاخير
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example1n"
-                                className="form-control form-control-lg"
-                                placeholder=" احمد"
-                                value={lname}
-                                required
-                                onChange={(e) => setLname(e.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                               />
                             </div>
                           </div>
@@ -462,9 +441,8 @@ const SignUp = () => {
                         <div className="d-grid gap-2">
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${
-                              check ? '' : 'disabled'
-                            }`}
+                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
+                              }`}
                           >
                             انشاء حساب جديد
                           </button>

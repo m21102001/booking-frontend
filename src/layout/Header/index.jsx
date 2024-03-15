@@ -8,7 +8,7 @@ import { image } from '@/db/data'
 const Header = () => {
   return (
     <div className="header">
-      <Swiper
+      {/* <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -31,7 +31,12 @@ const Header = () => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
+      <img
+        src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
+        className="home-image"
+        alt=""
+      />
     </div>
   )
 }

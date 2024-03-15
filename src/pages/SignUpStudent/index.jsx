@@ -9,8 +9,7 @@ const SignUpStudent = () => {
   const [isPending, setIsPending] = useState(false);
   const [check, setCheack] = useState(false);
 
-  const [fname, setFname] = useState('');
-  const [lname, setLname] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -29,8 +28,7 @@ const SignUpStudent = () => {
         .post(
           'auth/signup',
           {
-            fname: fname,
-            lname: lname,
+            name: name,
             email: email,
             password: password,
           },
@@ -89,41 +87,22 @@ const SignUpStudent = () => {
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="row">
-                          <div className="col-md-6 mb-4">
+                          <div className="col-md-12 mb-4">
                             <div className="form-outline">
                               <label
                                 className="form-label"
                                 htmlFor="form3Example1m"
                               >
-                                الاسم الاول
+                                الاسم بالكامل
                               </label>
                               <input
                                 type="text"
                                 id="form3Example1m"
                                 className="form-control form-control-lg"
-                                placeholder=" محمد"
-                                value={fname}
+                                placeholder="محمد احمد"
+                                value={name}
                                 required
-                                onChange={(e) => setFname(e.target.value)}
-                              />
-                            </div>
-                          </div>
-                          <div className="col-md-6 mb-4">
-                            <div className="form-outline">
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example1n"
-                              >
-                                الاسم الاخير
-                              </label>
-                              <input
-                                type="text"
-                                id="form3Example1n"
-                                className="form-control form-control-lg"
-                                placeholder=" احمد"
-                                value={lname}
-                                required
-                                onChange={(e) => setLname(e.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                               />
                             </div>
                           </div>
@@ -224,9 +203,8 @@ const SignUpStudent = () => {
                         >
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${
-                              check ? '' : 'disabled'
-                            }`}
+                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
+                              }`}
                           >
                             انشاء حساب جديد
                           </button>

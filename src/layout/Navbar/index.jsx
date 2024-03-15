@@ -135,10 +135,10 @@ const Navbar = () => {
                   <LazyLoadImage
                     src={'https://media.istockphoto.com/id/1336832660/photo/male-teenage-student-in-yellow-background-stock-photo.jpg?s=612x612&w=0&k=20&c=24LklaK0hoPbe7bGCSHZPbaWJKV6yH0F1b8lABbOS30='}
                     className="card-img-top"
-                    alt={'تسجيل الدخول كطالب'}
+                    alt={'تسجيل الدخول كمستخدم'}
                   />
                   <div className="card-body">
-                    <p className="card-text">تسجيل كطالب</p>
+                    <p className="card-text">تسجيل كمستخدم</p>
                   </div>
                 </Link>
               </div>
