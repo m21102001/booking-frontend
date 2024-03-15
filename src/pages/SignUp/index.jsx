@@ -142,13 +142,13 @@ const SignUp = () => {
                                 className="form-label"
                                 htmlFor="form3Example1m"
                               >
-                                الاسم الاول
+                               الاسم بالكامل
                               </label>
                               <input
                                 type="text"
                                 id="form3Example1m"
                                 className="form-control form-control-lg"
-                                placeholder=" محمد احمد"
+                                placeholder=" الاسم بالكامل"
                                 value={name}
                                 required
                                 onChange={(e) => setName(e.target.value)}
