@@ -25,7 +25,10 @@ const index = () => {
       <AboutThat />
       <Footer />
 
-      <Link to='/dash/dashboard' className='editIcon'>D</Link>
+      <Link
+        //  to='/dash/dashboard'
+        className='editIcon'
+      >D</Link>
     </div>
   )
 }

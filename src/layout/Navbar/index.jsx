@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <NavLink
             className="navbar-brand"
-            // to="/"
+          // to="/"
           >
             <LazyLoadImage
               className="img-logo"
@@ -50,7 +50,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                // to="/consault-store"
+                  // to="/consault-store"
                 >
                   المستشارين
                 </NavLink>

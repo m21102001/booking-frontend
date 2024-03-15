@@ -1,8 +1,10 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import {
   AdviceAdvisors,
+  AllUsersDash,
   ConsaultStore,
   ConsaultStoreItem,
+  ContactFormDash,
   ContactUS,
   Courses,
   Dashboard,
@@ -50,6 +52,9 @@ const Routers = () => {
           <Route path="/terms-condition" element={<TermsCondition />} />
           {/* --------------------Dashboard---------------------- */}
           <Route path="/dash/dashboard" element={<Dashboard />} />
+          <Route path="/dash/contact-form" element={<ContactFormDash />}
+          />
+          <Route path="/dash/all-users" element={<AllUsersDash />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
