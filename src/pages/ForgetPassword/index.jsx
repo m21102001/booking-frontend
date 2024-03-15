@@ -14,7 +14,7 @@ const ForgetPassword = () => {
     setIsPending(true);
     try {
       await axios.post(
-        'auth/forgotPassword',
+        'auth/forgot-password',
         {
           email: email,
         },
@@ -23,8 +23,13 @@ const ForgetPassword = () => {
             'Content-Type': 'application/json',
           },
         }
-      );
-      setIsPending(false);
+      )
+        .then((response) => {
+          setIsPending(false);
+          console.log(response);
+          toast.success('تم ارسال الكود بنجاح');
+          navigate('/auth/verify-forget-password');
+        });
     } catch (err) {
       setIsPending(false);
       toast.error('تأكد من البريد الالكتروني');

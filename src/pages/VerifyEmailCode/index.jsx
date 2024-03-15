@@ -41,7 +41,7 @@ const VerifyEmailCode = () => {
           setIsPending(false);
           console.log(response);
           if (response?.status === 200) {
-            toast.success('تم التأكيد بنجاح');
+            toast.success('(ان كنت مستشار يجب الانتظار حتى يتم الموافقة على الايميل من خلال صاحب مدير المتجر) مبرووك ,تم تأكيد الحساب بنجاح');
             navigate('/auth/login');
           }
         });
@@ -61,7 +61,7 @@ const VerifyEmailCode = () => {
         .post(
           'auth/resend-code',
           {
-            emailVerifyCode: 'mm@gmail.com',
+            emailVerifyCode: 'm@gmail.com',
           },
           {
             headers: {

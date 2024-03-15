@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import axios from '@/api/axios';
 import { Navbar } from '@/layout';
+import { toast } from 'react-toastify';
 
 const ResatPassword = () => {
   const [isPending, setIsPending] = useState(false);
@@ -12,8 +13,8 @@ const ResatPassword = () => {
     e.preventDefault();
     setIsPending(true);
     try {
-      const { data } = await axios.post(
-        '/auth/login',
+      await axios.post(
+        'auth/reset-password',
         {
           password: password,
           passwordConfirm: passwordConfirm,
@@ -23,11 +24,17 @@ const ResatPassword = () => {
             'Content-Type': 'application/json',
           },
         }
-      );
+      ).then((response) => {
+        setIsPending(false);
+        console.log(response);
+        toast.success('تم تغيير كلمة المرور بنجاح');
+        Navigate('/auth/login');
+      });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
       console.log('response', err);
+      toast.error('تأكد من مطابقة الرقم السرى');
     }
   };
   return (
@@ -82,7 +89,7 @@ const ResatPassword = () => {
                           />
                         </div>
                         <div className="d-grid gap-2">
-                          <button className="btn btn-primary fs-4" type="submit">
+                          <button className={`btn btn-primary fs-4 ${isPending ? "disabled" : ""} `} type="submit">
                             تغيير كلمة المرور
                           </button>
                         </div>

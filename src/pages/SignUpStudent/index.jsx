@@ -21,7 +21,7 @@ const SignUpStudent = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      toast.error('Passwords do not match');
+      toast.error('الرقم السري غير متطابق');
       return;
     }
     try {
@@ -42,13 +42,13 @@ const SignUpStudent = () => {
         )
         .then((response) => {
           console.log(response);
-          toast.success('تم التسجيل بنجاح');
+          toast.success('تم انشاء حسابك بنجاح');
 
           navigate('/auth/verifyEmailCode');
         });
     } catch (err) {
       setIsPending(false);
-      toast.error('تأكد من البيانات');
+      toast.error('الايميل بالفعل موجود, يجب تغيير الايميل');
 
       console.log('response', err.response);
     }
@@ -65,8 +65,9 @@ const SignUpStudent = () => {
     } else {
       setShowValidationMessage(true);
       setValidationMessage(
+        "يجب ان يكون الرقم السري اكبر من 6 احرف وارقام"
         // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
-        'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
+        // 'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
       );
     }
   };

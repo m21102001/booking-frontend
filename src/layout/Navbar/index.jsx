@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <NavLink
             className="navbar-brand"
-            // href="/"
+            // to="/"
           >
             <LazyLoadImage
               className="img-logo"
@@ -42,45 +42,48 @@ const Navbar = () => {
                 <NavLink
                   className={`nav-link navli active text-light`}
                   aria-current="page"
-                  // to="/"
+                // to="/"
                 >
                   الرئيسية
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to="/consault-store">
+                <NavLink
+                  className="nav-link navli text-light"
+                // to="/consault-store"
+                >
                   المستشارين
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink 
-                className="nav-link navli text-light" 
+                <NavLink
+                  className="nav-link navli text-light"
                 // to="/courses"
                 >
                   الكورسات
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink 
-                className="nav-link navli text-light"
+                <NavLink
+                  className="nav-link navli text-light"
                 //  to="/Advice-advisors"
-                 >
+                >
                   نصايح المستشارين
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink 
-                className="nav-link navli text-light" 
+                <NavLink
+                  className="nav-link navli text-light"
                 // to="/question-and-answer"
                 >
                   اسئلة شائعة
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink 
-                className="nav-link navli text-light"
+                <NavLink
+                  className="nav-link navli text-light"
                 //  to={'/contactUS'}
-                 >
+                >
                   تواصل معنا
                 </NavLink>
               </li>

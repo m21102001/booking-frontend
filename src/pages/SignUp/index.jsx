@@ -33,10 +33,10 @@ const SignUp = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      toast.error('Passwords do not match');
+      toast.error('الرقم السري غير متطابق');
       return;
     }
-    if (!phone.match('[0-9]{10}')) {
+    if (!phone.match('[0-9]{11}')) {
       toast.error('من فضلك ادخل رقم هاتف صحيح');
     } else {
       try {
@@ -69,14 +69,14 @@ const SignUp = () => {
             }
           )
           .then((response) => {
-            toast.success('تم التسجيل بنجاح');
+            toast.success(' يتم انشاء حساب بنجاح, يجب تأكيد الايميل');
 
             console.log(response);
             navigate('/auth/verifyEmailCode');
           });
       } catch (err) {
         setIsPending(false);
-        toast.error('تأكد من البيانات');
+        toast.error('الايميل بالفعل موجود, يجب تغيير الايميل');
 
         console.log('response', err.response);
       }
@@ -95,8 +95,9 @@ const SignUp = () => {
     } else {
       setShowValidationMessage(true);
       setValidationMessage(
+        "يجب ان يكون الرقم السري اكبر من 6 احرف وارقام"
         // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
-        'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
+        // 'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
       );
     }
   };
@@ -275,7 +276,7 @@ const SignUp = () => {
                             className="form-control form-control-lg"
                             placeholder="123 Main St, City, Country"
                             value={address}
-                            required
+                            // required
                             onChange={(e) => setAddress(e.target.value)}
                           />
                         </div>
@@ -311,7 +312,7 @@ const SignUp = () => {
                             className="form-control form-control-lg"
                             placeholder="https://www.x.com/watch?v=xxxxxxxx "
                             value={twitter}
-                            required
+                            // required
                             onChange={(e) => setTwitter(e.target.value)}
                           />
                         </div>
@@ -329,7 +330,7 @@ const SignUp = () => {
                             className="form-control form-control-lg"
                             placeholder="https://www.linkedin.com/in/xxxxxxxxx"
                             value={linkedin}
-                            required
+                            // required
                             onChange={(e) => setLinkedin(e.target.value)}
                           />
                         </div>
@@ -347,7 +348,7 @@ const SignUp = () => {
                             className="form-control form-control-lg"
                             placeholder="https://www.facebook.com/xxxxxxxx "
                             value={facebook}
-                            required
+                            // required
                             onChange={(e) => setFacebook(e.target.value)}
                           />
                         </div>
@@ -364,7 +365,7 @@ const SignUp = () => {
                             className="form-control form-control-lg"
                             placeholder="https://www.instagram.com/xxxxxxxx "
                             value={instagram}
-                            required
+                            // required
                             onChange={(e) => setInstagram(e.target.value)}
                           />
                         </div>
@@ -385,7 +386,7 @@ const SignUp = () => {
                             className="form-control form-control-lg"
                             placeholder="https://www.youtube.com/xxxxxxxx "
                             value={Video}
-                            required
+                            // required
                             onChange={(e) => setVideo(e.target.value)}
                           />
                         </div>

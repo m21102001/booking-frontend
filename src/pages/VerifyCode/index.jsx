@@ -12,10 +12,10 @@ const VerifyCode = () => {
     e.preventDefault();
     setIsPending(true);
     try {
-      const { data } = await axios.post(
-        '/auth/login',
+      await axios.post(
+        'auth/verifyResetCode',
         {
-          code: code,
+          resetCode: code,
         },
         {
           headers: {
@@ -46,7 +46,7 @@ const VerifyCode = () => {
                   <div className="col-xl-6 text-end">
                     <div className="card-body p-md-5 color-mainColor ">
                       <h3 className="text-center mb-4 text-uppercase">
-                        ادخل الكود
+                        ادخل الكود المرسل فى الايميل
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="form-outline mb-4">
@@ -60,11 +60,14 @@ const VerifyCode = () => {
                             type="number"
                             id="form3Example8"
                             className="form-control form-control-lg"
+                            value={code}
+                            onChange={e => setCode(e.target.value)}
+                            required
                           />
                         </div>
                         <div className="d-grid gap-2">
                           <button
-                            className="btn btn-primary fs-4"
+                            className={`btn btn-primary fs-4 ${isPending ? 'disabled' : ''}`}
                             type="submit"
                           >
                             ارسال
