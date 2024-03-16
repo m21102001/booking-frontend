@@ -7,7 +7,6 @@ import { MdOutlineArrowBack } from 'react-icons/md';
 const UpdatePlaylistDash = () => {
   const item = useLocation()?.state?.item
   const navigate = useNavigate();
-
   const [isPending, setIsPending] = useState(false)
   const [title, setTitle] = useState(item?.title)
   const [price, setPrice] = useState(item?.price)
@@ -20,7 +19,7 @@ const UpdatePlaylistDash = () => {
     try {
       await axios
         .put(
-          `/courses/${item?._id}`,
+          `courses/${item?._id}`,
           {
             title: title,
             price: price,
@@ -34,7 +33,7 @@ const UpdatePlaylistDash = () => {
           }
         )
         .then((response) => {
-          // console.log('updated success', response.data);
+          // console.log('updated xxxxxxxxxxsuccess', response.data);
           alert("updated successfully")
           navigate('/dash/courses')
         });

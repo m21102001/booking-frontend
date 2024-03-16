@@ -10,10 +10,9 @@ const DetailsPlaylistDash = () => {
   const item = useLocation()?.state?.item
   const [loading, setLoading] = useState(false)
   const [videosPlaylist, setVideosPlaylist] = useState([])
-
   useEffect(() => {
     setLoading(true);
-    axios.get(`courses/${item?._id}`)
+    axios.get(`videos/${item?._id}`)
       .then((response) => {
         setLoading(false)
         setVideosPlaylist(response.data)
@@ -35,7 +34,7 @@ const DetailsPlaylistDash = () => {
       })
       .then((response) => {
         axios.get(`courses/${item?._id}`)
-        // console.log('bb',response)
+        console.log('bb', response)
       })
     alert('deleted success')
       .catch((error) => {
@@ -53,7 +52,6 @@ const DetailsPlaylistDash = () => {
         </div>
         <div className='d-flex justify-content-between align-items-center'>
           <Link
-            // to={{ pathname: "/dash/create-video-item", state: dataToPass }}
             to="/dash/create-video-item"
             state={{ item: item }}
           >
