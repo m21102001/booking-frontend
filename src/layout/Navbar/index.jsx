@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { RxAvatar } from 'react-icons/rx';
 const Navbar = () => {
   return (
     <>
@@ -50,7 +51,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                  // to="/consault-store"
+                // to="/consault-store"
                 >
                   المستشارين
                 </NavLink>
@@ -96,6 +97,10 @@ const Navbar = () => {
               <button type="button" className="mx-2 btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" >انشاء حساب</button>
               {/* </Link> */}
             </div>
+            <Link to={'/auth/profile'}>
+              <RxAvatar className="fs-1 avatar text-light" />
+            </Link>
+
           </div>
         </div>
       </nav>

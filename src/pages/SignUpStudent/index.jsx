@@ -99,7 +99,7 @@ const SignUpStudent = () => {
                                 type="text"
                                 id="form3Example1m"
                                 className="form-control form-control-lg"
-                                placeholder="محمد احمد"
+                                placeholder="الاسم بالكامل"
                                 value={name}
                                 required
                                 onChange={(e) => setName(e.target.value)}

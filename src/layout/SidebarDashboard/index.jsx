@@ -48,6 +48,9 @@ function SidebarDashboard() {
           <NavLink to="/dash/dashboard ">
             <AiFillHome /> <p className="fs-5 fw-bold me-4">الرئيسية</p>
           </NavLink>
+          <NavLink to="/dash/Courses ">
+            <AiFillHome /> <p className="fs-5 fw-bold me-4">الكورسات</p>
+          </NavLink>
           <NavLink to="/dash/club ">
             <PiFlagFill /> <p className="fs-5 fw-bold me-4">التوصيات </p>
           </NavLink>

@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import {
+  AccountProfile,
   AdviceAdvisors,
   AllUsersDash,
   ConsaultStore,
@@ -7,7 +8,11 @@ import {
   ContactFormDash,
   ContactUS,
   Courses,
+  CoursesDash,
+  CreatePlaylistDash,
+  CreateVideosDash,
   Dashboard,
+  DetailsPlaylistDash,
   ErrorPage,
   ForgetPassword,
   Home,
@@ -20,6 +25,7 @@ import {
   SignUp,
   SignUpStudent,
   TermsCondition,
+  UpdatePlaylistDash,
   VerifyCode,
   VerifyEmailCode,
 } from '@/pages';
@@ -36,6 +42,7 @@ const Routers = () => {
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
           <Route path="question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
+          <Route path='/auth/profile' element={<AccountProfile />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/auth/login" element={<Login />} />
@@ -52,7 +59,31 @@ const Routers = () => {
           <Route path="/terms-condition" element={<TermsCondition />} />
           {/* --------------------Dashboard---------------------- */}
           <Route path="/dash/dashboard" element={<Dashboard />} />
-          <Route path="/dash/contact-form" element={<ContactFormDash />}
+          <Route path="/dash/contact-form" element={<ContactFormDash />} />
+          <Route path="/dash/courses" element={<CoursesDash />} />
+          <Route
+            path="/dash/update-playlist/:id"
+            element={
+              <UpdatePlaylistDash />
+            }
+          />
+          <Route
+            path="/dash/details-playlist/:id"
+            element={
+              <DetailsPlaylistDash />
+            }
+          />
+          <Route
+            path="/dash/create-playlist-item"
+            element={
+              <CreatePlaylistDash />
+            }
+          />
+          <Route
+            path="/dash/create-video-item"
+            element={
+                <CreateVideosDash />
+            }
           />
           <Route path="/dash/all-users" element={<AllUsersDash />} />
           <Route path="*" element={<ErrorPage />} />
