@@ -35,6 +35,7 @@ import {
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '@/context/Auth';
 // import { useAuth } from '@/context/Auth';
 // import axios from '@/api/axios';
 
@@ -62,8 +63,8 @@ import 'react-toastify/dist/ReactToastify.css';
 //   return <Navigate to={protect ? '/auth/login' : '/'} />;
 // }
 const Routers = () => {
-  // const allowed = useAuth()?.user;
-  // console.log(allowed);
+  const { user } = useAuth();
+  console.log(user);
   // const { data } = axios.get('users/me/', {
   //   withCredentials: true,
   // });
