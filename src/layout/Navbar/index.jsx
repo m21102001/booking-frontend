@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <NavLink
             className="navbar-brand"
-          // to="/"
+          to="/"
           >
             <LazyLoadImage
               className="img-logo"
@@ -43,7 +43,7 @@ const Navbar = () => {
                 <NavLink
                   className={`nav-link navli active text-light`}
                   aria-current="page"
-                // to="/"
+                to="/"
                 >
                   الرئيسية
                 </NavLink>
@@ -51,7 +51,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                // to="/consault-store"
+                to="/consault-store"
                 >
                   المستشارين
                 </NavLink>
@@ -59,7 +59,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                // to="/courses"
+                to="/courses"
                 >
                   الكورسات
                 </NavLink>
@@ -67,7 +67,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                //  to="/Advice-advisors"
+                 to="/Advice-advisors"
                 >
                   نصايح المستشارين
                 </NavLink>
@@ -75,7 +75,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                // to="/question-and-answer"
+                to="/question-and-answer"
                 >
                   اسئلة شائعة
                 </NavLink>
@@ -83,7 +83,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                //  to={'/contactUS'}
+                 to={'/contactUS'}
                 >
                   تواصل معنا
                 </NavLink>

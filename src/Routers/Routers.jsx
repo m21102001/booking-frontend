@@ -1,4 +1,8 @@
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  BrowserRouter as Router,
+} from 'react-router-dom';
 import {
   AccountProfile,
   AdviceAdvisors,
@@ -31,8 +35,39 @@ import {
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import { useAuth } from '@/context/Auth';
+// import axios from '@/api/axios';
 
+// eslint-disable-next-line react/prop-types
+// function Protect({ children, protect = false, path = '', role = 'user' }) {
+//   const { user } = useAuth();
+//   console.log(user);
+//   const authed = authenticated();
+//   if (
+//     authed === protect &&
+//     (role === 'admin' || role === 'godAdmin' || role === 'manager') &&
+//     path === 'dash'
+//   ) {
+//     return children;
+//   }
+
+//   if (
+//     authed === protect &&
+//     role === 'user' &&
+//     authed !== true &&
+//     path !== 'login'
+//   )
+//     return <Navigate to={'/'} />;
+//   if (authed === protect && path !== 'dash') return children;
+//   return <Navigate to={protect ? '/auth/login' : '/'} />;
+// }
 const Routers = () => {
+  // const allowed = useAuth()?.user;
+  // console.log(allowed);
+  // const { data } = axios.get('users/me/', {
+  //   withCredentials: true,
+  // });
+  // console.log(data);
   return (
     <div>
       <Router>
@@ -82,7 +117,7 @@ const Routers = () => {
           <Route
             path="/dash/create-video-item"
             element={
-                <CreateVideosDash />
+              <CreateVideosDash />
             }
           />
           <Route path="/dash/all-users" element={<AllUsersDash />} />

@@ -4,9 +4,12 @@ import axios from '@/api/axios';
 import './login.scss';
 import { Navbar } from '@/layout';
 import { toast } from 'react-toastify';
+import { useAuth } from '@/context/Auth';
 
 const Login = () => {
   const navigate = useNavigate();
+  // const { user, setuser } = useAuth();
+  // console.log(user);
   const [isPending, setIsPending] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
