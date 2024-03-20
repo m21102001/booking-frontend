@@ -26,7 +26,7 @@ const index = () => {
       <Footer />
 
       <Link
-        //  to='/dash/dashboard'
+         to='/dash/dashboard'
         className='editIcon'
       >D</Link>
     </div>

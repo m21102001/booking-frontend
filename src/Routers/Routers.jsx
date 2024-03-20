@@ -17,6 +17,7 @@ import {
   CreateVideosDash,
   Dashboard,
   DetailsPlaylistDash,
+  DetailsVideosDash,
   ErrorPage,
   ForgetPassword,
   Home,
@@ -36,7 +37,6 @@ import {
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authenticated, useAuth } from '@/context/Auth';
-// import { useAuth } from '@/context/Auth';
 // import axios from '@/api/axios';
 
 // eslint-disable-next-line react/prop-types
@@ -118,6 +118,12 @@ const Routers = () => {
             path="/dash/create-video-item"
             element={
               <CreateVideosDash />
+            }
+          />
+          <Route
+            path="/dash/details-videos/:id"
+            element={
+              <DetailsVideosDash />
             }
           />
           <Route path="/dash/all-users" element={<AllUsersDash />} />

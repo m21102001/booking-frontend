@@ -1,33 +1,35 @@
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { SidebarDashboard } from '@/layout';
 import axios from '@/api/axios';
-import { useEffect, useState } from 'react';
 import { MdOutlineArrowBack } from 'react-icons/md';
-import { Link, useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player/lazy'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { toast } from 'react-toastify'
 
 const DetailsPlaylistDash = () => {
   const item = useLocation()?.state?.item
   const [loading, setLoading] = useState(false)
   const [videosPlaylist, setVideosPlaylist] = useState([])
+
   useEffect(() => {
     setLoading(true);
-    axios.get(`videos/${item?._id}`)
+    axios.get(`courses/${item?._id}`)
       .then((response) => {
         setLoading(false)
         setVideosPlaylist(response.data)
+        // console.log(response);
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
       });
-
-    console.log('setVideosPlaylist', videosPlaylist);
   }, [])
   const handelDelete = async (id) => {
     setLoading(true);
+    console.log('id', id);
     await axios
-      .delete(`/videos/${id}`, {
+      .delete(`videos/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -36,7 +38,7 @@ const DetailsPlaylistDash = () => {
         axios.get(`courses/${item?._id}`)
         console.log('bb', response)
       })
-    alert('deleted success')
+    toast.error('تم حذف الفيديو بنجاح')
       .catch((error) => {
         setLoading(false);
         console.log(error);
@@ -105,8 +107,8 @@ const DetailsPlaylistDash = () => {
             </div>
           </div>
         </section>
-        {/* <div className="d-flex flex-wrap justify-content-evenly mt-5">
-          {!loading && videosPlaylist?.map((item, index) => (
+        <div className="d-flex flex-wrap justify-content-evenly mt-5">
+          {!loading && videosPlaylist?.videos?.map((item, index) => (
             <Link
               key={index}
               className="card mb-5"
@@ -146,7 +148,7 @@ const DetailsPlaylistDash = () => {
               </div>
             </Link>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   )

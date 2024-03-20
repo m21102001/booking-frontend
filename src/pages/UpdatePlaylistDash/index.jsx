@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SidebarDashboard } from '@/layout';
 import axios from '@/api/axios';
 import { MdOutlineArrowBack } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 const UpdatePlaylistDash = () => {
   const item = useLocation()?.state?.item
@@ -33,15 +34,13 @@ const UpdatePlaylistDash = () => {
           }
         )
         .then((response) => {
-          // console.log('updated xxxxxxxxxxsuccess', response.data);
-          alert("updated successfully")
+          toast.success('تم التعديل بنجاح')
           navigate('/dash/courses')
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      // console.log('response', err.response);
-      // console.log('message', err.message);
+      toast.error('لم تنجح عملية التعديل')
     }
   };
   return (

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios"
+import { toast } from 'react-toastify';
 const CreatePlaylistDash = () => {
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
@@ -32,13 +33,13 @@ const CreatePlaylistDash = () => {
         )
         .then((response) => {
           console.log('created success', response.data);
-          alert('تم اضافة قائمة جديدة بنجاح')
+          toast.success(`تم اضافة قائمة جديدة بنجاح`)
           navigate('/dash/courses')
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('message', err.message);
+      toast.error(`${err?.response?.data?.message == 'Only Images allowed' ? ('من فضلك تأكد من اضافة صورة بشكل صحيح') : (err?.response?.data?.message)} `)
     }
   };
   return (
