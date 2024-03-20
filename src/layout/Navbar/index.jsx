@@ -1,7 +1,24 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Navigate, NavLink } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { RxAvatar } from 'react-icons/rx';
+import { useAuth } from '@/context/Auth';
+import axios from '@/api/axios';
 const Navbar = () => {
+  const { setRole, setuser, setLoggedin, Loggedin } = useAuth();
+  const handelLogout = async () => {
+    try {
+      await axios.post('auth/logout', {
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.log(error.response);
+    } finally {
+      setLoggedin(false);
+      setRole(undefined);
+      setuser(undefined);
+      Navigate('/auth/login');
+    }
+  };
   return (
     <>
       <nav
@@ -14,7 +31,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <NavLink
             className="navbar-brand"
-          to="/"
+            to="/"
           >
             <LazyLoadImage
               className="img-logo"
@@ -43,7 +60,7 @@ const Navbar = () => {
                 <NavLink
                   className={`nav-link navli active text-light`}
                   aria-current="page"
-                to="/"
+                  to="/"
                 >
                   الرئيسية
                 </NavLink>
@@ -51,7 +68,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                to="/consault-store"
+                  to="/consault-store"
                 >
                   المستشارين
                 </NavLink>
@@ -59,7 +76,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                to="/courses"
+                  to="/courses"
                 >
                   الكورسات
                 </NavLink>
@@ -67,7 +84,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                 to="/Advice-advisors"
+                  to="/Advice-advisors"
                 >
                   نصايح المستشارين
                 </NavLink>
@@ -75,7 +92,7 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                to="/question-and-answer"
+                  to="/question-and-answer"
                 >
                   اسئلة شائعة
                 </NavLink>
@@ -83,23 +100,32 @@ const Navbar = () => {
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
-                 to={'/contactUS'}
+                  to={'/contactUS'}
                 >
                   تواصل معنا
                 </NavLink>
               </li>
             </ul>
-            <div className='d-flex text-light'>
-              <Link to={'/auth/login'}>
-                <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
-              </Link>
-              {/* <Link to={'/auth/sign-up'}> */}
-              <button type="button" className="mx-2 btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" >انشاء حساب</button>
-              {/* </Link> */}
-            </div>
-            <Link to={'/auth/profile'}>
-              <RxAvatar className="fs-1 avatar text-light" />
-            </Link>
+            {Loggedin == false ? (
+              <div className='d-flex text-light'>
+                <Link to={'/auth/login'}>
+                  <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
+                </Link>
+                <button type="button" className="mx-2 btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" >انشاء حساب</button>
+              </div>
+            ) : (
+              <>
+                <Link to={'/auth/profile'}>
+                  <RxAvatar className="fs-1 avatar text-light" />
+                </Link>
+                <button
+                  onClick={handelLogout}
+                  className={`logout-btn mx-4 p-2 fs-5`}
+                >
+                  تسجيل خروج
+                </button>
+              </>
+            )}
 
           </div>
         </div>

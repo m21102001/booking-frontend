@@ -7,7 +7,7 @@ export const Auth = createContext();
 export const AuthProvider = ({ children }) => {
   const [Loggedin, setLoggedin] = useState(false);
   const [role, setRole] = useState('');
-  const [plan, setPlan] = useState('');
+  // const [plan, setPlan] = useState('');
 
   const [user, setuser] = useState();
   const [Fetched, setFetched] = useState(false);
@@ -17,12 +17,11 @@ export const AuthProvider = ({ children }) => {
         const { data } = await axios.get('users/me/', {
           withCredentials: true,
         });
-        console.log(data);
         if (typeof data === 'object') {
-          setuser(data.data);
-          setRole(data.data.role);
-          setRole(data.data.plan);
-          console.log('from auth', data.data);
+          setuser(data);
+          setRole(data?.role);
+          // setRole(data?.plan);
+          console.log('from auth', data);
           setLoggedin(true);
         }
       } finally {
@@ -34,11 +33,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    // console.log('loggedin', Loggedin)
+    console.log('loggedin', Loggedin)
     // console.log('user', user);
     // console.log("fetch", Fetched);
     // console.log("role", role);
-  }, [Loggedin, user, Fetched, role, plan]);
+  }, [Loggedin, user, Fetched, role]);
 
   return (
     <Auth.Provider
@@ -48,7 +47,6 @@ export const AuthProvider = ({ children }) => {
         setRole,
         role,
         user,
-        plan,
         setuser,
         setFetched,
       }}
