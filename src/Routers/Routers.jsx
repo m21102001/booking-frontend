@@ -29,6 +29,9 @@ import {
   UpdatePlaylistDash,
   VerifyCode,
   VerifyEmailCode,
+  CourseDetails,
+  CourseUpdate,
+  EditProfile,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -74,7 +77,11 @@ const Routers = () => {
           <Route path="question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/auth/profile" element={<AccountProfile />} />
+          <Route path="/auth/profile/edit-profile" element={<EditProfile />} />
           <Route path="/Courses" element={<Courses />} />
+          <Route path="/courses/course-details" element={<CourseDetails />} />
+          <Route path="/courses/course-update" element={<CourseUpdate />} />
+
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />

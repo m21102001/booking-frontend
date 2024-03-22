@@ -50,14 +50,22 @@ const AccountProfile = () => {
                       className="img-fluid img-thumbnail mt-4 mb-2"
                       style={{ width: '150px', zIndex: '1' }}
                     />
-                    <button
+                    <Link
+                      to={`/auth/profile/edit-profile`}
+                      className="btn btn-outline-dark"
+                      style={{ zIndex: 1 }}
+                      data-mdb-ripple-color="dark"
+                    >
+                      {/* <button
                       type="button"
                       className="btn btn-outline-dark"
                       data-mdb-ripple-color="dark"
                       style={{ zIndex: '1' }}
                     >
                       Edit profile
-                    </button>
+                    </button> */}
+                      Edit profile
+                    </Link>
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>
                     <h5>{user?.name}</h5>
