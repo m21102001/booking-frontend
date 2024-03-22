@@ -29,7 +29,6 @@ import {
   UpdatePlaylistDash,
   VerifyCode,
   VerifyEmailCode,
-  UpdateVideos,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -116,7 +115,7 @@ const Routers = () => {
             path="/dash/details-videos/:id"
             element={<DetailsVideosDash />}
           />
-          <Route path="/dash/update-videos/:id" element={<UpdateVideos />} />
+          {/* <Route path="/dash/video-update/:id" element={<VideosUpdate />} /> */}
           <Route path="/dash/all-users" element={<AllUsersDash />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
