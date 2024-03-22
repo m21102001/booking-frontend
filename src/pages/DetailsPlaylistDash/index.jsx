@@ -3,46 +3,46 @@ import { Link, useLocation } from 'react-router-dom';
 import { SidebarDashboard } from '@/layout';
 import axios from '@/api/axios';
 import { MdOutlineArrowBack } from 'react-icons/md';
-import ReactPlayer from 'react-player/lazy'
+import ReactPlayer from 'react-player/lazy';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
 const DetailsPlaylistDash = () => {
-  const item = useLocation()?.state?.item
-  const [loading, setLoading] = useState(false)
-  const [videosPlaylist, setVideosPlaylist] = useState([])
+  const item = useLocation()?.state?.item;
+  const [loading, setLoading] = useState(false);
+  const [videosPlaylist, setVideosPlaylist] = useState([]);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`courses/${item?._id}`)
+    axios
+      .get(`courses/${item?._id}`)
       .then((response) => {
-        setLoading(false)
-        setVideosPlaylist(response.data)
+        setLoading(false);
+        setVideosPlaylist(response.data);
         // console.log(response);
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
       });
-  }, [])
+  }, []);
   const handelDelete = async (id) => {
     setLoading(true);
     console.log('id', id);
     await axios
       .delete(`videos/${id}`, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
       })
       .then((response) => {
-        axios.get(`courses/${item?._id}`)
-        console.log('bb', response)
-      })
-    toast.error('تم حذف الفيديو بنجاح')
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
+        axios.get(`courses/${item?._id}`);
+        console.log('bb', response);
       });
+    toast.error('تم حذف الفيديو بنجاح').catch((error) => {
+      setLoading(false);
+      console.log(error);
+    });
   };
 
   return (
@@ -50,21 +50,25 @@ const DetailsPlaylistDash = () => {
       <SidebarDashboard />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className='fs-1 fw-bold'>تفاصيل الكورس</h2>
+          <h2 className="fs-1 fw-bold">تفاصيل الكورس</h2>
         </div>
-        <div className='d-flex justify-content-between align-items-center'>
-          <Link
-            to="/dash/create-video-item"
-            state={{ item: item }}
-          >
-            <button type="button" className="btn btn-primary d-block m-3" style={{ padding: "7px 6rem" }}>اضافة فيديو جديد</button>
+        <div className="d-flex justify-content-between align-items-center">
+          <Link to="/dash/create-video-item" state={{ item: item }}>
+            <button
+              type="button"
+              className="btn btn-primary d-block m-3"
+              style={{ padding: '7px 6rem' }}
+            >
+              اضافة فيديو جديد
+            </button>
           </Link>
-          <Link to={'/dash/courses'} className='mb-3 d-flex flex-row-reverse'>
-            <button type="butto" className="fw-bold fs-5 back-details-button"
-            ><MdOutlineArrowBack size={30} /></button>
+          <Link to={'/dash/courses'} className="mb-3 d-flex flex-row-reverse">
+            <button type="butto" className="fw-bold fs-5 back-details-button">
+              <MdOutlineArrowBack size={30} />
+            </button>
           </Link>
         </div>
-        <section style={{ backgroundColor: "#eee" }}>
+        <section style={{ backgroundColor: '#eee' }}>
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-12">
@@ -108,50 +112,56 @@ const DetailsPlaylistDash = () => {
           </div>
         </section>
         <div className="d-flex flex-wrap justify-content-evenly mt-5">
-          {!loading && videosPlaylist?.videos?.map((item, index) => (
-            <Link
-              key={index}
-              className="card mb-5"
-              style={{ width: "18rem" }}
-            >
-              <ReactPlayer
-                url={item?.url}
-                config={{
-                  youtube: {
-                    playerVars: { showinfo: 1 }
-                  },
-                }}
-                width='100%'
-                height='100%'
-              />
-              <div className="card-body">
-                <h5 className="card-title fw-bold ">{item?.title}</h5>
-                <div className="d-flex flex-column">
-                  <div className="d-flex justify-content-around mt-3">
-                    <Link
-                      to={`/dash/details-videos/${item._id}`}
-                      state={{ item: item }}
-                    >
-                      <button className="btn btn-primary px-4">تفاصيل</button>
-                    </Link>
-                    <Link
-                      to={`/dash/update-videos/${item._id}`}
-                      state={{ item: item }}
-                    >
-                      <button className="btn btn-info px-4">تعديل</button>
-                    </Link>
-                  </div>
-                  <div className="d-flex justify-content-around mt-3">
-                    <button onClick={() => handelDelete(item._id)} className="btn btn-danger px-4">حذف</button>
+          {!loading &&
+            videosPlaylist?.videos?.map((item, index) => (
+              <Link
+                key={index}
+                className="card mb-5"
+                style={{ width: '18rem' }}
+              >
+                <ReactPlayer
+                  url={item?.url}
+                  config={{
+                    youtube: {
+                      playerVars: { showinfo: 1 },
+                    },
+                  }}
+                  width="100%"
+                  height="100%"
+                />
+                <div className="card-body">
+                  <h5 className="card-title fw-bold ">{item?.title}</h5>
+                  <div className="d-flex flex-column">
+                    <div className="d-flex justify-content-around mt-3">
+                      <Link
+                        to={`/dash/details-videos/${item._id}`}
+                        state={{ item: item }}
+                      >
+                        <button className="btn btn-primary px-4">تفاصيل</button>
+                      </Link>
+                      <Link
+                        to={`/dash/update-videos/${item._id}`}
+                        state={{ item: item }}
+                      >
+                        <button className="btn btn-info px-4">تعديل</button>
+                      </Link>
+                    </div>
+                    <div className="d-flex justify-content-around mt-3">
+                      <button
+                        onClick={() => handelDelete(item._id)}
+                        className="btn btn-danger px-4"
+                      >
+                        حذف
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DetailsPlaylistDash
+export default DetailsPlaylistDash;

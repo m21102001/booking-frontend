@@ -1,8 +1,4 @@
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router,
-} from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import {
   AccountProfile,
   AdviceAdvisors,
@@ -33,6 +29,7 @@ import {
   UpdatePlaylistDash,
   VerifyCode,
   VerifyEmailCode,
+  UpdateVideos,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -77,14 +74,17 @@ const Routers = () => {
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
           <Route path="question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
-          <Route path='/auth/profile' element={<AccountProfile />} />
+          <Route path="/auth/profile" element={<AccountProfile />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />
           {/* -----------------------auth -------------------- */}
-          <Route path="/auth/reservation-ticket" element={<ReservationTicket />} />
+          <Route
+            path="/auth/reservation-ticket"
+            element={<ReservationTicket />}
+          />
           <Route path="/auth/sign-up/student" element={<SignUpStudent />} />
           <Route path="/auth/sign-up/instractor" element={<SignUp />} />
           <Route path="/auth/verifyEmailCode" element={<VerifyEmailCode />} />
@@ -98,34 +98,25 @@ const Routers = () => {
           <Route path="/dash/courses" element={<CoursesDash />} />
           <Route
             path="/dash/update-playlist/:id"
-            element={
-              <UpdatePlaylistDash />
-            }
+            element={<UpdatePlaylistDash />}
           />
           <Route
             path="/dash/details-playlist/:id"
-            element={
-              <DetailsPlaylistDash />
-            }
+            element={<DetailsPlaylistDash />}
           />
           <Route
             path="/dash/create-playlist-item"
-            element={
-              <CreatePlaylistDash />
-            }
+            element={<CreatePlaylistDash />}
           />
           <Route
             path="/dash/create-video-item"
-            element={
-              <CreateVideosDash />
-            }
+            element={<CreateVideosDash />}
           />
           <Route
             path="/dash/details-videos/:id"
-            element={
-              <DetailsVideosDash />
-            }
+            element={<DetailsVideosDash />}
           />
+          <Route path="/dash/update-videos/:id" element={<UpdateVideos />} />
           <Route path="/dash/all-users" element={<AllUsersDash />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
