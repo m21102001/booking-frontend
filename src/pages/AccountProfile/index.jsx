@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useEffect, useState } from 'react';
 import { Footer, Navbar } from '@/layout';
 import { useAuth } from '@/context/Auth';
@@ -27,6 +28,21 @@ const AccountProfile = () => {
   }, []);
 
   console.log('user', user);
+=======
+import { Footer, Navbar } from '@/layout';
+import { useState } from 'react';
+
+const AccountProfile = () => {
+  const [avatarImage, setAvatarImage] = useState(
+    'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
+  );
+
+  // Function to handle click event of the "Edit profile" button
+  const handleEditProfile = () => {
+    // Change the avatar image URL to the new image URL
+    setAvatarImage('NEW_IMAGE_URL_HERE');
+  };
+>>>>>>> Stashed changes
   return (
     <>
       {loading && <div className="loading"></div>}
@@ -50,6 +66,7 @@ const AccountProfile = () => {
                       className="img-fluid img-thumbnail mt-4 mb-2"
                       style={{ width: '150px', zIndex: '1' }}
                     />
+<<<<<<< Updated upstream
                     <Link
                       to={`/auth/profile/edit-profile`}
                       className="btn btn-outline-dark"
@@ -57,10 +74,17 @@ const AccountProfile = () => {
                       data-mdb-ripple-color="dark"
                     >
                       {/* <button
+=======
+                    <button
+>>>>>>> Stashed changes
                       type="button"
                       className="btn btn-outline-dark"
                       data-mdb-ripple-color="dark"
                       style={{ zIndex: '1' }}
+<<<<<<< Updated upstream
+=======
+                      onClick={handleEditProfile}
+>>>>>>> Stashed changes
                     >
                       Edit profile
                     </button> */}
@@ -68,7 +92,11 @@ const AccountProfile = () => {
                     </Link>
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>
+<<<<<<< Updated upstream
                     <h5>{user?.name}</h5>
+=======
+                    <h5>Andy Horwitz</h5>
+>>>>>>> Stashed changes
                     <p>New York</p>
                   </div>
                 </div>
@@ -93,6 +121,7 @@ const AccountProfile = () => {
                 </div>
                 <div className="card-body p-4 text-black">
                   <div className="mb-5">
+<<<<<<< Updated upstream
                     <section>
                       <p className="lead text-end fw-normal mb-1">
                         تفاصيل عن المستخدم
@@ -215,6 +244,14 @@ const AccountProfile = () => {
                         </div>
                       </div>
                     </section>
+=======
+                    <p className="lead fw-normal mb-1">About</p>
+                    <div className="p-4" style={{ backgroundColor: '#f8f9fa' }}>
+                      <p className="font-italic mb-1">Web Developer</p>
+                      <p className="font-italic mb-1">Lives in New York</p>
+                      <p className="font-italic mb-0">Photographer</p>
+                    </div>
+>>>>>>> Stashed changes
                   </div>
                   {user?.role != 'user' ? (
                     <>
@@ -306,6 +343,7 @@ const AccountProfile = () => {
                     </>
                   ) : null}
                   <div className="d-flex justify-content-between align-items-center mb-4">
+<<<<<<< Updated upstream
                     <p className="lead fw-normal mb-0">الكورسات الاخيرة</p>
                     <p className="mb-0">
                       <a href="#!" className="text-muted">
@@ -344,6 +382,46 @@ const AccountProfile = () => {
                         </Link>
                       </div>
                     ))}
+=======
+                    <p className="lead fw-normal mb-0">Recent photos</p>
+                    <p className="mb-0">
+                      <a href="#!" className="text-muted">
+                        Show all
+                      </a>
+                    </p>
+                  </div>
+                  <div className="row g-2">
+                    <div className="col mb-2">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                        alt="image 1"
+                        className="w-100 rounded-3"
+                      />
+                    </div>
+                    <div className="col mb-2">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                        alt="image 1"
+                        className="w-100 rounded-3"
+                      />
+                    </div>
+                  </div>
+                  <div className="row g-2">
+                    <div className="col">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+                        alt="image 1"
+                        className="w-100 rounded-3"
+                      />
+                    </div>
+                    <div className="col">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+                        alt="image 1"
+                        className="w-100 rounded-3"
+                      />
+                    </div>
+>>>>>>> Stashed changes
                   </div>
                 </div>
               </div>

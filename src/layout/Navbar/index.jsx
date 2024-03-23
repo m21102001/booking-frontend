@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { RxAvatar } from 'react-icons/rx';
 import { useAuth } from '@/context/Auth';
 import axios from '@/api/axios';
+
 const Navbar = () => {
   const { setRole, setuser, setLoggedin, Loggedin } = useAuth();
   const handelLogout = async () => {
@@ -19,6 +20,17 @@ const Navbar = () => {
       Navigate('/auth/login');
     }
   };
+
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize isLoggedIn state
+
+  // // Function to handle login
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  // };
+  // const handleLogout = () => {
+  //   setIsLoggedIn(false);
+  // };
+
   return (
     <>
       <nav
@@ -29,10 +41,7 @@ const Navbar = () => {
         }}
       >
         <div className="container-fluid">
-          <NavLink
-            className="navbar-brand"
-            to="/"
-          >
+          <NavLink className="navbar-brand" to="/">
             <LazyLoadImage
               className="img-logo"
               src={`https://i.ibb.co/gt0pG6t/output.png`}
@@ -54,7 +63,10 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse me-5" id="navbarSupportedContent">
+          <div
+            className="collapse navbar-collapse me-5"
+            id="navbarSupportedContent"
+          >
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item ms-2 ">
                 <NavLink
@@ -74,10 +86,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
-                <NavLink
-                  className="nav-link navli text-light"
-                  to="/courses"
-                >
+                <NavLink className="nav-link navli text-light" to="/courses">
                   الكورسات
                 </NavLink>
               </li>
@@ -107,11 +116,24 @@ const Navbar = () => {
               </li>
             </ul>
             {Loggedin == false ? (
-              <div className='d-flex text-light'>
+              <div className="d-flex text-light">
                 <Link to={'/auth/login'}>
-                  <button type="button" className="mx-2 btn btn-primary bg-dark:hover">سجل دخول</button>
+                  <button
+                    type="button"
+                    className="mx-2 btn btn-primary bg-dark:hover"
+                  >
+                    سجل دخول
+                  </button>
                 </Link>
-                <button type="button" className="mx-2 btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" >انشاء حساب</button>
+                <button
+                  type="button"
+                  className="mx-2 btn btn-primary"
+                  data-bs-toggle="modal"
+                  href="#exampleModalToggle"
+                  role="button"
+                >
+                  انشاء حساب
+                </button>
               </div>
             ) : (
               <>
@@ -127,30 +149,96 @@ const Navbar = () => {
               </>
             )}
 
+            {/* <div className="d-flex text-light">
+              {isLoggedIn ? (
+                <>
+                  <Link to={'/auth/login'}>
+                    <button
+                      type="button"
+                      className="mx-2 btn btn-primary bg-dark:hover "
+                      onClick={handleLogin}
+                    >
+                      سجل دخول
+                    </button>
+                  </Link>
+
+                 
+
+                  <button
+                    type="button"
+                    className="mx-2 btn btn-primary"
+                    data-bs-toggle="modal"
+                    href="#exampleModalToggle"
+                    role="button"
+                  >
+                    انشاء حساب
+                  </button>
+                </>
+              ) : (
+                <>
+                  {' '}
+                  <Link to={'/auth/profile'}>
+                    <RxAvatar className="fs-1 avatar text-light" />
+                  </Link>
+                  <button
+                    type="button"
+                    className="mx-2 btn btn-primary"
+                    data-bs-toggle="modal"
+                    href="#exampleModalToggle"
+                    role="button"
+                    onClick={handleLogout}
+                  >
+                    تسجيل خروج
+                  </button>
+                </>
+              )}
+
+             
+            </div> */}
           </div>
         </div>
       </nav>
-      <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+      <div
+        className="modal fade"
+        id="exampleModalToggle"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabIndex="-1"
+      >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalToggleLabel">مرحباً بكم في سايس الابتكار</h1>
-              <button type="button" className="btn-close " data-bs-dismiss="modal" aria-label="Close" style={{ margin: 'initial' }}></button>
+              <h1 className="modal-title fs-5" id="exampleModalToggleLabel">
+                مرحباً بكم في سايس الابتكار
+              </h1>
+              <button
+                type="button"
+                className="btn-close "
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                style={{ margin: 'initial' }}
+              ></button>
             </div>
             <div className="modal-body">
-              <p className='text-end'>
+              <p className="text-end">
                 نحن منصة وطنية نهدف الى تقديم أفضل تجربة نقل للمستخدم والناقل ،
-                عن طريق الربط بين افضل العروض المقدمة من اكفاء
-                الناقلين للمستخدمين / اصحاب الاعمال بكل أمن .
+                عن طريق الربط بين افضل العروض المقدمة من اكفاء الناقلين
+                للمستخدمين / اصحاب الاعمال بكل أمن .
               </p>
-              <div className='d-flex flex-row' data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+              <div
+                className="d-flex flex-row"
+                data-bs-target="#exampleModalToggle2"
+                data-bs-toggle="modal"
+              >
                 <Link
                   to={'/auth/sign-up/instractor'}
                   className="card mx-2"
-                  style={{ width: "18rem" }}
+                  style={{ width: '18rem' }}
                 >
                   <LazyLoadImage
-                    src={'https://t3.ftcdn.net/jpg/02/94/21/42/360_F_294214205_ZmptWrtSwORSWadAIHSWqwSa319XlQiB.jpg'}
+                    src={
+                      'https://t3.ftcdn.net/jpg/02/94/21/42/360_F_294214205_ZmptWrtSwORSWadAIHSWqwSa319XlQiB.jpg'
+                    }
                     className="card-img-top"
                     alt={'تسجيل الدخول كمستشار'}
                   />
@@ -161,10 +249,12 @@ const Navbar = () => {
                 <Link
                   to={'/auth/sign-up/student'}
                   className="card mx-2"
-                  style={{ width: "18rem" }}
+                  style={{ width: '18rem' }}
                 >
                   <LazyLoadImage
-                    src={'https://media.istockphoto.com/id/1336832660/photo/male-teenage-student-in-yellow-background-stock-photo.jpg?s=612x612&w=0&k=20&c=24LklaK0hoPbe7bGCSHZPbaWJKV6yH0F1b8lABbOS30='}
+                    src={
+                      'https://media.istockphoto.com/id/1336832660/photo/male-teenage-student-in-yellow-background-stock-photo.jpg?s=612x612&w=0&k=20&c=24LklaK0hoPbe7bGCSHZPbaWJKV6yH0F1b8lABbOS30='
+                    }
                     className="card-img-top"
                     alt={'تسجيل الدخول كمستخدم'}
                   />
@@ -176,7 +266,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 };
