@@ -32,6 +32,11 @@ import {
   CourseDetails,
   CourseUpdate,
   EditProfile,
+  DetailsPlaylistDevelopment,
+  CreateReservationTicket,
+  DeatilsContactFormDash,
+  DetailsAllUsersDash,
+  UpdateRoleUsersDash,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -79,6 +84,7 @@ const Routers = () => {
           <Route path="/auth/profile" element={<AccountProfile />} />
           <Route path="/auth/profile/edit-profile" element={<EditProfile />} />
           <Route path="/Courses" element={<Courses />} />
+          <Route path="/development/details-playlist/:id" element={<DetailsPlaylistDevelopment />} />
           <Route path="/courses/course-details" element={<CourseDetails />} />
           <Route path="/courses/course-update" element={<CourseUpdate />} />
 
@@ -91,6 +97,10 @@ const Routers = () => {
             path="/auth/reservation-ticket"
             element={<ReservationTicket />}
           />
+          <Route
+            path="/auth/create-reservation-ticket"
+            element={<CreateReservationTicket />}
+          />
           <Route path="/auth/sign-up/student" element={<SignUpStudent />} />
           <Route path="/auth/sign-up/instractor" element={<SignUp />} />
           <Route path="/auth/verifyEmailCode" element={<VerifyEmailCode />} />
@@ -101,6 +111,12 @@ const Routers = () => {
           {/* --------------------Dashboard---------------------- */}
           <Route path="/dash/dashboard" element={<Dashboard />} />
           <Route path="/dash/contact-form" element={<ContactFormDash />} />
+          <Route
+            path="/dash/details-contact-form/:id"
+            element={
+              <DeatilsContactFormDash />
+            }
+          />
           <Route path="/dash/courses" element={<CoursesDash />} />
           <Route
             path="/dash/update-playlist/:id"
@@ -124,6 +140,18 @@ const Routers = () => {
           />
           {/* <Route path="/dash/video-update/:id" element={<VideosUpdate />} /> */}
           <Route path="/dash/all-users" element={<AllUsersDash />} />
+          <Route
+            path="/dash/all-users/:id"
+            element={
+              <DetailsAllUsersDash />
+            }
+          />
+          <Route
+            path="/dash/update-role-user/:id"
+            element={
+                <UpdateRoleUsersDash />
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

@@ -11,7 +11,9 @@ import {
   WhyKambridage,
   // GoldChart
 } from '@/components'
-const index = () => {
+import { useAuth } from '@/context/Auth'
+const Home = () => {
+  const { user } = useAuth()
   return (
     <div className='home-header'>
       <Navbar />
@@ -24,13 +26,14 @@ const index = () => {
       <WhyKambridage />
       <AboutThat />
       <Footer />
-
-      <Link
-         to='/dash/dashboard'
-        className='editIcon'
-      >D</Link>
+      {user?.role == 'manager' ? (
+        <Link
+          to='/dash/dashboard'
+          className='editIcon'
+        >D</Link>
+      ) : null}
     </div>
   )
 }
 
-export default index
+export default Home

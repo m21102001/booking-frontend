@@ -17,6 +17,7 @@ const ContactFormDash = () => {
       .request(fetchContactForm)
       .then((response) => {
         setContactForm(response.data);
+        console.log('xxxxx', response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -29,7 +30,7 @@ const ContactFormDash = () => {
   const handelDelete = async (id) => {
     let config = {
       method: 'delete',
-      url: `/contact/${id}`,
+      url: `contact/${id}`,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -42,7 +43,6 @@ const ContactFormDash = () => {
         axios.request(fetchContactForm).then((response) => {
           setContactForm(response.data);
           setLoading(false);
-          console.log(response.data);
         });
       })
       .catch((error) => {
@@ -50,30 +50,30 @@ const ContactFormDash = () => {
         console.log(error);
       });
   };
-  const handelDeleteAll = async () => {
-    let config = {
-      method: 'delete',
-      url: `/contact`,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    };
-    setLoading(true);
-    await axios
-      .request(config, {
-      })
-      .then((response) => {
-        axios.request(fetchContactForm).then((response) => {
-          setContactForm(response.data);
-          setLoading(false);
-          console.log(response.data);
-        });
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-  };
+  // const handelDeleteAll = async () => {
+  //   let config = {
+  //     method: 'delete',
+  //     url: `/contact`,
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //   };
+  //   setLoading(true);
+  //   await axios
+  //     .request(config, {
+  //     })
+  //     .then((response) => {
+  //       axios.request(fetchContactForm).then((response) => {
+  //         setContactForm(response.data);
+  //         setLoading(false);
+  //         console.log(response.data);
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       setLoading(false);
+  //       console.log(error);
+  //     });
+  // };
 
   //////////////////pagination///////////////////
   const [prev, setPrev] = useState(0)
@@ -105,7 +105,7 @@ const ContactFormDash = () => {
           <h2 className='fs-1 fw-bold'>طلبات التواصل مع المدير </h2>
         </div>
         <div className="d-flex flex-row justify-content-between">
-          <button onClick={() => handelDeleteAll()} type="button" className="btn btn-danger d-block m-3" style={{ padding: "7px 6rem" }}>حذف الكل</button>
+          {/* <button onClick={() => handelDeleteAll()} type="button" className="btn btn-danger d-block m-3" style={{ padding: "7px 6rem" }}>حذف الكل</button> */}
           {/* <DownloadTableExcel
             filename="users table"
             sheet="users"

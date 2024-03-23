@@ -57,13 +57,13 @@ function SidebarDashboard() {
           <NavLink to="/dash/contact-form ">
             <FaMessage /> <p className="fs-5 fw-bold me-4">الرسائل</p>
           </NavLink>
-          <NavLink to="/dash/consultations ">
+          {/* <NavLink to="/dash/consultations ">
             <FaTicketAlt /> <p className="fs-5 fw-bold me-4">التذاكر</p>
           </NavLink>
           <NavLink to="/dash/consultations-ticket ">
             <FaTicketAlt />{' '}
             <p className="fs-5 fw-bold me-4">التذاكر المحجوزة</p>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/dash/all-users ">
             <FaUsers /> <p className="fs-5 fw-bold me-4">كل المستخدمين</p>
           </NavLink>

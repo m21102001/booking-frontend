@@ -9,7 +9,6 @@ const DetailsVideosDash = () => {
   const item = useLocation()?.state?.item;
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState([]);
-  console.log('id:', item);
   useEffect(() => {
     setLoading(true);
     axios
@@ -25,20 +24,18 @@ const DetailsVideosDash = () => {
       });
   }, [item]);
 
-  // console.log('log',videos);
   return (
     <div className="dashboard d-flex flex-row">
+      {loading && <div className='loading'></div>}
       <SidebarDashboard />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
           <h2 className="fs-1 fw-bold">تفاصيل الفيديو</h2>
         </div>
-
         <section style={{ backgroundColor: '#eee' }}>
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-12">
-                {loading && <p>Loading...</p>}
                 {!loading && !videos && <p>No data found</p>}
                 {videos && (
                   <div className="card mb-4">
