@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios";
+import { useAuth } from "@/context/Auth";
 const ContactFormDash = () => {
+  const { user } = useAuth()
   const [loading, setLoading] = useState(false);
   const [contactForm, setContactForm] = useState([])
   const tableRef = useRef(null);
@@ -12,19 +14,19 @@ const ContactFormDash = () => {
   };
   useEffect(() => {
     setLoading(true);
-    // if (user.role == 'manager') {
-    axios
-      .request(fetchContactForm)
-      .then((response) => {
-        setContactForm(response.data);
-        console.log('xxxxx', response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-    // }
+    if (user.role == 'manager') {
+      axios
+        .request(fetchContactForm)
+        .then((response) => {
+          setContactForm(response.data);
+          console.log('xxxxx', response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log(error);
+        });
+    }
   }, []);
 
   const handelDelete = async (id) => {

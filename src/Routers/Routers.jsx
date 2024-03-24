@@ -37,6 +37,11 @@ import {
   DeatilsContactFormDash,
   DetailsAllUsersDash,
   UpdateRoleUsersDash,
+  AllMentorsmDash,
+  DetailsMentorsmDash,
+  AllInActieMentorsmDash,
+  DetailsInActiveMentorsmDash,
+  DetailsMentorsDetailsDash,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -117,6 +122,36 @@ const Routers = () => {
               <DeatilsContactFormDash />
             }
           />
+          <Route
+            path="/dash/mentors"
+            element={
+              <AllMentorsmDash />
+            }
+          />
+          <Route
+            path="/dash/mentors/mentor-updated/:id"
+            element={
+              <DetailsMentorsmDash />
+            }
+          />
+          <Route
+            path="/dash/mentors/mentor-details/:id"
+            element={
+              <DetailsMentorsDetailsDash />
+            }
+          />
+          <Route
+            path="/dash/mentors/inactive"
+            element={
+              <AllInActieMentorsmDash />
+            }
+          />
+            <Route
+              path="/dash/mentors/inActive/mentor-details/:id"
+              element={
+                <DetailsInActiveMentorsmDash />
+              }
+            />
           <Route path="/dash/courses" element={<CoursesDash />} />
           <Route
             path="/dash/update-playlist/:id"
@@ -149,7 +184,7 @@ const Routers = () => {
           <Route
             path="/dash/update-role-user/:id"
             element={
-                <UpdateRoleUsersDash />
+              <UpdateRoleUsersDash />
             }
           />
           <Route path="*" element={<ErrorPage />} />

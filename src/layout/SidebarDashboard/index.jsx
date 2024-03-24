@@ -57,6 +57,12 @@ function SidebarDashboard() {
           <NavLink to="/dash/contact-form ">
             <FaMessage /> <p className="fs-5 fw-bold me-4">الرسائل</p>
           </NavLink>
+          <NavLink to="/dash/mentors ">
+            <FaTicketAlt /> <p className="fs-5 fw-bold me-4">مستشارين (active)</p>
+          </NavLink>
+          <NavLink to="/dash/mentors/inactive">
+            <FaTicketAlt /> <p className="fs-5 fw-bold me-4">مستشارين (InActive)</p>
+          </NavLink>
           {/* <NavLink to="/dash/consultations ">
             <FaTicketAlt /> <p className="fs-5 fw-bold me-4">التذاكر</p>
           </NavLink>
