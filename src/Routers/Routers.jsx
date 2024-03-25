@@ -42,6 +42,13 @@ import {
   AllInActieMentorsmDash,
   DetailsInActiveMentorsmDash,
   DetailsMentorsDetailsDash,
+  UpdateVideosDash,
+  ConsFieldsDash,
+  CreateConsFieldsDash,
+  UpdateConsFieldsDash,
+  FAQ,
+  DetailsFAQDash,
+  CreateFAQDash,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -170,8 +177,36 @@ const Routers = () => {
             element={<CreateVideosDash />}
           />
           <Route
+            path="/dash/update-videos/:id"
+            element={<UpdateVideosDash />}
+          />
+          <Route
             path="/dash/details-videos/:id"
             element={<DetailsVideosDash />}
+          />
+          <Route
+            path="/dash/cons-fields"
+            element={<ConsFieldsDash />}
+          />
+          <Route
+            path="/dash/cons-fields/create-item"
+            element={<CreateConsFieldsDash />}
+          />
+          <Route
+            path="/dash/cons-fields/update-item/:id"
+            element={<UpdateConsFieldsDash />}
+          />
+          <Route
+            path="/dash/frequently-asked-questions"
+            element={<FAQ />}
+          />
+          <Route
+            path="/dash/frequently-asked-questions/details/:id"
+            element={<DetailsFAQDash />}
+          />
+          <Route
+            path="/dash/frequently-asked-questions/cteate-item"
+            element={<CreateFAQDash />}
           />
           {/* <Route path="/dash/video-update/:id" element={<VideosUpdate />} /> */}
           <Route path="/dash/all-users" element={<AllUsersDash />} />

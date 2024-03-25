@@ -71,20 +71,20 @@ const AccountProfile = () => {
                   className="p-4 text-black"
                   style={{ backgroundColor: '#f8f9fa' }}
                 >
-                  <div className="d-flex justify-content-end text-center py-1">
+                  {/* <div className="d-flex justify-content-end text-center py-1">
                     <div>
                       <p className="mb-1 h5">253</p>
                       <p className="small text-muted mb-0">Photos</p>
                     </div>
-                    {/* <div className="px-3">
+                    <div className="px-3">
                       <p className="mb-1 h5">1026</p>
                       <p className="small text-muted mb-0">Followers</p>
-                    </div> */}
-                    {/* <div>
+                    </div>
+                    <div>
                       <p className="mb-1 h5">478</p>
                       <p className="small text-muted mb-0">Following</p>
-                    </div> */}
-                  </div>
+                    </div>
+                  </div> */}
                 </div>
                 <div className="card-body p-4 text-black">
                   <div className="mb-5">

@@ -1,16 +1,15 @@
 import { useState } from "react"
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios"
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 
-const CreateVideosDash = () => {
-  const item = useLocation()?.state?.item
-  // const navigate = useNavigate();
+const CreateFAQDash = () => {
+  const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
   const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [url, setUrl] = useState('')
+  const [body, setBody] = useState('')
+  const [answer, setAnswer] = useState('')
 
   const hanelSubmit = async (e) => {
     e.preventDefault();
@@ -18,12 +17,11 @@ const CreateVideosDash = () => {
     try {
       await axios
         .post(
-          `videos/`,
+          `questions`,
           {
             title: title,
-            course: item?._id,
-            description: description,
-            url: url,
+            body: body,
+            answer: answer
           },
           {
             headers: {
@@ -32,16 +30,16 @@ const CreateVideosDash = () => {
           }
         )
         .then((response) => {
-          toast.success('تم اضافة فيديو جديد للكورس بنجاح')
+          toast.success('تم اضافة سؤال جديد بنجاح')
+          setAnswer('')
+          setBody('')
           setTitle('')
-          setDescription('')
-          setUrl('')
           // navigate(`/dash/details-playlist/${item?._id}`)
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      toast.error('لم يتم اضافة الفيديو تأكد من اضافة البيانات بشكل صحيح')
+      toast.error('السؤال موجود بالفعل')
       console.log('response', err.response);
       console.log('message', err.message);
     }
@@ -52,49 +50,48 @@ const CreateVideosDash = () => {
       <SidebarDashboard />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className='fs-1 fw-bold'>اضافة فيديو داخل الكورس</h2>
+          <h2 className='fs-1 fw-bold'>اضافة سؤال جديد </h2>
         </div>
         <form
           onSubmit={hanelSubmit}
           className="container d-flex flex-row justify-content-center align-content-center flex-wrap my-4"
         >
-          <div className="label-form">ادخل  عنوان الفيديو</div>
+          <div className="label-form">ادخل  عنوان السؤال </div>
           <input
             type="text"
             name="title"
             className="form-control  mb-4"
             id="title"
             required
-            placeholder="ادخل عنوان الفيديو*"
+            placeholder="ادخل عنوان السؤال *"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="label-form">اضف عنوان الفيديو(Url)</div>
+          <div className="label-form">ادخل وصف السؤال </div>
           <input
             type="text"
-            name="url"
+            name="body"
             className="form-control  mb-4"
-            id="url"
+            id="body"
             required
-            placeholder="اضف لينك الفيديو*"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            placeholder="ادخل وصف السؤال *"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           />
-          <div className="label-form">اكتب وصفا دقيقا للمنتج*</div>
-          <textarea
+          <div className="label-form">ادخل  اجابة السؤال </div>
+          <input
             type="text"
-            rows={5}
-            name="description"
+            name="answer"
             className="form-control  mb-4"
-            id="description"
+            id="answer"
             required
-            placeholder="اكتب وصفا دقيقا للمنتج*"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            placeholder="ادخل اجابة السؤال *"
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
           />
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mb-4">
-              اضافة فيديو جديد
+              اضافة مسار جديد
             </button>
           )}
           {isPending && (
@@ -102,13 +99,13 @@ const CreateVideosDash = () => {
               جاري الاضافة ...
             </button>
           )}
-          {/* <button onClick={() => navigate(`/dash/details-playlist/${item?._id}`)} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mb-4">
+          <button onClick={() => navigate(`/dash/cons-fields`)} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mb-4">
             cancel
-          </button> */}
+          </button>
         </form>
       </div>
     </div>
   )
 }
 
-export default CreateVideosDash
+export default CreateFAQDash

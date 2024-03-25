@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios";
 import { useAuth } from "@/context/Auth";
-const ContactFormDash = () => {
+import { DownloadTableExcel } from 'react-export-table-to-excel';
+const ConsFieldsDash = () => {
   const { user } = useAuth()
   const [loading, setLoading] = useState(false);
   const [contactForm, setContactForm] = useState([])
   const tableRef = useRef(null);
   let fetchContactForm = {
     method: 'get',
-    url: '/contact',
+    url: 'cons-fields/',
   };
   useEffect(() => {
     setLoading(true);
@@ -32,7 +33,7 @@ const ContactFormDash = () => {
   const handelDelete = async (id) => {
     let config = {
       method: 'delete',
-      url: `contact/${id}`,
+      url: `cons-fields/${id}`,
       headers: {
         'Content-Type': 'application/json'
       },
@@ -52,31 +53,6 @@ const ContactFormDash = () => {
         console.log(error);
       });
   };
-  // const handelDeleteAll = async () => {
-  //   let config = {
-  //     method: 'delete',
-  //     url: `/contact`,
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //   };
-  //   setLoading(true);
-  //   await axios
-  //     .request(config, {
-  //     })
-  //     .then((response) => {
-  //       axios.request(fetchContactForm).then((response) => {
-  //         setContactForm(response.data);
-  //         setLoading(false);
-  //         console.log(response.data);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       console.log(error);
-  //     });
-  // };
-
   //////////////////pagination///////////////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -104,24 +80,25 @@ const ContactFormDash = () => {
       <SidebarDashboard />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className='fs-1 fw-bold'>طلبات التواصل مع المدير </h2>
+          <h2 className='fs-1 fw-bold'>المسارات المتاحة </h2>
         </div>
         <div className="d-flex flex-row justify-content-between">
-          {/* <button onClick={() => handelDeleteAll()} type="button" className="btn btn-danger d-block m-3" style={{ padding: "7px 6rem" }}>حذف الكل</button> */}
-          {/* <DownloadTableExcel
+        <Link to="/dash/cons-fields/create-item">
+            <button type="button" className="btn btn-primary d-block m-3" style={{ padding: "7px 6rem" }}>اضافة مسار جديد</button>
+          </Link>
+          <DownloadTableExcel
             filename="users table"
             sheet="users"
             currentTableRef={tableRef.current}
           >
             <button type="button" className="btn btn-info d-block m-3 ">  تحميل ملف اكسيل </button>
-          </DownloadTableExcel> */}
+          </DownloadTableExcel>
         </div>
         <table ref={tableRef} className="table table-striped table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">الاسم بالكامل</th>
-              <th scope="col">البريد الالكترونى</th>
+              <th scope="col">المسار</th>
               <th scope="col">الاحداث</th>
             </tr>
           </thead>
@@ -130,14 +107,13 @@ const ContactFormDash = () => {
               index >= prev && index <= next ? (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{item?.name}</td>
-                  <td>{item?.email}</td>
+                  <td>{item?.field}</td>
                   <td>
                     <Link
-                      to={`/dash/details-contact-form/${item._id}`}
+                      to={`/dash/cons-fields/update-item/${item._id}`}
                       state={{ item: item }}
                     >
-                      <button className="btn btn-outline-success mx-2 px-4">التفاصيل</button>
+                      <button className="btn btn-outline-success mx-2 px-4">تعديل</button>
                     </Link>
                     <button onClick={() => handelDelete(item._id)} className="btn btn-outline-danger mx-2 px-4">حذف</button>
                   </td>
@@ -160,4 +136,4 @@ const ContactFormDash = () => {
   )
 }
 
-export default ContactFormDash
+export default ConsFieldsDash

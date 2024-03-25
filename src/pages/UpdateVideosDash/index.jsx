@@ -2,23 +2,22 @@ import { useState } from "react"
 import { useLocation } from 'react-router-dom';
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios"
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 
-const CreateVideosDash = () => {
+const UpdateVideosDash = () => {
   const item = useLocation()?.state?.item
-  // const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [url, setUrl] = useState('')
+  const [title, setTitle] = useState(item?.title)
+  const [description, setDescription] = useState(item?.description)
+  const [url, setUrl] = useState(item?.url)
 
   const hanelSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
     try {
       await axios
-        .post(
-          `videos/`,
+        .put(
+          `videos/${item?._id}`,
           {
             title: title,
             course: item?._id,
@@ -32,18 +31,15 @@ const CreateVideosDash = () => {
           }
         )
         .then((response) => {
-          toast.success('تم اضافة فيديو جديد للكورس بنجاح')
-          setTitle('')
-          setDescription('')
-          setUrl('')
+          toast.success('تم تعديل بيانات الفيديو بنجاح')
           // navigate(`/dash/details-playlist/${item?._id}`)
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      toast.error('لم يتم اضافة الفيديو تأكد من اضافة البيانات بشكل صحيح')
-      console.log('response', err.response);
-      console.log('message', err.message);
+      toast.error('لم يتم تعديل بيانات الفيديو تأكد من تعديل البيانات بشكل صحيح')
+      // console.log('response', err.response);
+      // console.log('message', err.message);
     }
   };
 
@@ -52,35 +48,35 @@ const CreateVideosDash = () => {
       <SidebarDashboard />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className='fs-1 fw-bold'>اضافة فيديو داخل الكورس</h2>
+          <h2 className='fs-1 fw-bold'>تعديل الفيديو </h2>
         </div>
         <form
           onSubmit={hanelSubmit}
           className="container d-flex flex-row justify-content-center align-content-center flex-wrap my-4"
         >
-          <div className="label-form">ادخل  عنوان الفيديو</div>
+          <div className="label-form">تعديل  عنوان الفيديو</div>
           <input
             type="text"
             name="title"
             className="form-control  mb-4"
             id="title"
             required
-            placeholder="ادخل عنوان الفيديو*"
+            placeholder="تعديل عنوان الفيديو*"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="label-form">اضف عنوان الفيديو(Url)</div>
+          <div className="label-form">تعديل عنوان الفيديو(Url)</div>
           <input
             type="text"
             name="url"
             className="form-control  mb-4"
             id="url"
             required
-            placeholder="اضف لينك الفيديو*"
+            placeholder="تعديل لينك الفيديو*"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-          <div className="label-form">اكتب وصفا دقيقا للمنتج*</div>
+          <div className="label-form">تعديل الوصف *</div>
           <textarea
             type="text"
             rows={5}
@@ -88,7 +84,7 @@ const CreateVideosDash = () => {
             className="form-control  mb-4"
             id="description"
             required
-            placeholder="اكتب وصفا دقيقا للمنتج*"
+            placeholder="تعديل الوصف *"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -111,4 +107,4 @@ const CreateVideosDash = () => {
   )
 }
 
-export default CreateVideosDash
+export default UpdateVideosDash

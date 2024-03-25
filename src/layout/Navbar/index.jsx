@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { RxAvatar } from 'react-icons/rx';
 import { useAuth } from '@/context/Auth';
 import axios from '@/api/axios';
+import { useState } from 'react';
 
 const Navbar = () => {
   const { setRole, setuser, setLoggedin, Loggedin } = useAuth();
@@ -21,15 +22,15 @@ const Navbar = () => {
     }
   };
 
-  // const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize isLoggedIn state
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize isLoggedIn state
 
-  // // Function to handle login
-  // const handleLogin = () => {
-  //   setIsLoggedIn(true);
-  // };
-  // const handleLogout = () => {
-  //   setIsLoggedIn(false);
-  // };
+  // Function to handle login
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
     <>
@@ -121,6 +122,7 @@ const Navbar = () => {
                   <button
                     type="button"
                     className="mx-2 btn btn-primary bg-dark:hover"
+                    onClick={handleLogin}
                   >
                     سجل دخول
                   </button>

@@ -16,7 +16,7 @@ const DetailsVideosDash = () => {
       .then((response) => {
         setLoading(false);
         setVideos(response.data);
-        console.log('response :', response.data);
+        // console.log('response :', response.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -85,7 +85,7 @@ const DetailsVideosDash = () => {
                           <p className="mb-0">تاريخ الاضافة </p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-muted mb-0">{videos?.createdAt}</p>
+                          <p className="text-muted mb-0">{videos?.createdAt?.slice(0, 10)}</p>
                         </div>
                       </div>
                     </div>

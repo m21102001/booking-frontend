@@ -52,20 +52,18 @@ const EditProfile = () => {
                       <h3 className="text-center mb-4 text-uppercase">
                         تعديل البيانات
                       </h3>
-                      <h5 className="text-center mb-5">
-                        مرحبًا بك مرة أخرى ، لقد اشتقنا إليك!
-                      </h5>
+                     
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="form-outline mb-4">
                           <label
                             className="form-label"
-                            htmlFor="form3Example1m1"
+                            htmlFor="form3Example1m2"
                           >
                             الاسم بالكامل
                           </label>
                           <input
                             type="text"
-                            id="form3Example8"
+                            id="form3Example9"
                             className="form-control form-control-lg"
                             value={name}
                             onChange={(e) => setName(e.target.value)}

@@ -28,7 +28,6 @@ const DetailsPlaylistDash = () => {
   }, []);
   const handelDelete = async (id) => {
     setLoading(true);
-    console.log('id', id);
     await axios
       .delete(`videos/${id}`, {
         headers: {
