@@ -70,9 +70,6 @@ function SidebarDashboard() {
           <NavLink to="/dash/Courses ">
             <AiFillHome /> <p className="fs-5 fw-bold me-4">الكورسات</p>
           </NavLink>
-          <NavLink to="/dash/club ">
-            <PiFlagFill /> <p className="fs-5 fw-bold me-4">التوصيات </p>
-          </NavLink>
           <NavLink to="/dash/contact-form ">
             <FaMessage /> <p className="fs-5 fw-bold me-4">الرسائل</p>
           </NavLink>
