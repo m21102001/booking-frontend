@@ -86,18 +86,17 @@ const Routers = () => {
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
           <Route path="question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
-          <Route path="/auth/profile" element={<AccountProfile />} />
-          <Route path="/auth/profile/edit-profile" element={<EditProfile />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/development/details-playlist/:id" element={<DetailsPlaylistDevelopment />} />
           <Route path="/courses/course-details" element={<CourseDetails />} />
           <Route path="/courses/course-update" element={<CourseUpdate />} />
 
           <Route path="/contactUs" element={<ContactUS />} />
-          <Route path="/auth/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />
           {/* -----------------------auth -------------------- */}
+          <Route path="/auth/profile" element={<AccountProfile />} />
+          <Route path="/auth/profile/edit-profile" element={<EditProfile />} />
           <Route
             path="/auth/reservation-ticket"
             element={<ReservationTicket />}
@@ -106,6 +105,7 @@ const Routers = () => {
             path="/auth/create-reservation-ticket"
             element={<CreateReservationTicket />}
           />
+          <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/sign-up/student" element={<SignUpStudent />} />
           <Route path="/auth/sign-up/instractor" element={<SignUp />} />
           <Route path="/auth/verifyEmailCode" element={<VerifyEmailCode />} />
@@ -146,12 +146,12 @@ const Routers = () => {
               <AllInActieMentorsmDash />
             }
           />
-            <Route
-              path="/dash/mentors/inActive/mentor-details/:id"
-              element={
-                <DetailsInActiveMentorsmDash />
-              }
-            />
+          <Route
+            path="/dash/mentors/inActive/mentor-details/:id"
+            element={
+              <DetailsInActiveMentorsmDash />
+            }
+          />
           <Route path="/dash/courses" element={<CoursesDash />} />
           <Route
             path="/dash/update-playlist/:id"
