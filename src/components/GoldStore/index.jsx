@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../GoldCard/GoldCard.module.scss';
-
+import axios from "@/api/axios";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { goldCategory } from '@/db/data';
 const GoldStore = () => {
   const item = useLocation()?.state?.item
+  const [loading, setLoading] = useState(false);
   const [bookData, setBookData] = useState([])
-
+  const [allUser, setAlluser] = useState([])
   const getInitialState = () => {
     let value = item?.option;
     if (value == null) {
@@ -20,21 +21,22 @@ const GoldStore = () => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   axios.get(`/gold-bars/`)
-  //     .then((response) => {
-  //       setBookData(response.data);
-  //       setLoading(false);
-  //       window.scrollTo(0, 0);
-  //       // console.log("bullion store", response.data);
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    setLoading(true);
+    axios.get('mentors/active', {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => {
+        setLoading(false);
+        setAlluser(response.data);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  }, []);
   ////////////////pagination///////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -62,7 +64,7 @@ const GoldStore = () => {
     <div className='coursers-open goldNews py-5'>
       <div className='m-auto d-flex justify-content-center mb-5'>
         <span style={{ zIndex: "0", backgroundColor: "#f8d25c", width: "50px", height: "3px", margin: "auto 20px" }}></span>
-        <h2 className='text-center comunation fs-1 fw-bold'>المستشارين الموصي بيهم</h2>
+        <h2 className='text-center comunation fs-1 fw-bold'>المستشارين الموصي بهم</h2>
         <span style={{ zIndex: "0", backgroundColor: "#f8d25c", width: "50px", height: "3px", margin: "auto 20px" }}></span>
       </div>
       <div className="row align-items-start m-auto">
@@ -85,7 +87,7 @@ const GoldStore = () => {
             <>
               <div className="container">
                 <div className={styles['home-grid']}>
-                  {goldCategory?.map((item, index) => (
+                  {!loading && allUser?.data?.map((item, index) => (
                     item?.option == value && item?.option !== 'selectAll' ? (
                       <Link
                         key={index}
