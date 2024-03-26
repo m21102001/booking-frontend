@@ -1,10 +1,26 @@
 import { Link } from "react-router-dom"
+import axios from '@/api/axios';
 import styles from './GoldCard.module.scss';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { newCourses } from "@/db/data";
+import { useEffect, useState } from "react";
 
 const GoldCard = () => {
-
+  const [loading, setLoading] = useState(true)
+  const [courseData, setCourseData] = useState([]);
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`courses`)
+      .then((response) => {
+        setCourseData(response.data);
+        setLoading(false);
+        window.scrollTo(0, 0);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  }, []);
   return (
     <div className='coursers-open'>
       <div className='m-auto d-flex justify-content-center my-5'>
@@ -16,7 +32,7 @@ const GoldCard = () => {
         <>
           <div className="container gold-dash">
             <div className={styles['home-grid']} style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(370px, 1fr))', gap: '90px' }}>
-              {newCourses?.map((item, index) => (
+              {courseData?.document?.map((item, index) => (
                 index < 3 ? (
                   <div key={index} className={styles['gold-div']}>
                     <div>
@@ -32,7 +48,7 @@ const GoldCard = () => {
                     <div className=''>
                       <h3 className=' fw-700'>{item.title}</h3>
                       <Link
-                        to={`/club/project-idea/${item?._id}`}
+                        to={`/consault-store-item/course-detalis/${item?._id}`}
                         state={{ item: item }}
                       >
                         <button>تفاصيل اضافية</button>

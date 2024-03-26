@@ -58,10 +58,10 @@ const DetailsPlaylistDevelopment = () => {
   return (
     <div style={{ backgroundColor: "var(--darkblue-color)" }}>
       <Navbar />
-      <Link to={'/development'} className='mb-3 d-flex flex-row-reverse'>
+      {/* <Link to={'/development'} className='mb-3 d-flex flex-row-reverse'>
         <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 back-details-button"
         ><MdOutlineArrowBack size={30} /></button>
-      </Link>
+      </Link> */}
       <div className="row align-items-start m-auto" style={{ backgroundColor: "var(--darkblue-color)" }}>
         <div className='m-auto d-flex justify-center'>
           <>

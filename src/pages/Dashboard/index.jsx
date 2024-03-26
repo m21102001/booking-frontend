@@ -29,7 +29,7 @@ const Dashboard = () => {
           <h2 className='fs-1 fw-bold'>الصفحة الرئيسية</h2>
         </div>
 
-        <div className={`wordColor`}>
+        {/* <div className={`wordColor`}>
           {loading && <div className="loading"></div>}
           <div className="row row-cols-1 my-1 row-cols-lg-5 g-2 g-lg-3">
             <div className="col card mx-3 text-end">
@@ -111,7 +111,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div >
   )

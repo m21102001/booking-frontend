@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '@/components/GoldCard/GoldCard.module.scss';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { goldCategory } from '@/db/data';
 const Courses = () => {
 
   const item = useLocation()?.state?.item;
@@ -93,7 +92,7 @@ const Courses = () => {
                       item?.option == value && item?.option !== 'selectAll' ? (
                         <Link
                           key={index}
-                          to={`/development/details-playlist/${item._id}`}
+                          to={`/consault-store-item/course-detalis/${item._id}`}
                           state={{ item: item }}
                         >
                           <div className={styles['gold-div']}>
@@ -119,7 +118,7 @@ const Courses = () => {
                           index >= prev && index <= next ? (
                             <Link
                               key={index}
-                              to={`/development/details-playlist/${item?._id}`}
+                              to={`/consault-store-item/course-detalis/${item?._id}`}
                               state={{ item: item }}
                             >
                               <div className={styles['gold-div']}>
