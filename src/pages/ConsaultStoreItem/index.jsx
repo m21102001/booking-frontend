@@ -1,10 +1,8 @@
-import { useLocation } from 'react-router-dom';
 import { Footer, Navbar } from "@/layout";
 import axios from '@/api/axios';
 import { useState } from 'react';
 import { Consulting } from '@/components';
 const ConsaultStoreItem = () => {
-  const item = useLocation()?.state?.item;
   const [loading, setLoading] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

@@ -94,7 +94,7 @@ const Routers = () => {
           <Route path="question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/Courses" element={<Courses />} />
-          <Route path="/development/details-playlist/:id" element={<DetailsPlaylistDevelopment />} />
+          <Route path="/consault-store-item/course-detalis/:id" element={<DetailsPlaylistDevelopment />} />
           <Route path="/courses/course-details" element={<CourseDetails />} />
           <Route path="/courses/course-update" element={<CourseUpdate />} />
 

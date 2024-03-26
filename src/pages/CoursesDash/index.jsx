@@ -99,7 +99,7 @@ const CoursesDash = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item?.title}</td>
-                <td>{item?.price}دينار كويتى</td>
+                <td>{item?.price}جنية مصري</td>
                 <td>
                   <Link
                     to={`/dash/update-playlist/${item._id}`}

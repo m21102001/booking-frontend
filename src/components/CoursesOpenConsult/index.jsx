@@ -1,8 +1,30 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../GoldCard/GoldCard.module.scss';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { newCourses } from '@/db/data';
+import axios from '@/api/axios';
+
+import styles from '../GoldCard/GoldCard.module.scss';
 const CoursesOpenConsult = () => {
+  const [loading, setLoading] = useState(true)
+  const [course, setCourse] = useState([])
+
+  useEffect(() => {
+    setLoading(true)
+    try {
+      axios.get('courses')
+        .then((res) => {
+          setCourse(res.data)
+          setLoading(false)
+          console.log("open consult", res.data);
+        }
+        )
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+
+  }, [])
   return (
     <div className='coursers-open'>
       <div className='m-auto d-flex justify-content-center my-5'>
@@ -14,7 +36,7 @@ const CoursesOpenConsult = () => {
         <>
           <div className="container">
             <div className={styles['home-grid']}>
-              {newCourses?.map((item, index) => (
+              {!loading && course?.document?.map((item, index) => (
                 index < 8 ? (
                   <div key={index} className={styles['gold-div']}>
                     <div>
@@ -26,10 +48,10 @@ const CoursesOpenConsult = () => {
                     <div className=''>
                       <h3 className=' fw-700'>{item.title}</h3>
                       <Link
-                        to={`/consault-store-item/course-detalis`}
+                        to={`/consault-store-item/course-detalis/${item._id}`}
                         state={{ item: item }}
                       >
-                        <button> شراء </button>
+                        <button> تفاصيل </button>
                       </Link>
                     </div>
                   </div>

@@ -56,7 +56,7 @@ const ReservationTicket = () => {
                 <li className="list-inline-item mx-3"><ImLocation2 size={30} color={'blue'} /> {item?.type}</li>
               </ul>
               <ul className="list-inline">
-                <li className="list-inline-item mx-3"><FaMoneyBillAlt size={30} color={'#198754'} /> {item?.price}دينار كويتى</li>
+                <li className="list-inline-item mx-3"><FaMoneyBillAlt size={30} color={'#198754'} /> {item?.price}جنية مصري  </li>
               </ul>
             </div>
           </Link>
