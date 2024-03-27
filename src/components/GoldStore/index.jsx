@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from '../GoldCard/GoldCard.module.scss';
 import axios from "@/api/axios";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { goldCategory } from '@/db/data';
 const GoldStore = () => {
   const item = useLocation()?.state?.item
   const [loading, setLoading] = useState(false);
@@ -37,6 +36,7 @@ const GoldStore = () => {
         console.log(error);
       });
   }, []);
+  console.log('jjj',allUser);
   ////////////////pagination///////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -76,10 +76,9 @@ const GoldStore = () => {
             onChange={handleChange}
           >
             <option defaultValue selected value="selectAll">SelectAll</option>
-            <option value="lang">تعليم لغالت</option>
-            <option value="primaryschool">ابتدائية</option>
-            <option value="secschool">ثانوية</option>
-            <option value="uni">جامعات</option>
+            {!loading && allUser?.data?.map((item, index) => (
+                <option key={index} value={item?.field}>{item?.field}</option>
+              ))}
           </select>
         </div>
         <div className="col-md-12">

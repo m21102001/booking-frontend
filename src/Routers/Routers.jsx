@@ -49,6 +49,10 @@ import {
   FAQ,
   DetailsFAQDash,
   CreateFAQDash,
+  HonorBoard,
+  CreateHonorBoard,
+  UpdateHonorBoard,
+  CreateNewCourse,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -111,6 +115,10 @@ const Routers = () => {
           <Route
             path="/auth/create-reservation-ticket"
             element={<CreateReservationTicket />}
+          />
+          <Route
+            path="/auth/create-new-course"
+            element={<CreateNewCourse />}
           />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/sign-up/student" element={<SignUpStudent />} />
@@ -207,6 +215,18 @@ const Routers = () => {
           <Route
             path="/dash/frequently-asked-questions/cteate-item"
             element={<CreateFAQDash />}
+          />
+          <Route
+            path="/dash/honor-board"
+            element={<HonorBoard />}
+          />
+          <Route
+            path="/dash/honor-board/create-item"
+            element={<CreateHonorBoard />}
+          />
+          <Route
+            path="/dash/honor-board/update-item/:id"
+            element={<UpdateHonorBoard />}
           />
           {/* <Route path="/dash/video-update/:id" element={<VideosUpdate />} /> */}
           <Route path="/dash/all-users" element={<AllUsersDash />} />

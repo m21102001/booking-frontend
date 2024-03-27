@@ -85,9 +85,9 @@ function SidebarDashboard() {
           <NavLink to="/dash/frequently-asked-questions">
             <FaTicketAlt /> <p className="fs-5 fw-bold me-4">الاسئله الشائعة</p>
           </NavLink>
-          {/* <NavLink to="/dash/consultations ">
-            <FaTicketAlt /> <p className="fs-5 fw-bold me-4">التذاكر</p>
-          </NavLink> */}
+          <NavLink to="/dash/honor-board ">
+            <FaTicketAlt /> <p className="fs-5 fw-bold me-4">honor-board</p>
+          </NavLink>
           {/* <NavLink to="/dash/consultations-ticket ">
             <FaTicketAlt />{' '}
             <p className="fs-5 fw-bold me-4">التذاكر المحجوزة</p>

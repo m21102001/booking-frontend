@@ -46,7 +46,7 @@ const AccountProfile = () => {
                     style={{ width: '150px' }}
                   >
                     <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                      src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
                       alt="Generic placeholder image"
                       className="img-fluid img-thumbnail mt-4 mb-2"
                       style={{ width: '150px', zIndex: '1' }}
@@ -302,6 +302,15 @@ const AccountProfile = () => {
                       <a href="#!" className="text-muted">
                         الكل
                       </a>
+                    </p>
+                    <p>
+                      <Link
+                        to={'/auth/create-new-course'}
+                        className="text-muted"
+                      >
+                        انشاء كورس جديد
+                      </Link>
+
                     </p>
                   </div>
                   <div className=" row g-2">
