@@ -121,7 +121,7 @@ const Courses = () => {
               <>
                 <div className="container">
                   <div className={styles['home-grid']}>
-                    {categoryaShow?.document?.map((item, index) => (
+                    {courseData?.document?.map((item, index) => (
                       item?.option == value && item?.option !== 'selectAll' ? (
                         <Link
                           key={index}

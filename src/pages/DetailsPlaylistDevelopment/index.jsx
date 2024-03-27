@@ -4,7 +4,6 @@ import { Footer, Navbar } from "@/layout"
 import axios from "@/api/axios";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { authenticated } from "@/context/Auth";
-import { MdOutlineArrowBack } from "react-icons/md";
 
 const DetailsPlaylistDevelopment = () => {
   const authed = authenticated()
@@ -115,7 +114,7 @@ const DetailsPlaylistDevelopment = () => {
                             {authed == true ? (
                               <Link
                                 className="col-sm-9"
-                                // to={`/auth/login`}
+                              // to={`/auth/login`}
                               >
                                 <button className="text-light fs-3 px-2">شراء الكورس</button>
                               </Link>
@@ -149,6 +148,37 @@ const DetailsPlaylistDevelopment = () => {
               </section>
             </div>
           </>
+        </div>
+        <div className='m-auto d-flex justify-content-center py-5'>
+          <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+          <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}> تعليقات على الكورس</h2>
+          <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+        </div>
+        <div className="container pb-5">
+          <div className="row d-flex justify-content-center">
+            <div className="col-md-12 col-lg-10 col-xl-8">
+              <div className="card">
+                <div className="card-body">
+                  <div className="d-flex flex-start align-items-center">
+                    <img className="rounded-circle shadow-1-strong ms-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 className="fw-bold text-primary text-end mb-1">محمد احمد</h6>
+                      <p className="text-muted small mb-0">
+                        22/10/2024
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-3 mb-4 pb-2 text-end">
+                    عند الانتهاء من العمل وتسليمه كاملاً يمكنك الضغط على زر تسليم الخدمة. إذا لم يكن لدى المشتري أي ملاحظات
+                    أو تعديلات سيقوم بالموافقة على طلب التسليم وينتقل رصيد الخدمة إلى حسابك في خمسات،
+                    ثم يمكنك سحبه إلى حسابك في باي بال أو الحسال البنكي من خلال الخطوات الموضحة في مقالة
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
