@@ -18,14 +18,16 @@ function SidebarDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const handelLogout = async () => {
     try {
-      await axios.post('auth/logout', {
-        withCredentials: true,
-      }).then(() => {
-        setuser({});
-        setRole('');
-        setLoggedin(false);
-        Navigate('/auth/login');
-      });
+      await axios
+        .post('auth/logout', {
+          withCredentials: true,
+        })
+        .then(() => {
+          setuser({});
+          setRole('');
+          setLoggedin(false);
+          Navigate('/auth/login');
+        });
     } catch (error) {
       console.log(error.response);
     } finally {
@@ -38,8 +40,9 @@ function SidebarDashboard() {
   return (
     <div className="main-div">
       <div
-        className={`sidebar-div ${sidebarOpen ? 'sidebar-open' : 'sidebar-close'
-          }`}
+        className={`sidebar-div ${
+          sidebarOpen ? 'sidebar-open' : 'sidebar-close'
+        }`}
       >
         <NavLink style={{ background: 'var(--darkblue-color)' }}>
           <button
@@ -77,10 +80,12 @@ function SidebarDashboard() {
             <FaMessage /> <p className="fs-5 fw-bold me-4">اضافة مسار جديد</p>
           </NavLink>
           <NavLink to="/dash/mentors ">
-            <FaTicketAlt /> <p className="fs-5 fw-bold me-4">مستشارين (active)</p>
+            <FaTicketAlt />{' '}
+            <p className="fs-5 fw-bold me-4">مستشارين (active)</p>
           </NavLink>
           <NavLink to="/dash/mentors/inactive">
-            <FaTicketAlt /> <p className="fs-5 fw-bold me-4">مستشارين (InActive)</p>
+            <FaTicketAlt />{' '}
+            <p className="fs-5 fw-bold me-4">مستشارين (InActive)</p>
           </NavLink>
           <NavLink to="/dash/frequently-asked-questions">
             <FaTicketAlt /> <p className="fs-5 fw-bold me-4">الاسئله الشائعة</p>
