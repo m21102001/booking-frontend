@@ -14,7 +14,7 @@ const ContactFormDash = () => {
   };
   useEffect(() => {
     setLoading(true);
-    if (user.role == 'manager') {
+    if (user?.role == 'manager') {
       axios
         .request(fetchContactForm)
         .then((response) => {

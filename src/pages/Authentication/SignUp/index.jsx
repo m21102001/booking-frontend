@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from '@/api/axios';
 import './signup.scss';
@@ -28,6 +28,38 @@ const SignUp = () => {
   const [validationMessage, setValidationMessage] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [showValidationMessage, setShowValidationMessage] = useState(true);
+
+  const [categorya, setCategory] = useState([]);
+
+  useEffect(() => {
+    setIsPending(true);
+    axios
+      .get(`cons-fields/`)
+      .then((response) => {
+        setIsPending(false);
+        setCategory(response.data);
+        console.log('xxxxx', response.data);
+      })
+      .catch((error) => {
+        setIsPending(false);
+        console.log(error);
+      });
+  }, []);
+
+  // const getInitialState = () => {
+  //   let value = item?.option;
+  //   if (value == null) {
+  //     value = 'selectAll';
+  //   }
+
+  //   return value;
+  // };
+  // const [value, setValue] = useState(getInitialState);
+  // const handleChange = (e) => {
+  //   setValue(e.target.value);
+  // };
+
+
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -142,7 +174,7 @@ const SignUp = () => {
                                 className="form-label"
                                 htmlFor="form3Example1m"
                               >
-                               الاسم بالكامل
+                                الاسم بالكامل
                               </label>
                               <input
                                 type="text"
@@ -219,10 +251,10 @@ const SignUp = () => {
                             className="form-select form-select-lg mb-3"
                             aria-label=".form-select-lg example"
                           >
-                            <option selected>اختر تخصص</option>
-                            <option value="1">طب</option>
-                            <option value="2">هندسة</option>
-                            <option value="3">علوم طبيعيه</option>
+                            {!isPending && categorya?.document?.map((item, index) => (
+                              <option key={index} value={item?.field}>{item?.field}</option>
+                            ))}
+
                           </select>
                         </div>
                         <div className="form-outline mb-4">
@@ -441,8 +473,7 @@ const SignUp = () => {
                         <div className="d-grid gap-2">
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
-                              }`}
+                            className={`btn btn-primary btn-lg ms-2 ${check || isPending? '' : 'disabled'} ${isPending ? 'disabled' : ''}`}
                           >
                             انشاء حساب جديد
                           </button>

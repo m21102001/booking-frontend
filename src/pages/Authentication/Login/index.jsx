@@ -4,12 +4,9 @@ import axios from '@/api/axios';
 import './login.scss';
 import { Navbar } from '@/layout';
 import { toast } from 'react-toastify';
-import { useAuth } from '@/context/Auth';
 
 const Login = () => {
   const navigate = useNavigate();
-  // const { user, setuser } = useAuth();
-  // console.log(user);
   const [isPending, setIsPending] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,8 +18,6 @@ const Login = () => {
       await axios.post(
         'auth/login',
         {
-          // email: "ahmedmedhat1231@gmail.com",
-          // password: "123456"
           email: email,
           password: password,
         },
@@ -102,7 +97,7 @@ const Login = () => {
                         </div>
                         <div className="d-grid gap-2">
                           <button
-                            className="btn btn-primary fs-4"
+                            className={`btn btn-primary fs-4 ${isPending ? 'disabled' : ''}`}
                             type="submit"
                           >
                             تسجيل الدخول

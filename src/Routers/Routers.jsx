@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router, Navigate } from 'react-router-dom';
 import {
   AccountProfile,
   AdviceAdvisors,
@@ -60,30 +60,30 @@ import { authenticated, useAuth } from '@/context/Auth';
 // import axios from '@/api/axios';
 
 // eslint-disable-next-line react/prop-types
-// function Protect({ children, protect = false, path = '', role = 'user' }) {
-//   const { user } = useAuth();
-//   console.log(user);
-//   const authed = authenticated();
-//   if (
-//     authed === protect &&
-//     (role === 'admin' || role === 'godAdmin' || role === 'manager') &&
-//     path === 'dash'
-//   ) {
-//     return children;
-//   }
+function Protect({ children, protect = false, path = '', role = 'user' }) {
+  const { user } = useAuth();
+  console.log(user);
+  const authed = authenticated();
+  if (
+    authed === protect &&
+    (role === 'admin' || role === 'manager') &&
+    path === 'dash'
+  ) {
+    return children;
+  }
 
-//   if (
-//     authed === protect &&
-//     role === 'user' &&
-//     authed !== true &&
-//     path !== 'login'
-//   )
-//     return <Navigate to={'/'} />;
-//   if (authed === protect && path !== 'dash') return children;
-//   return <Navigate to={protect ? '/auth/login' : '/'} />;
-// }
+  if (
+    authed === protect &&
+    role === 'user' &&
+    authed !== true &&
+    path !== 'login'
+  )
+    return <Navigate to={'/'} />;
+  if (authed === protect && path !== 'dash') return children;
+  return <Navigate to={protect ? '/auth/login' : '/'} />;
+}
 const Routers = () => {
-  const { user, Loggedin } = useAuth();
+  const allowed = useAuth().user;
   // const { data } = axios.get('users/me/', {
   //   withCredentials: true,
   // });
@@ -106,142 +106,271 @@ const Routers = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />
           {/* -----------------------auth -------------------- */}
-          <Route path="/auth/profile" element={<AccountProfile />} />
-          <Route path="/auth/profile/edit-profile" element={<EditProfile />} />
+          <Route
+            path="/auth/profile"
+            element={
+              <AccountProfile />
+            } />
+          <Route
+            path="/auth/profile/edit-profile"
+            element={
+              <EditProfile />
+            } />
           <Route
             path="/auth/reservation-ticket"
-            element={<ReservationTicket />}
-          />
+            element={
+              <ReservationTicket />
+            } />
           <Route
             path="/auth/create-reservation-ticket"
-            element={<CreateReservationTicket />}
-          />
+            element={
+              <CreateReservationTicket />
+            } />
           <Route
             path="/auth/create-new-course"
-            element={<CreateNewCourse />}
-          />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/sign-up/student" element={<SignUpStudent />} />
-          <Route path="/auth/sign-up/instractor" element={<SignUp />} />
-          <Route path="/auth/verifyEmailCode" element={<VerifyEmailCode />} />
-          <Route path="/auth/forget-password" element={<ForgetPassword />} />
-          <Route path="/auth/verify-forget-password" element={<VerifyCode />} />
-          <Route path="/auth/resat-password" element={<ResatPassword />} />
-          <Route path="/terms-condition" element={<TermsCondition />} />
+            element={
+              <CreateNewCourse />
+            } />
+          <Route
+            path="/auth/login"
+            element={
+              <Protect path="login">
+                <Login />
+              </Protect>
+            } />
+          <Route
+            path="/auth/sign-up/student"
+            element={
+              <SignUpStudent />
+            } />
+          <Route
+            path="/auth/sign-up/instractor"
+            element={
+              <SignUp />
+            } />
+          <Route
+            path="/auth/verifyEmailCode"
+            element={
+              <VerifyEmailCode />
+            } />
+          <Route
+            path="/auth/forget-password"
+            element={
+              <ForgetPassword />
+            } />
+          <Route
+            path="/auth/verify-forget-password"
+            element={
+              <VerifyCode />
+            } />
+          <Route
+            path="/auth/resat-password"
+            element={
+              <ResatPassword />
+            } />
+          <Route
+            path="/terms-condition"
+            element={
+              <TermsCondition />
+            } />
           {/* --------------------Dashboard---------------------- */}
-          <Route path="/dash/dashboard" element={<Dashboard />} />
-          <Route path="/dash/contact-form" element={<ContactFormDash />} />
+          <Route
+            path="/dash/dashboard"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <Dashboard />
+              </Protect>
+            } />
+          <Route
+            path="/dash/contact-form"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <ContactFormDash />
+              </Protect>
+            } />
           <Route
             path="/dash/details-contact-form/:id"
             element={
-              <DeatilsContactFormDash />
+              <Protect path="dash" protect role={allowed?.role}>
+                <DeatilsContactFormDash />
+              </Protect>
             }
           />
           <Route
             path="/dash/mentors"
             element={
-              <AllMentorsmDash />
+              <Protect path="dash" protect role={allowed?.role}>
+                <AllMentorsmDash />
+              </Protect>
             }
           />
           <Route
             path="/dash/mentors/mentor-updated/:id"
             element={
-              <DetailsMentorsmDash />
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsMentorsmDash />
+              </Protect>
             }
           />
           <Route
             path="/dash/mentors/mentor-details/:id"
             element={
-              <DetailsMentorsDetailsDash />
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsMentorsDetailsDash />
+              </Protect>
             }
           />
           <Route
             path="/dash/mentors/inactive"
             element={
-              <AllInActieMentorsmDash />
+              <Protect path="dash" protect role={allowed?.role}>
+                <AllInActieMentorsmDash />
+              </Protect>
             }
           />
           <Route
             path="/dash/mentors/inActive/mentor-details/:id"
             element={
-              <DetailsInActiveMentorsmDash />
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsInActiveMentorsmDash />
+              </Protect>
             }
           />
-          <Route path="/dash/courses" element={<CoursesDash />} />
+          <Route
+            path="/dash/courses"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CoursesDash />
+              </Protect>
+            } />
           <Route
             path="/dash/update-playlist/:id"
-            element={<UpdatePlaylistDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdatePlaylistDash />
+              </Protect>
+            } />
           <Route
             path="/dash/details-playlist/:id"
-            element={<DetailsPlaylistDash />}
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsPlaylistDash />
+              </Protect>
+            }
           />
           <Route
             path="/dash/create-playlist-item"
-            element={<CreatePlaylistDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CreatePlaylistDash />
+              </Protect>
+            } />
           <Route
             path="/dash/create-video-item"
-            element={<CreateVideosDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CreateVideosDash />
+              </Protect>
+            } />
           <Route
             path="/dash/update-videos/:id"
-            element={<UpdateVideosDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdateVideosDash />
+              </Protect>
+            } />
           <Route
             path="/dash/details-videos/:id"
-            element={<DetailsVideosDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsVideosDash />
+              </Protect>
+            } />
           <Route
             path="/dash/cons-fields"
-            element={<ConsFieldsDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <ConsFieldsDash />
+              </Protect>
+            } />
           <Route
             path="/dash/cons-fields/create-item"
-            element={<CreateConsFieldsDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CreateConsFieldsDash />
+              </Protect>
+            } />
           <Route
             path="/dash/cons-fields/update-item/:id"
-            element={<UpdateConsFieldsDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdateConsFieldsDash />
+              </Protect>
+            } />
           <Route
             path="/dash/frequently-asked-questions"
-            element={<FAQ />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <FAQ />
+              </Protect>
+            } />
           <Route
             path="/dash/frequently-asked-questions/details/:id"
-            element={<DetailsFAQDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsFAQDash />
+              </Protect>
+            } />
           <Route
             path="/dash/frequently-asked-questions/cteate-item"
-            element={<CreateFAQDash />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CreateFAQDash />
+              </Protect>
+            } />
           <Route
             path="/dash/honor-board"
-            element={<HonorBoard />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <HonorBoard />
+              </Protect>
+            } />
           <Route
             path="/dash/honor-board/create-item"
-            element={<CreateHonorBoard />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CreateHonorBoard />
+              </Protect>
+            } />
           <Route
             path="/dash/honor-board/update-item/:id"
-            element={<UpdateHonorBoard />}
-          />
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdateHonorBoard />
+              </Protect>
+            } />
           {/* <Route path="/dash/video-update/:id" element={<VideosUpdate />} /> */}
-          <Route path="/dash/all-users" element={<AllUsersDash />} />
+          <Route
+            path="/dash/all-users"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <AllUsersDash />
+              </Protect>
+            } />
           <Route
             path="/dash/all-users/:id"
             element={
-              <DetailsAllUsersDash />
-            }
-          />
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsAllUsersDash />
+              </Protect>
+            } />
           <Route
             path="/dash/update-role-user/:id"
             element={
-              <UpdateRoleUsersDash />
-            }
-          />
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdateRoleUsersDash />
+              </Protect>
+            } />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
