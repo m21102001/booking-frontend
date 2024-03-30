@@ -20,9 +20,9 @@ const SignUp = () => {
   const [twitter, setTwitter] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [instagram, setInstagram] = useState('');
-  const [image, setImage] = useState('');
+  // const [image, setImage] = useState('');
   const [description, setDdescription] = useState('');
-  const [field, setField] = useState('');
+  // const [field, setField] = useState('');
   const [Video, setVideo] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [validationMessage, setValidationMessage] = useState('');
@@ -45,19 +45,15 @@ const SignUp = () => {
         console.log(error);
       });
   }, []);
+  const getInitialState = () => {
+    const selectType = 'تكنولوجيا';
+    return selectType;
+  };
+  const [field, setField] = useState(getInitialState);
+  const handleChangeType = (e) => {
+    setField(e.target.value);
+  };
 
-  // const getInitialState = () => {
-  //   let value = item?.option;
-  //   if (value == null) {
-  //     value = 'selectAll';
-  //   }
-
-  //   return value;
-  // };
-  // const [value, setValue] = useState(getInitialState);
-  // const handleChange = (e) => {
-  //   setValue(e.target.value);
-  // };
 
 
 
@@ -87,7 +83,7 @@ const SignUp = () => {
                 linkedin: linkedin,
                 instagram: instagram,
               },
-              image: image,
+              image: "image",
               description: description,
               field: field,
               hourlyPrice: hourPrice,
@@ -148,7 +144,7 @@ const SignUp = () => {
                         إنشاء حساب
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
-                        <div className="form-outline mb-4">
+                        {/* <div className="form-outline mb-4">
                           <label className="form-label">
                             اختر صورة شخصية{' '}
                             <span className="text-danger fw-bold">
@@ -166,7 +162,7 @@ const SignUp = () => {
                             onChange={(e) => setImage(e.target.value)}
                           // onChange={(e) => setImage(e.target.files[0])}
                           />
-                        </div>
+                        </div> */}
                         <div className="row">
                           <div className="col-md-12 mb-4">
                             <div className="form-outline">
@@ -252,7 +248,12 @@ const SignUp = () => {
                             aria-label=".form-select-lg example"
                           >
                             {!isPending && categorya?.document?.map((item, index) => (
-                              <option key={index} value={item?.field}>{item?.field}</option>
+                              <option
+                                key={index}
+                                required
+                                value={field}
+                                onChange={handleChangeType}
+                              >{item?.field}</option>
                             ))}
 
                           </select>
@@ -473,7 +474,7 @@ const SignUp = () => {
                         <div className="d-grid gap-2">
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${check || isPending? '' : 'disabled'} ${isPending ? 'disabled' : ''}`}
+                            className={`btn btn-primary btn-lg ms-2 ${check || isPending ? '' : 'disabled'} ${isPending ? 'disabled' : ''}`}
                           >
                             انشاء حساب جديد
                           </button>

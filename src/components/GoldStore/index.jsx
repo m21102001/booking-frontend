@@ -36,7 +36,7 @@ const GoldStore = () => {
         console.log(error);
       });
   }, []);
-  console.log('jjj',allUser);
+  console.log('jjj', allUser);
   ////////////////pagination///////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -77,8 +77,8 @@ const GoldStore = () => {
           >
             <option defaultValue selected value="selectAll">SelectAll</option>
             {!loading && allUser?.data?.map((item, index) => (
-                <option key={index} value={item?.field}>{item?.field}</option>
-              ))}
+              <option key={index} value={item?.field}>{item?.field}</option>
+            ))}
           </select>
         </div>
         <div className="col-md-12">
@@ -96,7 +96,7 @@ const GoldStore = () => {
                         <div className={styles['gold-div']}>
                           <div className='title-card'>
                             <LazyLoadImage
-                              src={item?.image}
+                              src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                               alt={item?.name}
                               loading="lazy"
                             />
@@ -121,7 +121,7 @@ const GoldStore = () => {
                             <div className={styles['gold-div']}>
                               <div className='title-card'>
                                 <LazyLoadImage
-                                  src={item.image}
+                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                                   alt={item?.name}
                                   loading="lazy"
                                 />

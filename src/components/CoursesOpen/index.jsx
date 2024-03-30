@@ -38,8 +38,7 @@ const CoursesOpen = () => {
                   <div key={index} className={styles['gold-div']}>
                     <div>
                       <LazyLoadImage
-                        src={item?.image}
-                        // src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                        src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                         alt={item?.name}
                         loading="lazy" />
                     </div>

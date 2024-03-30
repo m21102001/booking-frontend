@@ -31,7 +31,7 @@ const ContactUs = () => {
             message: message,
           }, { credentials: true })
           .then((response) => {
-            console.log('created successful', response.data);
+            // console.log('created successful', response.data);
             setName('')
             setEmail('')
             setAddress('')

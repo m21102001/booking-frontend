@@ -56,6 +56,7 @@ import {
   UpdateCourse,
   CreateNewVideo,
   UpdatePlaylistDevelopment,
+  UpdateFAQDash,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -331,6 +332,13 @@ const Routers = () => {
             element={
               <Protect path="dash" protect role={allowed?.role}>
                 <CreateFAQDash />
+              </Protect>
+            } />
+          <Route
+            path="/dash/frequently-asked-questions/frequently-asked-questions-update/:id"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdateFAQDash />
               </Protect>
             } />
           <Route

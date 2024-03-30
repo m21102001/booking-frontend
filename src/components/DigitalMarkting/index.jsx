@@ -16,13 +16,13 @@ const DigitalMarkting = () => {
       <div className='m-auto d-flex justify-center'>
         <>
           <div className="container gold-dash">
-            <div className={styles['home-grid']} style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(370px, 1fr))', gap: '90px' }}>
+            <div className={styles['home-grid']} >
               {explorecourse?.map((item, index) => (
                 index < 3 ? (
                   <div key={index} className={styles['gold-div']} >
                     <div>
                       <LazyLoadImage
-                        src={item?.image}
+                        src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                         alt={item?.title}
                       />
                     </div>

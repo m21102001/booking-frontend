@@ -3,7 +3,6 @@ import { Navigate, NavLink } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { TbLogout } from 'react-icons/tb';
-import { PiFlagFill } from 'react-icons/pi';
 import { FaMessage } from 'react-icons/fa6';
 import { FaTicketAlt, FaUsers } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -60,7 +59,7 @@ function SidebarDashboard() {
               <LazyLoadImage
                 src={logo}
                 effect="blur"
-                alt=""
+                alt="سايس الابتكار"
                 width={180}
                 height={64}
                 style={{ borderRadius: '10px' }}

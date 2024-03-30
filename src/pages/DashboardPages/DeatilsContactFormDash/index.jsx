@@ -98,7 +98,7 @@ const DeatilsContactFormDash = () => {
                         <p className="mb-0">الوقت</p>
                       </div>
                       <div className="col-sm-9">
-                        <p className="text-muted mb-0">{courses?.createdAt}</p>
+                        <p className="text-muted mb-0">{courses?.createdAt?.slice(11,16)}/ {courses?.createdAt?.slice(0,10)}</p>
                       </div>
                     </div>
                   </div>

@@ -2,16 +2,16 @@ import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios"
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom";
-// import { useAuth } from "@/context/Auth";
+import { useAuth } from "@/context/Auth";
 import { DownloadTableExcel } from 'react-export-table-to-excel';
 const CoursesDash = () => {
   const [loading, setLoading] = useState(false)
   const [playlists, setPlaylists] = useState([])
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const tableRef = useRef(null);
   useEffect(() => {
     setLoading(true);
-    // if (user.role == 'manager') {
+    if (user.role == 'manager') {
       axios.get('courses')
         .then((response) => {
           setLoading(false)
@@ -21,7 +21,7 @@ const CoursesDash = () => {
           setLoading(false);
           console.log(error);
         });
-    // }
+    }
   }, [])
 
   const handelDelete = async (id) => {

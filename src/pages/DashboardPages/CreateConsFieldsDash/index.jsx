@@ -67,7 +67,7 @@ const CreateConsFieldsDash = () => {
             </button>
           )}
           {isPending && (
-            <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-outline-primary mb-4">
+            <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-outline-primary mb-4" disabled>
               جاري الاضافة ...
             </button>
           )}

@@ -73,13 +73,13 @@ const Investment = () => {
                     <div className={styles['gold-div']}>
                       <div className='title-card'>
                         <LazyLoadImage
-                            src={`${import.meta.env.VITE_IMAGE_URL}${item.images}`}
+                          src={`${import.meta.env.VITE_IMAGE_URL}${item.images}`}
                           alt={item?.title}
                           loading='lazy'
                         />
                         <div className="news-date">
                           <label className="mx-2"> {item?.createdAt?.split('T', 1)} </label>/
-                          <label className="news-date-time mx-2">{item?.createdAt?.slice(11,16)}</label>
+                          <label className="news-date-time mx-2">{item?.createdAt?.slice(11, 16)}</label>
                         </div>
                       </div>
                       <div>

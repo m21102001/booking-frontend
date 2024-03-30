@@ -4,6 +4,7 @@ import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios";
 import { useAuth } from "@/context/Auth";
 import { DownloadTableExcel } from 'react-export-table-to-excel';
+import { toast } from 'react-toastify'
 
 const FAQ = () => {
   const [loading, setLoading] = useState(false);
@@ -51,6 +52,26 @@ const FAQ = () => {
         });
     }
   }, []);
+console.log(allUser);
+  const handelDelete = async (id) => {
+    try {
+      setLoading(true);
+      await axios
+        .delete(`questions/${id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          axios.get(`questions`);
+          toast.success('تم حذف السؤال بنجاح')
+        });
+    } catch (error) {
+      setLoading(false);
+      toast.error('حدث خطأ اثناء الحذف')
+      console.log(error);
+    }
+  };
   const tableRef = useRef(null);
   return (
     <div className="dashboard d-flex flex-row">
@@ -94,16 +115,14 @@ const FAQ = () => {
                       <button className="btn btn-outline-info mx-2 px-4">تفاصيل</button>
                     </Link>
                     <Link
-                      to={`/dash/mentors/mentor-update/${item?._id}`}
+                      to={`/dash/frequently-asked-questions/frequently-asked-questions-update/${item?._id}`}
                       state={{ item }}
                     >
                       <button className="btn btn-outline-success mx-2 px-4">تعديل</button>
                     </Link>
                     <Link
-                      to={`/dash/mentors/mentor-update/${item?._id}`}
-                      state={{ item }}
                     >
-                      <button className="btn btn-outline-danger mx-2 px-4">حذف</button>
+                      <button className="btn btn-outline-danger mx-2 px-4" onClick={() => (handelDelete(item?._id))}>حذف</button>
                     </Link>
                   </td>
                 </tr>

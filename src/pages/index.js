@@ -38,6 +38,7 @@ export { default as AllMentorsmDash } from './DashboardPages/AllMentorsmDash';
 export { default as VerifyEmailCode } from './Authentication/VerifyEmailCode';
 export { default as ConsaultStoreItem } from './Consaultant/ConsaultStoreItem';
 export { default as CreateReservationTicket } from './CreateReservationTicket';
+export { default as UpdateFAQDash } from './UpdateFAQDash';
 export { default as CreateVideosDash } from './DashboardPages/CreateVideosDash';
 export { default as UpdateVideosDash } from './DashboardPages/UpdateVideosDash';
 export { default as DetailsVideosDash } from './DashboardPages/DetailsVideosDash';

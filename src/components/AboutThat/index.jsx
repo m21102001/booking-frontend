@@ -19,7 +19,7 @@ const AboutThat = () => {
               {aboutthats?.map((item, index) => (
                 <div key={index} className="card mx-3 mb-3 card-border">
                   <LazyLoadImage
-                    src={item?.image}
+                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                     className="card-img-top image-card "
                     alt={item.title}
                   />

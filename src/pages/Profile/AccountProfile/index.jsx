@@ -358,8 +358,7 @@ const AccountProfile = () => {
                             className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"
                           >
                             <LazyLoadImage
-                              src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                              // src={item?.image}
+                              src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                               alt={item?.title}
                               className="w-100 rounded-3"
                             />
@@ -427,8 +426,7 @@ const AccountProfile = () => {
                               className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"
                             >
                               <LazyLoadImage
-                                src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                                // src={item?.image}
+                                src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                                 alt={item?.title}
                                 className="w-100 rounded-3"
                               />

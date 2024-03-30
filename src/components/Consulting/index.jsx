@@ -28,7 +28,11 @@ const Consulting = () => {
                       <Link
                         to={'/auth/reservation-ticket'}
                         key={index} className="col-md-5 col-sm-12 mx-3 mb-5 p-0 card">
-                        <LazyLoadImage src={item?.image} className="card-img-top" alt={item?.alt} />
+                        <LazyLoadImage
+                          src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                          className="card-img-top"
+                          alt={item?.alt}
+                        />
                         <div className="card-body">
                           <h5 className="card-title">{item?.title}</h5>
                           <p className="card-text">{item?.desc}</p>
