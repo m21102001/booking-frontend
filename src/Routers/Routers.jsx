@@ -53,6 +53,9 @@ import {
   CreateHonorBoard,
   UpdateHonorBoard,
   CreateNewCourse,
+  UpdateCourse,
+  CreateNewVideo,
+  UpdatePlaylistDevelopment,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -99,9 +102,11 @@ const Routers = () => {
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/consault-store-item/course-detalis/:id" element={<DetailsPlaylistDevelopment />} />
-          <Route path="/courses/course-details" element={<CourseDetails />} />
+          <Route path="/consault-store-item/update-course-detalis/:id" element={<UpdatePlaylistDevelopment />} />
+          <Route path="/development/details-video/:id" element={<CourseDetails />} />
+          <Route path="/development/update-video/:id" element={<UpdateCourse />} />
+          <Route path="/development/create-video" element={<CreateNewVideo />} />
           <Route path="/courses/course-update" element={<CourseUpdate />} />
-
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />

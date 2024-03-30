@@ -12,6 +12,7 @@ const AccountProfile = () => {
   const { user } = useAuth();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [consultation, setConsultation] = useState([])
   useEffect(() => {
     setLoading(true);
     axios
@@ -26,8 +27,41 @@ const AccountProfile = () => {
       });
   }, []);
 
-  console.log('user', user);
 
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`cons-tickets/mentor/${user?._id}`)
+      .then((response) => {
+        setLoading(false)
+        setConsultation(response.data)
+        // console.log('consultation', response.data);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+
+  }, [])
+  const handelDelete = async (id) => {
+    setLoading(true);
+    await axios
+      .delete(`courses/${id}`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      .then((response) => {
+        axios.get('/courses/').then((response) => {
+          setConsultation(response.data)
+          setLoading(false);
+          console.log(response.data);
+        });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
   return (
     <>
       {loading && <div className="loading"></div>}
@@ -198,7 +232,7 @@ const AccountProfile = () => {
                       </div>
                     </section>
                   </div>
-                  {user?.role != 'user' ? (
+                  {user?.role == 'mentor' ? (
                     <>
                       <div className="d-flex justify-content-between align-items-center mb-4">
                         <p className="lead fw-normal mb-0">
@@ -219,132 +253,203 @@ const AccountProfile = () => {
                           >
                             انشاء استشارة جديدة
                           </Link>
-
                         </p>
                       </div>
                       <div className=" row g-2">
                         <div className="container text-center pt-5">
-                          {/* {!loading && consultation?.data?.map((item, index) => ( */}
-                          <Link
-                            // to={`/auth/shop`}
-                            to={`/auth/reservation-ticket`}
-                            // state={{ item }}
-                            // key={index}
-                            className="row row-striped shadow-lg p-3 mb-5 bg-body rounded"
-                          >
-                            <div className="col-2 text-right">
-                              <h1 className="display-4">
-                                <span className="badge badge-secondary date">
-                                  {/* {item?.day?.slice(8, 10)} */}
-                                  08
-                                </span>
-                              </h1>
-                              <h2>
-                                {/* {item?.day?.slice(5, 7)} */}
-                                12
-                              </h2>
-                            </div>
-                            <div className="col-10 fs-4 text-end">
-                              <div className="mb-3 d-flex justify-content-between align-items-start">
-                                <h3 className="text-uppercase">
-                                  <strong>
-                                    {/* {item?.title}*/} مثال للاستشارات المتاحة
-                                  </strong>
-                                </h3>
-                                <button
-                                  type="button"
-                                  className="btn btn-success"
-                                >
-                                  ادفع الان
-                                </button>
-                              </div>
-                              <ul className="list-inline">
-                                <li className="list-inline-item mx-3">
-                                  <FaClock
-                                    size={30}
-                                    color={'var(--gold-color)'}
-                                  />
-                                  {/* {item?.startDate} */}
-                                  17:10
-                                </li>
-                                <li className="list-inline-item mx-3">
-                                  <MdTimer
-                                    size={30}
-                                    color={'var(--gold-color)'}
-                                  />
-                                  {/* {item?.duration}  */}
-                                  44 دقيقه
-                                </li>
-                                <li className="list-inline-item mx-3">
-                                  <ImLocation2 size={30} color={'blue'} />
-                                  {/* {item?.type} */}
-                                  حضورية
-                                </li>
-                              </ul>
-                              <ul className="list-inline">
-                                <li className="list-inline-item mx-3">
-                                  <FaMoneyBillAlt size={30} color={'#198754'} />
-                                  {/* {item?.price} */}
-                                  50 جنية
-                                </li>
-                              </ul>
-                            </div>
-                          </Link>
-                          {/* ))} */}
-                          {/* <h3 className="fw-bold text-center">سيتم عرض التذاكر عندما تكون متاحة</h3> */}
+                          {!loading && consultation?.data?.map((item, index) => (
+                            index < 3 ? (
+
+                              <Link
+                                // to={`/auth/shop`}
+                                to={`/auth/reservation-ticket`}
+                                state={{ item }}
+                                key={index}
+                                className="row row-striped shadow-lg p-3 mb-5 bg-body rounded"
+                              >
+                                <div className="col-2 text-right">
+                                  <h1 className="display-4">
+                                    <span className="badge badge-secondary date">
+                                      {item?.day?.slice(8, 10)}
+                                    </span>
+                                  </h1>
+                                  <h2>
+                                    {item?.day?.slice(5, 7)}
+                                  </h2>
+                                </div>
+                                <div className="col-10 fs-4 text-end">
+                                  <div className="mb-3 d-flex justify-content-between align-items-start">
+                                    <h3 className="text-uppercase">
+                                      <strong>
+                                        {item?.title}
+                                      </strong>
+                                    </h3>
+                                    <button
+                                      type="button"
+                                      className="btn btn-success"
+                                    >
+                                      ادفع الان
+                                    </button>
+                                  </div>
+                                  <ul className="list-inline">
+                                    <li className="list-inline-item mx-3">
+                                      <FaClock
+                                        size={30}
+                                        color={'var(--gold-color)'}
+                                      />
+                                      {item?.startDate}
+                                    </li>
+                                    <li className="list-inline-item mx-3">
+                                      <MdTimer
+                                        size={30}
+                                        color={'var(--gold-color)'}
+                                      />
+                                      {item?.duration}
+                                      دقيقة
+                                    </li>
+                                    <li className="list-inline-item mx-3">
+                                      <ImLocation2 size={30} color={'blue'} />
+                                      {item?.type}
+                                    </li>
+                                  </ul>
+                                  <ul className="list-inline">
+                                    <li className="list-inline-item mx-3">
+                                      <FaMoneyBillAlt size={30} color={'#198754'} />
+                                      {item?.price}
+                                      جنية
+                                    </li>
+                                  </ul>
+                                </div>
+                              </Link>
+                            ) : null
+                          ))}
                         </div>
                       </div>
                     </>
                   ) : null}
-                  <div className="d-flex justify-content-between align-items-center mb-4">
-                    <p className="lead fw-normal mb-0">الكورسات الاخيرة</p>
-                    <p className="mb-0">
-                      <a href="#!" className="text-muted">
-                        الكل
-                      </a>
-                    </p>
-                    <p>
-                      <Link
-                        to={'/auth/create-new-course'}
-                        className="text-muted"
-                      >
-                        انشاء كورس جديد
-                      </Link>
+                  {user?.role == 'mentor' ? (
+                    <>
+                      <div className="d-flex justify-content-between align-items-center mb-4">
+                        <p className="lead fw-normal mb-0">كورساتى </p>
+                        {/* <p className="mb-0">
+                          <a href="#!" className="text-muted">
+                            الكل
+                          </a>
+                        </p> */}
+                        <p>
+                          <Link
+                            to={'/auth/create-new-course'}
+                            className="text-muted"
+                          >
+                            انشاء كورس جديد
+                          </Link>
 
-                    </p>
-                  </div>
-                  <div className=" row g-2">
-                    {courses?.document?.map((item, index) => (
-                      <div
-                        key={index}
-                        className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"
-                      >
-                        <LazyLoadImage
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                          // src={item?.image}
-                          alt={item?.title}
-                          className="w-100 rounded-3"
-                        />
-                        <h4 className="mt-n1 my-3 fw-semibold">
-                          {item?.title}
-                        </h4>
-                        <p className="fw-semibold">
-                          سعر الكورس{' '}
-                          <span className="text-danger">{item?.price}</span>{' '}
-                          جنية
                         </p>
-                        <Link
-                          to={`/consault-store-item/course-detalis/${item?._id}`}
-                          state={{ item }}
-                          className="d-grid gap-2"
-                        >
-                          <button className="btn btn-primary" type="button">
-                            تفاصيل
-                          </button>
-                        </Link>
                       </div>
-                    ))}
-                  </div>
+                      <div className=" row g-2">
+                        {courses?.document?.map((item, index) => (
+                          <div
+                            key={index}
+                            className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"
+                          >
+                            <LazyLoadImage
+                              src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                              // src={item?.image}
+                              alt={item?.title}
+                              className="w-100 rounded-3"
+                            />
+                            <h4 className="mt-n1 my-3 fw-semibold">
+                              {item?.title}
+                            </h4>
+                            <p className="fw-semibold">
+                              سعر الكورس{' '}
+                              <span className="text-danger">{item?.price}</span>{' '}
+                              جنية
+                            </p>
+                            <Link
+                              to={`/consault-store-item/course-detalis/${item?._id}`}
+                              state={{ item }}
+                              className="d-grid gap-2 mb-3"
+                            >
+                              <button className="btn btn-primary" type="button">
+                                تفاصيل
+                              </button>
+                            </Link>
+                            <Link
+                              to={`/consault-store-item/update-course-detalis/${item?._id}`}
+                              state={{ item }}
+                              className="d-grid gap-2 mb-3 "
+                            >
+                              <button
+                                className="btn btn-info"
+                                type="button"
+                              >
+                                تعديل
+                              </button>
+                            </Link>
+                            <Link
+                              className="d-grid gap-2"
+                            >
+                              <button
+                                className="btn btn-danger"
+                                type="button"
+                                onClick={() => handelDelete(item._id)}
+                              >
+                                حذف
+                              </button>
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    user?.role == 'user' ? (
+                      <>
+                        <div className="d-flex justify-content-between align-items-center mb-4">
+                          <p className="lead fw-normal mb-0">الكورسات تم شرائها</p>
+                          <p className="mb-0">
+                            <a href="#!" className="text-muted">
+                              الكل
+                            </a>
+                          </p>
+                          <p>
+                          </p>
+                        </div>
+                        <div className=" row g-2">
+                          {courses?.document?.map((item, index) => (
+                            <div
+                              key={index}
+                              className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"
+                            >
+                              <LazyLoadImage
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                                // src={item?.image}
+                                alt={item?.title}
+                                className="w-100 rounded-3"
+                              />
+                              <h4 className="mt-n1 my-3 fw-semibold">
+                                {item?.title}
+                              </h4>
+                              <p className="fw-semibold">
+                                سعر الكورس{' '}
+                                <span className="text-danger">{item?.price}</span>{' '}
+                                جنية
+                              </p>
+                              <Link
+                                to={`/consault-store-item/course-detalis/${item?._id}`}
+                                state={{ item }}
+                                className="d-grid gap-2"
+                              >
+                                <button className="btn btn-primary" type="button">
+                                  تفاصيل
+                                </button>
+                              </Link>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    ) : null
+                  )}
                 </div>
               </div>
             </div>

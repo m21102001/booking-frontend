@@ -61,7 +61,7 @@ const ReservationTicket = () => {
             </div>
           </Link>
         ))}
-        <h3 className="fw-bold text-center">سيتم عرض التذاكر عندما تكون متاحة</h3>
+        {/* <h3 className="fw-bold text-center">سيتم عرض التذاكر عندما تكون متاحة</h3> */}
       </div>
       <Footer />
     </div>

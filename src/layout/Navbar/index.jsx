@@ -6,7 +6,7 @@ import axios from '@/api/axios';
 import { useState } from 'react';
 
 const Navbar = () => {
-  const { setRole, setuser, setLoggedin, Loggedin } = useAuth();
+  const { setRole, setuser, setLoggedin, Loggedin, user } = useAuth();
   const handelLogout = async () => {
     try {
       await axios.post('auth/logout', {
@@ -116,7 +116,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            {Loggedin == false ? (
+            {user == undefined ? (
               <div className="d-flex text-light">
                 <Link to={'/auth/login'}>
                   <button

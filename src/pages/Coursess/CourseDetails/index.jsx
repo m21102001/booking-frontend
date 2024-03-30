@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SidebarDashboard } from '@/layout';
+import { Footer, Navbar } from '@/layout';
+import styles from '@/components/GoldCard/GoldCard.module.scss';
 import axios from '@/api/axios';
-import { MdOutlineArrowBack } from 'react-icons/md';
 import ReactPlayer from 'react-player/lazy';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { toast } from 'react-toastify';
+import { useAuth } from '@/context/Auth';
 
 const CourseDetails = () => {
   const item = useLocation()?.state?.item;
+  const { user } = useAuth()
   const [loading, setLoading] = useState(false);
   const [videosPlaylist, setVideosPlaylist] = useState([]);
 
@@ -19,148 +21,154 @@ const CourseDetails = () => {
       .then((response) => {
         setLoading(false);
         setVideosPlaylist(response.data);
-        // console.log(response);
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
       });
   }, []);
+  console.log('playlist', videosPlaylist);
   const handelDelete = async (id) => {
-    setLoading(true);
-    console.log('id', id);
-    await axios
-      .delete(`videos/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((response) => {
-        axios.get(`courses/${item?._id}`);
-        console.log('bb', response);
-      });
-    toast.error('تم حذف الفيديو بنجاح').catch((error) => {
+    try {
+      setLoading(true);
+      await axios
+        .delete(`videos/${id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          axios.get(`courses/${item?._id}`);
+          toast.success('تم حذف الفيديو بنجاح')
+        });
+    } catch (error) {
       setLoading(false);
+      toast.error('حدث خطأ اثناء الحذف')
       console.log(error);
-    });
+    }
   };
 
   return (
-    <div className="dashboard d-flex flex-row">
-      <SidebarDashboard />
-      <div className="container text-center">
-        <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className="fs-1 fw-bold">تفاصيل الكورس</h2>
-        </div>
-        <div className="d-flex justify-content-between align-items-center">
-          <Link to="/dash/create-video-item" state={{ item: item }}>
-            <button
-              type="button"
-              className="btn btn-primary d-block m-3"
-              style={{ padding: '7px 6rem' }}
-            >
-              اضافة فيديو جديد
-            </button>
-          </Link>
-          <Link to={'/dash/courses'} className="mb-3 d-flex flex-row-reverse">
-            <button type="butto" className="fw-bold fs-5 back-details-button">
-              <MdOutlineArrowBack size={30} />
-            </button>
-          </Link>
-        </div>
-        <section style={{ backgroundColor: '#eee' }}>
-          <div className="container py-5">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="card mb-4">
+    <>
+      <Navbar />
+      <section style={{ backgroundColor: "var(--darkblue-color)", paddingTop: '2rem' }}>
+        {/* <button onClick={() => navigate(`/development/details-playlist/${item?._id}`)} type="button" className="btn btn-primary px-5 ms-5">رجوع </button> */}
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="card mb-4">
+                {item?.url == null ? (
                   <LazyLoadImage
                     src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                    className="card-img-top"
                     alt={item?.title}
                   />
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="mb-0">عنوان الفيديو</p>
-                      </div>
-                      <div className="col-sm-9">
-                        <p className="text-muted mb-0">{item?.title}</p>
-                      </div>
+                ) : (
+                  <ReactPlayer
+                    url={item?.url}
+                    config={{
+                      youtube: {
+                        playerVars: { showinfo: 1 }
+                      },
+                    }}
+                    controls
+                    width='100%'
+                    height='70vh'
+                  />
+                )}
+                <div className="card-body text-end">
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <p className="mb-0">عنوان الفيديو</p>
                     </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="mb-0">السعر </p>
-                      </div>
-                      <div className="col-sm-9">
-                        <p className="text-muted mb-0">{item?.price}جنية</p>
-                      </div>
+                    <div className="col-sm-9">
+                      <p className="text-muted mb-0">{item?.title}</p>
                     </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="mb-0">الوصف </p>
-                      </div>
-                      <div className="col-sm-9">
-                        <p className="text-muted mb-0">{item?.description}</p>
-                      </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <p className="mb-0">وصف الفيديو</p>
+                    </div>
+                    <div className="col-sm-9">
+                      <p className={`text-muted mb-0`}>{item?.description}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <p className="mb-0">تاريخ الاضافة </p>
+                    </div>
+                    <div className="col-sm-9">
+                      <p className="text-muted mb-0">{item?.createdAt?.split('T', 1)}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <div className="d-flex flex-wrap justify-content-evenly mt-5">
-          {!loading &&
-            videosPlaylist?.videos?.map((item, index) => (
-              <Link
-                key={index}
-                className="card mb-5"
-                style={{ width: '18rem' }}
-              >
-                <ReactPlayer
-                  url={item?.url}
-                  config={{
-                    youtube: {
-                      playerVars: { showinfo: 1 },
-                    },
-                  }}
-                  width="100%"
-                  height="100%"
-                />
-                <div className="card-body">
-                  <h5 className="card-title fw-bold ">{item?.title}</h5>
-                  <div className="d-flex flex-column">
-                    <div className="d-flex justify-content-around mt-3">
-                      <Link
-                        to={`/dash/details-videos/${item._id}`}
-                        state={{ item: item }}
-                      >
-                        <button className="btn btn-primary px-4">تفاصيل</button>
-                      </Link>
-                      <Link
-                        to={`/dash/update-videos/${item._id}`}
-                        state={{ item: item }}
-                      >
-                        <button className="btn btn-info px-4">تعديل</button>
-                      </Link>
+        </div>
+      </section>
+      <div className='coursers-open goldNews py-5'>
+        <div className='m-auto d-flex justify-content-center mb-5'>
+          <span style={{ zIndex: "0", backgroundColor: "#f8d25c", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+          <h2 className='text-center comunation fs-1 fw-bold'>  فديوهات  القائمة </h2>
+          <span style={{ zIndex: "0", backgroundColor: "#f8d25c", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+        </div>
+        <div className='m-auto d-flex justify-center'>
+          <>
+            <div className="container ">
+              <div className={styles['home-grid']} style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', padding: '0' }}>
+                {!loading && videosPlaylist?.videos?.map((item, index) => (
+                  <div
+                    key={index}
+                    className={styles['gold-div']} style={{ height: '570px' }}>
+                    <div className="p-0">
+                      <ReactPlayer
+                        url={item?.url}
+                        config={{
+                          youtube: {
+                            playerVars: { showinfo: 1 }
+                          },
+                        }}
+                        width='-webkit-fill-available'
+                        height={'350px'}
+                      />
                     </div>
-                    <div className="d-flex justify-content-around mt-3">
-                      <button
-                        onClick={() => handelDelete(item._id)}
-                        className="btn btn-danger px-4"
+                    <div className=''>
+                      <h3 className=' fw-700'>{item.title}</h3>
+                      <Link
+                        to={`/development/details-video/${item?._id}`}
+                        state={{ item: item }}
+                        onClick={window.scrollTo(0, 0)}
                       >
-                        حذف
-                      </button>
+                        <button>شاهد الان </button>
+                      </Link>
+                      {user?.role == 'mentor' ? (
+                        <>
+                          <Link
+                            to={`/development/update-video/${item?._id}`}
+                            state={{ item: item }}
+                          // onClick={window.scrollTo(0, 0)}
+                          >
+                            <button className='btn btn-info'> تعديل </button>
+                          </Link>
+                          <Link
+                            onClick={() => (handelDelete(item._id))}
+                          >
+                            <button className='btn btn-danger'> حذف </button>
+                          </Link>
+                        </>
+                      ) : null}
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                ))}
+              </div>
+            </div>
+          </>
         </div>
-      </div>
-    </div>
+      </div >
+      <Footer />
+    </>
   );
 };
 

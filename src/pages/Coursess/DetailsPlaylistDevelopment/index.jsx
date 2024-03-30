@@ -3,10 +3,12 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { Footer, Navbar } from "@/layout"
 import axios from "@/api/axios";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { authenticated } from "@/context/Auth";
+import { authenticated, useAuth } from "@/context/Auth";
+import { MdOutlineArrowBack } from "react-icons/md";
 
 const DetailsPlaylistDevelopment = () => {
   const authed = authenticated()
+  const { user } = useAuth()
   const item = useLocation()?.state?.item
   const id = useParams().id;
   const [loading, setLoading] = useState(false);
@@ -57,10 +59,16 @@ const DetailsPlaylistDevelopment = () => {
   return (
     <div style={{ backgroundColor: "var(--darkblue-color)" }}>
       <Navbar />
-      {/* <Link to={'/development'} className='mb-3 d-flex flex-row-reverse'>
-        <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 back-details-button"
-        ><MdOutlineArrowBack size={30} /></button>
-      </Link> */}
+      <div className="d-flex justify-content-between mx-4" >
+        <Link to={'/development/create-video'} state={{item}} className='mb-3 d-flex flex-row-reverse'>
+          <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 px-3 back-details-button"
+          >اضافة فيديو</button>
+        </Link>
+        <Link to={'/auth/profile'} className='mb-3 d-flex flex-row-reverse'>
+          <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 back-details-button"
+          ><MdOutlineArrowBack size={30} /></button>
+        </Link>
+      </div>
       <div className="row align-items-start m-auto" style={{ backgroundColor: "var(--darkblue-color)" }}>
         <div className='m-auto d-flex justify-center'>
           <>
@@ -111,33 +119,39 @@ const DetailsPlaylistDevelopment = () => {
                             <div className="col-sm-3">
                               <p className="mb-0">  مشاهده الفيديوهات</p>
                             </div>
-                            {authed == true ? (
+                            {authed == false ? (
                               <Link
                                 className="col-sm-9"
-                              // to={`/auth/login`}
+                                to={`/auth/login`}
                               >
                                 <button className="text-light fs-3 px-2">شراء الكورس</button>
                               </Link>
                             ) : (
-
-                              <div className="col-sm-9">
-                                {!loading && payment.data == undefined && pay != 401 && authed == true ? (
-                                  <Link
-                                    to={`/development/details-video/${course?._id}`}
-                                    state={{ course, item }}
-                                  >مشاهده الفيديوهات</Link>
-                                ) : (
-                                  <button>
-                                    <a
-                                      className="text-light fs-3 px-2"
-                                      href={payment?.data}
-                                      target="_blank"
-                                      rel="noreferrer">
-                                      شراء الكورس
-                                    </a>
-                                  </button>
-                                )}
-                              </div>
+                              user?.role != 'mentor' ? (
+                                <div className="col-sm-9">
+                                  {!loading && payment.data == undefined && pay != 401 && authed == true ? (
+                                    <Link
+                                      to={`/development/details-video/${course?._id}`}
+                                      state={{ course, item }}
+                                    >مشاهده الفيديوهات</Link>
+                                  ) : (
+                                    <button>
+                                      <a
+                                        className="text-light fs-3 px-2"
+                                        href={payment?.data}
+                                        target="_blank"
+                                        rel="noreferrer">
+                                        شراء الكورس
+                                      </a>
+                                    </button>
+                                  )}
+                                </div>
+                              ) : (
+                                <Link
+                                  to={`/development/details-video/${item?._id}`}
+                                  state={{ course, item }}
+                                >مشاهده الفيديوهات</Link>
+                              )
                             )}
                           </div>
                         </div>
@@ -180,9 +194,9 @@ const DetailsPlaylistDevelopment = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
       <Footer />
-    </div>
+    </div >
   )
 }
 
