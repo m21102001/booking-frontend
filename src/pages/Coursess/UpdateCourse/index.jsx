@@ -5,9 +5,9 @@ import { toast } from "react-toastify"
 const UpdateCourse = () => {
   const item = useLocation()?.state?.item
   const [isPending, setIsPending] = useState(false)
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [url, setUrl] = useState('')
+  const [title, setTitle] = useState(item?.title)
+  const [description, setDescription] = useState(item?.description)
+  const [url, setUrl] = useState(item?.url)
 
   const hanelSubmit = async (e) => {
     e.preventDefault();

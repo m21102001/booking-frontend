@@ -3,7 +3,7 @@ import "./ServicesIncluded.scss"
 const ServicesIncluded = () => {
   return (
     <div className="Container ServicesIncluded" id="consalt">
-      <h2 className="services">خدماتنا :</h2>
+      <h2 className="services text-center">خدماتنا </h2>
       <div className="services-card d-flex flex-column flex-wrap ">
         {services?.map((item, index) => (
           index < 4 ? (

@@ -103,7 +103,7 @@ const Footer = () => {
               data-mdb-ripple-init
               className="btn text-white btn-floating m-1"
               style={{ backgroundColor: " #dd4b39" }}
-              href="https://www.tiktok.com/@dgeclub1?_t=8jpHe6&_r=1"
+              href="https://www.tiktok.com/"
               role="button"
             ><FaTiktok /></a>
 
@@ -111,7 +111,7 @@ const Footer = () => {
               data-mdb-ripple-init
               className="btn text-white btn-floating m-1"
               style={{ backgroundColor: " #ac2bac" }}
-              href="https://www.instagram.com/kanzbaek/"
+              href="https://www.instagram.com/"
               role="button"
             ><FaInstagram /></a>
           </section>

@@ -21,7 +21,7 @@ const Home = () => {
       <CoursesOpen />
       <GoldCard />
       <DigitalMarkting />
-      <StartElectronicEcommerce />
+      {/* <StartElectronicEcommerce /> */}
       <ServicesIncluded />
       <WhyKambridage />
       <AboutThat />

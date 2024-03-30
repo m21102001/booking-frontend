@@ -28,39 +28,37 @@ const QuestionAnswer = () => {
       <section className="bacground-color-darkblue">
         <div className='m-auto d-flex justify-content-center py-5'>
           <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
-          <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}>احدث الاسئلة المنشورة</h2>
+          <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}>الاسئلة الشائعة</h2>
           <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
         </div>
         <div className="container pb-5">
           <div className="row d-flex justify-content-center">
             <div className="col-md-12 col-lg-10 col-xl-8">
               <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-start align-items-center">
-                    <img className="rounded-circle shadow-1-strong ms-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
-                      height="60" />
-                    <div>
-                      <h6 className="fw-bold text-primary text-end mb-1">محمد احمد</h6>
-                      <p className="text-muted small mb-0">
-                        22/10/2024
+                {!loading && allUser?.document?.map((item, index) => (
+                  <div key={index} className="card-body">
+                    <div className="d-flex flex-start align-items-center">
+                      <div className="fs-1 p-3 m-3 bg-danger shadow p-3 mb-5 rounded">س</div>
+                      <p className="pb-2 text-end">
+                        {item?.title}
                       </p>
                     </div>
+                    <div className="d-flex flex-start align-items-center">
+                      <div className="fs-1 p-3 m-3 px-4 bg-success shadow p-3 mb-5 rounded">ج</div>
+                      <p className="pb-2 text-end">
+                        {item?.answer}
+                      </p>
+                    </div>
+                    <hr />
                   </div>
-                  <p className="mt-3 mb-4 pb-2 text-end">
-                    عند الانتهاء من العمل وتسليمه كاملاً يمكنك الضغط على زر تسليم الخدمة. إذا لم يكن لدى المشتري أي ملاحظات
-                    أو تعديلات سيقوم بالموافقة على طلب التسليم وينتقل رصيد الخدمة إلى حسابك في خمسات،
-                    ثم يمكنك سحبه إلى حسابك في باي بال أو الحسال البنكي من خلال الخطوات الموضحة في مقالة
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-
       </section >
       {/* commen question */}
-      <section className="bacground-color-darkblue">
+      {/* <section className="bacground-color-darkblue">
         <div className='m-auto d-flex justify-content-center py-5'>
           <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
           <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}>الاسئلة الشائعة</h2>
@@ -90,7 +88,7 @@ const QuestionAnswer = () => {
             </div>
           </div>
         </div>
-      </section >
+      </section > */}
       <Footer />
     </>
   )

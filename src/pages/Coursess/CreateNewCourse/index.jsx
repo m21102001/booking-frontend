@@ -32,7 +32,7 @@ const CreateNewCourse = () => {
         )
         .then((response) => {
           // console.log('created success', response);
-          toast.success("تم اضافة كورس بنجاح بنجاح")
+          toast.success("تم اضافة كورس جديد بنجاح")
           setTitle('')
           setPrice('')
           setImage('')
@@ -41,8 +41,8 @@ const CreateNewCourse = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
+      toast.error("خطأ اثناء انشاء الكورس")
       console.log('response', err.response);
-      // console.log('message', err.message);
     }
   };
   return (
@@ -104,7 +104,7 @@ const CreateNewCourse = () => {
 
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mb-4">
-              اضافة تذكرة جديد
+              اضافة كورس جديد
             </button>
           )}
           {isPending && (

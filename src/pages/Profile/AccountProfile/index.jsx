@@ -144,19 +144,24 @@ const AccountProfile = () => {
                                   </div>
                                 </div>
                                 <hr />
-                                <div className="row">
-                                  <div className="col-sm-3">
-                                    <p className="mb-0">رقم الهاتف</p>
-                                  </div>
-                                  <div className="col-sm-9">
-                                    <p className="text-muted mb-0">
-                                      {user?.phone
-                                        ? user?.phone
-                                        : 'رقم الهاتف غير موجود'}
-                                    </p>
-                                  </div>
-                                </div>
-                                <hr />
+                                {user?.role == 'mentor' ? (
+                                  <>
+                                    <div className="row">
+                                      <div className="col-sm-3">
+                                        <p className="mb-0">رقم الهاتف</p>
+                                      </div>
+
+                                      <div className="col-sm-9">
+                                        <p className="text-muted mb-0">
+                                          {user?.phone
+                                            ? user?.phone
+                                            : 'رقم الهاتف غير موجود'}
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <hr />
+                                  </>
+                                ) : null}
                                 <div className="row">
                                   <div className="col-sm-3">
                                     <p className="mb-0">العضوية </p>
@@ -169,7 +174,7 @@ const AccountProfile = () => {
                                     </p>
                                   </div>
                                 </div>
-                                {user?.active == true ? (
+                                {/* {user?.active == true ? (
                                   <>
                                     <hr />
                                     <div className="row">
@@ -214,9 +219,9 @@ const AccountProfile = () => {
                                         </p>
                                       </div>
                                     </div>
-                                    {/* <hr /> */}
+                                    <hr />
                                   </>
-                                ) : null}
+                                ) : null} */}
                                 {/* <div className="row">
                                   <div className="col-sm-3">
                                     <p className="mb-0">محفظتى</p>
