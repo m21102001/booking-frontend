@@ -111,12 +111,12 @@ const UpdatePlaylistDevelopment = () => {
           />
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mt-3">
-              اضافة جديد
+              تعديل 
             </button>
           )}
           {isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-outline-primary mt-3">
-              جاري الاضافة ...
+              جاري التعديل ...
             </button>
           )}
           <button onClick={() => navigate('/dash/courses')} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mt-3">
