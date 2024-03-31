@@ -4,7 +4,7 @@ import { whyCambridag } from "@/db/data";
 const WhyKambridage = () => {
   return (
     <div className="Container ServicesIncluded why-kambridage">
-      <h2 className="services">لماذا سايس الإبتكار ؟</h2>
+      <h2 className="services text-center">لماذا سايس الإبتكار ؟</h2>
       <div className="container text-center column">
         <div className="row">
           {whyCambridag?.map((item, index) => (

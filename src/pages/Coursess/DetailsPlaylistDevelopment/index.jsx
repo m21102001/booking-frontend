@@ -5,7 +5,7 @@ import axios from "@/api/axios";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { authenticated, useAuth } from "@/context/Auth";
 import { MdOutlineArrowBack } from "react-icons/md";
-
+import { toast } from "react-toastify";
 const DetailsPlaylistDevelopment = () => {
   const authed = authenticated()
   const { user } = useAuth()
@@ -16,6 +16,8 @@ const DetailsPlaylistDevelopment = () => {
   const [payment, setPayment] = useState([])
   const [pay, setPay] = useState([])
   const [course, setcourse] = useState()
+  const [message, setMessage] = useState()
+  const [comment, setComment] = useState([])
 
   useEffect(() => {
     setLoading(true);
@@ -42,6 +44,7 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status)
       });
   }, []);
+
   useEffect(() => {
     axios.get(`courses/${id}`)
       .then((response) => {
@@ -52,15 +55,48 @@ const DetailsPlaylistDevelopment = () => {
         setLoading(false);
         setPay(error?.status)
       });
-
-
   }, [id])
+
+  useEffect(() => {
+    axios.get(`comments/${id}`)
+      .then((response) => {
+        setComment(response.data?.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setPay(error?.status)
+      });
+  }, [])
+
+  const hanelSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios
+        .post(`comments/${item?._id}`, {
+          text: message,
+        }, { credentials: true })
+        .then((response) => {
+          // console.log('created successful', response.data);
+          setMessage('')
+          toast.success('تم اضافة تعليق بنجاح');
+          setLoading(false);
+        });
+    } catch (err) {
+      setLoading(false);
+      console.log('message', err.message);
+      toast.error('خطأ فى الارسال');
+    }
+    setLoading(false)
+    return;
+  };
 
   return (
     <div style={{ backgroundColor: "var(--darkblue-color)" }}>
       <Navbar />
       <div className="d-flex justify-content-between mx-4" >
-        <Link to={'/development/create-video'} state={{item}} className='mb-3 d-flex flex-row-reverse'>
+        <Link to={'/development/create-video'} state={{ item }} className='mb-3 d-flex flex-row-reverse'>
           <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 px-3 back-details-button"
           >اضافة فيديو</button>
         </Link>
@@ -165,32 +201,64 @@ const DetailsPlaylistDevelopment = () => {
         </div>
         <div className='m-auto d-flex justify-content-center py-5'>
           <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+          <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}> اضافة تعليق على الكورس</h2>
+          <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+        </div>
+        <div className="container pb-5">
+          <div className="row d-flex justify-content-center">
+            <div className="col-md-12 col-lg-10 col-xl-8">
+              <div className='card-form form-control container rounded-4 text-end my-4'>
+                <p className="pt-3 fw-bold fs-5 ">سوف يتم ظهور التعليق للجميع</p>
+                <form className="row g-3" onSubmit={hanelSubmit}>
+                  <div className="col-12">
+                    <label
+                      htmlFor="inputAddress2"
+                      className="form-label"
+                    >اضافة تعليق </label>
+                    <textarea
+                      name='exampleFormControlTextarea1'
+                      className="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      required
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder='اضافة تعليق ...'></textarea>
+                  </div>
+                  <div className="col-12">
+                    {!loading && (
+                      <button className='d-flex m-auto fs-4 send'>
+                        إرسال
+                      </button>
+                    )}
+                    {loading && (
+                      <button className='d-flex m-auto send' disabled>
+                        جاري الارسال ...
+                      </button>
+                    )}
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='m-auto d-flex justify-content-center py-5'>
+          <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
           <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}> تعليقات على الكورس</h2>
           <span style={{ zIndex: "0", backgroundColor: "var(--gold-color2)", width: "50px", height: "3px", margin: "auto 20px" }}></span>
         </div>
         <div className="container pb-5">
           <div className="row d-flex justify-content-center">
             <div className="col-md-12 col-lg-10 col-xl-8">
-              <div className="card">
-                <div className="card-body">
-                  <div className="d-flex flex-start align-items-center">
-                    {/* <img className="rounded-circle shadow-1-strong ms-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
-                      height="60" /> */}
-                    <div>
-                      <h6 className="fw-bold text-primary text-end mb-1">محمد احمد</h6>
-                      <p className="text-muted small mb-0">
-                        22/10/2024
-                      </p>
-                    </div>
+              {comment?.map((item, index) => (
+                <div className="card mb-3" key={index}>
+                  <div className="card-body">
+                    <p className="mb-4 pb-2 text-end">{item?.text}</p>
+                    <p className="text-end">{item?.createdAt?.slice(0, 10)}</p>
                   </div>
-                  <p className="mt-3 mb-4 pb-2 text-end">
-                    عند الانتهاء من العمل وتسليمه كاملاً يمكنك الضغط على زر تسليم الخدمة. إذا لم يكن لدى المشتري أي ملاحظات
-                    أو تعديلات سيقوم بالموافقة على طلب التسليم وينتقل رصيد الخدمة إلى حسابك في خمسات،
-                    ثم يمكنك سحبه إلى حسابك في باي بال أو الحسال البنكي من خلال الخطوات الموضحة في مقالة
-                  </p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

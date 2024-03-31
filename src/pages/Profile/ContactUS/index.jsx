@@ -176,7 +176,7 @@ const ContactUs = () => {
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder='اكتب مقترحاتك وشكوتك'></textarea>
+                    placeholder='اكتب مقترحاتك...'></textarea>
                 </div>
                 <div className="col-12">
                   {!loading && (

@@ -8,7 +8,6 @@ const CreateFAQDash = () => {
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
   const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
   const [answer, setAnswer] = useState('')
 
   const hanelSubmit = async (e) => {
@@ -20,7 +19,6 @@ const CreateFAQDash = () => {
           `questions`,
           {
             title: title,
-            body: body,
             answer: answer
           },
           {
@@ -32,7 +30,6 @@ const CreateFAQDash = () => {
         .then((response) => {
           toast.success('تم اضافة سؤال جديد بنجاح')
           setAnswer('')
-          setBody('')
           setTitle('')
           // navigate(`/dash/details-playlist/${item?._id}`)
         });
@@ -67,17 +64,6 @@ const CreateFAQDash = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="label-form">ادخل وصف السؤال </div>
-          <input
-            type="text"
-            name="body"
-            className="form-control  mb-4"
-            id="body"
-            required
-            placeholder="ادخل وصف السؤال *"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
           <div className="label-form">ادخل  اجابة السؤال </div>
           <input
             type="text"
@@ -95,11 +81,11 @@ const CreateFAQDash = () => {
             </button>
           )}
           {isPending && (
-            <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-outline-primary mb-4">
+            <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-outline-primary mb-4" disabled>
               جاري الاضافة ...
             </button>
           )}
-          <button onClick={() => navigate(`/dash/cons-fields`)} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mb-4">
+          <button onClick={() => navigate(`dash/frequently-asked-questions`)} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mb-4">
             cancel
           </button>
         </form>

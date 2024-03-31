@@ -46,12 +46,12 @@ const ConsaultStoreItem = () => {
       <Navbar />
       <div className=''>
         <Consulting />
-        <div className='m-auto d-flex justify-content-center my-5'>
+        {/* <div className='m-auto d-flex justify-content-center my-5'>
           <span></span>
           <h2 className='text-center comunation fs-1 fw-bold text-dark'>سيتم الرد فى خلال 48 ساعة بكل التفاصيل </h2>
           <span></span>
-        </div>
-        <div className='card-form form-control container rounded-4 text-end my-4'>
+        </div> */}
+        {/* <div className='card-form form-control container rounded-4 text-end my-4'>
           <p className="pt-3 fw-bold fs-5 ">إليك مطلق الحرية فى التواصل مع المستشارالخاص بك عن طريق ثلاث طرق مختلفة</p>
           <form className="row g-3" onSubmit={hanelSubmit}>
             <div className="col-md-6 col-sm-12">
@@ -131,8 +131,8 @@ const ConsaultStoreItem = () => {
 
             </div>
           </form>
-        </div>
-        <div className="text-center">
+        </div> */}
+        {/* <div className="text-center">
           <div className="row my-5 mx-5">
             <div className="col">
               <a href="https://wa.me/201095559682">
@@ -165,7 +165,7 @@ const ConsaultStoreItem = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>

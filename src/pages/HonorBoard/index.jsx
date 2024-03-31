@@ -21,7 +21,7 @@ const HonorBoard = () => {
         .request(fetchContactForm)
         .then((response) => {
           setContactForm(response.data);
-          console.log('xxxxx', response.data);
+          // console.log('xxxxx', response.data);
           setLoading(false);
         })
         .catch((error) => {
@@ -100,24 +100,28 @@ const HonorBoard = () => {
             <tr>
               <th scope="col">#</th>
               <th scope="col">صوره المستشار</th>
+              <th scope="col">اسم المستشار</th>
+              <th scope="col">المجال</th>
               <th scope="col">الاحداث</th>
             </tr>
           </thead>
           <tbody>
-            {!loading && contactForm?.document?.map((item, index) => (
+            {!loading && contactForm?.documents?.map((item, index) => (
               index >= prev && index <= next ? (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
                     <LazyLoadImage
-                      src={`${import.meta.env.VITE_IMAGE_URL}${item.image}`}
-                      alt={item?.image}
+                      src={`${import.meta.env.VITE_IMAGE_URL}${item?.mentor.image}`}
+                      alt={item?.mentor?.image}
                       loading="lazy"
-                    style={{
-                      width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%'
-                    }}
+                      style={{
+                        width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%'
+                      }}
                     />
                   </td>
+                  <td>{item?.mentor?.name}</td>
+                  <td>{item?.mentor?.field}</td>
                   <td>
                     <Link
                       to={`/dash/honor-board/update-item/${item._id}`}
@@ -132,7 +136,7 @@ const HonorBoard = () => {
             ))}
           </tbody>
         </table>
-        {user?.role!='manager' ? (
+        {user?.role != 'manager' ? (
           <h3 className="text-light"> YOU ARE NOT PROVIDE </h3>
         ) : null
         }

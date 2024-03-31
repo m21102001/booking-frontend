@@ -20,7 +20,7 @@ const Home = () => {
       <Header />
       <CoursesOpen />
       <GoldCard />
-      <DigitalMarkting />
+      {/* <DigitalMarkting /> */}
       {/* <StartElectronicEcommerce /> */}
       <ServicesIncluded />
       <WhyKambridage />

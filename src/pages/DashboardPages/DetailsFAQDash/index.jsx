@@ -53,15 +53,6 @@ const DetailsFAQDash = () => {
                     <hr />
                     <div className="row">
                       <div className="col-sm-3">
-                        <p className="mb-0">الوصف </p>
-                      </div>
-                      <div className="col-sm-9">
-                        <p className="text-muted mb-0">{question?.body}</p>
-                      </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
                         <p className="mb-0">الاجابة </p>
                       </div>
                       <div className="col-sm-9">
