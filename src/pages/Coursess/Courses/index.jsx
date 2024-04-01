@@ -26,10 +26,12 @@ const Courses = () => {
         console.log(error);
       });
   }, []);
+
   let fetchContactForm = {
     method: 'get',
     url: 'cons-fields/',
   };
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -50,9 +52,9 @@ const Courses = () => {
     if (value == null) {
       value = 'selectAll';
     }
-
     return value;
   };
+
   const [value, setValue] = useState(getInitialState);
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -60,7 +62,8 @@ const Courses = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`courses/field/${value}`)
+    // axios.get(`courses/field/${value}`)
+    axios.get(`courses/field/تكنولوجيا`)
       .then((response) => {
         setCategoryShow(response.data);
         setLoading(false);
@@ -71,8 +74,8 @@ const Courses = () => {
         console.log(error);
       });
   }, []);
-
-
+  console.log('log', categoryaShow);
+  ///////////////////////////////
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(10);
 
@@ -121,8 +124,8 @@ const Courses = () => {
               <>
                 <div className="container">
                   <div className={styles['home-grid']}>
-                    {courseData?.document?.map((item, index) => (
-                      item?.option == value && item?.option !== 'selectAll' ? (
+                    {categoryaShow?.data?.map((item, index) => (
+                      // item?.option == value && item?.option !== 'selectAll' ? (
                         <Link
                           key={index}
                           to={`/consault-store-item/course-detalis/${item._id}`}
@@ -145,42 +148,42 @@ const Courses = () => {
                             </div>
                           </div>
                         </Link>
-                      ) : (
-                        value == 'selectAll' ? (
-                          courseData?.document?.map((item, index) => (
-                            // index >= prev && index <= next ? (
-                            <Link
-                              key={index}
-                              to={`/consault-store-item/course-detalis/${item?._id}`}
-                              state={{ item: item }}
-                            >
-                              <div className={styles['gold-div']}>
-                                <div className='title-card'>
-                                  <LazyLoadImage
-                                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                    alt={item?.title}
-                                    loading="lazy"
-                                  />
-                                  <div className="news-date">
-                                    <label className="mx-2"> {item?.createdAt?.slice(0, 10)}</label>
-                                    <label className="news-date-time mx-2"> {item?.createdAt?.slice(11, 16)}</label>
-                                  </div>
-                                </div>
-                                <div>
-                                  <h3 className='text-center fw-bold'>{item.title}</h3>
-                                </div>
-                              </div>
-                            </Link>
-                            // ) : null
-                          ))
-                        ) : ('nnn')
-                      )
+                      // ) : (null
+                        // value == 'selectAll' ? (
+                        //   courseData?.document?.map((item, index) => (
+                        //     // index >= prev && index <= next ? (
+                        //     <Link
+                        //       key={index}
+                        //       to={`/consault-store-item/course-detalis/${item?._id}`}
+                        //       state={{ item: item }}
+                        //     >
+                        //       <div className={styles['gold-div']}>
+                        //         <div className='title-card'>
+                        //           <LazyLoadImage
+                        //             src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                        //             alt={item?.title}
+                        //             loading="lazy"
+                        //           />
+                        //           <div className="news-date">
+                        //             <label className="mx-2"> {item?.createdAt?.slice(0, 10)}</label>
+                        //             <label className="news-date-time mx-2"> {item?.createdAt?.slice(11, 16)}</label>
+                        //           </div>
+                        //         </div>
+                        //         <div>
+                        //           <h3 className='text-center fw-bold'>{item.title}</h3>
+                        //         </div>
+                        //       </div>
+                        //     </Link>
+                        //     // ) : null
+                        //   ))
+                        // ) : ('nnn')
+                      // )
                     ))}
                   </div>
                   {
                     value == 'selectAll' ? (
                       < div className="pt-5 mt-5 d-flex justify-content-around " >
-                        <button className={`btn btn-outline-info ${next >= courseData?.results ? ('disabled') : ('')}`} onClick={handelNext}> next</button>
+                        <button className={`btn btn-outline-info ${next >= categoryaShow?.length ? ('disabled') : ('')}`} onClick={handelNext}> next</button>
                         <button className={`btn btn-outline-info ${prev == 0 ? ('disabled') : ('')}`} onClick={handelprev}> prev</button>
                       </div>
                     ) : null}

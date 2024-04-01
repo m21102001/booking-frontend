@@ -18,7 +18,7 @@ const DetailsPlaylistDevelopment = () => {
   const [course, setcourse] = useState()
   const [message, setMessage] = useState()
   const [comment, setComment] = useState([])
-
+  const [showMore, setShowMore] = useState(false)
   useEffect(() => {
     setLoading(true);
     axios.get(`/playlists/pay/${id}`)
@@ -252,11 +252,24 @@ const DetailsPlaylistDevelopment = () => {
           <div className="row d-flex justify-content-center">
             <div className="col-md-12 col-lg-10 col-xl-8">
               {comment?.map((item, index) => (
-                <div className="card mb-3" key={index}>
-                  <div className="card-body">
-                    <p className="mb-4 pb-2 text-end">{item?.text}</p>
-                    <p className="text-end">{item?.createdAt?.slice(0, 10)}</p>
+                <div className="card mb-5" key={index}>
+                  <div className="card-body pb-0">
+                    <p className="text-end">{item?.text}</p>
+                    <p className="text-end mb-0">{item?.createdAt?.slice(0, 10)}</p>
                   </div>
+                  <hr />
+                  {/* <form className="mx-3"> */}
+                  <h3 className="text-end text-dark fs-4 lh-lg mx-3">
+                    {showMore ? "رد على التعليق" : ""}
+                    <div className="mb-3">
+                      <button
+                        onClick={() => setShowMore(!showMore)}
+                        className="btn btn-dark px-4 mx-3"
+                        style={{ color: 'var(--gold-color)', cursor: 'pointer', transitionTimingFunction: "ease" }}>{showMore ? "اخفاء" : " ظهور الرد"}
+                      </button>
+                    </div>
+                  </h3>
+                  {/* </form> */}
                 </div>
               ))}
             </div>

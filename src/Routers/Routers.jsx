@@ -99,7 +99,7 @@ const Routers = () => {
           <Route path="/" element={<Home />} />
           <Route path="/consault-store" element={<ConsaultStore />} />
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
-          <Route path="question-and-answer" element={<QuestionAnswer />} />
+          <Route path="/question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/Courses" element={<Courses />} />
           <Route path="/consault-store-item/course-detalis/:id" element={<DetailsPlaylistDevelopment />} />
