@@ -11,7 +11,6 @@ export { default as ContactUS } from './Profile/ContactUS';
 export { default as SignUp } from './Authentication/SignUp';
 export { default as QuestionAnswer } from './QuestionAnswer';
 export { default as TermsCondition } from './TermsCondition';
-export { default as EditProfile } from './profile/EditProfile';
 export { default as UpdateHonorBoard } from './UpdateHonorBoard';
 export { default as CreateHonorBoard } from './CreateHonorBoard';
 export { default as CourseUpdate } from './Coursess/CourseUpdate';

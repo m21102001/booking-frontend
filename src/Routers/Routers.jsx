@@ -31,7 +31,7 @@ import {
   VerifyEmailCode,
   CourseDetails,
   CourseUpdate,
-  EditProfile,
+  // EditProfile,
   DetailsPlaylistDevelopment,
   CreateReservationTicket,
   DeatilsContactFormDash,
@@ -117,11 +117,11 @@ const Routers = () => {
             element={
               <AccountProfile />
             } />
-          <Route
+          {/* <Route
             path="/auth/profile/edit-profile"
             element={
               <EditProfile />
-            } />
+            } /> */}
           <Route
             path="/auth/reservation-ticket"
             element={
