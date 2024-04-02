@@ -28,7 +28,7 @@ export { default as AdviceAdvisors } from './Consaultant/AdviceAdvisors';
 export { default as SignUpStudent } from './Authentication/SignUpStudent';
 export { default as ResatPassword } from './Authentication/ResatPassword';
 export { default as CreateFAQDash } from './DashboardPages/CreateFAQDash';
-export { default as CoursesDash } from './DashboardPages/CoursesDash/Index';
+export { default as CoursesDash } from './DashboardPages/CoursesDash';
 export { default as ForgetPassword } from './Authentication/ForgetPassword';
 export { default as ConsFieldsDash } from './DashboardPages/ConsFieldsDash';
 export { default as DetailsFAQDash } from './DashboardPages/DetailsFAQDash';
