@@ -25,6 +25,7 @@ export { default as ConsaultStore } from './Consaultant/ConsaultStore';
 export { default as CreateNewCourse } from './Coursess/CreateNewCourse';
 export { default as AllUsersDash } from './DashboardPages/AllUsersDash';
 export { default as AdviceAdvisors } from './Consaultant/AdviceAdvisors';
+export { default as EditProfile } from './Profile/EditProfile';
 export { default as SignUpStudent } from './Authentication/SignUpStudent';
 export { default as ResatPassword } from './Authentication/ResatPassword';
 export { default as CreateFAQDash } from './DashboardPages/CreateFAQDash';

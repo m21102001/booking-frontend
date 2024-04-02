@@ -31,7 +31,6 @@ import {
   VerifyEmailCode,
   CourseDetails,
   CourseUpdate,
-  // EditProfile,
   DetailsPlaylistDevelopment,
   CreateReservationTicket,
   DeatilsContactFormDash,
@@ -57,6 +56,7 @@ import {
   CreateNewVideo,
   UpdatePlaylistDevelopment,
   UpdateFAQDash,
+  EditProfile,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -117,11 +117,11 @@ const Routers = () => {
             element={
               <AccountProfile />
             } />
-          {/* <Route
+          <Route
             path="/auth/profile/edit-profile"
             element={
               <EditProfile />
-            } /> */}
+            } />
           <Route
             path="/auth/reservation-ticket"
             element={
