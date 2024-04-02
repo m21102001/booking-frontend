@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import axios from '@/api/axios';
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from '@/layout';
+import axios from '@/api/axios';
 import { toast } from 'react-toastify';
 import { useAuth } from '@/context/Auth';
 
@@ -52,7 +52,6 @@ const EditProfile = () => {
                       <h3 className="text-center mb-4 text-uppercase">
                         تعديل البيانات
                       </h3>
-                     
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
                         <div className="form-outline mb-4">
                           <label
@@ -104,7 +103,7 @@ const EditProfile = () => {
                       style={{
                         borderTopLeftRadius: '.25rem',
                         borderBottomLeftRadius: '.25rem',
-                        
+
                       }}
                     />
                   </div>
