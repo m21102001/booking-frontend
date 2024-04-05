@@ -97,7 +97,9 @@ const Login = () => {
                         </div>
                         <div className="d-grid gap-2">
                           <button
-                            className={`btn btn-primary fs-4 ${isPending ? 'disabled' : ''}`}
+                            className={`btn btn-primary fs-4 ${
+                              isPending ? 'disabled' : ''
+                            }`}
                             type="submit"
                           >
                             تسجيل الدخول
@@ -117,12 +119,13 @@ const Login = () => {
                   </div>
                   <div className="col-xl-6 d-none d-xl-block">
                     <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      src="https://images.squarespace-cdn.com/content/v1/5dfa7d03cf5d5f33f1fd937c/1583528966995-2OMTHJMYK7L18UGWVNS3/siteBg.jpg"
                       alt="Sample photo"
                       className="img-fluid"
                       style={{
                         borderTopLeftRadius: '.25rem',
                         borderBottomLeftRadius: '.25rem',
+                        height: '100vh',
                       }}
                     />
                   </div>

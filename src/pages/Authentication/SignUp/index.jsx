@@ -54,9 +54,6 @@ const SignUp = () => {
     setField(e.target.value);
   };
 
-
-
-
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
@@ -83,7 +80,7 @@ const SignUp = () => {
                 linkedin: linkedin,
                 instagram: instagram,
               },
-              image: "image",
+              image: 'image',
               description: description,
               field: field,
               hourlyPrice: hourPrice,
@@ -121,7 +118,7 @@ const SignUp = () => {
     } else {
       setShowValidationMessage(true);
       setValidationMessage(
-        "يجب ان يكون الرقم السري اكبر من 6 احرف وارقام"
+        'يجب ان يكون الرقم السري اكبر من 6 احرف وارقام'
         // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
         // 'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
       );
@@ -247,15 +244,17 @@ const SignUp = () => {
                             className="form-select form-select-lg mb-3"
                             aria-label=".form-select-lg example"
                           >
-                            {!isPending && categorya?.document?.map((item, index) => (
-                              <option
-                                key={index}
-                                required
-                                value={field}
-                                onChange={handleChangeType}
-                              >{item?.field}</option>
-                            ))}
-
+                            {!isPending &&
+                              categorya?.document?.map((item, index) => (
+                                <option
+                                  key={index}
+                                  required
+                                  value={field}
+                                  onChange={handleChangeType}
+                                >
+                                  {item?.field}
+                                </option>
+                              ))}
                           </select>
                         </div>
                         <div className="form-outline mb-4">
@@ -474,7 +473,9 @@ const SignUp = () => {
                         <div className="d-grid gap-2">
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${check || isPending ? '' : 'disabled'} ${isPending ? 'disabled' : ''}`}
+                            className={`btn btn-primary btn-lg ms-2 ${
+                              check || isPending ? '' : 'disabled'
+                            } ${isPending ? 'disabled' : ''}`}
                           >
                             انشاء حساب جديد
                           </button>
@@ -493,7 +494,7 @@ const SignUp = () => {
                   </div>
                   <div className="col-xl-6 d-none d-xl-block">
                     <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                      src="https://images.squarespace-cdn.com/content/v1/5dfa7d03cf5d5f33f1fd937c/1583528966995-2OMTHJMYK7L18UGWVNS3/siteBg.jpg"
                       alt="Sample photo"
                       className="img-fluid"
                       style={{

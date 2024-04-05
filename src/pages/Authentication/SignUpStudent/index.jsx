@@ -63,7 +63,7 @@ const SignUpStudent = () => {
     } else {
       setShowValidationMessage(true);
       setValidationMessage(
-        "يجب ان يكون الرقم السري اكبر من 6 احرف وارقام"
+        'يجب ان يكون الرقم السري اكبر من 6 احرف وارقام'
         // "يجب ان يحتوى الرقم السري على رقم على الاقل وحرف كبير وحرف صغير و حرف خاص ويكون اكبر من 8 احرف"
         // 'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.'
       );
@@ -203,8 +203,9 @@ const SignUpStudent = () => {
                         >
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
-                              }`}
+                            className={`btn btn-primary btn-lg ms-2 ${
+                              check ? '' : 'disabled'
+                            }`}
                           >
                             انشاء حساب جديد
                           </button>
@@ -223,7 +224,7 @@ const SignUpStudent = () => {
                   </div>
                   <div className="col-xl-6 d-none d-xl-block">
                     <img
-                      src="https://media.istockphoto.com/id/1336832660/photo/male-teenage-student-in-yellow-background-stock-photo.jpg?s=612x612&w=0&k=20&c=24LklaK0hoPbe7bGCSHZPbaWJKV6yH0F1b8lABbOS30="
+                      src="https://images.squarespace-cdn.com/content/v1/5dfa7d03cf5d5f33f1fd937c/1583528966995-2OMTHJMYK7L18UGWVNS3/siteBg.jpg"
                       alt="Sample photo"
                       className="img-fluid"
                       style={{

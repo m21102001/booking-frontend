@@ -5,7 +5,9 @@
   --word-dash: #413ea0;
   --gold-color: #de9012;
   --gold-color2: #de9012;
-  --darkblue-color: #161635;
+  /* --darkblue-color: #161635; */
+  --darkblue-color: #034488;
+
   --shd: 0px 2px 50px 10px rgba(44, 43, 105, 0.59);
 }
 
@@ -41,7 +43,6 @@ textarea {
   font-size: 18px !important;
   border: 1px solid var(--gold-color) !important;
 }
-
 
 button {
   cursor: pointer;
@@ -124,7 +125,6 @@ button {
   z-index: 2000;
   align-items: center;
   cursor: pointer !important;
-
 }
 
 .bacground-color-darkblue {
@@ -134,7 +134,6 @@ button {
 .color-mainColor {
   color: var(--main-color);
 }
-
 
 @media (max-width: 700px) {
   .Container {

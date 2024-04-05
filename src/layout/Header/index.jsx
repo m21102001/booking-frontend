@@ -1,10 +1,10 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import './header.scss'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './header.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { image } from '@/db/data'
+import { image } from '@/db/data';
 const Header = () => {
   return (
     <div className="header">
@@ -33,12 +33,12 @@ const Header = () => {
         ))}
       </Swiper> */}
       <img
-        src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
+        src="https://www.ts-p.co.uk/wp-content/uploads/2023/05/9.-Probate-and-Will-Trust-Estate-Disputes-2048x1365.jpg"
         className="home-image"
         alt=""
       />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
