@@ -58,7 +58,7 @@ const DetailsPlaylistDevelopment = () => {
   }, [id])
 
   useEffect(() => {
-    axios.get(`comments/${id}`)
+    axios.get(`comments/course/${id}`)
       .then((response) => {
         setComment(response.data?.data);
         setLoading(false);
