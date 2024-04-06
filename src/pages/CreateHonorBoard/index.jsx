@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios"
@@ -7,8 +7,36 @@ import { toast } from "react-toastify"
 const CreateHonorBoard = () => {
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
-  const [image, setImage] = useState('')
-  const [profileLink, setProfileLink] = useState('')
+  const [mentor, setMentor] = useState('')
+  const [allUser, setAlluser] = useState([])
+  const getInitialState = () => {
+    let value = allUser;
+    if (value == null) {
+      (value = '')
+    }
+
+    return value;
+  };
+  const [value, setValue] = useState(getInitialState);
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  useEffect(() => {
+    setIsPending(true);
+    axios.get('mentors/active', {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => {
+        setIsPending(false);
+        setAlluser(response.data);
+      })
+      .catch((error) => {
+        setIsPending(false);
+        console.log(error);
+      });
+  }, []);
 
   const hanelSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +46,7 @@ const CreateHonorBoard = () => {
         .post(
           `honor-board`,
           {
-            image: image,
-            profileLink: profileLink
+            mentor: value,
           },
           {
             headers: {
@@ -28,9 +55,8 @@ const CreateHonorBoard = () => {
           }
         )
         .then((response) => {
-          toast.success('تم اضافة جديد بنجاح')
-          setProfileLink('')
-          setImage('')
+          toast.success('تم اضافة المستشار بنجاح')
+          setMentor('')
           navigate(`/dash/honor-board`)
         });
       setIsPending(false);
@@ -41,7 +67,6 @@ const CreateHonorBoard = () => {
       console.log('message', err.message);
     }
   };
-
   return (
     <div className="dashboard d-flex flex-row">
       <SidebarDashboard />
@@ -53,28 +78,17 @@ const CreateHonorBoard = () => {
           onSubmit={hanelSubmit}
           className="container d-flex flex-row justify-content-center align-content-center flex-wrap my-4"
         >
-          <div className="label-form">اضف صوره للمستشار</div>
-          <input
-            type="text"
-            name="image"
-            className="form-control  mb-4"
-            id="image"
-            required
-            placeholder="ادخل لينك الصورة *"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
           <div className="label-form">اضف لينك الحساب  </div>
-          <input
-            type="text"
-            name="profileLink"
-            className="form-control  mb-4"
-            id="profileLink"
-            required
-            placeholder="اضف لينك الحساب   *"
-            value={profileLink}
-            onChange={(e) => setProfileLink(e.target.value)}
-          />
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            value={value}
+            onChange={handleChange}
+          >
+            {!isPending && allUser?.data?.map((item, index) => (
+              <option key={index} value={item?._id}>{item?.name}</option>
+            ))}
+          </select>
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mb-4">
               اضافة مسار جديد

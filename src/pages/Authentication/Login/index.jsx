@@ -125,7 +125,7 @@ const Login = () => {
                       style={{
                         borderTopLeftRadius: '.25rem',
                         borderBottomLeftRadius: '.25rem',
-                        height: '100vh',
+                        height: '90vh',
                       }}
                     />
                   </div>

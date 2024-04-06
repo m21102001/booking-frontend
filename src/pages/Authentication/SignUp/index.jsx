@@ -20,7 +20,7 @@ const SignUp = () => {
   const [twitter, setTwitter] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [instagram, setInstagram] = useState('');
-  // const [image, setImage] = useState('');
+  const [image, setImage] = useState('');
   const [description, setDdescription] = useState('');
   // const [field, setField] = useState('');
   const [Video, setVideo] = useState('');
@@ -80,7 +80,7 @@ const SignUp = () => {
                 linkedin: linkedin,
                 instagram: instagram,
               },
-              image: 'image',
+              image: image,
               description: description,
               field: field,
               hourlyPrice: hourPrice,
@@ -141,16 +141,16 @@ const SignUp = () => {
                         إنشاء حساب
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
-                        {/* <div className="form-outline mb-4">
+                        <div className="form-outline mb-4">
                           <label className="form-label">
-                            اختر صورة شخصية{' '}
-                            <span className="text-danger fw-bold">
+                            اضف صورة شخصية{' '}
+                            {/* <span className="text-danger fw-bold">
                               ك لينك حاليا
-                            </span>
+                            </span> */}
                           </label>
                           <input
                             // type="file"
-                            type="text"
+                            type="file"
                             name="image"
                             className="form-control mb-3"
                             id="image"
@@ -159,7 +159,7 @@ const SignUp = () => {
                             onChange={(e) => setImage(e.target.value)}
                           // onChange={(e) => setImage(e.target.files[0])}
                           />
-                        </div> */}
+                        </div>
                         <div className="row">
                           <div className="col-md-12 mb-4">
                             <div className="form-outline">
@@ -473,9 +473,8 @@ const SignUp = () => {
                         <div className="d-grid gap-2">
                           <button
                             type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${
-                              check || isPending ? '' : 'disabled'
-                            } ${isPending ? 'disabled' : ''}`}
+                            className={`btn btn-primary btn-lg ms-2 ${check || isPending ? '' : 'disabled'
+                              } ${isPending ? 'disabled' : ''}`}
                           >
                             انشاء حساب جديد
                           </button>

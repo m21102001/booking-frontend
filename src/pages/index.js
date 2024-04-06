@@ -20,6 +20,7 @@ export { default as ReservationTicket } from './ReservationTicket';
 export { default as CourseDetails } from './Coursess/CourseDetails';
 export { default as VerifyCode } from './Authentication/VerifyCode';
 export { default as AccountProfile } from './Profile/AccountProfile';
+export { default as UpdatePasswordProfile } from './Profile/UpdatePasswordProfile';
 export { default as CreateNewVideo } from './Coursess/CreateNewVideo';
 export { default as ConsaultStore } from './Consaultant/ConsaultStore';
 export { default as CreateNewCourse } from './Coursess/CreateNewCourse';

@@ -63,6 +63,7 @@ import {
   UpdateFAQDash,
   EditProfile,
   WhoUs,
+  UpdatePasswordProfile,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -137,6 +138,11 @@ const Routers = () => {
           {/* -----------------------auth -------------------- */}
           <Route path="/auth/profile" element={<AccountProfile />} />
           <Route path="/auth/profile/edit-profile" element={<EditProfile />} />
+          <Route
+            path="/auth/profile/edit-profile/update-password"
+            element={
+              <UpdatePasswordProfile />
+            } />
           <Route
             path="/auth/reservation-ticket"
             element={<ReservationTicket />}
