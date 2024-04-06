@@ -115,6 +115,11 @@ const Navbar = () => {
                   تواصل معنا
                 </NavLink>
               </li>
+              <li className="nav-item ms-2 ">
+                <NavLink className="nav-link navli text-light" to={'/who-us'}>
+                  من نحن
+                </NavLink>
+              </li>
             </ul>
             {user == undefined ? (
               <div className="d-flex text-light">

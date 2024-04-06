@@ -56,3 +56,4 @@ export { default as DeatilsContactFormDash } from './DashboardPages/DeatilsConta
 export { default as DetailsPlaylistDevelopment } from './Coursess/DetailsPlaylistDevelopment';
 export { default as DetailsMentorsDetailsDash } from './DashboardPages/DetailsMentorsDetailsDash';
 export { default as DetailsInActiveMentorsmDash } from './DashboardPages/DetailsInActiveMentorsmDash';
+export { default as WhoUs } from './WhoUS';
