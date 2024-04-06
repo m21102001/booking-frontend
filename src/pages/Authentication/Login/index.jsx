@@ -32,7 +32,7 @@ const Login = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      toast.error('تأكد من البريد الالكتروني او كلمة المرور');
+      toast.error(err?.response?.data?.message);
       console.log('response', err);
     }
   };

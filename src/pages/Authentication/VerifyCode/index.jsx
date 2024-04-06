@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from '@/api/axios';
 import { Navbar } from '@/layout';
 import { toast } from 'react-toastify';
@@ -13,7 +13,7 @@ const VerifyCode = () => {
     setIsPending(true);
     try {
       await axios.post(
-        'auth/verifyResetCode',
+        'auth/verify-reset-code',
         {
           resetCode: code,
         },
@@ -22,17 +22,48 @@ const VerifyCode = () => {
             'Content-Type': 'application/json',
           },
         }
-      );
+      ).then((response) => {
+        setIsPending(false);
+        // console.log(response);
+        toast.success('تم التأكيد بنجاح');
+        Navigate('/auth/login');
+      });
       setIsPending(false);
-      toast.success('تم التأكيد بنجاح');
     } catch (err) {
       setIsPending(false);
+      console.log('response', err);
       toast.error(
         'من فضلك تأكد من كتابة الكود بشكل سليم  او يوجد تأخير فى موعد كتابة الرسالة'
       );
-      console.log('response', err);
     }
   };
+  // const handelSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsPending(true);
+  //   try {
+  //     await axios.post('auth/verify-reset-code',
+  //       {
+  //         resetCode: code,
+  //       },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     ).then((response) => {
+  //       setIsPending(false);
+  //       // console.log(response);
+  //       // toast.success('تم التأكيد بنجاح');
+  //       Navigate('/auth/resat-password')
+  //     });
+  //   } catch (err) {
+  //     setIsPending(false);
+  //     console.log(err)
+  //     toast.error(
+  //       'من فضلك تأكد من كتابة الكود بشكل سليم  او يوجد تأخير فى موعد كتابة الرسالة'
+  //     );
+  //   }
+  // };
   return (
     <>
       <Navbar />
@@ -93,6 +124,8 @@ const VerifyCode = () => {
                       style={{
                         borderTopLeftRadius: '.25rem',
                         borderBottomLeftRadius: '.25rem',
+                        height: '90vh',
+                        width: '100%',
                       }}
                     />
                   </div>

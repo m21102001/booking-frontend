@@ -13,7 +13,7 @@ const ResatPassword = () => {
     e.preventDefault();
     setIsPending(true);
     try {
-      await axios.post(
+      await axios.put(
         'auth/reset-password',
         {
           password: password,
@@ -26,14 +26,14 @@ const ResatPassword = () => {
         }
       ).then((response) => {
         setIsPending(false);
-        console.log(response);
+        // console.log(response);
         toast.success('تم تغيير كلمة المرور بنجاح');
         Navigate('/auth/login');
       });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('response', err);
+      // console.log('response', err);
       toast.error('تأكد من مطابقة الرقم السرى');
     }
   };

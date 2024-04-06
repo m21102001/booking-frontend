@@ -8,6 +8,40 @@ const GoldStore = () => {
   const [loading, setLoading] = useState(false);
   const [bookData, setBookData] = useState([])
   const [allUser, setAlluser] = useState([])
+  const [categorya, setCategory] = useState([]);
+  const [semester, setSemester] = useState([]);
+
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get('cons-fields/')
+      .then((response) => {
+        setCategory(response.data);
+        console.log('xxxxx', response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`mentors/semester/?semester=${semester}`)
+      .then((response) => {
+        setCategory(response.data);
+        console.log('semester', response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  }, []);
+
   const getInitialState = () => {
     let value = item?.option;
     if (value == null) {
@@ -76,9 +110,25 @@ const GoldStore = () => {
             onChange={handleChange}
           >
             <option defaultValue selected value="selectAll">SelectAll</option>
-            {!loading && allUser?.data?.map((item, index) => (
-              <option key={index} value={item?.field}>{item?.field}</option>
-            ))}
+            {!loading &&
+              categorya?.document?.map((item, index) => (
+                <option key={index} value={item?.field}>
+                  {item?.field}
+                </option>
+              ))}
+          </select>
+        </div>
+        <div className="col-md-3 d-flex">
+          <select
+            className="form-select mb-3"
+            aria-label="Default select example"
+            value={semester}
+            onChange={e => setSemester(e.target.value)}
+          >
+            <option value={'summer'}>الصيف</option>
+            <option value={'winter'}>الشتاء</option>
+            <option value={'spring'}>الربيع</option>
+            <option value={'autumn'}>الخريف</option>
           </select>
         </div>
         <div className="col-md-12">

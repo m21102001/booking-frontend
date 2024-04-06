@@ -26,15 +26,10 @@ const Courses = () => {
       });
   }, []);
 
-  let fetchContactForm = {
-    method: 'get',
-    url: 'cons-fields/',
-  };
-
   useEffect(() => {
     setLoading(true);
     axios
-      .request(fetchContactForm)
+      .get('cons-fields/')
       .then((response) => {
         setCategory(response.data);
         console.log('xxxxx', response.data);
@@ -63,7 +58,7 @@ const Courses = () => {
     setLoading(true);
     // axios.get(`courses/field/${value}`)
     axios
-      .get(`courses/field/تكنولوجيا`)
+      .get(`courses/field/${value}`)
       .then((response) => {
         setCategoryShow(response.data);
         setLoading(false);

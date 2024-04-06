@@ -102,7 +102,8 @@ const EditProfile = () => {
                       style={{
                         borderTopLeftRadius: '.25rem',
                         borderBottomLeftRadius: '.25rem',
-
+                        height: '90vh',
+                        width: "100%"
                       }}
                     />
                   </div>

@@ -1,42 +1,43 @@
+import { useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './header.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { image } from '@/db/data';
+import axios from '@/api/axios';
 const Header = () => {
+  const [loading, setLoading] = useState(true);
+  const [cover, setCover] = useState([])
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get('cover')
+      .then((response) => {
+        setCover(response.data);
+        console.log('cover', response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  }, []);
   return (
-    <div className="header">
-      {/* <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-        slidesPerView={1}
-        loop={true}
-      >
-        {image?.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="m-0 bg-dark">
-              <LazyLoadImage
-                src={item?.img}
-                alt={item?.src}
-                loading="lazy" />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper> */}
-      <img
-        src="https://www.ts-p.co.uk/wp-content/uploads/2023/05/9.-Probate-and-Will-Trust-Estate-Disputes-2048x1365.jpg"
-        className="home-image"
-        alt=""
-      />
+    <div className="container text-center">
+      {!loading && cover?.document?.map((item, index) => (
+        <div key={index} className="row align-items-start py-5">
+          <div className="col-md-6 col-sm-12">
+            <h1 className='text-end py-5 fw-bold'>{item?.title}</h1>
+            <h2>{item?.description}</h2>
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <LazyLoadImage
+              src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+              alt={item?.title}
+              loading="lazy"
+              height={500}
+              width={500}
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

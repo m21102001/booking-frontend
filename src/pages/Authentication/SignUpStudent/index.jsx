@@ -230,8 +230,8 @@ const SignUpStudent = () => {
                       style={{
                         borderTopLeftRadius: '.25rem',
                         borderBottomLeftRadius: '.25rem',
-                        height: '-webkit-fill-available',
-                        width: '-webkit-fill-available',
+                        height: '90vh',
+                        width: '100%',
                       }}
                     />
                   </div>

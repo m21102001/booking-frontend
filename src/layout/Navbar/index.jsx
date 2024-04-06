@@ -91,14 +91,16 @@ const Navbar = () => {
                   الكورسات
                 </NavLink>
               </li>
-              {/* <li className="nav-item ms-2 ">
-                <NavLink
-                  className="nav-link navli text-light"
-                  to="/Advice-advisors"
-                >
-                  نصايح المستشارين
-                </NavLink>
-              </li> */}
+              {user?.role !== 'mentor' ? (
+                <li className="nav-item ms-2 ">
+                  <NavLink
+                    className="nav-link navli text-light"
+                    to="/cons-tickets/field/"
+                  >
+                    الاستشارات
+                  </NavLink>
+                </li>
+              ) : null}
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
@@ -108,16 +110,16 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item ms-2 ">
+                <NavLink className="nav-link navli text-light" to={'/who-us'}>
+                  من نحن
+                </NavLink>
+              </li>
+              <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
                   to={'/contactUS'}
                 >
                   تواصل معنا
-                </NavLink>
-              </li>
-              <li className="nav-item ms-2 ">
-                <NavLink className="nav-link navli text-light" to={'/who-us'}>
-                  من نحن
                 </NavLink>
               </li>
             </ul>

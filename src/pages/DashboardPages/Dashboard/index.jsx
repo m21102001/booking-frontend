@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react'
 import { SidebarDashboard } from '@/layout'
 import axios from '@/api/axios'
-import { FaAngellist, FaBook, FaListAlt, FaMountain, FaSortAmountUp, FaTicketAlt } from "react-icons/fa";
-import { FaChartSimple, FaCodePullRequest } from "react-icons/fa6";
-import { BsPersonFillAdd, BsTicket } from "react-icons/bs";
-import { FcIdea } from "react-icons/fc";
-import { RxAvatar } from "react-icons/rx";
 import './Dashboard.scss'
+import { Link } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 const Dashboard = () => {
   const [loading, setLoading] = useState(false)
-  const [analysis, setAnalysis] = useState([])
+  const [cover, setCover] = useState([])
   useEffect(() => {
     setLoading(false);
-    axios.get(`/users/length/`)
+    axios.get(`cover`)
       .then((response) => {
-        setAnalysis(response.data);
+        setCover(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -29,89 +26,42 @@ const Dashboard = () => {
           <h2 className='fs-1 fw-bold'>الصفحة الرئيسية</h2>
         </div>
 
-        {/* <div className={`wordColor`}>
-          {loading && <div className="loading"></div>}
-          <div className="row row-cols-1 my-1 row-cols-lg-5 g-2 g-lg-3">
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <RxAvatar /> اعضاء النادى</h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.Club} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaBook /> عدد الكتب </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.Book}</p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <BsTicket /> عدد الاستشارات المتاحة </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.ConsultationTicket}</p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaTicketAlt /> طلبات الاستشارات </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.ConsultationRequest}</p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaTicketAlt /> طلبات استشارات النادى </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.FreeConsult}</p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaChartSimple /> طلبات التواصل مع الاستاذ صلاح</h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.ContactForm} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaMountain />طلبات شراء الذهب </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.GoldBarRequest} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaSortAmountUp /> عمليات بيع الذهب</h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.SellGoldBarRequest} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FcIdea /> عدد الفرص الاستثمارية المتاحة </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.Invest} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaCodePullRequest /> طلبات المستثمرين  </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.Investor} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaListAlt /> عدد الكورسات  </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.Playlist} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <FaAngellist /> بيع الكورسات   </h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.PlaylistRequest} </p>
-              </div>
-            </div>
-            <div className="col card mx-3 text-end">
-              <div className="p-3 bg-light">
-                <h5 className="card-title"> <BsPersonFillAdd /> عدد المشتركين</h5>
-                <p className="card-text fs-3 fw-semibold text-center">{analysis?.User} </p>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        <table className="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">الاسم بالكامل</th>
+              <th scope="col">البريد الالكترونى</th>
+              <th scope="col">الاحداث</th>
+            </tr>
+          </thead>
+          <tbody>
+            {!loading && cover?.document?.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>
+                  <LazyLoadImage
+                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                    alt={item?.title}
+                    loading="lazy"
+                    height={70}
+                    width={70}
+                  />
+                </td>
+                <td>{item?.title}</td>
+                <td>{item?.description}</td>
+                <td>
+                  <Link
+                    to={`/dash/update-header/${item._id}`}
+                    state={{ item: item }}
+                  >
+                    <button className="btn btn-outline-success mx-2 px-4">تعديل</button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div >
   )

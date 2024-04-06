@@ -64,6 +64,8 @@ import {
   EditProfile,
   WhoUs,
   UpdatePasswordProfile,
+  ConsTicketsField,
+  DashUpdateHeader,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -105,11 +107,11 @@ const Routers = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/consault-store" element={<ConsaultStore />} />
-
           <Route path="/consault-store-item" element={<ConsaultStoreItem />} />
           <Route path="/question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/Courses" element={<Courses />} />
+          <Route path="/cons-tickets/field/" element={<ConsTicketsField />} />
           <Route
             path="/consault-store-item/course-detalis/:id"
             element={<DetailsPlaylistDevelopment />}
@@ -173,6 +175,14 @@ const Routers = () => {
             element={
               <Protect path="dash" protect role={allowed?.role}>
                 <Dashboard />
+              </Protect>
+            }
+          />
+          <Route
+            path="/dash/update-header/:id"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <DashUpdateHeader />
               </Protect>
             }
           />
