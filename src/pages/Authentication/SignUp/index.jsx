@@ -30,6 +30,7 @@ const SignUp = () => {
   const [showValidationMessage, setShowValidationMessage] = useState(true);
 
   const [categorya, setCategory] = useState([]);
+  const [value, setValue] = useState([]);
 
   useEffect(() => {
     setIsPending(true);
@@ -45,11 +46,9 @@ const SignUp = () => {
         console.log(error);
       });
   }, []);
-  const getInitialState = () => {
-    const selectType = 'تكنولوجيا';
-    return selectType;
-  };
-  const [field, setField] = useState(getInitialState);
+
+
+  const [field, setField] = useState(value);
   const handleChangeType = (e) => {
     setField(e.target.value);
   };
@@ -243,6 +242,8 @@ const SignUp = () => {
                           <select
                             className="form-select form-select-lg mb-3"
                             aria-label=".form-select-lg example"
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
                           >
                             {!isPending &&
                               categorya?.document?.map((item, index) => (
