@@ -1,16 +1,19 @@
 import { useState } from 'react';
-import { Link, Navigate, NavLink } from 'react-router-dom';
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { RxAvatar } from 'react-icons/rx';
 import { useAuth } from '@/context/Auth';
 import axios from '@/api/axios';
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const { setRole, setuser, setLoggedin, Loggedin, user } = useAuth();
   const handelLogout = async () => {
     try {
       await axios.post('auth/logout', {
         withCredentials: true,
+      }).then((res) => {
+        navigate('/auth/login')
       });
     } catch (error) {
       console.log(error.response);

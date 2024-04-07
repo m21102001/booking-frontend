@@ -30,10 +30,10 @@ const ReservationTicket = () => {
   return (
     <div style={{ color: 'var(--darkblue-color)' }}>
       <Navbar />
-      <Link to={'/auth/profile'} className='mb-3 d-flex flex-row-reverse'>
+      {/* <Link to={'/auth/profile'} className='mb-3 d-flex flex-row-reverse'>
         <button type="button" style={{ top: "22%", left: "2%", zIndex: "2" }} className="fw-bold text-light bacground-color-darkblue fs-5 position-fixed back-details-button"
         ><MdOutlineArrowBack size={30} /></button>
-      </Link>
+      </Link> */}
       <div className="container text-center pt-5">
         {!loading && consultation?.data?.map((item, index) => (
           <Link
