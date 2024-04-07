@@ -112,7 +112,7 @@ const HonorBoard = () => {
                   <td>{index + 1}</td>
                   <td>
                     <LazyLoadImage
-                      src={`${import.meta.env.VITE_IMAGE_URL}${item?.mentor.image}`}
+                      src={`${import.meta.env.VITE_IMAGE_URL}${item?.mentor?.image}`}
                       alt={item?.mentor?.image}
                       loading="lazy"
                       style={{

@@ -39,7 +39,7 @@ const SignUp = () => {
       .then((response) => {
         setIsPending(false);
         setCategory(response.data);
-        console.log('xxxxx', response.data);
+        // console.log('xxxxx', response.data);
       })
       .catch((error) => {
         setIsPending(false);

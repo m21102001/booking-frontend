@@ -30,8 +30,9 @@ const Dashboard = () => {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">الاسم بالكامل</th>
-              <th scope="col">البريد الالكترونى</th>
+              <th scope="col">الصوره</th>
+              <th scope="col"> العنوان</th>
+              <th scope="col"> الوصف</th>
               <th scope="col">الاحداث</th>
             </tr>
           </thead>

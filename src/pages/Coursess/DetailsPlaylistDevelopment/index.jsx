@@ -149,7 +149,6 @@ const DetailsPlaylistDevelopment = () => {
                               <p className="text-muted mb-0">{item?.description}</p>
                             </div>
                           </div>
-
                           <hr />
                           <div className="row">
                             <div className="col-sm-3">
@@ -190,6 +189,22 @@ const DetailsPlaylistDevelopment = () => {
                               )
                             )}
                           </div>
+                          {user?.role == 'mentor' ? (
+                            <>
+                              <hr />
+                              <div className="row">
+                                <div className="col-sm-3">
+                                  <p className="mb-0"> اضافة فيديو</p>
+                                </div>
+                                <div className="col-sm-9">
+                                  <Link to={'/development/create-video'} state={{ item }} className='mb-3 d-flex flex-row'>
+                                    <button type="button" className="fw-bold fs-6  back-details-button"
+                                    >اضافة فيديو</button>
+                                  </Link>
+                                </div>
+                              </div>
+                            </>
+                          ) : null}
                         </div>
                       </div>
                     </div>
