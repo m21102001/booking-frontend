@@ -97,7 +97,7 @@ const DetailsPlaylistDevelopment = () => {
       <Navbar />
       <div className="d-flex justify-content-between mx-4" >
         <Link to={'/development/create-video'} state={{ item }} className='mb-3 d-flex flex-row-reverse'>
-          <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 px-3 back-details-button"
+          <button type="button" className="fw-bold text-light bacground-color-darkblue fs-6 mt-3  back-details-button"
           >اضافة فيديو</button>
         </Link>
         <Link to={'/auth/profile'} className='mb-3 d-flex flex-row-reverse'>
@@ -105,7 +105,7 @@ const DetailsPlaylistDevelopment = () => {
           ><MdOutlineArrowBack size={30} /></button>
         </Link>
       </div>
-      <div className="row align-items-start m-auto" style={{ backgroundColor: "var(--darkblue-color)" }}>
+      <div className="row align-items-start m-auto mt-5" style={{ backgroundColor: "var(--darkblue-color)" }}>
         <div className='m-auto d-flex justify-center'>
           <>
             <div className="container gold-dash text-end">

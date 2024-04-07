@@ -16,7 +16,7 @@ const AccountProfile = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`courses`)
+      .get(`courses/my-courses`)
       .then((response) => {
         setLoading(false);
         setCourses(response.data);
@@ -26,7 +26,7 @@ const AccountProfile = () => {
         console.log(error);
       });
   }, []);
-
+  console.log('course', courses);
 
   useEffect(() => {
     setLoading(true);
@@ -85,14 +85,14 @@ const AccountProfile = () => {
                       className="img-fluid img-thumbnail mt-4 mb-2"
                       style={{ width: '150px', zIndex: '1' }}
                     />
-                      <Link
-                        to={`/auth/profile/edit-profile/update-password`}
-                        className="btn btn-outline-dark"
-                        style={{ zIndex: 1 }}
-                        data-mdb-ripple-color="dark"
-                      >
-                        تعديل كلمة المرور
-                      </Link>
+                    <Link
+                      to={`/auth/profile/edit-profile/update-password`}
+                      className="btn btn-outline-dark"
+                      style={{ zIndex: 1 }}
+                      data-mdb-ripple-color="dark"
+                    >
+                      تعديل كلمة المرور
+                    </Link>
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>
                     <h5>{user?.name}</h5>
@@ -108,7 +108,7 @@ const AccountProfile = () => {
                 <div className="card-body p-4 text-black">
                   <div className="mb-5">
                     <section>
-                    <div className='d-flex justify-content-between align-item-center'>
+                      <div className='d-flex justify-content-between align-item-center'>
                         <p className="lead text-center fw-bold mb-1">
                           تفاصيل عن المستخدم
                         </p>
@@ -360,7 +360,7 @@ const AccountProfile = () => {
                         </p>
                       </div>
                       <div className=" row g-2">
-                        {courses?.document?.map((item, index) => (
+                        {courses?.data?.map((item, index) => (
                           <div
                             key={index}
                             className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"

@@ -9,7 +9,6 @@ const GoldStore = () => {
   const [bookData, setBookData] = useState([])
   const [allUser, setAlluser] = useState([])
   const [categorya, setCategory] = useState([]);
-  const [semester, setSemester] = useState([]);
 
 
   useEffect(() => {
@@ -27,10 +26,18 @@ const GoldStore = () => {
       });
   }, []);
 
+  const getInitialState2 = () => {
+    const selectType = "summer";
+    return selectType;
+  };
+  const [type, setType] = useState(getInitialState2);
+  const handleChangeType = (e) => {
+    setType(e.target.value);
+  };
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`mentors/semester/?semester=${semester}`)
+      .get(`mentors/semester/?semester=${type}`)
       .then((response) => {
         setCategory(response.data);
         console.log('semester', response.data);
@@ -40,7 +47,7 @@ const GoldStore = () => {
         setLoading(false);
         console.log(error);
       });
-  }, []);
+  }, [type]);
 
   const getInitialState = () => {
     let value = item?.option;
@@ -56,7 +63,7 @@ const GoldStore = () => {
   };
   useEffect(() => {
     setLoading(true);
-    axios.get('mentors/active', {
+    axios.get(`mentors/field/?field=${value}`, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -69,8 +76,9 @@ const GoldStore = () => {
         setLoading(false);
         console.log(error);
       });
-  }, []);
+  }, [value]);
   console.log('jjj', allUser);
+  console.log('value', value);
   ////////////////pagination///////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -122,13 +130,13 @@ const GoldStore = () => {
           <select
             className="form-select mb-3"
             aria-label="Default select example"
-            value={semester}
-            onChange={e => setSemester(e.target.value)}
+            value={type}
+            onChange={handleChangeType}
           >
-            <option value={'summer'}>الصيف</option>
-            <option value={'winter'}>الشتاء</option>
-            <option value={'spring'}>الربيع</option>
-            <option value={'autumn'}>الخريف</option>
+            <option value='summer'>الصيف</option>
+            <option value='winter'>الشتاء</option>
+            <option value='spring'>الربيع</option>
+            <option value='autumn'>الخريف</option>
           </select>
         </div>
         <div className="col-md-12">
@@ -136,8 +144,8 @@ const GoldStore = () => {
             <>
               <div className="container">
                 <div className={styles['home-grid']}>
-                  {!loading && allUser?.data?.map((item, index) => (
-                    item?.option == value && item?.option !== 'selectAll' ? (
+                  {!loading && allUser?.mentors?.map((item, index) => (
+                    item?.field === value ? (
                       <Link
                         key={index}
                         to={`/consault-store-item`}
@@ -150,44 +158,13 @@ const GoldStore = () => {
                               alt={item?.name}
                               loading="lazy"
                             />
-                            <div className="news-date">
-                              <label className="mx-2"> {item?.createdAt?.slice(0, 10)}</label>
-                              <label className="news-date-time mx-2"> {item?.createdAt?.slice(11, 16)}</label>
-                            </div>
                           </div>
                           <div>
                             <h3 className='text-center fw-bold'>{item.name}</h3>
                           </div>
                         </div>
                       </Link>
-                    ) : (
-                      value == 'selectAll' ? (
-                        index >= prev && index <= next ? (
-                          <Link
-                            key={index}
-                            to={`/consault-store-item`}
-                            state={{ item: item }}
-                          >
-                            <div className={styles['gold-div']}>
-                              <div className='title-card'>
-                                <LazyLoadImage
-                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                  alt={item?.name}
-                                  loading="lazy"
-                                />
-                                <div className="news-date">
-                                  <label className="mx-2"> {item?.createdAt?.slice(0, 10)}</label>
-                                  <label className="news-date-time mx-2"> {item?.createdAt?.slice(11, 16)}</label>
-                                </div>
-                              </div>
-                              <div>
-                                <h3 className='text-center fw-bold'>{item.name}</h3>
-                              </div>
-                            </div>
-                          </Link>
-                        ) : null
-                      ) : ('')
-                    )
+                    ) : (null)
                   ))}
                 </div>
                 {

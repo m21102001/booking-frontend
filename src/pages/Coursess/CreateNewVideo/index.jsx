@@ -47,35 +47,35 @@ const CreateNewVideo = () => {
     <div className="dashboard d-flex flex-row">
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className='fs-1 fw-bold'>تعديل فيديو داخل الكورس</h2>
+          <h2 className='fs-1 fw-bold'>اضافة فيديو داخل الكورس</h2>
         </div>
         <form
           onSubmit={hanelSubmit}
           className="container d-flex flex-row justify-content-center align-content-center flex-wrap my-4"
         >
-          <div className="label-form">تعديل  عنوان الفيديو</div>
+          <div className="label-form">اضافة  عنوان الفيديو</div>
           <input
             type="text"
             name="title"
             className="form-control  mb-4"
             id="title"
             required
-            placeholder="تعديل عنوان الفيديو*"
+            placeholder="اضافة عنوان الفيديو*"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div className="label-form">تعديل عنوان الفيديو(Url)</div>
+          <div className="label-form">اضافة عنوان الفيديو(Url)</div>
           <input
             type="text"
             name="url"
             className="form-control  mb-4"
             id="url"
             required
-            placeholder="تعديل لينك الفيديو*"
+            placeholder="اضافة لينك الفيديو*"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-          <div className="label-form">تعديل الوصف *</div>
+          <div className="label-form">اضافة الوصف *</div>
           <textarea
             type="text"
             rows={5}
@@ -83,18 +83,18 @@ const CreateNewVideo = () => {
             className="form-control  mb-4"
             id="description"
             required
-            placeholder="تعديل الوصف *"
+            placeholder="اضافة الوصف *"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mb-4">
-              تعديل الفيديو
+              اضافة الفيديو
             </button>
           )}
           {isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-outline-primary mb-4">
-              جاري التعديل ...
+              جاري الاضافة ...
             </button>
           )}
           {/* <button onClick={() => navigate(`/dash/details-playlist/${item?._id}`)} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mb-4">

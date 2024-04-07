@@ -1,38 +1,20 @@
 import { Footer, Navbar } from '@/layout';
 import axios from '@/api/axios';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from '@/components/GoldCard/GoldCard.module.scss';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 const Courses = () => {
-  const item = useLocation()?.state?.item;
   const [loading, setLoading] = useState(true);
-  const [courseData, setCourseData] = useState([]);
   const [categorya, setCategory] = useState([]);
   const [categoryaShow, setCategoryShow] = useState([]);
-
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get(`courses`)
-      .then((response) => {
-        setCourseData(response.data);
-        setLoading(false);
-        window.scrollTo(0, 0);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-  }, []);
-
+  const [value, setValue] = useState([]);
   useEffect(() => {
     setLoading(true);
     axios
       .get('cons-fields/')
       .then((response) => {
         setCategory(response.data);
-        console.log('xxxxx', response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -40,27 +22,12 @@ const Courses = () => {
         console.log(error);
       });
   }, []);
-
-  const getInitialState = () => {
-    let value = item?.option;
-    if (value == null) {
-      value = 'selectAll';
-    }
-    return value;
-  };
-
-  const [value, setValue] = useState(getInitialState);
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
+  console.log('value', value);
   useEffect(() => {
     setLoading(true);
-    // axios.get(`courses/field/${value}`)
-    axios
-      .get(`courses/field/${value}`)
+    axios.get(`courses/field/${value}`)
       .then((response) => {
-        setCategoryShow(response.data);
+        setCategoryShow(response?.data);
         setLoading(false);
         window.scrollTo(0, 0);
       })
@@ -68,7 +35,7 @@ const Courses = () => {
         setLoading(false);
         console.log(error);
       });
-  }, []);
+  }, [value]);
   console.log('log', categoryaShow);
   ///////////////////////////////
   const [prev, setPrev] = useState(0);
@@ -124,11 +91,8 @@ const Courses = () => {
               className="form-select mb-3"
               aria-label="Default select example"
               value={value}
-              onChange={handleChange}
+              onChange={(e) => setValue(e.target.value)}
             >
-              <option defaultValue selected value="selectAll">
-                كل الانواع
-              </option>
               {!loading &&
                 categorya?.document?.map((item, index) => (
                   <option key={index} value={item?.field}>
@@ -144,38 +108,40 @@ const Courses = () => {
                   <div className={styles['home-grid']}>
                     {categoryaShow?.data?.map((item, index) => (
                       // item?.option == value && item?.option !== 'selectAll' ? (
-                      <Link
-                        key={index}
-                        to={`/consault-store-item/course-detalis/${item._id}`}
-                        state={{ item: item }}
-                      >
-                        <div className={styles['gold-div']}>
-                          <div className="title-card">
-                            <LazyLoadImage
-                              src={`${import.meta.env.VITE_IMAGE_URL}${
-                                item?.image
-                              }`}
-                              alt={item?.title}
-                              loading="lazy"
-                            />
-                            <div className="news-date">
-                              <label className="mx-2">
-                                {' '}
-                                {item?.createdAt?.slice(0, 10)}
-                              </label>
-                              <label className="news-date-time mx-2">
-                                {' '}
-                                {item?.createdAt?.slice(11, 16)}
-                              </label>
+                      item?.field === value ? (
+                        <Link
+                          key={index}
+                          to={`/consault-store-item/course-detalis/${item._id}`}
+                          state={{ item: item }}
+                        >
+                          <div className={styles['gold-div']}>
+                            <div className="title-card">
+                              <LazyLoadImage
+                                src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                                  }`}
+                                alt={item?.title}
+                                loading="lazy"
+                              />
+                              <div className="news-date">
+                                <label className="mx-2">
+                                  {item?.createdAt?.slice(0, 10)}
+                                </label>
+                                <label className="news-date-time mx-2">
+                                  {item?.createdAt?.slice(11, 16)}
+                                </label>
+                              </div>
+                            </div>
+                            <div>
+                              <h3 className="text-center fw-bold">
+                                {item.title}
+                              </h3>
                             </div>
                           </div>
-                          <div>
-                            <h3 className="text-center fw-bold">
-                              {item.title}
-                            </h3>
-                          </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      ) : (
+                        null
+                        // <h3 key={index} className='fw-semibold text-center'> لا يوجد كورسات متاحة</h3>
+                      )
                       // ) : (null
                       // value == 'selectAll' ? (
                       //   courseData?.document?.map((item, index) => (
@@ -208,28 +174,26 @@ const Courses = () => {
                       // )
                     ))}
                   </div>
-                  {value == 'selectAll' ? (
+                  {/* {value == 'selectAll' ? (
                     <div className="pt-5 mt-5 d-flex justify-content-around ">
                       <button
-                        className={`btn btn-outline-info ${
-                          next >= categoryaShow?.length ? 'disabled' : ''
-                        }`}
+                        className={`btn btn-outline-info ${next >= categoryaShow?.length ? 'disabled' : ''
+                          }`}
                         onClick={handelNext}
                       >
                         {' '}
                         next
                       </button>
                       <button
-                        className={`btn btn-outline-info ${
-                          prev == 0 ? 'disabled' : ''
-                        }`}
+                        className={`btn btn-outline-info ${prev == 0 ? 'disabled' : ''
+                          }`}
                         onClick={handelprev}
                       >
                         {' '}
                         prev
                       </button>
                     </div>
-                  ) : null}
+                  ) : null} */}
                 </div>
               </>
             </div>
