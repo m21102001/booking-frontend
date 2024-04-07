@@ -3,38 +3,21 @@ import { useState } from 'react';
 import axios from '@/api/axios';
 import './login.scss';
 import { Navbar } from '@/layout';
-import { toast } from 'react-toastify';
+import { useAuth } from '@/context/Auth';
 
 const Login = () => {
-  const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {login} = useAuth();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
-    try {
-      await axios.post(
-        'auth/login',
-        {
-          email: email,
-          password: password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      toast.success('تم تسجيل الدخول بنجاح');
-      navigate('/');
-      setIsPending(false);
-    } catch (err) {
-      setIsPending(false);
-      toast.error(err?.response?.data?.message);
-      console.log('response', err);
-    }
+
+    await login(email,password);
+    setIsPending(false);
+
   };
   return (
     <>

@@ -18,10 +18,11 @@ const Navbar = () => {
     } catch (error) {
       console.log(error.response);
     } finally {
-      Navigate('/auth/login');
+      setuser(undefined);
       setLoggedin(false);
       setRole(undefined);
-      setuser(undefined);
+      Navigate('/auth/login');
+    
     }
   };
 
