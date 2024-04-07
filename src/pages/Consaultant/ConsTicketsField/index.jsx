@@ -16,7 +16,7 @@ const ConsTicketsField = () => {
       .get('cons-fields/')
       .then((response) => {
         setCategory(response.data);
-        // console.log('xxxxx', response.data);
+        console.log('xxxxx', response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -24,9 +24,9 @@ const ConsTicketsField = () => {
         console.log(error);
       });
   }, []);
-  console.log('category', category);
-  const [value2, setValue2] = useState('');
-  const errorMessage = useRef();
+  // console.log('category', category);
+  const [value2, setValue2] = useState([]);
+  // const errorMessage = useRef();
   useEffect(() => {
     setLoading(true);
     axios.get(`cons-tickets/field/${value2}`)
@@ -35,14 +35,13 @@ const ConsTicketsField = () => {
         setConsultation(response.data)
       })
       .catch((error) => {
-        errorMessage(error)
+        // errorMessage(error)
         setLoading(false);
         console.log(error?.response?.status);
       });
 
   }, [value2, category])
-  console.log('dkjndkjdnskj', consultation);
-  console.log('error', errorMessage);
+  // console.log('error', category?.document);
   return (
     <div style={{ color: 'var(--darkblue-color)' }}>
       <Navbar />
@@ -77,19 +76,16 @@ const ConsTicketsField = () => {
             value={value2}
             onChange={e => setValue2(e.target.value)}
           >
-            <option defaultValue selected value="selectAll">
-              كل الانواع
-            </option>
             {!loading &&
               category?.document?.map((item, index) => (
-                <option key={index} defaultValue value={item?.field}>
+                <option key={index} value={item?.field}>
                   {item?.field}
                 </option>
               ))}
           </select>
         </div>
-        {consultation?.data?.length > 0 ? (
-          !loading && consultation?.data?.map((item, index) => (
+        {!loading && consultation?.data?.map((item, index) => (
+          item?.field === value2 ? (
             <Link
               to={`/auth/shop`}
               state={{ item }}
@@ -114,10 +110,9 @@ const ConsTicketsField = () => {
                 </ul>
               </div>
             </Link>
-          ))
-        ) : (
-          <div className="text-dark fs-3 fw-semibold">لايوجد استشارات متاجة لهذا القسم</div>
-        )}
+          ) : null
+        ))
+        }
       </div>
       <Footer />
     </div >

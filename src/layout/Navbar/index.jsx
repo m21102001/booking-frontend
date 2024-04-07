@@ -95,7 +95,7 @@ const Navbar = () => {
                 <li className="nav-item ms-2 ">
                   <NavLink
                     className="nav-link navli text-light"
-                    to="/cons-tickets/field/"
+                    to="/cons-tickets/field"
                   >
                     الاستشارات
                   </NavLink>

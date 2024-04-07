@@ -111,7 +111,7 @@ const Routers = () => {
           <Route path="/question-and-answer" element={<QuestionAnswer />} />
           <Route path="/Advice-advisors" element={<AdviceAdvisors />} />
           <Route path="/Courses" element={<Courses />} />
-          <Route path="/cons-tickets/field/" element={<ConsTicketsField />} />
+          <Route path="/cons-tickets/field" element={<ConsTicketsField />} />
           <Route
             path="/consault-store-item/course-detalis/:id"
             element={<DetailsPlaylistDevelopment />}
