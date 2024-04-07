@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { Link, Navigate, NavLink } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { RxAvatar } from 'react-icons/rx';
 import { useAuth } from '@/context/Auth';
 import axios from '@/api/axios';
-import { useState } from 'react';
 
 const Navbar = () => {
   const { setRole, setuser, setLoggedin, Loggedin, user } = useAuth();
@@ -15,10 +15,10 @@ const Navbar = () => {
     } catch (error) {
       console.log(error.response);
     } finally {
+      Navigate('/auth/login');
       setLoggedin(false);
       setRole(undefined);
       setuser(undefined);
-      Navigate('/auth/login');
     }
   };
 
@@ -27,9 +27,11 @@ const Navbar = () => {
   // Function to handle login
   const handleLogin = () => {
     setIsLoggedIn(true);
+    console.log(isLoggedIn);
   };
   const handleLogout = () => {
     setIsLoggedIn(false);
+    console.log(isLoggedIn);
   };
 
   return (
