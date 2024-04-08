@@ -56,8 +56,8 @@ const ContactUs = () => {
     <>
       <Navbar />
       {loading && <div className="loading"></div>}
-      <div className="contactUs">
-        <div className="StartElectronicEcommerce" id="about-us">
+      <div className="contactUs" style={{ color: 'var(--white-color)' }}>
+        <div id="about-us">
           <div className="Container">
             <div className="m-auto d-flex justify-content-center my-5">
               <span></span>

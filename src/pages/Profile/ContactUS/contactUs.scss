@@ -2,7 +2,7 @@
   .Container {
     span {
       z-index: 0;
-      background-color: var(--main-color);
+      background-color: var(--gold-color2);
       width: 30px;
       height: 3px;
       margin: auto 20px;
@@ -12,6 +12,11 @@
   .card-form {
     .send {
       padding: 0.5rem 6rem;
+      border: 0;
+      outline: none;
+    }
+    :hover {
+      background-color: var(darkblue-color);
     }
   }
 }

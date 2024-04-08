@@ -25,7 +25,8 @@ const Courses = () => {
   console.log('value', value);
   useEffect(() => {
     setLoading(true);
-    axios.get(`courses/field/${value}`)
+    axios
+      .get(`courses/field/${value}`)
       .then((response) => {
         setCategoryShow(response?.data);
         setLoading(false);
@@ -61,7 +62,7 @@ const Courses = () => {
   return (
     <>
       <Navbar />
-      <div className="coursers-open goldNews py-5">
+      <div className="coursers-open  py-5 ">
         <div className="m-auto d-flex justify-content-center mb-5">
           <span
             style={{
@@ -72,7 +73,10 @@ const Courses = () => {
               margin: 'auto 20px',
             }}
           ></span>
-          <h2 className="text-center comunation fs-1 fw-bold">
+          <h2
+            className="text-center comunation text-blue-600 fs-1 fw-bold"
+            style={{ color: 'var(--gold-color2)' }}
+          >
             الكورسات المتاحة{' '}
           </h2>
           <span
@@ -106,42 +110,42 @@ const Courses = () => {
               <>
                 <div className="container">
                   <div className={styles['home-grid']}>
-                    {categoryaShow?.data?.map((item, index) => (
-                      // item?.option == value && item?.option !== 'selectAll' ? (
-                      item?.field === value ? (
-                        <Link
-                          key={index}
-                          to={`/consault-store-item/course-detalis/${item._id}`}
-                          state={{ item: item }}
-                        >
-                          <div className={styles['gold-div']}>
-                            <div className="title-card">
-                              <LazyLoadImage
-                                src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                    {categoryaShow?.data?.map(
+                      (item, index) =>
+                        // item?.option == value && item?.option !== 'selectAll' ? (
+                        item?.field === value ? (
+                          <Link
+                            key={index}
+                            to={`/consault-store-item/course-detalis/${item._id}`}
+                            state={{ item: item }}
+                          >
+                            <div className={styles['gold-div']}>
+                              <div className="title-card">
+                                <LazyLoadImage
+                                  src={`${import.meta.env.VITE_IMAGE_URL}${
+                                    item?.image
                                   }`}
-                                alt={item?.title}
-                                loading="lazy"
-                              />
-                              <div className="news-date">
-                                <label className="mx-2">
-                                  {item?.createdAt?.slice(0, 10)}
-                                </label>
-                                <label className="news-date-time mx-2">
-                                  {item?.createdAt?.slice(11, 16)}
-                                </label>
+                                  alt={item?.title}
+                                  loading="lazy"
+                                />
+                                <div className="news-date">
+                                  <label className="mx-2">
+                                    {item?.createdAt?.slice(0, 10)}
+                                  </label>
+                                  <label className="news-date-time mx-2">
+                                    {item?.createdAt?.slice(11, 16)}
+                                  </label>
+                                </div>
+                              </div>
+                              <div>
+                                <h3 className="text-center fw-bold">
+                                  {item.title}
+                                </h3>
                               </div>
                             </div>
-                            <div>
-                              <h3 className="text-center fw-bold">
-                                {item.title}
-                              </h3>
-                            </div>
-                          </div>
-                        </Link>
-                      ) : (
-                        null
-                        // <h3 key={index} className='fw-semibold text-center'> لا يوجد كورسات متاحة</h3>
-                      )
+                          </Link>
+                        ) : null
+                      // <h3 key={index} className='fw-semibold text-center'> لا يوجد كورسات متاحة</h3>
                       // ) : (null
                       // value == 'selectAll' ? (
                       //   courseData?.document?.map((item, index) => (
@@ -172,7 +176,7 @@ const Courses = () => {
                       //   ))
                       // ) : ('nnn')
                       // )
-                    ))}
+                    )}
                   </div>
                   {/* {value == 'selectAll' ? (
                     <div className="pt-5 mt-5 d-flex justify-content-around ">
