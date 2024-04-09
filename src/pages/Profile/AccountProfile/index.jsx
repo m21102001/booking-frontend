@@ -105,7 +105,6 @@ const AccountProfile = () => {
                   </div>
                   <div className="ms-3" style={{ marginTop: '130px' }}>
                     <h5>{user?.name}</h5>
-                    <p>New York</p>
                   </div>
                 </div>
                 <div
