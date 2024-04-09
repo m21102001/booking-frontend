@@ -10,6 +10,7 @@ const EditProfile = () => {
   const [isPending, setIsPending] = useState(false);
   const [email, setEmail] = useState(user?.email);
   const [name, setName] = useState(user?.name);
+  const [image, setImage] = useState(user?.image);
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ const EditProfile = () => {
         {
           email: email,
           name: name,
+          image: image,
         },
         {
           headers: {
@@ -52,6 +54,22 @@ const EditProfile = () => {
                         تعديل البيانات
                       </h3>
                       <form className="pb-5 pt-2" onSubmit={handelSubmit}>
+                        {user?.role == 'mentor' ? (
+                          <div className="form-outline mb-4">
+                            <label
+                              className="form-label"
+                              htmlFor="form3Example1m2"
+                            >
+                              الصورة الشخصية
+                            </label>
+                            <input
+                              type="file"
+                              id="form3Example9"
+                              className="form-control form-control-lg"
+                              onChange={(e) => setImage(e.target.files[0])}
+                            />
+                          </div>
+                        ) : null}
                         <div className="form-outline mb-4">
                           <label
                             className="form-label"

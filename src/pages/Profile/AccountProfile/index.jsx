@@ -79,12 +79,21 @@ const AccountProfile = () => {
                     className="ms-4 mt-5 d-flex flex-column"
                     style={{ width: '150px' }}
                   >
-                    <img
-                      src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
-                      alt="Generic placeholder image"
-                      className="img-fluid img-thumbnail mt-4 mb-2"
-                      style={{ width: '150px', zIndex: '1' }}
-                    />
+                    {user?.role =='mentor'?(
+                      <img
+                      src={`${import.meta.env.VITE_IMAGE_URL}${user?.image}`}
+                        alt={user?.name}
+                        className="img-fluid img-thumbnail mt-4 mb-2"
+                        style={{ width: '150px', zIndex: '1' }}
+                      />
+                    ):(
+                      <img
+                        src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+                        alt="Generic placeholder image"
+                        className="img-fluid img-thumbnail mt-4 mb-2"
+                        style={{ width: '150px', zIndex: '1' }}
+                      />
+                    )}
                     <Link
                       to={`/auth/profile/edit-profile/update-password`}
                       className="btn btn-outline-dark"

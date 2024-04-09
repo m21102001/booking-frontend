@@ -36,8 +36,9 @@ const DetailsPlaylistDevelopment = () => {
       })
       .catch((error) => {
         setLoading(false);
+        console.log(error);
       });
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     setLoading(true);
@@ -51,7 +52,7 @@ const DetailsPlaylistDevelopment = () => {
         setLoading(false);
         setPay(error?.status);
       });
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     axios
@@ -65,20 +66,6 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status);
       });
   }, [id]);
-
-  useEffect(() => {
-    axios
-      .get(`comments/course/${id}`)
-      .then((response) => {
-        setComment(response.data?.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setPay(error?.status);
-      });
-  }, []);
-
   const hanelSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -100,11 +87,25 @@ const DetailsPlaylistDevelopment = () => {
     } catch (err) {
       setLoading(false);
       console.log('message', err.message);
-      toast.error('خطأ فى الارسال');
+      toast.error(err.message);
     }
     setLoading(false);
     return;
   };
+  useEffect(() => {
+    axios
+      .get(`comments/course/${id}`)
+      .then((response) => {
+        setComment(response.data?.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setPay(error?.status);
+      });
+  }, [message, id]);
+  // console.log(comment);
+
 
   return (
     <div style={{ backgroundColor: 'var(--darkblue-color)' }}>

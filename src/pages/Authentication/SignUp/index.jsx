@@ -30,7 +30,6 @@ const SignUp = () => {
   const [showValidationMessage, setShowValidationMessage] = useState(true);
 
   const [categorya, setCategory] = useState([]);
-  const [value, setValue] = useState([]);
 
   useEffect(() => {
     setIsPending(true);
@@ -47,12 +46,7 @@ const SignUp = () => {
       });
   }, []);
 
-
-  const [field, setField] = useState(value);
-  const handleChangeType = (e) => {
-    setField(e.target.value);
-  };
-
+  const [field, setField] = useState('');
   const handelSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
@@ -242,16 +236,16 @@ const SignUp = () => {
                           <select
                             className="form-select form-select-lg mb-3"
                             aria-label=".form-select-lg example"
-                            value={value}
-                            onChange={(e) => setValue(e.target.value)}
+                            value={field}
+                            onChange={(e) => setField(e.target.value)}
                           >
                             {!isPending &&
                               categorya?.document?.map((item, index) => (
                                 <option
                                   key={index}
                                   required
-                                  value={field}
-                                  onChange={handleChangeType}
+                                  // value={field}
+                                  // onChange={handleChangeType}
                                 >
                                   {item?.field}
                                 </option>

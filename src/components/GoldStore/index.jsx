@@ -176,9 +176,7 @@ const GoldStore = () => {
                           <div className={styles['gold-div']}>
                             <div className="title-card">
                               <LazyLoadImage
-                                src={`${import.meta.env.VITE_IMAGE_URL}${
-                                  item?.image
-                                }`}
+                                src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                                 alt={item?.name}
                                 loading="lazy"
                               />
@@ -196,18 +194,16 @@ const GoldStore = () => {
                 {value == 'selectAll' ? (
                   <div className="pt-5 mt-5 d-flex justify-content-around ">
                     <button
-                      className={`btn btn-outline-info ${
-                        next >= bookData?.results ? 'disabled' : ''
-                      }`}
+                      className={`btn btn-outline-info ${next >= bookData?.results ? 'disabled' : ''
+                        }`}
                       onClick={handelNext}
                     >
                       {' '}
                       next
                     </button>
                     <button
-                      className={`btn btn-outline-info ${
-                        prev == 0 ? 'disabled' : ''
-                      }`}
+                      className={`btn btn-outline-info ${prev == 0 ? 'disabled' : ''
+                        }`}
                       onClick={handelprev}
                     >
                       {' '}

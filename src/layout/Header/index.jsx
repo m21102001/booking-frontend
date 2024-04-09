@@ -11,7 +11,6 @@ const Header = () => {
       .get('cover')
       .then((response) => {
         setCover(response.data);
-        console.log('cover', response.data);
         setLoading(false);
       })
       .catch((error) => {
