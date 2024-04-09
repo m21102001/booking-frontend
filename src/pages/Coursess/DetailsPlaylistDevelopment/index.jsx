@@ -4,7 +4,6 @@ import { Footer, Navbar } from '@/layout';
 import axios from '@/api/axios';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { authenticated, useAuth } from '@/context/Auth';
-import { MdOutlineArrowBack } from 'react-icons/md';
 import { toast } from 'react-toastify';
 const DetailsPlaylistDevelopment = () => {
   const authed = authenticated();
@@ -18,7 +17,6 @@ const DetailsPlaylistDevelopment = () => {
   const [course, setcourse] = useState();
   const [message, setMessage] = useState();
   const [comment, setComment] = useState([]);
-  const [showMore, setShowMore] = useState(false);
   const [showMoreStates, setShowMoreStates] = useState({});
 
   // Function to toggle showMore for a specific comment
@@ -131,9 +129,8 @@ const DetailsPlaylistDevelopment = () => {
                         <div className="card-body">
                           <div className="row">
                             <LazyLoadImage
-                              src={`${import.meta.env.VITE_IMAGE_URL}${
-                                item?.image
-                              }`}
+                              src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                                }`}
                               alt={item?.title}
                               loading="lazy"
                               style={{ width: 'web' }}
@@ -183,9 +180,9 @@ const DetailsPlaylistDevelopment = () => {
                             ) : user?.role != 'mentor' ? (
                               <div className="col-sm-9">
                                 {!loading &&
-                                payment.data == undefined &&
-                                pay != 401 &&
-                                authed == true ? (
+                                  payment.data == undefined &&
+                                  pay != 401 &&
+                                  authed == true ? (
                                   <Link
                                     to={`/development/details-video/${course?._id}`}
                                     state={{ course, item }}
