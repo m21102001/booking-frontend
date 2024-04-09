@@ -104,6 +104,18 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status);
       });
   }, [message, id]);
+  useEffect(() => {
+    axios
+      .get(`comments/course/${id}`)
+      .then((response) => {
+        setComment(response.data?.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setPay(error?.status);
+      });
+  }, [message, id]);
   // console.log(comment);
 
 
