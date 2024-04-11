@@ -177,6 +177,7 @@ const GoldStore = () => {
                             <div className="title-card">
                               <LazyLoadImage
                                 src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                                // src={`https://sayes-media.s3.eu-north-1.amazonaws.com/images/circled Saad.png`}
                                 alt={item?.name}
                                 loading="lazy"
                               />
