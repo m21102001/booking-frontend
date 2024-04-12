@@ -8,7 +8,6 @@ const CoursesOpenConsult = () => {
   const item = useLocation()?.state?.item
   const [loading, setLoading] = useState(true)
   const [course, setCourse] = useState([])
-  console.log('llllllllllll', item);
   useEffect(() => {
     setLoading(true)
     try {
@@ -39,7 +38,7 @@ const CoursesOpenConsult = () => {
           <>
             <div className="container">
               <div className={styles['home-grid']}>
-                {!loading && course?.document?.map((item, index) => (
+                {!loading && course?.data?.map((item, index) => (
                   index < 8 ? (
                     <div key={index} className={styles['gold-div']}>
                       <div>

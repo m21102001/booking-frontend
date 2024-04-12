@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../GoldCard/GoldCard.module.scss';
 import axios from '@/api/axios';
+import './goldStore.scss'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs"
+import 'react-tabs/style/react-tabs.css';
 const GoldStore = () => {
   const item = useLocation()?.state?.item;
   const [loading, setLoading] = useState(false);
-  const [bookData, setBookData] = useState([]);
   const [allUser, setAlluser] = useState([]);
   const [categorya, setCategory] = useState([]);
+  const [categorySemester, setCategorySemester] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -16,7 +19,6 @@ const GoldStore = () => {
       .get('cons-fields/')
       .then((response) => {
         setCategory(response.data);
-        console.log('xxxxx', response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -36,10 +38,9 @@ const GoldStore = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`mentors/semester/?semester=${type}`)
+      .get(`mentors/semester/${type}`)
       .then((response) => {
-        setCategory(response.data);
-        console.log('semester', response.data);
+        setCategorySemester(response.data?.mentors);
         setLoading(false);
       })
       .catch((error) => {
@@ -47,11 +48,12 @@ const GoldStore = () => {
         console.log(error);
       });
   }, [type]);
+  console.log('categorySemester', categorySemester);
 
   const getInitialState = () => {
     let value = item?.option;
     if (value == null) {
-      value = 'selectAll';
+      value = 'تكنولوجيا';
     }
 
     return value;
@@ -77,8 +79,7 @@ const GoldStore = () => {
         console.log(error);
       });
   }, [value]);
-  console.log('jjj', allUser);
-  console.log('value', value);
+  // console.log('value', value);
   ////////////////pagination///////////
   const [prev, setPrev] = useState(0);
   const [next, setNext] = useState(10);
@@ -129,93 +130,115 @@ const GoldStore = () => {
         ></span>
       </div>
       <div className="row align-items-start m-auto">
-        <div className="col-md-3 d-flex">
-          <select
-            className="form-select mb-3"
-            aria-label="Default select example"
-            value={value}
-            onChange={handleChange}
-          >
-            <option defaultValue selected value="selectAll">
-              SelectAll
-            </option>
-            {!loading &&
-              categorya?.document?.map((item, index) => (
-                <option key={index} value={item?.field}>
-                  {item?.field}
-                </option>
-              ))}
-          </select>
-        </div>
-        <div className="col-md-3 d-flex">
-          <select
-            className="form-select mb-3"
-            aria-label="Default select example"
-            value={type}
-            onChange={handleChangeType}
-          >
-            <option value="summer">الصيف</option>
-            <option value="winter">الشتاء</option>
-            <option value="spring">الربيع</option>
-            <option value="autumn">الخريف</option>
-          </select>
-        </div>
-        <div className="col-md-12">
-          <div className="m-auto d-flex justify-center">
-            <>
-              <div className="container">
-                <div className={styles['home-grid']}>
-                  {!loading &&
-                    allUser?.mentors?.map((item, index) =>
-                      item?.field === value ? (
-                        <Link
-                          key={index}
-                          to={`/consault-store-item`}
-                          state={{ item: item }}
-                        >
-                          <div className={styles['gold-div']}>
-                            <div className="title-card">
-                              <LazyLoadImage
-                                src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                // src={`https://sayes-media.s3.eu-north-1.amazonaws.com/images/circled Saad.png`}
-                                alt={item?.name}
-                                loading="lazy"
-                              />
-                            </div>
-                            <div>
-                              <h3 className="text-center fw-bold">
-                                {item.name}
-                              </h3>
-                            </div>
-                          </div>
-                        </Link>
-                      ) : null
-                    )}
-                </div>
-                {value == 'selectAll' ? (
-                  <div className="pt-5 mt-5 d-flex justify-content-around ">
-                    <button
-                      className={`btn btn-outline-info ${next >= bookData?.results ? 'disabled' : ''
-                        }`}
-                      onClick={handelNext}
-                    >
-                      {' '}
-                      next
-                    </button>
-                    <button
-                      className={`btn btn-outline-info ${prev == 0 ? 'disabled' : ''
-                        }`}
-                      onClick={handelprev}
-                    >
-                      {' '}
-                      prev
-                    </button>
+        <Tabs>
+          <TabList>
+            <Tab>مجالات المستشارين</Tab>
+            <Tab>فصول السنة </Tab>
+          </TabList>
+
+          <TabPanel>
+            <div className="col-md-3 d-flex py-3">
+              <select
+                className="form-select mb-3"
+                aria-label="Default select example"
+                value={value}
+                onChange={handleChange}
+              >
+
+                {!loading &&
+                  categorya?.document?.map((item, index) => (
+                    <option key={index} value={item?.field}>
+                      {item?.field}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <div className="col-md-12">
+              <div className="m-auto d-flex justify-center">
+                <>
+                  <div className="container">
+                    <div className={styles['home-grid']}>
+                      {!loading &&
+                        allUser?.mentors?.map((item, index) =>
+                          item?.field === value || item?.type == value ? (
+                            <Link
+                              key={index}
+                              to={`/consault-store-item`}
+                              state={{ item: item }}
+                            >
+                              <div className={styles['gold-div']}>
+                                <div className="title-card">
+                                  <LazyLoadImage
+                                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                                    // src={`https://sayes-media.s3.eu-north-1.amazonaws.com/images/circled Saad.png`}
+                                    alt={item?.name}
+                                    loading="lazy"
+                                  />
+                                </div>
+                                <div>
+                                  <h3 className="text-center fw-bold">
+                                    {item.name}
+                                  </h3>
+                                </div>
+                              </div>
+                            </Link>
+                          ) : null
+                        )}
+                    </div>
                   </div>
-                ) : null}
+                </>
               </div>
-            </>
-          </div>
-        </div>
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="col-md-3 d-flex py-3">
+              <select
+                className="form-select mb-3"
+                aria-label="Default select example"
+                value={type}
+                onChange={handleChangeType}
+              >
+                <option value="summer">الصيف</option>
+                <option value="winter">الشتاء</option>
+                <option value="spring">الربيع</option>
+                <option value="fall">الخريف</option>
+              </select>
+            </div>
+            <div className="col-md-12">
+              <div className="m-auto d-flex justify-center">
+                <>
+                  <div className="container">
+                    <div className={styles['home-grid']}>
+                      {!loading &&
+                        categorySemester?.map((item, index) =>
+                          <Link
+                            key={index}
+                            to={`/consault-store-item`}
+                            state={{ item: item }}
+                          >
+                            <div className={styles['gold-div']}>
+                              <div className="title-card">
+                                <LazyLoadImage
+                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                                  alt={item?.name}
+                                  loading="lazy"
+                                />
+                              </div>
+                              <div>
+                                <h3 className="text-center fw-bold">
+                                  {item.name}
+                                </h3>
+                              </div>
+                            </div>
+                          </Link>
+                        )}
+                    </div>
+                  </div>
+                </>
+              </div>
+            </div>
+          </TabPanel>
+        </Tabs>
       </div>
     </div>
   );
