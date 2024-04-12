@@ -18,6 +18,7 @@ const DetailsPlaylistDevelopment = () => {
   const [message, setMessage] = useState();
   const [comment, setComment] = useState([]);
   const [showMoreStates, setShowMoreStates] = useState({});
+  const [replayComment,setReplayComment]=useState('');
 
   // Function to toggle showMore for a specific comment
   const toggleShowMore = (index) => {
@@ -92,6 +93,7 @@ const DetailsPlaylistDevelopment = () => {
     setLoading(false);
     return;
   };
+
   useEffect(() => {
     axios
       .get(`comments/course/${id}`)
@@ -116,9 +118,32 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status);
       });
   }, [message, id]);
-  // console.log(comment);
+  console.log('replay', comment);
 
-
+  const handelReplay = async ({ e, id }) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      // await axios .post(`replies/${661968278d5f9ddf673db5db}`,
+      await axios.post(`replies/${id}`,
+        {
+          text: replayComment
+        },
+        { credentials: true }
+      )
+        .then((response) => {
+          setComment('')
+          toast.success('تم الرد على التعليق بنجاح');
+          setLoading(false);
+        })
+    } catch (err) {
+      setLoading(false);
+      console.log('message', err.message);
+      toast.error(err.message);
+    }
+    setLoading(false);
+    return;
+  }
   return (
     <div style={{ backgroundColor: 'var(--darkblue-color)' }}>
       <Navbar />
@@ -361,7 +386,6 @@ const DetailsPlaylistDevelopment = () => {
                     </p>
                   </div>
                   <hr />
-                  {/* <form className="mx-3"> */}
                   <h3 className="text-end text-dark fs-4 lh-lg mx-3">
                     {showMoreStates[index] ? 'رد على التعليق' : ''}
                     <div className="mb-3">
@@ -378,7 +402,29 @@ const DetailsPlaylistDevelopment = () => {
                       </button>
                     </div>
                   </h3>
-                  {/* </form> */}
+
+                  {user?._id == item?.owner ? (
+                    <form className='container text-end pb-3' onSubmit={(e) => handelReplay({ e, id: item?._id })}>
+                      <div className="mb-3">
+                        <label
+                          htmlFor="replay"
+                          className="form-label"
+                        >
+                          رد على التعليق
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="replay"
+                          aria-describedby="replay"
+                          value={replayComment}
+                          onChange={(e)=>setReplayComment(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <button type="submit" className="btn btn-success px-4">ارسال</button>
+                    </form>
+                  ) : null}
                 </div>
               ))}
             </div>
