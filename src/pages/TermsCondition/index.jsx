@@ -20,7 +20,7 @@ const TermsCondition = () => {
               <Tab>المستشار </Tab>
               <Tab>عام</Tab>
             </TabList>
-            {condationAndTerms?.map((item, index) => (
+            {condationAndTerms?.map((item) => (
               <>
                 <TabPanel>
                   <div className="accordion" id="accordionExample">
