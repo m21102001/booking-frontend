@@ -20,9 +20,8 @@ const SignUp = () => {
   const [twitter, setTwitter] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [instagram, setInstagram] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState([]);
   const [description, setDdescription] = useState('');
-  // const [field, setField] = useState('');
   const [Video, setVideo] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [validationMessage, setValidationMessage] = useState('');
@@ -94,11 +93,11 @@ const SignUp = () => {
         setIsPending(false);
         toast.error('الايميل بالفعل موجود, يجب تغيير الايميل');
 
-        console.log('response', err.response);
+        console.log('response', err.response?.message);
       }
     }
   };
-
+console.log(image);
   const validatePassword = () => {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -137,20 +136,16 @@ const SignUp = () => {
                         <div className="form-outline mb-4">
                           <label className="form-label">
                             اضف صورة شخصية{' '}
-                            {/* <span className="text-danger fw-bold">
-                              ك لينك حاليا
-                            </span> */}
                           </label>
                           <input
-                            // type="file"
                             type="file"
                             name="image"
                             className="form-control mb-3"
                             id="image"
                             placeholder="اضف صوره*"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
-                          // onChange={(e) => setImage(e.target.files[0])}
+                            // value={image}
+                            // onChange={(e) => setImage(e.target.value)}
+                          onChange={(e) => setImage(e.target.files[0])}
                           />
                         </div>
                         <div className="row">

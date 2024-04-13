@@ -19,11 +19,11 @@ const Header = () => {
       });
   }, []);
   return (
-    <div className="container text-center">
+    <div className="container text-center header">
       {!loading && cover?.document?.map((item, index) => (
         <div key={index} className="row align-items-start py-5">
           <div className="col-md-6 col-sm-12">
-            <h1 className='text-end py-5 fw-bold'>{item?.title}</h1>
+            <h1 className='text-end py-5 fw-bold text-title'>{item?.title}</h1>
             <h2>{item?.description}</h2>
           </div>
           <div className="col-md-6 col-sm-12">
@@ -31,6 +31,7 @@ const Header = () => {
               src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
               alt={item?.title}
               loading="lazy"
+              className='img-header'
               height={500}
               width={500}
             />
