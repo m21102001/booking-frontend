@@ -18,7 +18,7 @@ const DetailsPlaylistDevelopment = () => {
   const [message, setMessage] = useState();
   const [comment, setComment] = useState([]);
   const [showMoreStates, setShowMoreStates] = useState({});
-  const [replayComment,setReplayComment]=useState('');
+  const [replayComment, setReplayComment] = useState('');
 
   // Function to toggle showMore for a specific comment
   const toggleShowMore = (index) => {
@@ -46,7 +46,7 @@ const DetailsPlaylistDevelopment = () => {
     axios
       .get(`/playlists/${id}/videos`)
       .then((response) => {
-        setGetvideos(response.data);
+        setGetvideos(response?.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -59,7 +59,7 @@ const DetailsPlaylistDevelopment = () => {
     axios
       .get(`courses/${id}`)
       .then((response) => {
-        setcourse(response.data.document);
+        setcourse(response?.data?.document);
         setLoading(false);
       })
       .catch((error) => {
@@ -105,12 +105,12 @@ const DetailsPlaylistDevelopment = () => {
         setLoading(false);
         setPay(error?.status);
       });
-  }, [message, id]);
+  }, [ id]);
   useEffect(() => {
     axios
       .get(`comments/course/${id}`)
       .then((response) => {
-        setComment(response.data?.data);
+        setComment(response?.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -118,13 +118,11 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status);
       });
   }, [message, id]);
-  console.log('replay', comment);
 
   const handelReplay = async ({ e, id }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      // await axios .post(`replies/${661968278d5f9ddf673db5db}`,
       await axios.post(`replies/${id}`,
         {
           text: replayComment
@@ -138,20 +136,37 @@ const DetailsPlaylistDevelopment = () => {
         })
     } catch (err) {
       setLoading(false);
-      console.log('message', err.message);
+      console.log('message', err?.message);
       toast.error(err.message);
     }
     setLoading(false);
     return;
   }
+
+
+  ////////////////pagination///////////
+  const [prev, setPrev] = useState(0);
+  const [next, setNext] = useState(5);
+
+  const handelprev = () => {
+    setPrev((count) => count - 5);
+    setNext((count) => count - 5);
+    if (prev <= 0) {
+      setPrev(0);
+      setNext(5);
+    }
+  };
+  const handelNext = () => {
+    setNext((count) => count + 5);
+    setPrev((count) => count + 5);
+    if (next < 5) {
+      setPrev(0);
+      setNext(5);
+    }
+  };
   return (
     <div style={{ backgroundColor: 'var(--darkblue-color)' }}>
       <Navbar />
-
-      {/* <Link to={'/auth/profile'} className='mb-3 d-flex flex-row-reverse'>
-        <button type="button" className="fw-bold text-light bacground-color-darkblue fs-5 mt-3 ms-3 back-details-button"
-        ><MdOutlineArrowBack size={30} /></button>
-      </Link> */}
       <div
         className="row align-items-start m-auto mt-5"
         style={{ backgroundColor: 'var(--darkblue-color)' }}
@@ -377,56 +392,62 @@ const DetailsPlaylistDevelopment = () => {
         <div className="container pb-5">
           <div className="row d-flex justify-content-center">
             <div className="col-md-12 col-lg-10 col-xl-8">
-              {comment?.map((item, index) => (
-                <div className="card mb-5" key={index}>
-                  <div className="card-body pb-0">
-                    <p className="text-end">{item?.text}</p>
-                    <p className="text-end mb-0">
-                      {item?.createdAt?.slice(0, 10)}
-                    </p>
-                  </div>
-                  <hr />
-                  <h3 className="text-end text-dark fs-4 lh-lg mx-3">
-                    {showMoreStates[index] ? 'رد على التعليق' : ''}
-                    <div className="mb-3">
-                      <button
-                        onClick={() => toggleShowMore(index)}
-                        className="btn btn-dark px-4 mx-3"
-                        style={{
-                          color: 'var(--gold-color)',
-                          cursor: 'pointer',
-                          transitionTimingFunction: 'ease',
-                        }}
-                      >
-                        {showMoreStates[index] ? 'اخفاء' : ' ظهور الرد'}
-                      </button>
+              {comment?.data?.map((item, index) => (
+                index >= prev && index <= next ? (
+                  <div className="card mb-5" key={index}>
+                    <div className="card-body pb-0">
+                      <p className="text-end">{item?.text}</p>
+                      <p className="text-end mb-0">
+                        {item?.createdAt?.slice(0, 10)}
+                      </p>
                     </div>
-                  </h3>
-
-                  {user?._id == item?.owner ? (
-                    <form className='container text-end pb-3' onSubmit={(e) => handelReplay({ e, id: item?._id })}>
+                    <hr />
+                    <h3 className="text-end text-dark fs-4 lh-lg mx-3">
+                      {showMoreStates[index] ? ( item?.replies[0] +'replay') : ''}
                       <div className="mb-3">
-                        <label
-                          htmlFor="replay"
-                          className="form-label"
+                        <button
+                          onClick={() => toggleShowMore(index)}
+                          className="btn btn-dark px-4 mx-3"
+                          style={{
+                            color: 'var(--gold-color)',
+                            cursor: 'pointer',
+                            transitionTimingFunction: 'ease',
+                          }}
                         >
-                          رد على التعليق
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="replay"
-                          aria-describedby="replay"
-                          value={replayComment}
-                          onChange={(e)=>setReplayComment(e.target.value)}
-                          required
-                        />
+                          {showMoreStates[index] ? 'اخفاء' : ' ظهور الرد'}
+                        </button>
                       </div>
-                      <button type="submit" className="btn btn-success px-4">ارسال</button>
-                    </form>
-                  ) : null}
-                </div>
+                    </h3>
+
+                    {user?._id == item?.owner ? (
+                      <form className='container text-end pb-3' onSubmit={(e) => handelReplay({ e, id: item?._id })}>
+                        <div className="mb-3">
+                          <label
+                            htmlFor="replay"
+                            className="form-label"
+                          >
+                            رد على التعليق
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="replay"
+                            aria-describedby="replay"
+                            value={replayComment}
+                            onChange={(e) => setReplayComment(e?.target?.value)}
+                            required
+                          />
+                        </div>
+                        <button type="submit" className="btn btn-success px-4">ارسال</button>
+                      </form>
+                    ) : null}
+                  </div>
+                ) : null
               ))}
+            </div>
+            < div className="pt-5 mt-5 d-flex justify-content-around " >
+              <button className={`btn btn-outline-info ${next >= comment?.length ? ('disabled') : ('')}`} onClick={handelNext}> next</button>
+              <button className={`btn btn-outline-info ${prev == 0 ? ('disabled') : ('')}`} onClick={handelprev}> prev</button>
             </div>
           </div>
         </div>
