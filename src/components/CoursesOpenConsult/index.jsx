@@ -22,8 +22,8 @@ const CoursesOpenConsult = () => {
       setLoading(false)
       console.log(error)
     }
-
   }, [])
+  console.log(item);
   return (
     <div className='coursers-open'>
       <div className='m-auto d-flex justify-content-center my-5'>

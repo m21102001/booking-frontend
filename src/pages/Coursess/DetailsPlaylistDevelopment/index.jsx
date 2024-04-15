@@ -94,18 +94,19 @@ const DetailsPlaylistDevelopment = () => {
     return;
   };
 
-  useEffect(() => {
-    axios
-      .get(`comments/course/${id}`)
-      .then((response) => {
-        setComment(response.data?.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setPay(error?.status);
-      });
-  }, [ id]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`comments/course/${id}`)
+  //     .then((response) => {
+  //       setComment(response?.data?.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       setLoading(false);
+  //       setPay(error?.status);
+  //     });
+  // }, [ id]);
+
   useEffect(() => {
     axios
       .get(`comments/course/${id}`)
@@ -118,7 +119,7 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status);
       });
   }, [message, id]);
-
+console.log('comment',comment);
   const handelReplay = async ({ e, id }) => {
     e.preventDefault();
     setLoading(true);
@@ -402,8 +403,9 @@ const DetailsPlaylistDevelopment = () => {
                       </p>
                     </div>
                     <hr />
-                    <h3 className="text-end text-dark fs-4 lh-lg mx-3">
-                      {showMoreStates[index] ? ( item?.replies[0] +'replay') : ''}
+                    {item?.replies?.map((item,index)=>(
+                    <h3 key={index} className="text-end text-dark fs-4 lh-lg mx-3">
+                      {showMoreStates[index] ? ( item?.text) : ''}
                       <div className="mb-3">
                         <button
                           onClick={() => toggleShowMore(index)}
@@ -418,6 +420,7 @@ const DetailsPlaylistDevelopment = () => {
                         </button>
                       </div>
                     </h3>
+                    ))}
 
                     {user?._id == item?.owner ? (
                       <form className='container text-end pb-3' onSubmit={(e) => handelReplay({ e, id: item?._id })}>

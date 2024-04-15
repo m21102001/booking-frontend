@@ -22,6 +22,7 @@ const CoursesOpen = () => {
         console.log(error);
       });
   }, []);
+  console.log(allUser);
   return (
     <div className='coursers-open'>
       <div className='m-auto d-flex justify-content-center my-5'>

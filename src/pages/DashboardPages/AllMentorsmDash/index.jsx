@@ -95,7 +95,7 @@ const AllMentorsmDash = () => {
                     <button className="btn btn-outline-info mx-2 px-4">تفاصيل</button>
                     </Link>
                     <Link
-                     to={`/dash/mentors/mentor-update/${item?._id}`}
+                     to={`/dash/mentors/mentor-updated/${item?._id}`}
                     state={{item}}
                     >
                     <button className="btn btn-outline-success mx-2 px-4">تعديل</button>
