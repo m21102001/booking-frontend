@@ -91,7 +91,7 @@ const ConsTicketsField = () => {
           consultation?.data?.map((item, index) =>
             item?.field === value2 ? (
               <Link
-                to={`/auth/shop`}
+                to={`/auth/request/reservation-ticket`}
                 state={{ item }}
                 key={index}
                 className="row row-striped shadow-lg p-3 mb-5 bg-body rounded"

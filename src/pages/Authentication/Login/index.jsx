@@ -89,7 +89,7 @@ const Login = () => {
                           </button>
                         </div>
                       </form>
-                      <div className="mb-3 d-flex ">
+                      {/* <div className="mb-3 d-flex ">
                         ليس لديك حساب ؟
                         <Link
                           className="nav-link navli text-primary"
@@ -97,7 +97,7 @@ const Login = () => {
                         >
                           انشاء حساب جديد
                         </Link>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="col-xl-6 d-none d-xl-block">

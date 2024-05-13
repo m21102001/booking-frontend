@@ -238,14 +238,39 @@ const AccountProfile = () => {
                                     <hr />
                                   </>
                                 ) : null} */}
-                                {/* <div className="row">
+                                <hr />
+                                <div className="row">
+                                  <div className="col-sm-3">
+                                    <p className="mb-0">معدل الخصم</p>
+                                  </div>
+                                  <div className="col-sm-9">
+                                  <p className="text-muted mb-0">
+                                      {user?.fees}
+                                    </p>
+                                  </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                  <div className="col-sm-3">
+                                    <p className="mb-0">المجال</p>
+                                  </div>
+                                  <div className="col-sm-9">
+                                  <p className="text-muted mb-0">
+                                      {user?.field}
+                                    </p>
+                                  </div>
+                                </div>
+                                <hr />
+                                <div className="row">
                                   <div className="col-sm-3">
                                     <p className="mb-0">محفظتى</p>
                                   </div>
                                   <div className="col-sm-9">
-                                    <Link to={'/auth/my-wallet'} className="mb-0 text-primary fw-bold">محفظتى</Link>
+                                  <p className="text-muted mb-0">
+                                      {user?.balance}
+                                    </p>
                                   </div>
-                                </div> */}
+                                </div>
                               </div>
                             </div>
                           </div>

@@ -1,7 +1,8 @@
 import {
   Routes,
   Route,
-  HashRouter  as Router,
+  // HashRouter as Router,
+  BrowserRouter  as Router,
   Navigate,
 } from 'react-router-dom';
 import {
@@ -66,6 +67,14 @@ import {
   UpdatePasswordProfile,
   ConsTicketsField,
   DashUpdateHeader,
+  CoursePayment,
+  TicketPayment,
+  About,
+  UpdateAbout,
+  Tools,
+  UpdateTools,
+  CreateTools,
+  RequestReservationTicket,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -135,7 +144,7 @@ const Routers = () => {
           <Route path="/courses/course-update" element={<CourseUpdate />} />
           <Route path="/contactUs" element={<ContactUS />} />
           <Route path="/who-us" element={<WhoUs />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="auth/payment/fail" element={<Payment />} />
           <Route path="/shop" element={<Shop />} />
           {/* -----------------------auth -------------------- */}
           <Route path="/auth/profile" element={<AccountProfile />} />
@@ -146,8 +155,20 @@ const Routers = () => {
               <UpdatePasswordProfile />
             } />
           <Route
+            path="/auth/Course-payment"
+            element={<CoursePayment />}
+          />
+          <Route
+            path="/auth/ticket-payment"
+            element={<TicketPayment />}
+          />
+          <Route
             path="/auth/reservation-ticket"
             element={<ReservationTicket />}
+          />
+          <Route
+            path="/auth/request/reservation-ticket"
+            element={<RequestReservationTicket />}
           />
           <Route
             path="/auth/create-reservation-ticket"
@@ -186,6 +207,46 @@ const Routers = () => {
               </Protect>
             }
           />
+          <Route
+            path="/dash/about"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <About />
+              </Protect>
+            }
+          />
+          <Route
+            path="/dash/about/update/:id"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <UpdateAbout />
+              </Protect>
+            }
+          />
+            <Route
+              path="/dash/tools"
+              element={
+                <Protect path="dash" protect role={allowed?.role}>
+                  <Tools />
+                </Protect>
+              }
+            />
+            <Route
+              path="/dash/tools/create-new"
+              element={
+                <Protect path="dash" protect role={allowed?.role}>
+                  <CreateTools />
+                </Protect>
+              }
+            />
+            <Route
+              path="/dash/tools/update/:id"
+              element={
+                <Protect path="dash" protect role={allowed?.role}>
+                  <UpdateTools />
+                </Protect>
+              }
+            />
           <Route
             path="/dash/contact-form"
             element={

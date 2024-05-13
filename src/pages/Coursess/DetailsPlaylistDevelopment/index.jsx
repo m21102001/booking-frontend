@@ -30,16 +30,17 @@ const DetailsPlaylistDevelopment = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/playlists/pay/${id}`)
+      .post(`courses/payment/${id}`)
       .then((response) => {
         setPayment(response.data);
         setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
+        // console.log(error);
       });
   }, [id]);
+  console.log('payment',payment);
 
   useEffect(() => {
     setLoading(true);
@@ -87,7 +88,7 @@ const DetailsPlaylistDevelopment = () => {
         });
     } catch (err) {
       setLoading(false);
-      console.log('message', err.message);
+      // console.log('message', err.message);
       toast.error(err.message);
     }
     setLoading(false);
@@ -119,7 +120,6 @@ const DetailsPlaylistDevelopment = () => {
         setPay(error?.status);
       });
   }, [message, id]);
-console.log('comment',comment);
   const handelReplay = async ({ e, id }) => {
     e.preventDefault();
     setLoading(true);
@@ -137,7 +137,7 @@ console.log('comment',comment);
         })
     } catch (err) {
       setLoading(false);
-      console.log('message', err?.message);
+      // console.log('message', err?.message);
       toast.error(err.message);
     }
     setLoading(false);
@@ -247,7 +247,7 @@ console.log('comment',comment);
                                   <button>
                                     <a
                                       className="text-light fs-3 px-2"
-                                      href={payment?.data}
+                                      href={payment?.data?.url}
                                       target="_blank"
                                       rel="noreferrer"
                                     >

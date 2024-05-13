@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "@/layout"
 import { FaClock, FaMoneyBillAlt } from "react-icons/fa";
-import { MdOutlineArrowBack, MdTimer } from "react-icons/md";
+import {  MdTimer } from "react-icons/md";
 import { ImLocation2 } from "react-icons/im";
 import axios from "@/api/axios";
 import './reservation.scss'
@@ -19,7 +19,6 @@ const ReservationTicket = () => {
       .then((response) => {
         setLoading(false)
         setConsultation(response.data)
-        // console.log('consultation', response.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -27,17 +26,14 @@ const ReservationTicket = () => {
       });
 
   }, [])
+
   return (
     <div style={{ color: 'var(--darkblue-color)' }}>
       <Navbar />
-      {/* <Link to={'/auth/profile'} className='mb-3 d-flex flex-row-reverse'>
-        <button type="button" style={{ top: "22%", left: "2%", zIndex: "2" }} className="fw-bold text-light bacground-color-darkblue fs-5 position-fixed back-details-button"
-        ><MdOutlineArrowBack size={30} /></button>
-      </Link> */}
       <div className="container text-center pt-5">
         {!loading && consultation?.data?.map((item, index) => (
           <Link
-            to={`/auth/shop`}
+            to={`/auth/request/reservation-ticket`}
             state={{ item }}
             key={index}
             className="row row-striped shadow-lg p-3 mb-5 bg-body rounded">

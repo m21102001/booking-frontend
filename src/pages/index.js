@@ -24,8 +24,16 @@ export { default as UpdatePasswordProfile } from './Profile/UpdatePasswordProfil
 export { default as CreateNewVideo } from './Coursess/CreateNewVideo';
 export { default as ConsaultStore } from './Consaultant/ConsaultStore';
 export { default as CreateNewCourse } from './Coursess/CreateNewCourse';
+export { default as CoursePayment } from './Coursess/CoursePayment';
+export { default as TicketPayment } from './TicketPayment';
 export { default as AllUsersDash } from './DashboardPages/AllUsersDash';
+export { default as Tools } from './DashboardPages/Tools';
+export { default as About } from './DashboardPages/About';
+export { default as RequestReservationTicket } from './RequestReservationTicket';
 export { default as DashUpdateHeader } from './DashboardPages/DashUpdateHeader';
+export { default as UpdateTools } from './DashboardPages/UpdateTools';
+export { default as CreateTools } from './DashboardPages/CreateTools';
+export { default as UpdateAbout } from './DashboardPages/UpdateAbout';
 export { default as AdviceAdvisors } from './Consaultant/AdviceAdvisors';
 export { default as ConsTicketsField } from './Consaultant/ConsTicketsField';
 export { default as EditProfile } from './Profile/EditProfile';

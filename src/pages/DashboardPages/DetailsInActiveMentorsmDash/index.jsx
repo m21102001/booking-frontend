@@ -8,6 +8,7 @@ const DetailsInActiveMentorsmDash = () => {
   const item = useLocation()?.state?.item
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
+  const [fees, setFees] = useState('')
 
   const hanelSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +18,9 @@ const DetailsInActiveMentorsmDash = () => {
       await axios
         .post(
           `mentors/accept/${item?._id}`,
+          {
+            fees: fees,
+          },
           {
             headers: {
               'Content-Type': 'application/json',
@@ -43,13 +47,23 @@ const DetailsInActiveMentorsmDash = () => {
       <SidebarDashboard />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
-          <h2 className='fs-1 fw-bold'>الموافقة على حساب المستشار  </h2>
+          <h2 className='fs-1 fw-bold'>الموافقة على حساب المستشار </h2>
         </div>
         <form
           onSubmit={hanelSubmit}
           className="container d-flex flex-row justify-content-start align-content-center flex-wrap my-4"
         >
-
+          <div className="label-form pb-3">اضف نسبة الخصم</div>
+          <input
+            type="number"
+            name="fees"
+            className="form-control  mb-4"
+            id="fees"
+            required
+            placeholder="اضف نسبة الخصم *"
+            value={fees}
+            onChange={(e) => setFees(e.target.value)}
+          />
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mt-3">
               موافقة

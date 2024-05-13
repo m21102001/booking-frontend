@@ -6,13 +6,14 @@ import axios from '@/api/axios';
 import { MdOutlineArrowBack } from 'react-icons/md';
 import { toast } from 'react-toastify';
 
-const DashUpdateHeader = () => {
+const UpdateTools = () => {
   const item = useLocation()?.state?.item
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false)
   const [title, setTitle] = useState(item?.title)
   const [image, setImage] = useState(item?.image)
   const [description, setDescription] = useState(item?.description)
+  const [link, setLink] = useState(item?.link)
 
   const hanelSubmit = async (e) => {
     e.preventDefault();
@@ -20,11 +21,12 @@ const DashUpdateHeader = () => {
     try {
       await axios
         .put(
-          `cover/${item?._id}`,
+          `tools/${item?._id}`,
           {
             title: title,
             image: image,
-            description: description
+            description: description,
+            link: link
           },
           {
             headers: {
@@ -34,7 +36,7 @@ const DashUpdateHeader = () => {
         )
         .then((response) => {
           toast.success('تم التعديل بنجاح')
-          navigate('/dash/dashboard')
+          navigate('/dash/tools')
         });
       setIsPending(false);
     } catch (err) {
@@ -49,7 +51,7 @@ const DashUpdateHeader = () => {
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
           <h2 className='fs-1 fw-bold'>تعديل فى تفاصبل الكورس</h2>
         </div>
-        <Link to={'/dash/dashboard'} className='mb-3 d-flex flex-row-reverse'>
+        <Link to={'/dash/tools'} className='mb-3 d-flex flex-row-reverse'>
           <button type="butto" className="fw-bold fs-5 back-details-button"
           ><MdOutlineArrowBack size={30} /></button>
         </Link>
@@ -98,9 +100,20 @@ const DashUpdateHeader = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <div className="label-form">اللينك </div>
+          <input
+            type="text"
+            name="link"
+            className="form-control mb-3"
+            id="link"
+            required
+            placeholder=" اللينك *"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+          />
           {!isPending && (
             <button className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-primary  mt-3">
-              تعديل 
+              تعديل
             </button>
           )}
           {isPending && (
@@ -108,7 +121,7 @@ const DashUpdateHeader = () => {
               جاري التعديل ...
             </button>
           )}
-          <button onClick={() => navigate('/dash/courses')} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mt-3">
+          <button onClick={() => navigate('/dash/tools')} className="d-grid col-3 py-3 fs-4 fw-bold align-content-center mx-auto btn btn-danger mt-3">
             cancel
           </button>
         </form>
@@ -117,4 +130,4 @@ const DashUpdateHeader = () => {
   )
 }
 
-export default DashUpdateHeader
+export default UpdateTools
