@@ -5,15 +5,11 @@ import axios from '@/api/axios'
 import {
   AboutThat,
   CoursesOpen,
-  DigitalMarkting,
   GoldCard,
   ServicesIncluded,
-  StartElectronicEcommerce,
   WhyKambridage,
-  // GoldChart
 } from '@/components'
 import { useAuth } from '@/context/Auth'
-import { services } from '@/db/data'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useEffect, useState } from 'react'
 const Home = () => {
@@ -38,28 +34,27 @@ const Home = () => {
       <div className="container text-center">
         <div className="row justify-content-center">
           {!loading && tool?.document?.map((item, index) => (
-            <div key={index} className="col-6">
-              <div className="card mb-3" style={{ maxWidth: "540px"}}>
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <LazyLoadImage
-                      src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                      className="img-fluid rounded-start"
-                      alt={item?.title}
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <Link to={item?.link}>
-                        <h5 className="card-title">{item?.title}</h5>
-                      </Link>
-                      <p className="card-text">{item?.description}</p>
-                    </div>
+            <div key={index} className="card mb-3" style={{ maxWidth: "540px" }}>
+              <div className="row g-0">
+                <div className="col-md-4">
+                  <LazyLoadImage
+                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                    alt={item?.title}
+                    className="img-fluid rounded-start"
+                  />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">{item?.title}</h5>
+                    <Link to={item?.link}>
+                      <p className="card-text">
+                        {item?.description}
+                      </p>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-
           ))}
         </div>
       </div>
