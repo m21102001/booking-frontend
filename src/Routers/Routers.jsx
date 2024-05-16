@@ -84,7 +84,7 @@ import { authenticated, useAuth } from '@/context/Auth';
 // eslint-disable-next-line react/prop-types
 function Protect({ children, protect = false, path = '', role = 'user' }) {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
   const authed = authenticated();
   if (
     authed === protect &&

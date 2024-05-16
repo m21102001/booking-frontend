@@ -26,7 +26,7 @@ const AccountProfile = () => {
         console.log(error);
       });
   }, []);
-  console.log('course', courses);
+  // console.log('course', courses);
 
   useEffect(() => {
     setLoading(true);
@@ -79,14 +79,14 @@ const AccountProfile = () => {
                     className="ms-4 mt-5 d-flex flex-column"
                     style={{ width: '150px' }}
                   >
-                    {user?.role =='mentor'?(
+                    {user?.role == 'mentor' ? (
                       <img
-                      src={`${import.meta.env.VITE_IMAGE_URL}${user?.image}`}
+                        src={`${import.meta.env.VITE_IMAGE_URL}${user?.image}`}
                         alt={user?.name}
                         className="img-fluid img-thumbnail mt-4 mb-2"
                         style={{ width: '150px', zIndex: '1' }}
                       />
-                    ):(
+                    ) : (
                       <img
                         src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
                         alt="Generic placeholder image"
@@ -176,6 +176,39 @@ const AccountProfile = () => {
                                       </div>
                                     </div>
                                     <hr />
+                                    <div className="row">
+                                      <div className="col-sm-3">
+                                        <p className="mb-0">معدل الخصم</p>
+                                      </div>
+                                      <div className="col-sm-9">
+                                        <p className="text-muted mb-0">
+                                          {user?.fees}
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                      <div className="col-sm-3">
+                                        <p className="mb-0">المجال</p>
+                                      </div>
+                                      <div className="col-sm-9">
+                                        <p className="text-muted mb-0">
+                                          {user?.field}
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                      <div className="col-sm-3">
+                                        <p className="mb-0">محفظتى</p>
+                                      </div>
+                                      <div className="col-sm-9">
+                                        <p className="text-muted mb-0">
+                                          {user?.balance}
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <hr />
                                   </>
                                 ) : null}
                                 <div className="row">
@@ -238,39 +271,7 @@ const AccountProfile = () => {
                                     <hr />
                                   </>
                                 ) : null} */}
-                                <hr />
-                                <div className="row">
-                                  <div className="col-sm-3">
-                                    <p className="mb-0">معدل الخصم</p>
-                                  </div>
-                                  <div className="col-sm-9">
-                                  <p className="text-muted mb-0">
-                                      {user?.fees}
-                                    </p>
-                                  </div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                  <div className="col-sm-3">
-                                    <p className="mb-0">المجال</p>
-                                  </div>
-                                  <div className="col-sm-9">
-                                  <p className="text-muted mb-0">
-                                      {user?.field}
-                                    </p>
-                                  </div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                  <div className="col-sm-3">
-                                    <p className="mb-0">محفظتى</p>
-                                  </div>
-                                  <div className="col-sm-9">
-                                  <p className="text-muted mb-0">
-                                      {user?.balance}
-                                    </p>
-                                  </div>
-                                </div>
+
                               </div>
                             </div>
                           </div>

@@ -40,7 +40,6 @@ const DetailsPlaylistDevelopment = () => {
         // console.log(error);
       });
   }, [id]);
-  console.log('payment',payment);
 
   useEffect(() => {
     setLoading(true);

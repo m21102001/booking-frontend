@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import axios from '@/api/axios';
 import { Navbar } from '@/layout';
 import { toast } from 'react-toastify';
 
 const VerifyCode = () => {
+  const navigate = useNavigate()
   const [isPending, setIsPending] = useState(false);
   const [code, setCode] = useState('');
 
@@ -24,9 +25,8 @@ const VerifyCode = () => {
         }
       ).then((response) => {
         setIsPending(false);
-        // console.log(response);
         toast.success('تم التأكيد بنجاح');
-        Navigate('/auth/login');
+        navigate('/auth/resat-password')
       });
       setIsPending(false);
     } catch (err) {

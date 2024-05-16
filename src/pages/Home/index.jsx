@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
-import { Footer, Header, Navbar } from '@/layout'
-import './home.scss'
+import { useEffect, useState } from 'react'
 import axios from '@/api/axios'
+import { Link } from 'react-router-dom'
+import { useAuth } from '@/context/Auth'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import {
   AboutThat,
   CoursesOpen,
@@ -9,9 +10,8 @@ import {
   ServicesIncluded,
   WhyKambridage,
 } from '@/components'
-import { useAuth } from '@/context/Auth'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import { useEffect, useState } from 'react'
+import { Footer, Header, Navbar } from '@/layout'
+import './home.scss'
 const Home = () => {
   const { user } = useAuth()
   const [loading, setLoading] = useState(false)

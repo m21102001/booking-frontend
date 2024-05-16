@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import axios from '@/api/axios';
 import { Navbar } from '@/layout';
 import { toast } from 'react-toastify';
 
 const ResatPassword = () => {
+  const navigate = useNavigate()
   const [isPending, setIsPending] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -28,7 +29,7 @@ const ResatPassword = () => {
         setIsPending(false);
         // console.log(response);
         toast.success('تم تغيير كلمة المرور بنجاح');
-        Navigate('/auth/login');
+        navigate('/auth/login');
       });
       setIsPending(false);
     } catch (err) {

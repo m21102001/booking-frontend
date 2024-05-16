@@ -69,7 +69,6 @@ const SignUpStudent = () => {
       );
     }
   };
-
   return (
     <>
       <Navbar />
@@ -196,20 +195,18 @@ const SignUpStudent = () => {
                             .
                           </label>
                         </div>
-                        <div
-                          // state={{ item: email }}
-                          // to={'/auth/verifyEmailCode'}
-                          className="d-grid gap-2"
-                        >
-                          <button
-                            type="submit"
-                            className={`btn btn-primary btn-lg ms-2 ${
-                              check ? '' : 'disabled'
-                            }`}
+                          <div
+                            // to={'/auth/verifyEmailCode'}
+                            className="d-grid gap-2"
                           >
-                            انشاء حساب جديد
-                          </button>
-                        </div>
+                            <button
+                              type="submit"
+                              className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
+                                }`}
+                            >
+                              انشاء حساب جديد
+                            </button>
+                          </div>
                       </form>
                       <div className="mb-3 d-flex ">
                         هل لديك حساب بالفعل ؟

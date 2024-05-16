@@ -1,6 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import axios from '@/api/axios';
+import { Link } from 'react-router-dom';
 import './login.scss';
 import { Navbar } from '@/layout';
 import { useAuth } from '@/context/Auth';

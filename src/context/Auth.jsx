@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
       setLoggedin(true); // Set Loggedin to true only if login is successful
     } catch (err) {
       toast.error(err?.response?.data?.message);
-      console.log('response', err);
+      // console.log('response', err);
     } finally {
       setFetched(true);
     }

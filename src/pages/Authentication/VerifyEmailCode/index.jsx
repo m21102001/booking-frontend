@@ -9,17 +9,7 @@ const VerifyEmailCode = () => {
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false);
   const [emailVerifyCode, setEmailVerifyCode] = useState('');
-
-  // const notify = () => toast.error("sorry, please check phone or password!", {
-  //   position: "top-right",
-  //   autoClose: 5000,
-  //   hideProgressBar: false,
-  //   closeOnClick: true,
-  //   pauseOnHover: true,
-  //   draggable: true,
-  //   progress: undefined,
-  //   theme: "colored",
-  // });
+  const [email, setEmail] = useState('');
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +51,7 @@ const VerifyEmailCode = () => {
         .post(
           'auth/resend-code',
           {
-            emailVerifyCode: 'm@gmail.com',
+            email: email,
           },
           {
             headers: {
@@ -107,21 +97,23 @@ const VerifyEmailCode = () => {
                   />
                 </div>
                 <div className="d-grid gap-2">
-                  {/* <ToastContainer /> */}
-                  {/* <button onClick={notify}>ارسال</button> */}
                   <button>ارسال</button>
                 </div>
               </form>
               <p className="fs-5 fw-normal">
                 {' '}
                 اعد ارسال الكود مره اخري بعد 15 ثانية{' '}
-                <strong
-                  className="text-danger pointer"
-                  onClick={resendVerifycationCode}
+                <button
+                  className="btn btn-outline-light border-0 text-danger text-bold pointer"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever="@fat"
+                // onClick={resendVerifycationCode}
                 >
                   {' '}
                   ارسال
-                </strong>
+                </button>
               </p>
               <p id="create-account" className="my-15 text-center fs-6 fw-bold">
                 {' '}
@@ -139,6 +131,50 @@ const VerifyEmailCode = () => {
           </div>
         </div>
       </div>
+
+
+
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">اعد ارسال الكود مره اخري </h1>
+              <button type="button" className="btn-close m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={resendVerifycationCode} >
+                <div className="mb-3 text-end">
+                  <label
+                    htmlFor="recipient-name"
+                    className="col-form-label"
+                  >البريد الالكترونى:</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="recipient-name"
+                    aria-describedby="emailHelp"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >Close</button>
+              <button
+              onClick={resendVerifycationCode}
+                type="submit"
+                className="btn btn-primary"
+              >Send message</button>
+            </div>
+          </div>
+        </div>
+      </div >
     </>
   );
 };

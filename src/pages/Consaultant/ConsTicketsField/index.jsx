@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Footer, Navbar } from '@/layout';
 import { FaClock, FaMoneyBillAlt } from 'react-icons/fa';
@@ -16,12 +16,12 @@ const ConsTicketsField = () => {
       .get('cons-fields/')
       .then((response) => {
         setCategory(response.data);
-        console.log('xxxxx', response.data);
+        // console.log('xxxxx', response.data);
         setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
+        // console.log(error);
       });
   }, []);
   // console.log('category', category);
@@ -38,7 +38,7 @@ const ConsTicketsField = () => {
       .catch((error) => {
         // errorMessage(error)
         setLoading(false);
-        console.log(error?.response?.status);
+        // console.log(error?.response?.status);
       });
   }, [value2, category]);
   // console.log('error', category?.document);
