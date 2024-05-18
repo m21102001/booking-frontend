@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Footer, Navbar } from '@/layout';
 import axios from '@/api/axios';
 import './contactUs.scss';
-import { aboutthats } from '@/db/data';
 import { toast } from 'react-toastify';
 
 const ContactUs = () => {
@@ -195,7 +194,7 @@ const ContactUs = () => {
                         <h5 className="card-title text-end">
                           التواصل عن طريق البريد الإلكتروني :
                         </h5>
-                        <p className="card-text">mohaeumy@gmail.com</p>
+                        <p className="card-text">example@gmail.com</p>
                       </div>
                     </div>
                   </a>

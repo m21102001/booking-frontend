@@ -32,7 +32,7 @@ const Home = () => {
       <Navbar />
       <Header />
       <div className="container text-center">
-        <div className="row justify-content-center">
+        <div className="row d-flex justify-content-between">
           {!loading && tool?.document?.map((item, index) => (
             <div key={index} className="card mb-3" style={{ maxWidth: "540px" }}>
               <div className="row g-0">

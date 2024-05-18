@@ -9,7 +9,6 @@ const UpdateFAQDash = () => {
   const item = useLocation()?.state?.item
   const [isPending, setIsPending] = useState(false)
   const [title, setTitle] = useState(item?.title)
-  const [body, setBody] = useState(item?.body)
   const [answer, setAnswer] = useState(item?.answer)
 
   const hanelSubmit = async (e) => {
@@ -18,10 +17,10 @@ const UpdateFAQDash = () => {
     try {
       await axios
         .put(
-          `/questions/${item?._id}`,
+          `questions/${item?._id}`,
           {
             title: title,
-            body: body,
+            body: 'body',
             answer: answer
           },
           {
@@ -33,7 +32,6 @@ const UpdateFAQDash = () => {
         .then((response) => {
           toast.success('تم تعديل السؤال بنجاح')
           setAnswer('')
-          setBody('')
           setTitle('')
           navigate(`/dash/frequently-asked-questions`)
         });
@@ -55,7 +53,7 @@ const UpdateFAQDash = () => {
         </div>
         <form
           onSubmit={hanelSubmit}
-          className="container d-flex flex-row justify-content-center align-content-center flex-wrap my-4"
+          className="container d-flex flex-row justify-content-center align-content-start flex-wrap my-4"
         >
           <div className="label-form">تعديل عنوان السؤال </div>
           <input
@@ -67,17 +65,6 @@ const UpdateFAQDash = () => {
             placeholder="تعديل عنوان السؤال *"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-          />
-          <div className="label-form">تعديل وصف السؤال </div>
-          <input
-            type="text"
-            name="body"
-            className="form-control  mb-4"
-            id="body"
-            required
-            placeholder="تعديل وصف السؤال *"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
           />
           <div className="label-form">تعديل  اجابة السؤال </div>
           <textarea
