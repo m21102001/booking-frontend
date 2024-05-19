@@ -1,5 +1,5 @@
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import './footer.module.scss';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
@@ -23,7 +23,7 @@ const Footer = () => {
                 />
               </h6>
               <p>
-              pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any 
+                pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any
               </p>
             </div>
 
@@ -53,7 +53,7 @@ const Footer = () => {
 
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
-               الوصى بيهم
+                الوصى بيهم
               </h6>
               <p>
                 <Link className="text-light" to={'/Consulting'}>
@@ -72,9 +72,9 @@ const Footer = () => {
               <p><i className="fas fa-home me-3"></i>الحرة -لبن الرياض 12936-6641  المملكة العربية السعودية</p>
               <p>
                 <i className="fas fa-envelope me-3"></i>
-                cambri@gmail.com
+                empoweringvisioncompany@gmail.com
               </p>
-              <p><i className="fas fa-phone me-3"></i> (+95) 9682</p>
+              <p><i className="fas fa-phone me-3"></i> (+966) 556627654</p>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ const Footer = () => {
               data-mdb-ripple-init
               className="btn text-white btn-floating m-1"
               style={{ backgroundColor: " #3b5998" }}
-              href="https://facebook.com"
+              href="https://facebook.com/@selfrejoin"
               role="button"
             ><FaFacebook /></a>
 
@@ -95,7 +95,7 @@ const Footer = () => {
               data-mdb-ripple-init
               className="btn text-white btn-floating m-1"
               style={{ backgroundColor: " #55acee" }}
-              href="https://x.com/"
+              href="https://x.com/Selfrejoin?t=KBEQJ-Qc4ULIda6uUpC-bg&s=09"
               role="button"
             ><FaXTwitter /></a>
 
@@ -103,7 +103,7 @@ const Footer = () => {
               data-mdb-ripple-init
               className="btn text-white btn-floating m-1"
               style={{ backgroundColor: " #dd4b39" }}
-              href="https://www.tiktok.com/"
+              href="https://www.tiktok.com/@sel9rejoin?_t=8lZjVNUP4Z6&_r=1"
               role="button"
             ><FaTiktok /></a>
 
@@ -111,9 +111,17 @@ const Footer = () => {
               data-mdb-ripple-init
               className="btn text-white btn-floating m-1"
               style={{ backgroundColor: " #ac2bac" }}
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/selfrejoin?igsh=YzljYTk1ODg3Zg=="
               role="button"
             ><FaInstagram /></a>
+
+            <a
+              data-mdb-ripple-init
+              className="btn text-white btn-floating m-1"
+              style={{ backgroundColor: " #ac2bac" }}
+              href="http://www.linkedin.com/in/empowrinvisioncompany"
+              role="button"
+            ><FaLinkedin /></a>
           </section>
         </div>
 
