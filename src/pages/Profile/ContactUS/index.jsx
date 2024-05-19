@@ -194,7 +194,7 @@ const ContactUs = () => {
                         <h5 className="card-title text-end">
                           التواصل عن طريق البريد الإلكتروني :
                         </h5>
-                        <p className="card-text">example@gmail.com</p>
+                        <p className="card-text">empoweringvisioncompany@gmail.com</p>
                       </div>
                     </div>
                   </a>
