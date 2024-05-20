@@ -97,7 +97,7 @@ const SignUp = () => {
       }
     }
   };
-console.log(image);
+  console.log(image);
   const validatePassword = () => {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -143,9 +143,7 @@ console.log(image);
                             className="form-control mb-3"
                             id="image"
                             placeholder="اضف صوره*"
-                            // value={image}
-                            // onChange={(e) => setImage(e.target.value)}
-                          onChange={(e) => setImage(e.target.files[0])}
+                            onChange={(e) => setImage(e.target.files[0])}
                           />
                         </div>
                         <div className="row">
@@ -234,13 +232,14 @@ console.log(image);
                             value={field}
                             onChange={(e) => setField(e.target.value)}
                           >
+                            <option value="0">اختر التخصص</option>
                             {!isPending &&
                               categorya?.document?.map((item, index) => (
                                 <option
                                   key={index}
                                   required
-                                  // value={field}
-                                  // onChange={handleChangeType}
+                                // value={field}
+                                // onChange={handleChangeType}
                                 >
                                   {item?.field}
                                 </option>

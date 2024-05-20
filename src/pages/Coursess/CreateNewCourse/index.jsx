@@ -46,7 +46,7 @@ const CreateNewCourse = () => {
     }
   };
   return (
-    <div className="dashboard" style={{ backgroundColor: "var(--darkblue-color)" }}>
+    <div className="dashboard" style={{ backgroundColor: "var(--darkblue-color)",height:'100vh' }}>
       <Navbar />
       <div className="container text-center">
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">

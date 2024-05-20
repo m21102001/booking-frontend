@@ -164,31 +164,31 @@ const ContactUs = () => {
             <div className="text-center">
               <div className="row my-5">
                 <div className="col">
-                  <a href="https://wa.me/201095559682">
+                  <a href="https://wa.me/966556627654">
                     <div className="card card-form">
                       <div className="card-body">
                         <h5 className="card-title text-end">
                           إتصل بنا مباشرة على :
                         </h5>
-                        <p className="card-text">+20(10114875263)</p>
+                        <p className="card-text">(+966) 556627654</p>
                       </div>
                     </div>
                   </a>
                 </div>
                 <div className="col">
-                  <a href="https://wa.me/201095559682">
+                  <a href="tel:966556627654">
                     <div className="card card-form">
                       <div className="card-body">
                         <h5 className="card-title text-end">
                           التواصل عن طريق الواتساب :
                         </h5>
-                        <p className="card-text ">+20(10114782354)</p>
+                        <p className="card-text ">(+966) 556627654</p>
                       </div>
                     </div>
                   </a>
                 </div>
                 <div className="col">
-                  <a href="mailto:mohayoumy@gmail.com">
+                  <a href="mailto:empoweringvisioncompany@gmail.com">
                     <div className="card card-form">
                       <div className="card-body">
                         <h5 className="card-title text-end">

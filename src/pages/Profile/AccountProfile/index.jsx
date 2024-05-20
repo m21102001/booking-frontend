@@ -11,6 +11,7 @@ import { FaClock } from 'react-icons/fa6';
 const AccountProfile = () => {
   const { user } = useAuth();
   const [courses, setCourses] = useState([]);
+  const [RequestCourses, setRequestCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [consultation, setConsultation] = useState([])
   useEffect(() => {
@@ -25,8 +26,18 @@ const AccountProfile = () => {
         setLoading(false);
         console.log(error);
       });
+    axios.get('courses/request')
+      .then((response) => {
+        setLoading(false);
+        setRequestCourses(response.data);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+
   }, []);
-  // console.log('course', courses);
+  console.log('course', RequestCourses);
 
   useEffect(() => {
     setLoading(true);
@@ -182,7 +193,7 @@ const AccountProfile = () => {
                                       </div>
                                       <div className="col-sm-9">
                                         <p className="text-muted mb-0">
-                                          {user?.fees}
+                                          {user?.fees} %
                                         </p>
                                       </div>
                                     </div>
@@ -204,7 +215,7 @@ const AccountProfile = () => {
                                       </div>
                                       <div className="col-sm-9">
                                         <p className="text-muted mb-0">
-                                          {user?.balance}
+                                          {user?.balance} ريال سعودى
                                         </p>
                                       </div>
                                     </div>
@@ -288,7 +299,7 @@ const AccountProfile = () => {
                         <p className="mb-0">
                           <Link
                             to={'/auth/reservation-ticket'}
-                            className="text-muted"
+                            className="text-bold fs-4 text-decoration-underline"
                           >
                             الكل
                           </Link>
@@ -296,7 +307,7 @@ const AccountProfile = () => {
                         <p>
                           <Link
                             to={'/auth/create-reservation-ticket'}
-                            className="text-muted"
+                            className="text-bold fs-5 text-decoration-underline"
                           >
                             انشاء استشارة جديدة
                           </Link>
@@ -386,7 +397,7 @@ const AccountProfile = () => {
                         <p>
                           <Link
                             to={'/auth/create-new-course'}
-                            className="text-muted"
+                            className="text-bold fs-5 text-decoration-underline"
                           >
                             انشاء كورس جديد
                           </Link>
@@ -462,23 +473,18 @@ const AccountProfile = () => {
                           </p>
                         </div>
                         <div className=" row g-2">
-                          {courses?.document?.map((item, index) => (
+                          {RequestCourses?.data?.map((item, index) => (
                             <div
                               key={index}
                               className="col-sm-12 col-md-4 col-lg-3 shadow p-3 m-2 bg-body rounded text-end"
                             >
-                              <LazyLoadImage
-                                src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                alt={item?.title}
-                                className="w-100 rounded-3"
-                              />
                               <h4 className="mt-n1 my-3 fw-semibold">
-                                {item?.title}
+                                عنوان الكورس: {item?.course?.title}
                               </h4>
                               <p className="fw-semibold">
-                                سعر الكورس{' '}
-                                <span className="text-danger">{item?.price}</span>{' '}
-                                جنية
+                                اسم المحاضر: {' '}
+                                <span className="text-danger">{item?.user?.name}</span>{' '}
+                                ريال سعودى
                               </p>
                               <Link
                                 to={`/consault-store-item/course-detalis/${item?._id}`}

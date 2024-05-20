@@ -19,7 +19,7 @@ const DetailsPlaylistDevelopment = () => {
   const [comment, setComment] = useState([]);
   const [showMoreStates, setShowMoreStates] = useState({});
   const [replayComment, setReplayComment] = useState('');
-
+  console.log('payment', payment);
   // Function to toggle showMore for a specific comment
   const toggleShowMore = (index) => {
     setShowMoreStates((prevState) => ({
@@ -80,32 +80,17 @@ const DetailsPlaylistDevelopment = () => {
           { credentials: true }
         )
         .then((response) => {
-          // console.log('created successful', response.data);
           setMessage('');
           toast.success('تم اضافة تعليق بنجاح');
           setLoading(false);
         });
     } catch (err) {
       setLoading(false);
-      // console.log('message', err.message);
       toast.error(err.message);
     }
     setLoading(false);
     return;
   };
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`comments/course/${id}`)
-  //     .then((response) => {
-  //       setComment(response?.data?.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       setPay(error?.status);
-  //     });
-  // }, [ id]);
 
   useEffect(() => {
     axios
@@ -402,23 +387,23 @@ const DetailsPlaylistDevelopment = () => {
                       </p>
                     </div>
                     <hr />
-                    {item?.replies?.map((item,index)=>(
-                    <h3 key={index} className="text-end text-dark fs-4 lh-lg mx-3">
-                      {showMoreStates[index] ? ( item?.text) : ''}
-                      <div className="mb-3">
-                        <button
-                          onClick={() => toggleShowMore(index)}
-                          className="btn btn-dark px-4 mx-3"
-                          style={{
-                            color: 'var(--gold-color)',
-                            cursor: 'pointer',
-                            transitionTimingFunction: 'ease',
-                          }}
-                        >
-                          {showMoreStates[index] ? 'اخفاء' : ' ظهور الرد'}
-                        </button>
-                      </div>
-                    </h3>
+                    {item?.replies?.map((item, index) => (
+                      <h3 key={index} className="text-end text-dark fs-4 lh-lg mx-3">
+                        {showMoreStates[index] ? (item?.text) : ''}
+                        <div className="mb-3">
+                          <button
+                            onClick={() => toggleShowMore(index)}
+                            className="btn btn-dark px-4 mx-3"
+                            style={{
+                              color: 'var(--gold-color)',
+                              cursor: 'pointer',
+                              transitionTimingFunction: 'ease',
+                            }}
+                          >
+                            {showMoreStates[index] ? 'اخفاء' : ' ظهور الرد'}
+                          </button>
+                        </div>
+                      </h3>
                     ))}
 
                     {user?._id == item?.owner ? (
