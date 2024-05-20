@@ -8,7 +8,6 @@ const CreateNewVideo = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [url, setUrl] = useState('')
-  console.log('iteeeeeeeeeem',item);
   const hanelSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
@@ -33,14 +32,11 @@ const CreateNewVideo = () => {
           setTitle('')
           setDescription('')
           setUrl('')
-          // navigate(`/dash/details-playlist/${item?._id}`)
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
       toast.error('لم يتم الاضافة تأكد من اضافة البيانات بشكل صحيح')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
   return (

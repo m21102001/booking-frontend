@@ -14,12 +14,10 @@ const Investment = () => {
     axios.get(`/invest/active`)
       .then((response) => {
         setInvestment(response.data)
-        // console.log('ffff',response.data);
         setLoading(false)
       })
       .catch((error) => {
         setLoading(false)
-        console.log(error);
       });
   }, [])
 
@@ -44,7 +42,6 @@ const Investment = () => {
 
     }
   }
-  // console.log(prev, next);
 
   return (
     <div className='coursers-open goldNews py-5 '>

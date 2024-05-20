@@ -26,15 +26,12 @@ const ForgetPassword = () => {
       )
         .then((response) => {
           setIsPending(false);
-          console.log(response);
           toast.success('تم ارسال الكود بنجاح');
           navigate('/auth/verify-forget-password');
         });
     } catch (err) {
       setIsPending(false);
       toast.error('تأكد من البريد الالكتروني');
-
-      console.log('response', err);
     }
   };
   return (

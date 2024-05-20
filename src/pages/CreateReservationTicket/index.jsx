@@ -44,7 +44,6 @@ const CreateReservationTicket = () => {
           }
         )
         .then((response) => {
-          // console.log('created success', response);
           toast.success("تم اضافة تكرة بنجاح")
           setTitle('')
           setPeriod('')
@@ -56,8 +55,6 @@ const CreateReservationTicket = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('response', err.response);
-      // console.log('message', err.message);
     }
   };
   return (

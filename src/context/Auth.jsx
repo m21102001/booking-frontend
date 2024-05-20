@@ -4,12 +4,10 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import axios from '@/api/axios';
 import { toast } from 'react-toastify';
-import {useNavigate} from "react-router-dom"
 export const Auth = createContext();
 export const AuthProvider = ({ children }) => {
   const [Loggedin, setLoggedin] = useState(false);
   const [role, setRole] = useState('');
-  // const [plan, setPlan] = useState('');
 
   const [user, setuser] = useState();
   const [Fetched, setFetched] = useState(false);
@@ -22,8 +20,7 @@ export const AuthProvider = ({ children }) => {
         if (typeof data === 'object') {
           setuser(data);
           setRole(data?.role);
-          // setRole(data?.plan);
-          console.log('from auth', data);
+          // console.log('from auth', data);
           setLoggedin(true);
         }
       } finally {
@@ -47,26 +44,17 @@ export const AuthProvider = ({ children }) => {
           },
         }
       );
-      console.log(data);
+      // console.log(data);
       toast.success('تم تسجيل الدخول بنجاح');
       setuser(data.data);
       setLoggedin(true); // Set Loggedin to true only if login is successful
     } catch (err) {
       toast.error(err?.response?.data?.message);
-      // console.log('response', err);
     } finally {
       setFetched(true);
     }
   };
   
-
-  // useEffect(() => {
-  //   console.log('loggedin', Loggedin)
-  //   // console.log('user', user);
-  //   // console.log("fetch", Fetched);
-  //   // console.log("role", role);
-  // }, [Loggedin, user, Fetched, role]);
-
   return (
     <Auth.Provider
       value={{

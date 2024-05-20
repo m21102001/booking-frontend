@@ -21,12 +21,10 @@ const HonorBoard = () => {
         .request(fetchContactForm)
         .then((response) => {
           setContactForm(response.data);
-          // console.log('xxxxx', response.data);
           setLoading(false);
         })
         .catch((error) => {
           setLoading(false);
-          console.log(error);
         });
     }
   }, []);
@@ -51,7 +49,6 @@ const HonorBoard = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
   //////////////////pagination///////////////////

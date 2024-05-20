@@ -32,7 +32,6 @@ const CreatePlaylistDash = () => {
           }
         )
         .then((response) => {
-          console.log('created success', response.data);
           toast.success(`تم اضافة قائمة جديدة بنجاح`)
           navigate('/dash/courses')
         });

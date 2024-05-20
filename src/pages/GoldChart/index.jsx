@@ -51,7 +51,6 @@ const GoldChart = () => {
         setLoading(false);
       });
   }, []);
-  // console.log((time1 / 1000)=='');
   return (
     <>
       {loading && <div className="loading"></div>}

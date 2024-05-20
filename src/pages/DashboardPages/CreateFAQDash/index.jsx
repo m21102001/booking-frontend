@@ -31,14 +31,11 @@ const CreateFAQDash = () => {
           toast.success('تم اضافة سؤال جديد بنجاح')
           setAnswer('')
           setTitle('')
-          // navigate(`/dash/details-playlist/${item?._id}`)
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
       toast.error('السؤال موجود بالفعل')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

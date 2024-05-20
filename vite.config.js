@@ -10,5 +10,8 @@ export default defineConfig({
       '@page': '/src/page'
     }
   },
-  plugins: [react()],
+  plugins: [react(
+    {
+      include: "**/*.jsx", }
+  )],
 })

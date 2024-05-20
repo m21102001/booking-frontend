@@ -25,8 +25,6 @@ const UpdateAbout = () => {
             text2: text2,
             text3: 'text3',
             text4: 'text4',
-            // text3: text3,
-            // text4: text4,
           },
           {
             headers: {
@@ -35,7 +33,6 @@ const UpdateAbout = () => {
           }
         )
         .then((response) => {
-          console.log(response);
           toast.success('تم التعديل بنجاح')
           navigate('/dash/about')
         });

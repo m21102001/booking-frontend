@@ -36,8 +36,6 @@ const DetailsInActiveMentorsmDash = () => {
     } catch (err) {
       setIsPending(false);
       toast.error("لم يتم الموافقة");
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

@@ -19,7 +19,6 @@ const CoursesDash = () => {
         })
         .catch((error) => {
           setLoading(false);
-          console.log(error);
         });
     }
   }, [])
@@ -36,12 +35,10 @@ const CoursesDash = () => {
         axios.get('/courses/').then((response) => {
           setPlaylists(response.data);
           setLoading(false);
-          console.log(response.data);
         });
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
   //////////////////pagination///////////////////

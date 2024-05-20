@@ -6,7 +6,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 const InvestmentActive = () => {
   const [loading, setLoading] = useState(false)
   const [investment, setInvestment] = useState([])
-  // console.log(user.role);
 
   const handelToggle = async (id) => {
     let config = {
@@ -28,7 +27,6 @@ const InvestmentActive = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
 
@@ -52,7 +50,6 @@ const InvestmentActive = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
   /////////////////////////////////////

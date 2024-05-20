@@ -1,5 +1,4 @@
 import { SidebarDashboard } from '@/layout';
-// import { MdOutlineArrowBack } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 import ReactPlayer from 'react-player/lazy';
 import { useEffect, useState } from 'react';
@@ -16,11 +15,9 @@ const DetailsVideosDash = () => {
       .then((response) => {
         setLoading(false);
         setVideos(response.data);
-        // console.log('response :', response.data);
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, [item]);
 

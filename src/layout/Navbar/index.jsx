@@ -16,7 +16,7 @@ const Navbar = () => {
         navigate('/auth/login')
       });
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     } finally {
       setuser(undefined);
       setLoggedin(false);
@@ -31,11 +31,11 @@ const Navbar = () => {
   // Function to handle login
   const handleLogin = () => {
     setIsLoggedIn(true);
-    console.log(isLoggedIn);
+    // console.log(isLoggedIn);
   };
   const handleLogout = () => {
     setIsLoggedIn(false);
-    console.log(isLoggedIn);
+    // console.log(isLoggedIn);
   };
 
   return (

@@ -69,14 +69,12 @@ const SignUp = () => {
           .then((response) => {
             toast.success(' يتم انشاء حساب بنجاح, يجب تأكيد الايميل');
 
-            console.log(response);
             navigate('/auth/verifyEmailCode');
           });
       } catch (err) {
         setIsPending(false);
         toast.error('الايميل بالفعل موجود, يجب تغيير الايميل');
 
-        console.log('response', err.response);
       }
     }
   };

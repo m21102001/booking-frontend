@@ -38,13 +38,10 @@ const UpdateRoleUsersDash = () => {
           }
         )
         .then((response) => {
-          console.log('created success', response.data);
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

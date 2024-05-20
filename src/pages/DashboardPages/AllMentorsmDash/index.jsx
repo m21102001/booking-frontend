@@ -9,7 +9,6 @@ const AllMentorsmDash = () => {
   const [loading, setLoading] = useState(false);
   const [allUser, setAlluser] = useState([])
   const { user } = useAuth();
-  // console.log(user.role);
   //////////////////pagination///////////////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -31,7 +30,6 @@ const AllMentorsmDash = () => {
 
     }
   }
-  // console.log(allUser.results,prev, next);
 
   useEffect(() => {
     setLoading(true);
@@ -47,7 +45,6 @@ const AllMentorsmDash = () => {
         })
         .catch((error) => {
           setLoading(false);
-          console.log(error);
         });
     }
   }, []);

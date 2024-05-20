@@ -29,7 +29,6 @@ const Tools = () => {
         setTool(response.data)
         setLoading(false)
       }).catch(error => {
-        console.log("Error", error)
         setLoading(false)
       })
     })

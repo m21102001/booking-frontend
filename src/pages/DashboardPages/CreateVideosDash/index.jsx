@@ -42,8 +42,6 @@ const CreateVideosDash = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('لم يتم اضافة الفيديو تأكد من اضافة البيانات بشكل صحيح')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

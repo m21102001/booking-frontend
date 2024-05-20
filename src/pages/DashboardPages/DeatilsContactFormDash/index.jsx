@@ -19,7 +19,6 @@ const DeatilsContactFormDash = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
     }, []);
   return (

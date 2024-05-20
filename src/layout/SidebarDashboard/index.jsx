@@ -30,7 +30,7 @@ function SidebarDashboard() {
           Navigate('/auth/login');
         });
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     } finally {
       setLoggedin(false);
       setRole(undefined);
@@ -97,10 +97,7 @@ function SidebarDashboard() {
           <NavLink to="/dash/honor-board ">
             <FaClipboard /> <p className="fs-5 fw-bold me-4">honor-board</p>
           </NavLink>
-          {/* <NavLink to="/dash/consultations-ticket ">
-            <FaTicketAlt />{' '}
-            <p className="fs-5 fw-bold me-4">التذاكر المحجوزة</p>
-          </NavLink> */}
+         
           <NavLink to="/dash/all-users ">
             <FaUsers /> <p className="fs-5 fw-bold me-4">كل المستخدمين</p>
           </NavLink>

@@ -19,10 +19,8 @@ const Courses = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
-  console.log('value', value);
   useEffect(() => {
     setLoading(true);
     axios
@@ -34,30 +32,10 @@ const Courses = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, [value]);
-  console.log('log', categoryaShow);
   ///////////////////////////////
-  const [prev, setPrev] = useState(0);
-  const [next, setNext] = useState(10);
 
-  const handelprev = () => {
-    setPrev((count) => count - 10);
-    setNext((count) => count - 10);
-    if (prev <= 0) {
-      setPrev(0);
-      setNext(10);
-    }
-  };
-  const handelNext = () => {
-    setNext((count) => count + 10);
-    setPrev((count) => count + 10);
-    if (next < 10) {
-      setPrev(0);
-      setNext(10);
-    }
-  };
 
   return (
     <>
@@ -122,9 +100,8 @@ const Courses = () => {
                             <div className={styles['gold-div']}>
                               <div className="title-card">
                                 <LazyLoadImage
-                                  src={`${import.meta.env.VITE_IMAGE_URL}${
-                                    item?.image
-                                  }`}
+                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                                    }`}
                                   alt={item?.title}
                                   loading="lazy"
                                 />
@@ -145,59 +122,8 @@ const Courses = () => {
                             </div>
                           </Link>
                         ) : null
-                      // <h3 key={index} className='fw-semibold text-center'> لا يوجد كورسات متاحة</h3>
-                      // ) : (null
-                      // value == 'selectAll' ? (
-                      //   courseData?.document?.map((item, index) => (
-                      //     // index >= prev && index <= next ? (
-                      //     <Link
-                      //       key={index}
-                      //       to={`/consault-store-item/course-detalis/${item?._id}`}
-                      //       state={{ item: item }}
-                      //     >
-                      //       <div className={styles['gold-div']}>
-                      //         <div className='title-card'>
-                      //           <LazyLoadImage
-                      //             src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                      //             alt={item?.title}
-                      //             loading="lazy"
-                      //           />
-                      //           <div className="news-date">
-                      //             <label className="mx-2"> {item?.createdAt?.slice(0, 10)}</label>
-                      //             <label className="news-date-time mx-2"> {item?.createdAt?.slice(11, 16)}</label>
-                      //           </div>
-                      //         </div>
-                      //         <div>
-                      //           <h3 className='text-center fw-bold'>{item.title}</h3>
-                      //         </div>
-                      //       </div>
-                      //     </Link>
-                      //     // ) : null
-                      //   ))
-                      // ) : ('nnn')
-                      // )
                     )}
                   </div>
-                  {/* {value == 'selectAll' ? (
-                    <div className="pt-5 mt-5 d-flex justify-content-around ">
-                      <button
-                        className={`btn btn-outline-info ${next >= categoryaShow?.length ? 'disabled' : ''
-                          }`}
-                        onClick={handelNext}
-                      >
-                        {' '}
-                        next
-                      </button>
-                      <button
-                        className={`btn btn-outline-info ${prev == 0 ? 'disabled' : ''
-                          }`}
-                        onClick={handelprev}
-                      >
-                        {' '}
-                        prev
-                      </button>
-                    </div>
-                  ) : null} */}
                 </div>
               </>
             </div>

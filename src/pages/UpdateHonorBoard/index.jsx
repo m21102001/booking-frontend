@@ -10,7 +10,6 @@ const UpdateHonorBoard = () => {
   const [isPending, setIsPending] = useState(false)
   const [image, setImage] = useState(item?.image)
   const [profileLink, setProfileLink] = useState(item?.profileLink)
-  console.log(item);
   const hanelSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
@@ -38,8 +37,6 @@ const UpdateHonorBoard = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('خطأ عند التعديل  ')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

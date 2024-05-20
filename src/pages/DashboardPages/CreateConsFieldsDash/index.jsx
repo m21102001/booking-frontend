@@ -34,8 +34,6 @@ const CreateConsFieldsDash = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('المسار موجود بالفعل')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

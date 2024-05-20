@@ -35,7 +35,6 @@ const EditProfile = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('حدث خطأ عند تعديل البيانات');
-      console.log('response', err);
     }
   };
   return (

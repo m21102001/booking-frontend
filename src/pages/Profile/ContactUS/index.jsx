@@ -33,7 +33,6 @@ const ContactUs = () => {
             { credentials: true }
           )
           .then((response) => {
-            // console.log('created successful', response.data);
             setName('');
             setEmail('');
             setAddress('');
@@ -44,7 +43,6 @@ const ContactUs = () => {
           });
       } catch (err) {
         setLoading(false);
-        console.log('message', err.message);
         toast.error('خطأ فى الارسال تأكد من كتابة كتابة المعلومات بشكل صحيح');
       }
       setLoading(false);

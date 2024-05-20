@@ -32,14 +32,11 @@ const UpdateVideosDash = () => {
         )
         .then((response) => {
           toast.success('تم تعديل بيانات الفيديو بنجاح')
-          // navigate(`/dash/details-playlist/${item?._id}`)
         });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
       toast.error('لم يتم تعديل بيانات الفيديو تأكد من تعديل البيانات بشكل صحيح')
-      // console.log('response', err.response);
-      // console.log('message', err.message);
     }
   };
 

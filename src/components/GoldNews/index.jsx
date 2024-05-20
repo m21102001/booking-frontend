@@ -22,7 +22,6 @@ const GoldNews = () => {
       })
       .catch((error) => {
         setLoading(false)
-        // console.log(error);
       });
   }, [pageNum])
   return (

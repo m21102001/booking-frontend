@@ -23,7 +23,6 @@ const GoldStore = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
 
@@ -45,10 +44,8 @@ const GoldStore = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, [type]);
-  console.log('categorySemester', categorySemester);
 
   const getInitialState = () => {
     let value = item?.option;
@@ -76,30 +73,9 @@ const GoldStore = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, [value]);
-  // console.log('value', value);
-  ////////////////pagination///////////
-  const [prev, setPrev] = useState(0);
-  const [next, setNext] = useState(10);
 
-  const handelprev = () => {
-    setPrev((count) => count - 10);
-    setNext((count) => count - 10);
-    if (prev <= 0) {
-      setPrev(0);
-      setNext(10);
-    }
-  };
-  const handelNext = () => {
-    setNext((count) => count + 10);
-    setPrev((count) => count + 10);
-    if (next < 10) {
-      setPrev(0);
-      setNext(10);
-    }
-  };
 
   return (
     <div className="coursers-open  py-5">

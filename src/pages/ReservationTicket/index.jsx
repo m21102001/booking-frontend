@@ -22,7 +22,6 @@ const ReservationTicket = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
 
   }, [])

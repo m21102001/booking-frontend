@@ -39,7 +39,6 @@ const SignUpStudent = () => {
           }
         )
         .then((response) => {
-          console.log(response);
           toast.success('تم انشاء حسابك بنجاح');
 
           navigate('/auth/verifyEmailCode');
@@ -48,7 +47,6 @@ const SignUpStudent = () => {
       setIsPending(false);
       toast.error('الايميل بالفعل موجود, يجب تغيير الايميل');
 
-      console.log('response', err.response);
     }
   };
   const validatePassword = () => {

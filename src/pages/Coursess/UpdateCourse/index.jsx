@@ -39,8 +39,6 @@ const UpdateCourse = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('لم يتم التعديل تأكد من اضافة البيانات بشكل صحيح')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
   return (

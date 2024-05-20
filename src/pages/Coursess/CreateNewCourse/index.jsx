@@ -31,7 +31,6 @@ const CreateNewCourse = () => {
           }
         )
         .then((response) => {
-          // console.log('created success', response);
           toast.success("تم اضافة كورس جديد بنجاح")
           setTitle('')
           setPrice('')
@@ -42,7 +41,6 @@ const CreateNewCourse = () => {
     } catch (err) {
       setIsPending(false);
       toast.error("خطأ اثناء انشاء الكورس")
-      console.log('response', err.response);
     }
   };
   return (

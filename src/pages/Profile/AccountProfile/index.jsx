@@ -24,7 +24,6 @@ const AccountProfile = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
     axios.get('courses/request')
       .then((response) => {
@@ -33,11 +32,9 @@ const AccountProfile = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
 
   }, []);
-  console.log('course', RequestCourses);
 
   useEffect(() => {
     setLoading(true);
@@ -45,11 +42,9 @@ const AccountProfile = () => {
       .then((response) => {
         setLoading(false)
         setConsultation(response.data)
-        // console.log('consultation', response.data);
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
 
   }, [])
@@ -65,12 +60,10 @@ const AccountProfile = () => {
         axios.get('/courses/').then((response) => {
           setConsultation(response.data)
           setLoading(false);
-          console.log(response.data);
         });
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
   return (

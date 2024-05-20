@@ -19,11 +19,9 @@ const DetailsPlaylistDash = () => {
       .then((response) => {
         setLoading(false);
         setVideosPlaylist(response.data);
-        // console.log(response);
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
   const handelDelete = async (id) => {
@@ -36,12 +34,11 @@ const DetailsPlaylistDash = () => {
       })
       .then((response) => {
         axios.get(`courses/${item?._id}`);
-        console.log('bb', response);
       });
-    toast.error('تم حذف الفيديو بنجاح').catch((error) => {
-      setLoading(false);
-      console.log(error);
-    });
+    toast.error('تم حذف الفيديو بنجاح')
+      .catch((error) => {
+        setLoading(false);
+      });
   };
 
   return (

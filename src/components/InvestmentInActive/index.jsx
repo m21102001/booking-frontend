@@ -15,7 +15,6 @@ const InvestmentInActive = () => {
       })
       .catch((error) => {
         setLoading(false)
-        console.log(error);
       });
   }, [])
 
@@ -39,7 +38,6 @@ const InvestmentInActive = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
 
@@ -63,7 +61,6 @@ const InvestmentInActive = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
   /////////////////////////////////////

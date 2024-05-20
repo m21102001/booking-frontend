@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link,  useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '@/api/axios';
 import { Navbar } from '@/layout';
 import { toast } from 'react-toastify';
@@ -31,39 +31,12 @@ const VerifyCode = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('response', err);
       toast.error(
         'من فضلك تأكد من كتابة الكود بشكل سليم  او يوجد تأخير فى موعد كتابة الرسالة'
       );
     }
   };
-  // const handelSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setIsPending(true);
-  //   try {
-  //     await axios.post('auth/verify-reset-code',
-  //       {
-  //         resetCode: code,
-  //       },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       }
-  //     ).then((response) => {
-  //       setIsPending(false);
-  //       // console.log(response);
-  //       // toast.success('تم التأكيد بنجاح');
-  //       Navigate('/auth/resat-password')
-  //     });
-  //   } catch (err) {
-  //     setIsPending(false);
-  //     console.log(err)
-  //     toast.error(
-  //       'من فضلك تأكد من كتابة الكود بشكل سليم  او يوجد تأخير فى موعد كتابة الرسالة'
-  //     );
-  //   }
-  // };
+
   return (
     <>
       <Navbar />

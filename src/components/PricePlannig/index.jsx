@@ -4,6 +4,7 @@ import axios from '@/api/axios'
 import { planning, planninggolden } from "@/db/data"
 import { Link } from "react-router-dom"
 const PricePlannig = () => {
+  const [loading, setLoading] = useState(false)
   const [plannigPay, setPlanningPay] = useState([])
   const [plannigPayGold, setPlanningPayGold] = useState([])
   const subscribeSilver = async () => {
@@ -11,10 +12,9 @@ const PricePlannig = () => {
       await axios.post(`/users/pay/silver/`)
         .then(response => {
           setPlanningPay(response.data)
-          // console.log(response.data);
         })
     } catch (error) {
-      console.log(error);
+      setLoading(false)
     }
   };
 
@@ -26,7 +26,8 @@ const PricePlannig = () => {
           // console.log(response.data);
         })
     } catch (error) {
-      console.log(error);
+
+      setLoading(false)
     }
   };
   return (

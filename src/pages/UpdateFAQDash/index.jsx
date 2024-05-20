@@ -39,8 +39,6 @@ const UpdateFAQDash = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('حدث خطأ اثناء التعديل')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
 

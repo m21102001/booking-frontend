@@ -15,7 +15,6 @@ const Header = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
   return (

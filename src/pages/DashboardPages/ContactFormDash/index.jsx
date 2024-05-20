@@ -19,12 +19,10 @@ const ContactFormDash = () => {
         .request(fetchContactForm)
         .then((response) => {
           setContactForm(response.data);
-          console.log('xxxxx', response.data);
           setLoading(false);
         })
         .catch((error) => {
           setLoading(false);
-          console.log(error);
         });
     }
   }, []);
@@ -49,35 +47,8 @@ const ContactFormDash = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   };
-  // const handelDeleteAll = async () => {
-  //   let config = {
-  //     method: 'delete',
-  //     url: `/contact`,
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //   };
-  //   setLoading(true);
-  //   await axios
-  //     .request(config, {
-  //     })
-  //     .then((response) => {
-  //       axios.request(fetchContactForm).then((response) => {
-  //         setContactForm(response.data);
-  //         setLoading(false);
-  //         console.log(response.data);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       console.log(error);
-  //     });
-  // };
-
-  //////////////////pagination///////////////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
 

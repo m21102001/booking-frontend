@@ -24,10 +24,8 @@ const CourseDetails = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
-  console.log('playlist', videosPlaylist);
   const handelDelete = async (id) => {
     try {
       setLoading(true);
@@ -44,7 +42,6 @@ const CourseDetails = () => {
     } catch (error) {
       setLoading(false);
       toast.error('حدث خطأ اثناء الحذف')
-      console.log(error);
     }
   };
 
@@ -52,7 +49,6 @@ const CourseDetails = () => {
     <>
       <Navbar />
       <section style={{ backgroundColor: "var(--darkblue-color)", paddingTop: '2rem' }}>
-        {/* <button onClick={() => navigate(`/development/details-playlist/${item?._id}`)} type="button" className="btn btn-primary px-5 ms-5">رجوع </button> */}
         <div className="container py-5">
           <div className="row">
             <div className="col-lg-12">

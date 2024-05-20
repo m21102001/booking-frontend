@@ -18,10 +18,8 @@ const DetailsFAQDash = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
     }, []);
-    console.log(question);
   return (
     <div className="dashboard d-flex flex-row">
       <SidebarDashboard />

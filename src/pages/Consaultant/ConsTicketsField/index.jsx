@@ -16,17 +16,13 @@ const ConsTicketsField = () => {
       .get('cons-fields/')
       .then((response) => {
         setCategory(response.data);
-        // console.log('xxxxx', response.data);
         setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
-        // console.log(error);
       });
   }, []);
-  // console.log('category', category);
   const [value2, setValue2] = useState([]);
-  // const errorMessage = useRef();
   useEffect(() => {
     setLoading(true);
     axios
@@ -36,12 +32,9 @@ const ConsTicketsField = () => {
         setConsultation(response.data);
       })
       .catch((error) => {
-        // errorMessage(error)
         setLoading(false);
-        // console.log(error?.response?.status);
       });
   }, [value2, category]);
-  // console.log('error', category?.document);
   return (
     <div style={{ color: 'var(--darkblue-color)' }}>
       <Navbar />

@@ -18,7 +18,6 @@ const GoldCard = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
   return (

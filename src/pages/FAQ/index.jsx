@@ -10,7 +10,6 @@ const FAQ = () => {
   const [loading, setLoading] = useState(false);
   const [allUser, setAlluser] = useState([])
   const { user } = useAuth();
-  // console.log(user.role);
   //////////////////pagination///////////////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -32,7 +31,6 @@ const FAQ = () => {
 
     }
   }
-  // console.log(allUser.results,prev, next);
 
   useEffect(() => {
     setLoading(true);
@@ -48,11 +46,9 @@ const FAQ = () => {
         })
         .catch((error) => {
           setLoading(false);
-          console.log(error);
         });
     }
   }, []);
-console.log(allUser);
   const handelDelete = async (id) => {
     try {
       setLoading(true);
@@ -69,7 +65,6 @@ console.log(allUser);
     } catch (error) {
       setLoading(false);
       toast.error('حدث خطأ اثناء الحذف')
-      console.log(error);
     }
   };
   const tableRef = useRef(null);

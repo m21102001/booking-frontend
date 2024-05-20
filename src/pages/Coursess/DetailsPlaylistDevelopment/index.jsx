@@ -19,7 +19,6 @@ const DetailsPlaylistDevelopment = () => {
   const [comment, setComment] = useState([]);
   const [showMoreStates, setShowMoreStates] = useState({});
   const [replayComment, setReplayComment] = useState('');
-  console.log('payment', payment);
   // Function to toggle showMore for a specific comment
   const toggleShowMore = (index) => {
     setShowMoreStates((prevState) => ({
@@ -37,7 +36,6 @@ const DetailsPlaylistDevelopment = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // console.log(error);
       });
   }, [id]);
 
@@ -121,7 +119,6 @@ const DetailsPlaylistDevelopment = () => {
         })
     } catch (err) {
       setLoading(false);
-      // console.log('message', err?.message);
       toast.error(err.message);
     }
     setLoading(false);

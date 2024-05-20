@@ -27,14 +27,12 @@ const ResatPassword = () => {
         }
       ).then((response) => {
         setIsPending(false);
-        // console.log(response);
         toast.success('تم تغيير كلمة المرور بنجاح');
         navigate('/auth/login');
       });
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      // console.log('response', err);
       toast.error('تأكد من مطابقة الرقم السرى');
     }
   };

@@ -20,66 +20,11 @@ const QuestionAnswer = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log(error);
       });
   }, []);
   return (
     <>
       <Navbar />
-      {/* <section className="bacground-color-darkblue">
-        <div className="m-auto d-flex justify-content-center py-5">
-          <span
-            style={{
-              zIndex: '0',
-              backgroundColor: 'var(--gold-color2)',
-              width: '50px',
-              height: '3px',
-              margin: 'auto 20px',
-            }}
-          ></span>
-          <h2
-            className="text-center comunation fs-1 fw-bold"
-            style={{ color: 'var(--gold-color2)' }}
-          >
-            الاسئلة الشائعة
-          </h2>
-          <span
-            style={{
-              zIndex: '0',
-              backgroundColor: 'var(--gold-color2)',
-              width: '50px',
-              height: '3px',
-              margin: 'auto 20px',
-            }}
-          ></span>
-        </div>
-        <div className="container pb-5">
-          <div className="row d-flex justify-content-center">
-            <div className="col-md-12 col-lg-10 col-xl-8">
-              <div className="card">
-                {!loading &&
-                  allUser?.document?.map((item, index) => (
-                    <div key={index} className="card-body">
-                      <div className="d-flex flex-start align-items-center">
-                        <div className="fs-1 p-3 m-3 bg-danger shadow p-3 mb-5 rounded">
-                          س
-                        </div>
-                        <p className="pb-2 text-end">{item?.title}</p>
-                      </div>
-                      <div className="d-flex flex-start align-items-center">
-                        <div className="fs-1 p-3 m-3 px-4 bg-success shadow p-3 mb-5 rounded">
-                          ج
-                        </div>
-                        <p className="pb-2 text-end">{item?.answer}</p>
-                      </div>
-                      <hr />
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
       {/* commen question */}
       <section className="background-color-darkblue">
         <div className="m-auto d-flex justify-content-center py-5">

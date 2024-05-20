@@ -29,7 +29,6 @@ const VerifyEmailCode = () => {
         )
         .then((response) => {
           setIsPending(false);
-          console.log(response);
           if (response?.status === 200) {
             toast.success('(ان كنت مستشار يجب الانتظار حتى يتم الموافقة على الايميل من خلال صاحب مدير المتجر) مبرووك ,تم تأكيد الحساب بنجاح');
             navigate('/auth/login');
@@ -37,7 +36,6 @@ const VerifyEmailCode = () => {
         });
     } catch (err) {
       setIsPending(false);
-      console.log('response', err.response);
       toast.error(
         'من فضلك تأكد من كتابة الكود بشكل سليم  او يوجد تأخير فى موعد كتابة الرسالة'
       );
@@ -61,11 +59,9 @@ const VerifyEmailCode = () => {
         )
         .then((response) => {
           setIsPending(false);
-          console.log(response);
         });
     } catch (err) {
       setIsPending(false);
-      console.log('response', err.response);
     }
   };
 
@@ -167,7 +163,7 @@ const VerifyEmailCode = () => {
                 data-bs-dismiss="modal"
               >Close</button>
               <button
-              onClick={resendVerifycationCode}
+                onClick={resendVerifycationCode}
                 type="submit"
                 className="btn btn-primary"
               >Send message</button>

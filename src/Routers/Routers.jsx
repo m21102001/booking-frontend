@@ -1,7 +1,6 @@
 import {
   Routes,
   Route,
-  // HashRouter as Router,
   BrowserRouter  as Router,
   Navigate,
 } from 'react-router-dom';
@@ -79,12 +78,9 @@ import {
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authenticated, useAuth } from '@/context/Auth';
-// import axios from '@/api/axios';
 
 // eslint-disable-next-line react/prop-types
 function Protect({ children, protect = false, path = '', role = 'user' }) {
-  const { user } = useAuth();
-  // console.log(user);
   const authed = authenticated();
   if (
     authed === protect &&
@@ -106,10 +102,6 @@ function Protect({ children, protect = false, path = '', role = 'user' }) {
 }
 const Routers = () => {
   const allowed = useAuth().user;
-  // const { data } = axios.get('users/me/', {
-  //   withCredentials: true,
-  // });
-  // console.log(data);
   return (
     <div>
       <Router>
@@ -439,7 +431,6 @@ const Routers = () => {
               </Protect>
             }
           />
-          {/* <Route path="/dash/video-update/:id" element={<VideosUpdate />} /> */}
           <Route
             path="/dash/all-users"
             element={

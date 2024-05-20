@@ -4,7 +4,6 @@ import axios from "@/api/axios"
 const TicketPayment = () => {
   const item = useLocation()?.search
   const [isPending, setIsPending] = useState(false)
-  console.log(item?.slice(81));
   const hanelSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
@@ -19,7 +18,6 @@ const TicketPayment = () => {
           }
         )
         .then((response) => {
-          console.log('created success', response);
           if (response?.status == 201) {
             alert('تهانينا تم حجز التذكرة بنجاح')
           }
@@ -27,7 +25,6 @@ const TicketPayment = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('response' + err);
     }
   };
 

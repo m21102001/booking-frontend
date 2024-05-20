@@ -11,11 +11,9 @@ const RequestReservationTicket = () => {
       .then((response) => {
         setIsPending(false)
         setTicket(response.data)
-        console.log('ticket', response.data);
       })
       .catch((error) => {
         setIsPending(false);
-        console.log(error);
       });
   }, [])
   return (

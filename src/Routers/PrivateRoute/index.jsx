@@ -5,7 +5,7 @@ import { AuthProvider } from '@/context/Auth';
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
     const Loggedin = useContext(AuthProvider);
-    console.log(Loggedin);
+    // console.log(Loggedin);
     return Loggedin ? children : <Navigate to="/auth/login" />;
 };
 

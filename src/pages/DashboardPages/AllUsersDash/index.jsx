@@ -2,14 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom"
 import { SidebarDashboard } from "@/layout"
 import axios from "@/api/axios";
-// import { useAuth } from "@/context/Auth";
-// import { DownloadTableExcel } from 'react-export-table-to-excel';
+import { useAuth } from "@/context/Auth";
 
 const AllUsersDash = () => {
+  const user = useAuth()
   const [loading, setLoading] = useState(false);
   const [allUser, setAlluser] = useState([])
-  // const { user } = useAuth();
-  // console.log(user.role);
   //////////////////pagination///////////////////
   const [prev, setPrev] = useState(0)
   const [next, setNext] = useState(10)
@@ -31,26 +29,23 @@ const AllUsersDash = () => {
 
     }
   }
-  // console.log(allUser.results,prev, next);
 
   useEffect(() => {
     setLoading(true);
-    // if (user.role == 'manager') {
-    axios.get('/users', {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-      .then((response) => {
-        setLoading(false);
-        setAlluser(response.data);
-        // console.log("contactForm", response.data);
+    if (user.role == 'manager') {
+      axios.get('/users', {
+        headers: {
+          'Content-Type': 'application/json',
+        }
       })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-    // }
+        .then((response) => {
+          setLoading(false);
+          setAlluser(response.data);
+        })
+        .catch((error) => {
+          setLoading(false);
+        });
+    }
   }, []);
   const tableRef = useRef(null);
 
@@ -62,13 +57,6 @@ const AllUsersDash = () => {
         <div className="shadow-none p-3 mt-3 mb-5 bg-body rounded main-title">
           <h2 className='fs-1 fw-bold'> المسجلين ف الموقع</h2>
         </div>
-        {/* <DownloadTableExcel
-          filename="users table"
-          sheet="users"
-          currentTableRef={tableRef.current}
-        >
-          <button type="button" className="btn btn-info d-block m-3 ">  تحميل ملف اكسيل </button>
-        </DownloadTableExcel> */}
         <table ref={tableRef} className="table table-striped table-hover">
           <thead>
             <tr>

@@ -37,11 +37,9 @@ const SignUp = () => {
       .then((response) => {
         setIsPending(false);
         setCategory(response.data);
-        // console.log('xxxxx', response.data);
       })
       .catch((error) => {
         setIsPending(false);
-        console.log(error);
       });
   }, []);
 
@@ -85,19 +83,15 @@ const SignUp = () => {
           )
           .then((response) => {
             toast.success(' يتم انشاء حساب بنجاح, يجب تأكيد الايميل');
-
-            console.log(response);
             navigate('/auth/verifyEmailCode');
           });
       } catch (err) {
         setIsPending(false);
         toast.error('الايميل بالفعل موجود, يجب تغيير الايميل');
 
-        console.log('response', err.response?.message);
       }
     }
   };
-  console.log(image);
   const validatePassword = () => {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;

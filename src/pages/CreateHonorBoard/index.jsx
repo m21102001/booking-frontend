@@ -34,7 +34,6 @@ const CreateHonorBoard = () => {
       })
       .catch((error) => {
         setIsPending(false);
-        console.log(error);
       });
   }, []);
 
@@ -63,8 +62,6 @@ const CreateHonorBoard = () => {
     } catch (err) {
       setIsPending(false);
       toast.error('المستشار موجود بالفعل')
-      console.log('response', err.response);
-      console.log('message', err.message);
     }
   };
   return (

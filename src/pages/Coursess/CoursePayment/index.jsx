@@ -3,8 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import axios from "@/api/axios"
 const CoursePayment = () => {
   const item = useLocation()?.search
-  // console.log(item);
-  console.log(item?.slice(81));
   const [isPending, setIsPending] = useState(false)
   const hanelSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +18,6 @@ const CoursePayment = () => {
           }
         )
         .then((response) => {
-          console.log('created success', response);
           if (response?.status == 201) {
             alert('تهانينا تم شراء الكورس بنجاح')
           }
@@ -28,11 +25,11 @@ const CoursePayment = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log('response' + err);
     }
   };
   return (
     <div className="d-flex " style={{ height: '100vh' }}>
+      {!isPending && <div className="loading"></div>}
       <div className="modal fade" id="exampleModalToggle" aria-hidden="false" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
