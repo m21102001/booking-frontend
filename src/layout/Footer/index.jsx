@@ -23,7 +23,12 @@ const Footer = () => {
                 />
               </h6>
               <p>
-                pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any
+                نحن فريق من المحترفين المتخصصين في مجالات متنوعة،
+                نجمع بين الخبرة والخبرة الواسعة في تقديم الاستشارات المبتكرة
+                والمخصصة لعملائنا. تتمثل مهمتنا في توفير حلول فريدة ومتميزة تلبي
+                احتياجات العملاء وتساعدهم على تحقيق أهدافهم بكفاءة وفعالية.
+                نحن نفخر بتوجيه عملائنا نحو التميز والنجاح من خلال تقديم
+                خدمات استشارية متميزة تعكس التزامنا بالجودة والمهنية.
               </p>
             </div>
 
@@ -40,13 +45,13 @@ const Footer = () => {
                 <a href="#gold" className="text-reset">متجر سبائك </a>
               </p> */}
               <p>
-                <Link className="text-light" to={'/club'}>
-                  <a href="#club" className="text-reset"> الكورسات</a>
+                <Link className="text-light" to={'/courses'}>
+                  <a href="" className="text-reset"> الكورسات</a>
                 </Link>
               </p>
               <p>
-                <Link className="text-light" to={'/development'}>
-                  <a href="#playlist" className="text-reset">احدث الكورسات  </a>
+                <Link className="text-light" to={'/consault-store'}>
+                  <a href="" className="text-reset">المستشارين</a>
                 </Link>
               </p>
             </div>
@@ -56,13 +61,13 @@ const Footer = () => {
                 الوصى بيهم
               </h6>
               <p>
-                <Link className="text-light" to={'/Consulting'}>
-                  <a href="#consalt" className="text-reset">الاستشارات</a>
+                <Link className="text-light" to={'/cons-tickets/field'}>
+                  <a href="" className="text-reset">الاستشارات</a>
                 </Link>
               </p>
               <p>
                 <Link className="text-light" to={'/contactUS'}>
-                  <a href="#contact-us" className="text-light text-reset">تواصل معنا</a>
+                  <a href="" className="text-light text-reset">تواصل معنا</a>
                 </Link>
               </p>
             </div>
