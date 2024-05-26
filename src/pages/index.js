@@ -29,6 +29,7 @@ export { default as TicketPayment } from './TicketPayment';
 export { default as AllUsersDash } from './DashboardPages/AllUsersDash';
 export { default as Tools } from './DashboardPages/Tools';
 export { default as About } from './DashboardPages/About';
+export { default as CreateAbout } from './DashboardPages/CreateAbout';
 export { default as RequestReservationTicket } from './RequestReservationTicket';
 export { default as DashUpdateHeader } from './DashboardPages/DashUpdateHeader';
 export { default as UpdateTools } from './DashboardPages/UpdateTools';

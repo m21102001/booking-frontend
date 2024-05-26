@@ -83,49 +83,32 @@ export const consalting = [
 export const services = [
   {
     id: 1,
-    title: ` Each university determines admission and the number `,
-    description: ` pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any `,
+    title: ` استشارات الأعمال `,
+    description: ` نحن نقدم استشارات مخصصة لدعم نمو وتطوير أعمالك. خبراؤنا في مجالات الإدارة، التسويق، والمالية سيساعدونك في تخطيط وتنفيذ استراتيجيات فعالة لتحقيق أهدافك التجارية.    `,
     button: 'حجز استشارة',
     icon: `<HiMiniComputerDesktop />`,
   },
   {
     id: 2,
-    title: ` Each university determines admission and the number `,
-    description: ` pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any 
-        `,
+    title: `استشارات تكنولوجيا المعلومات `,
+    description: `استفد من خبرتنا الواسعة في تكنولوجيا المعلومات لتحسين كفاءة نظامك وإدارة بياناتك بشكل آمن. نقدم حلولاً مخصصة لتلبية احتياجاتك التكنولوجية وتطوير بنية تحتية قوية.    `,
     button: 'حجز استشارة',
     icon: `<RiComputerFill />`,
   },
   {
     id: 3,
-    title: ` Each university determines admission and the number `,
-    description: ` pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any `,
+    title: `دورات تدريبية  `,
+    description: `احصل على المعرفة والمهارات اللازمة لتحقيق النجاح المهني من خلال دوراتنا التدريبية المتنوعة. نقدم برامج تدريبية في مجالات متعددة مثل تطوير الذات، القيادة، وتكنولوجيا المعلومات، مصممة خصيصًا لتلبية احتياجات السوق المتغيرة.    `,
     button: 'حجز استشارة',
     icon: `<SiInternetcomputer />`,
   },
   {
     id: 4,
-    title: `Each university determines admission and the number `,
-    description: ` pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any `,
+    title: ` استشارات التسويق الرقمي`,
+    description: `عزز حضورك الرقمي وزد من قاعدة عملائك من خلال استشارات التسويق الرقمي لدينا. خبراؤنا سيساعدونك في تطوير وتنفيذ استراتيجيات فعالة للإعلان عبر الإنترنت، تحسين محركات البحث، وإدارة وسائل التواصل الاجتماعي.    `,
     button: 'حجز استشارة',
     icon: 'GiComputerFan',
-  },
-  {
-    id: 5,
-    title: 'Each university determines admission and the number ',
-    description:
-      ' pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any ',
-    button: 'حجز استشارة',
-    icon: 'GiComputerFan',
-  },
-  {
-    id: 6,
-    title: ' Each university determines admission and the number ',
-    description:
-      'توفير خدمات الدعم للعملاء والتواصل المستمر لضمان رضاهم وفهم احتياجاتهم بشكل فعال pre-approved prior learning credits that may count toward the degree requirements according to institutional policies, which may consider any existing credits you may have. credits that may count toward the degree requirements according to institutional policies, which may consider any ',
-    button: 'حجز استشارة',
-    icon: 'GiComputerFan',
-  },
+  }
 ];
 export const whyCambridag = [
   {
@@ -537,7 +520,7 @@ export const condationAndTerms = [
             id: 2,
             title: ' يجب على المستخدم احترام خصوصية المعلومات المقدمة من قبل المرشدين وعدم مشاركتها مع أي شخص آخر.'
           },
-          
+
         ]
       },
       {
@@ -546,13 +529,13 @@ export const condationAndTerms = [
         description: [
           {
             id: 1,
-            title:' يجب على المستخدم دفع الرسوم المحددة لجلسات الاستشارة أو الدورات قبل بدء الجلسة أو الدورة.'
+            title: ' يجب على المستخدم دفع الرسوم المحددة لجلسات الاستشارة أو الدورات قبل بدء الجلسة أو الدورة.'
           },
           {
             id: 2,
-            title:'يجب على المستخدم تقديم المعلومات الصحيحة والكاملة أثناء عملية التسجيل.'
+            title: 'يجب على المستخدم تقديم المعلومات الصحيحة والكاملة أثناء عملية التسجيل.'
           },
-          
+
         ]
       },
       {
@@ -561,7 +544,7 @@ export const condationAndTerms = [
         description: [
           {
             id: 1,
-            title:'يحظر على المستخدم القيام بأي نشاط يعتبر غير قانوني أو مخالفًا لأخلاقيات الاستخدام.'
+            title: 'يحظر على المستخدم القيام بأي نشاط يعتبر غير قانوني أو مخالفًا لأخلاقيات الاستخدام.'
           },
         ]
       },
@@ -571,13 +554,13 @@ export const condationAndTerms = [
         description: [
           {
             id: 1,
-            title:'يجب على المستخدم احترام سياسة الإلغاء والاسترداد المحددة من قبل المرشد.'
+            title: 'يجب على المستخدم احترام سياسة الإلغاء والاسترداد المحددة من قبل المرشد.'
           },
           {
             id: 2,
-            title:'يحق للمستخدم إلغاء الحجز وطلب استرداد الأموال وفقًا لشروط الإلغاء المحددة.'
+            title: 'يحق للمستخدم إلغاء الحجز وطلب استرداد الأموال وفقًا لشروط الإلغاء المحددة.'
           },
-          
+
         ]
       },
     ],
@@ -602,7 +585,7 @@ export const condationAndTerms = [
       },
       {
         id: 2,
-        title:'الدفع والأجر',
+        title: 'الدفع والأجر',
         description: [
           {
             id: 1,
@@ -610,13 +593,13 @@ export const condationAndTerms = [
           },
           {
             id: 2,
-            title:'يجب على المرشد تقديم تقارير دورية بالدخل المحصل من جلسات الاستشارة أو الدورات.'
+            title: 'يجب على المرشد تقديم تقارير دورية بالدخل المحصل من جلسات الاستشارة أو الدورات.'
           }
         ]
       },
       {
         id: 3,
-        title:'الإلغاء والاسترداد',
+        title: 'الإلغاء والاسترداد',
         description: [
           {
             id: 1,
@@ -624,13 +607,13 @@ export const condationAndTerms = [
           },
           {
             id: 2,
-            title:'في حالة الإلغاء من قبل العميل، يجب على المرشد تحديد سياسة استرداد الأموال بشكل منصف.'
+            title: 'في حالة الإلغاء من قبل العميل، يجب على المرشد تحديد سياسة استرداد الأموال بشكل منصف.'
           }
         ]
       },
       {
         id: 4,
-        title:'الملكية الفكرية',
+        title: 'الملكية الفكرية',
         description: [
           {
             id: 1,
@@ -640,7 +623,7 @@ export const condationAndTerms = [
       },
       {
         id: 5,
-        title:'تغيير الشروط والأحكام',
+        title: 'تغيير الشروط والأحكام',
         description: [
           {
             id: 1,
@@ -648,7 +631,7 @@ export const condationAndTerms = [
           },
         ]
       },
-      
+
     ],
     public: {},
   }

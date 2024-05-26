@@ -74,6 +74,7 @@ import {
   UpdateTools,
   CreateTools,
   RequestReservationTicket,
+  CreateAbout,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -204,6 +205,14 @@ const Routers = () => {
             element={
               <Protect path="dash" protect role={allowed?.role}>
                 <About />
+              </Protect>
+            }
+          />
+          <Route
+            path="/dash/about/create-new"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <CreateAbout />
               </Protect>
             }
           />

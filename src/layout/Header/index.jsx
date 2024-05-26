@@ -22,10 +22,6 @@ const Header = () => {
       {!loading && cover?.document?.map((item, index) => (
         <div key={index} className="row align-items-start py-5">
           <div className="col-md-6 col-sm-12">
-            <h1 className='text-end py-5 fw-bold text-title'>{item?.title}</h1>
-            <h2>{item?.description}</h2>
-          </div>
-          <div className="col-md-6 col-sm-12">
             <LazyLoadImage
               src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
               alt={item?.title}
@@ -35,6 +31,11 @@ const Header = () => {
               width={500}
             />
           </div>
+          <div className="col-md-6 col-sm-12">
+            <h1 className='text-end py-5 fw-bold text-title'>{item?.title}</h1>
+            <h2>{item?.description}</h2>
+          </div>
+
         </div>
       ))}
     </div>

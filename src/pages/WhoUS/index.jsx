@@ -31,35 +31,18 @@ const WhoUs = () => {
               </div>
               <div className="d-flex justify-content-around flex-wrap mt-5 card-style">
                 {!loading && about?.document?.map((item, index) => (
-                  <div key={index} className="card mx-3 mb-3 card-border">
+                  <div key={index} className="card mx-3 mb-3 card-border w-100">
                     {/* <LazyLoadImage
                       src={item?.image}
                       className="card-img-top image-card "
                       alt={item.title}
                     /> */}
                     <div key={index} className="card-body">
-                      <h5 className="card-title text-center">{item?.text1}</h5>
+                      <h5 className="card-title text-end">{item?.text1}</h5>
                       <p className="card-text text-end fw-semibold">{item?.text2}</p>
                     </div>
                   </div>
                 ))}
-                {/* {aboutthats?.map((item, index) => (
-                  <div key={index} className="card mx-3 mb-3 card-border">
-                    <LazyLoadImage
-                      src={item?.image}
-                      className="card-img-top image-card "
-                      alt={item.title}
-                    />
-                    {!loading && about?.document?.map((item, index) => (
-                      index == 0 ? (
-                      <div key={index} className="card-body">
-                        <h5 className="card-title text-center">{item?.text1}</h5>
-                        <p className="card-text text-end fw-semibold">{item?.text2}</p>
-                      </div>
-                      ) : null
-                    ))}
-                  </div>
-                ))} */}
               </div>
             </div>
           </div>

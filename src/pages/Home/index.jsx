@@ -37,20 +37,20 @@ const Home = () => {
             <div key={index} className="card mb-3" style={{ maxWidth: "540px" }}>
               <div className="row g-0">
                 <div className="col-md-4">
+                  <Link to={item?.link}>
                   <LazyLoadImage
                     src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
                     alt={item?.title}
                     className="img-fluid rounded-start"
                   />
+                    </Link>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
                     <h5 className="card-title">{item?.title}</h5>
-                    <Link to={item?.link}>
                       <p className="card-text">
                         {item?.description}
                       </p>
-                    </Link>
                   </div>
                 </div>
               </div>
