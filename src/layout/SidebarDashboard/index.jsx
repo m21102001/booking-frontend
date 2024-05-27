@@ -97,7 +97,10 @@ function SidebarDashboard() {
           <NavLink to="/dash/honor-board ">
             <FaClipboard /> <p className="fs-5 fw-bold me-4">honor-board</p>
           </NavLink>
-         
+          <NavLink to="/dash/deposit/cash">
+            <FaClipboard /> <p className="fs-5 fw-bold me-4">سحب نقود</p>
+          </NavLink>
+
           <NavLink to="/dash/all-users ">
             <FaUsers /> <p className="fs-5 fw-bold me-4">كل المستخدمين</p>
           </NavLink>

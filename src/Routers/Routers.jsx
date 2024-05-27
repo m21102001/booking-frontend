@@ -75,6 +75,8 @@ import {
   CreateTools,
   RequestReservationTicket,
   CreateAbout,
+  DepositDash,
+  DetailsDepositDash,
 } from '@/pages';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -437,6 +439,22 @@ const Routers = () => {
             element={
               <Protect path="dash" protect role={allowed?.role}>
                 <UpdateHonorBoard />
+              </Protect>
+            }
+          />
+          <Route
+            path="/dash/deposit/cash"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <DepositDash />
+              </Protect>
+            }
+          />
+          <Route
+            path="/dash/deposit/cash/details/:id"
+            element={
+              <Protect path="dash" protect role={allowed?.role}>
+                <DetailsDepositDash />
               </Protect>
             }
           />

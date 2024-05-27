@@ -8,12 +8,15 @@ import { FaMoneyBillAlt } from 'react-icons/fa';
 import { ImLocation2 } from 'react-icons/im';
 import { MdTimer } from 'react-icons/md';
 import { FaClock } from 'react-icons/fa6';
+import { toast } from 'react-toastify';
 const AccountProfile = () => {
   const { user } = useAuth();
   const [courses, setCourses] = useState([]);
   const [RequestCourses, setRequestCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [consultation, setConsultation] = useState([])
+  const [equity, setEquity] = useState('')
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -66,6 +69,30 @@ const AccountProfile = () => {
         setLoading(false);
       });
   };
+
+  const depositRequest = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    await axios.post('mentors/deposite-request',
+      {
+        equity: equity,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+
+    ).then(res => {
+      setLoading(false)
+      toast.success('تم ارسال طلب بنجاح');
+
+    }).catch((error) => {
+      setLoading(false);
+      toast.error('حدث خطأ ما');
+    });
+  }
+
   return (
     <>
       {loading && <div className="loading"></div>}
@@ -210,6 +237,31 @@ const AccountProfile = () => {
                                         <p className="text-muted mb-0">
                                           {user?.balance} ريال سعودى
                                         </p>
+                                      </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                      <div className="col-sm-3">
+                                        <p className="mb-0">طلب سحب نقدى</p>
+                                      </div>
+                                      <div className="col-sm-9">
+                                        <form onSubmit={depositRequest}>
+                                          <div className="mb-3">
+                                            <input
+                                              type="number"
+                                              className="form-control"
+                                              aria-describedby="numberHelp"
+                                              placeholder='200 ريال سعودى'
+                                              value={equity}
+                                              onChange={(e) => setEquity(e.target.value)}
+                                              required
+                                            />
+                                          </div>
+                                          <button type="submit" className="btn btn-outline-dark">سحب مبلغ</button>
+                                        </form>
+
+                                        <form >
+                                        </form>
                                       </div>
                                     </div>
                                     <hr />
