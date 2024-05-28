@@ -70,6 +70,11 @@ const Footer = () => {
                   <a href="" className="text-light text-reset">تواصل معنا</a>
                 </Link>
               </p>
+              <p>
+                <Link className="text-light" to={'/terms-condition'}>
+                  <a href="" className="text-light text-reset">الشروط والاحكام </a>
+                </Link>
+              </p>
             </div>
 
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">

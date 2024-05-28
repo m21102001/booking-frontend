@@ -11,6 +11,7 @@ const SignUpStudent = () => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [birthdate, setBirthdate] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [validationMessage, setValidationMessage] = useState('');
@@ -30,6 +31,7 @@ const SignUpStudent = () => {
           {
             name: name,
             email: email,
+            birthdate: birthdate,
             password: password,
           },
           {
@@ -126,6 +128,19 @@ const SignUpStudent = () => {
                           </div>
                         </div>
                         <div className="form-outline mb-4">
+                          <label className="form-label" htmlFor="form3Example9">
+                            تاريخ الميلاد
+                          </label>
+                          <input
+                            type="date"
+                            id="form3Example9"
+                            className="form-control form-control-lg"
+                            value={birthdate}
+                            required
+                            onChange={(e) => setBirthdate(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
                           <label
                             className="form-label"
                             htmlFor="form3Example4cg"
@@ -193,18 +208,18 @@ const SignUpStudent = () => {
                             .
                           </label>
                         </div>
-                          <div
-                            // to={'/auth/verifyEmailCode'}
-                            className="d-grid gap-2"
+                        <div
+                          // to={'/auth/verifyEmailCode'}
+                          className="d-grid gap-2"
+                        >
+                          <button
+                            type="submit"
+                            className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
+                              }`}
                           >
-                            <button
-                              type="submit"
-                              className={`btn btn-primary btn-lg ms-2 ${check ? '' : 'disabled'
-                                }`}
-                            >
-                              انشاء حساب جديد
-                            </button>
-                          </div>
+                            انشاء حساب جديد
+                          </button>
+                        </div>
                       </form>
                       <div className="mb-3 d-flex ">
                         هل لديك حساب بالفعل ؟

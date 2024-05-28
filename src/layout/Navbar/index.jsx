@@ -7,7 +7,7 @@ import axios from '@/api/axios';
 
 const Navbar = () => {
   const navigate = useNavigate()
-  const { setRole, setuser, setLoggedin, Loggedin, user } = useAuth();
+  const { setRole, setuser, setLoggedin, user } = useAuth();
   const handelLogout = async () => {
     try {
       await axios.post('auth/logout', {
@@ -22,19 +22,15 @@ const Navbar = () => {
       setLoggedin(false);
       setRole(undefined);
       Navigate('/auth/login');
-    
+
     }
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Initialize isLoggedIn state
+  const [setIsLoggedIn] = useState(false); // Initialize isLoggedIn state
 
   // Function to handle login
   const handleLogin = () => {
     setIsLoggedIn(true);
-    // console.log(isLoggedIn);
-  };
-  const handleLogout = () => {
-    setIsLoggedIn(false);
     // console.log(isLoggedIn);
   };
 
@@ -97,16 +93,16 @@ const Navbar = () => {
                   الكورسات
                 </NavLink>
               </li>
-              {user?.role !== 'mentor' ? (
-                <li className="nav-item ms-2 ">
-                  <NavLink
-                    className="nav-link navli text-light"
-                    to="/cons-tickets/field"
-                  >
-                    الاستشارات
-                  </NavLink>
-                </li>
-              ) : null}
+              {/* {user?.role !== 'mentor' ? ( */}
+              <li className="nav-item ms-2 ">
+                <NavLink
+                  className="nav-link navli text-light"
+                  to="/cons-tickets/field"
+                >
+                  الاستشارات
+                </NavLink>
+              </li>
+              {/* ) : null} */}
               <li className="nav-item ms-2 ">
                 <NavLink
                   className="nav-link navli text-light"
@@ -163,53 +159,6 @@ const Navbar = () => {
                 </button>
               </>
             )}
-
-            {/* <div className="d-flex text-light">
-              {isLoggedIn ? (
-                <>
-                  <Link to={'/auth/login'}>
-                    <button
-                      type="button"
-                      className="mx-2 btn btn-primary bg-dark:hover "
-                      onClick={handleLogin}
-                    >
-                      سجل دخول
-                    </button>
-                  </Link>
-
-                 
-
-                  <button
-                    type="button"
-                    className="mx-2 btn btn-primary"
-                    data-bs-toggle="modal"
-                    href="#exampleModalToggle"
-                    role="button"
-                  >
-                    انشاء حساب
-                  </button>
-                </>
-              ) : (
-                <>
-                  {' '}
-                  <Link to={'/auth/profile'}>
-                    <RxAvatar className="fs-1 avatar text-light" />
-                  </Link>
-                  <button
-                    type="button"
-                    className="mx-2 btn btn-primary"
-                    data-bs-toggle="modal"
-                    href="#exampleModalToggle"
-                    role="button"
-                    onClick={handleLogout}
-                  >
-                    تسجيل خروج
-                  </button>
-                </>
-              )}
-
-             
-            </div> */}
           </div>
         </div>
       </nav>

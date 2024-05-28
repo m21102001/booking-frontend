@@ -10,7 +10,7 @@ const GoldStore = () => {
   const item = useLocation()?.state?.item;
   const [loading, setLoading] = useState(false);
   const [allUser, setAlluser] = useState([]);
-  const [categorya, setCategory] = useState([]);
+  const [category, setCategory] = useState([]);
   const [categorySemester, setCategorySemester] = useState([]);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const GoldStore = () => {
         setLoading(false);
       });
   }, []);
+console.log('category',category);
 
   const getInitialState2 = () => {
     const selectType = 'summer';
@@ -122,10 +123,11 @@ const GoldStore = () => {
               >
 
                 {!loading &&
-                  categorya?.document?.map((item, index) => (
+                  category?.document?.map((item, index) => (
                     <option key={index} value={item?.field}>
                       {item?.field}
                     </option>
+
                   ))}
               </select>
             </div>
@@ -146,7 +148,6 @@ const GoldStore = () => {
                                 <div className="title-card">
                                   <LazyLoadImage
                                     src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                    // src={`https://sayes-media.s3.eu-north-1.amazonaws.com/images/circled Saad.png`}
                                     alt={item?.name}
                                     loading="lazy"
                                   />

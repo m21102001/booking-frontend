@@ -32,25 +32,30 @@ const Home = () => {
       <Navbar />
       <Header />
       <div className="container text-center">
+        <div className='m-auto d-flex justify-content-center my-5'>
+          <span style={{ zIndex: "0", backgroundColor: "#000", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+          <h2 className='text-center comunation fs-1 fw-bold' style={{ color: "var(--gold-color2)" }}>الادوات والمقاييس </h2>
+          <span style={{ zIndex: "0", backgroundColor: "#000", width: "50px", height: "3px", margin: "auto 20px" }}></span>
+        </div>
         <div className="row d-flex justify-content-between">
           {!loading && tool?.document?.map((item, index) => (
             <div key={index} className="card mb-3" style={{ maxWidth: "540px" }}>
               <div className="row g-0">
                 <div className="col-md-4">
                   <Link to={item?.link}>
-                  <LazyLoadImage
-                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                    alt={item?.title}
-                    className="img-fluid rounded-start"
-                  />
-                    </Link>
+                    <LazyLoadImage
+                      src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                      alt={item?.title}
+                      className="img-fluid rounded-start"
+                    />
+                  </Link>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
                     <h5 className="card-title">{item?.title}</h5>
-                      <p className="card-text">
-                        {item?.description}
-                      </p>
+                    <p className="card-text">
+                      {item?.description}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -58,23 +63,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {/* <div className="Container ServicesIncluded" id="consalt">
-        <h2 className="services text-center">خدماتنا </h2>
-        <div className="services-card d-flex flex-column flex-wrap ">
-          {services?.map((item, index) => (
-            index < 4 ? (
-              <div key={index} className="row g-0 text-center shadow-lg p-3 px-3 mb-5 bg-body rounded cardService cardService1 ">
-                <div className="col-sm-12 col-md-12 ">
-                  <h2 className="text-end mb-2 text-light">{item.title}</h2>
-                  <br />
-                  <p className="text-end  fs-5">{item?.description}</p>
-                </div>
-              </div>
-            ) : null
-          ))}
-
-        </div>
-      </div> */}
       <CoursesOpen />
       <GoldCard />
       {/* <DigitalMarkting /> */}
