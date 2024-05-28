@@ -75,6 +75,7 @@ const Courses = () => {
               value={value}
               onChange={(e) => setValue(e.target.value)}
             >
+              <option value="selectAll">عرض الكل</option>
               {!loading &&
                 categorya?.document?.map((item, index) => (
                   <option key={index} value={item?.field}>
@@ -90,7 +91,6 @@ const Courses = () => {
                   <div className={styles['home-grid']}>
                     {categoryaShow?.data?.map(
                       (item, index) =>
-                        // item?.option == value && item?.option !== 'selectAll' ? (
                         item?.field === value ? (
                           <Link
                             key={index}
@@ -121,7 +121,37 @@ const Courses = () => {
                               </div>
                             </div>
                           </Link>
-                        ) : null
+                        ) : (
+                          <Link
+                            key={index}
+                            to={`/consault-store-item/course-detalis/${item._id}`}
+                            state={{ item: item }}
+                          >
+                            <div className={styles['gold-div']}>
+                              <div className="title-card">
+                                <LazyLoadImage
+                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                                    }`}
+                                  alt={item?.title}
+                                  loading="lazy"
+                                />
+                                <div className="news-date">
+                                  <label className="mx-2">
+                                    {item?.createdAt?.slice(0, 10)}
+                                  </label>
+                                  <label className="news-date-time mx-2">
+                                    {item?.createdAt?.slice(11, 16)}
+                                  </label>
+                                </div>
+                              </div>
+                              <div>
+                                <h3 className="text-center fw-bold">
+                                  {item.title}
+                                </h3>
+                              </div>
+                            </div>
+                          </Link>
+                        )
                     )}
                   </div>
                 </div>

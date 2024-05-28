@@ -25,7 +25,6 @@ const GoldStore = () => {
         setLoading(false);
       });
   }, []);
-console.log('category',category);
 
   const getInitialState2 = () => {
     const selectType = 'summer';
@@ -51,7 +50,7 @@ console.log('category',category);
   const getInitialState = () => {
     let value = item?.option;
     if (value == null) {
-      value = 'تكنولوجيا';
+      value = 'selectAll';
     }
 
     return value;
@@ -121,7 +120,7 @@ console.log('category',category);
                 value={value}
                 onChange={handleChange}
               >
-
+                <option value="selectAll">عرض الكل</option>
                 {!loading &&
                   category?.document?.map((item, index) => (
                     <option key={index} value={item?.field}>
@@ -159,7 +158,28 @@ console.log('category',category);
                                 </div>
                               </div>
                             </Link>
-                          ) : null
+                          ) : (
+                            <Link
+                              key={index}
+                              to={`/consault-store-item`}
+                              state={{ item: item }}
+                            >
+                              <div className={styles['gold-div']}>
+                                <div className="title-card">
+                                  <LazyLoadImage
+                                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                                    alt={item?.name}
+                                    loading="lazy"
+                                  />
+                                </div>
+                                <div>
+                                  <h3 className="text-center fw-bold">
+                                    {item.name}
+                                  </h3>
+                                </div>
+                              </div>
+                            </Link>
+                          )
                         )}
                     </div>
                   </div>

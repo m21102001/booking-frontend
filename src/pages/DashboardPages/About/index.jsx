@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { SidebarDashboard } from '@/layout'
 import axios from '@/api/axios'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 const About = () => {
   const [loading, setLoading] = useState(false)
   const [cover, setCover] = useState([])
@@ -16,6 +17,26 @@ const About = () => {
         setLoading(false);
       });
   }, []);
+
+  const handelDelete = async (id) => {
+    setLoading(true)
+    await axios?.delete(`about-us/${id}`)
+      .then((response) => {
+        setLoading(false)
+        toast.success('تم الحذف بنجاح')
+        axios?.get('about-us')
+          .then((response) => {
+            setCover(response.data);
+            setLoading(false);
+          })
+      })
+      .catch((error) => {
+        setLoading(false)
+        toast.error("حدث خطأ ما")
+      })
+
+  }
+
   return (
     <div className="dashboard d-flex flex-row">
       <SidebarDashboard />
@@ -36,7 +57,7 @@ const About = () => {
               <th scope="col"> النص الثانى</th>
               {/* <th scope="col"> النص الثالث</th> */}
               {/* <th scope="col"> النص الرابع</th> */}
-              <th scope="col">الاحداث</th>
+              <th colSpan={2} scope="col">الاحداث</th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +75,10 @@ const About = () => {
                   >
                     <button className="btn btn-outline-success mx-2 px-4">تعديل</button>
                   </Link>
+                  <button
+                    onClick={() => handelDelete(item._id)}
+                    className="btn btn-outline-danger mx-2 px-4"
+                  >حذف</button>
                 </td>
               </tr>
             ))}
