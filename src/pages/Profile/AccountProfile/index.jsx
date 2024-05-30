@@ -28,7 +28,12 @@ const AccountProfile = () => {
       .catch((error) => {
         setLoading(false);
       });
-    axios.get('courses/request')
+    
+
+  }, []);
+useEffect(() => {
+    setLoading(true);
+axios.get('courses/request')
       .then((response) => {
         setLoading(false);
         setRequestCourses(response.data);
@@ -36,9 +41,8 @@ const AccountProfile = () => {
       .catch((error) => {
         setLoading(false);
       });
-
-  }, []);
-
+}, []);
+  
   useEffect(() => {
     setLoading(true);
     axios.get(`cons-tickets/mentor/${user?._id}`)
