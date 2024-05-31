@@ -35,6 +35,7 @@ const ConsTicketsField = () => {
         setLoading(false);
       });
   }, [value2, category]);
+
   return (
     <div style={{ color: 'var(--darkblue-color)' }}>
       <Navbar />

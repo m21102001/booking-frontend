@@ -28,9 +28,9 @@ const AccountProfile = () => {
       .catch((error) => {
         setLoading(false);
       });
-    
-
   }, []);
+
+  
 useEffect(() => {
     setLoading(true);
 axios.get('courses/request')
@@ -131,7 +131,7 @@ axios.get('courses/request')
                     )}
                     <Link
                       to={`/auth/profile/edit-profile/update-password`}
-                      className="btn btn-outline-dark"
+                      className="btn btn-dark "
                       style={{ zIndex: 1 }}
                       data-mdb-ripple-color="dark"
                     >
@@ -143,12 +143,12 @@ axios.get('courses/request')
                   </div>
                 </div>
                 <div
-                  className="p-4 text-black"
+                  className=" text-black"
                   style={{ backgroundColor: '#f8f9fa' }}
                 >
                 </div>
 
-                <div className="card-body p-4 text-black">
+                <div className="card-body mt-5 text-black">
                   <div className="mb-5">
                     <section>
                       <div className='d-flex justify-content-between align-item-center'>
@@ -283,55 +283,6 @@ axios.get('courses/request')
                                     </p>
                                   </div>
                                 </div>
-                                {/* {user?.active == true ? (
-                                  <>
-                                    <hr />
-                                    <div className="row">
-                                      <div className="col-sm-3">
-                                        <p className="mb-0">
-                                          الاستشارات الحضورية المتاحة مجانا{' '}
-                                        </p>
-                                      </div>
-                                      <div className="col-sm-9">
-                                        <p className="text-muted mb-0">
-                                          {user?.freeOflineConsultations
-                                            ? user?.freeOflineConsultations
-                                            : 'لا يوجد استشارات متاحة'}
-                                        </p>
-                                      </div>
-                                    </div>
-                                    <hr />
-                                    <div className="row">
-                                      <div className="col-sm-3">
-                                        <p className="mb-0">
-                                          الاستشارات الهاتفية المتاحة مجانا{' '}
-                                        </p>
-                                      </div>
-                                      <div className="col-sm-9">
-                                        <p className="text-muted mb-0">
-                                          {user?.freeOnlineConsultations
-                                            ? user?.freeOnlineConsultations
-                                            : 'لا يوجد استشارات متاحة '}
-                                        </p>
-                                      </div>
-                                    </div>
-                                    <hr />
-                                    <div className="row">
-                                      <div className="col-sm-3">
-                                        <p className="mb-0">
-                                          تاريخ بداية الانضمام{' '}
-                                        </p>
-                                      </div>
-                                      <div className="col-sm-9">
-                                        <p className="text-muted mb-0">
-                                          {user?.createdAt?.slice(0, 10)}
-                                        </p>
-                                      </div>
-                                    </div>
-                                    <hr />
-                                  </>
-                                ) : null} */}
-
                               </div>
                             </div>
                           </div>
@@ -438,11 +389,6 @@ axios.get('courses/request')
                     <>
                       <div className="d-flex justify-content-between align-items-center mb-4">
                         <p className="lead fw-normal mb-0">كورساتى </p>
-                        {/* <p className="mb-0">
-                          <a href="#!" className="text-muted">
-                            الكل
-                          </a>
-                        </p> */}
                         <p>
                           <Link
                             to={'/auth/create-new-course'}
