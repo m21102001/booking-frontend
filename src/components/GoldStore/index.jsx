@@ -45,12 +45,12 @@ const GoldStore = () => {
       .catch((error) => {
         setLoading(false);
       });
-  }, [type]);
+  }, []);
 
   const getInitialState = () => {
     let value = item?.option;
     if (value == null) {
-      value = 'selectAll';
+      value = '';
     }
 
     return value;
