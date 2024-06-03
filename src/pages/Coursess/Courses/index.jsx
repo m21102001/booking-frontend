@@ -89,69 +89,74 @@ const Courses = () => {
               <>
                 <div className="container">
                   <div className={styles['home-grid']}>
-                    {categoryaShow?.data?.map(
-                      (item, index) =>
-                        item?.field === value ? (
-                          <Link
-                            key={index}
-                            to={`/consault-store-item/course-detalis/${item._id}`}
-                            state={{ item: item }}
-                          >
-                            <div className={styles['gold-div']}>
-                              <div className="title-card">
-                                <LazyLoadImage
-                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
-                                    }`}
-                                  alt={item?.title}
-                                  loading="lazy"
-                                />
-                                <div className="news-date">
-                                  <label className="mx-2">
-                                    {item?.createdAt?.slice(0, 10)}
-                                  </label>
-                                  <label className="news-date-time mx-2">
-                                    {item?.createdAt?.slice(11, 16)}
-                                  </label>
+
+                    {categoryaShow?.length == 0 ? (
+                      <h3>لايوجد كورسات متاحة</h3>
+                    ) : (
+                      categoryaShow?.data?.map(
+                        (item, index) =>
+                          item?.field === value ? (
+                            <Link
+                              key={index}
+                              to={`/consault-store-item/course-detalis/${item._id}`}
+                              state={{ item: item }}
+                            >
+                              <div className={styles['gold-div']}>
+                                <div className="title-card">
+                                  <LazyLoadImage
+                                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                                      }`}
+                                    alt={item?.title}
+                                    loading="lazy"
+                                  />
+                                  <div className="news-date">
+                                    <label className="mx-2">
+                                      {item?.createdAt?.slice(0, 10)}
+                                    </label>
+                                    <label className="news-date-time mx-2">
+                                      {item?.createdAt?.slice(11, 16)}
+                                    </label>
+                                  </div>
+                                </div>
+                                <div>
+                                  <h3 className="text-center fw-bold">
+                                    {item.title}
+                                  </h3>
                                 </div>
                               </div>
-                              <div>
-                                <h3 className="text-center fw-bold">
-                                  {item.title}
-                                </h3>
-                              </div>
-                            </div>
-                          </Link>
-                        ) : (
-                          <Link
-                            key={index}
-                            to={`/consault-store-item/course-detalis/${item._id}`}
-                            state={{ item: item }}
-                          >
-                            <div className={styles['gold-div']}>
-                              <div className="title-card">
-                                <LazyLoadImage
-                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
-                                    }`}
-                                  alt={item?.title}
-                                  loading="lazy"
-                                />
-                                <div className="news-date">
-                                  <label className="mx-2">
-                                    {item?.createdAt?.slice(0, 10)}
-                                  </label>
-                                  <label className="news-date-time mx-2">
-                                    {item?.createdAt?.slice(11, 16)}
-                                  </label>
+                            </Link>
+                          ) : (
+                            <Link
+                              key={index}
+                              to={`/consault-store-item/course-detalis/${item._id}`}
+                              state={{ item: item }}
+                            >
+                              <div className={styles['gold-div']}>
+                                <div className="title-card">
+                                  <LazyLoadImage
+                                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image
+                                      }`}
+                                    alt={item?.title}
+                                    loading="lazy"
+                                  />
+                                  <div className="news-date">
+                                    <label className="mx-2">
+                                      {item?.createdAt?.slice(0, 10)}
+                                    </label>
+                                    <label className="news-date-time mx-2">
+                                      {item?.createdAt?.slice(11, 16)}
+                                    </label>
+                                  </div>
+                                </div>
+                                <div>
+                                  <h3 className="text-center fw-bold">
+                                    {item.title}
+                                  </h3>
                                 </div>
                               </div>
-                              <div>
-                                <h3 className="text-center fw-bold">
-                                  {item.title}
-                                </h3>
-                              </div>
-                            </div>
-                          </Link>
-                        )
+                            </Link>
+                          )
+                      )
                     )}
                   </div>
                 </div>

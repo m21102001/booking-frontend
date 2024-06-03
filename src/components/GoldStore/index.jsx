@@ -30,22 +30,23 @@ const GoldStore = () => {
     const selectType = 'summer';
     return selectType;
   };
-  const [type, setType] = useState(getInitialState2);
+  const [type2, setType2] = useState(getInitialState2);
   const handleChangeType = (e) => {
-    setType(e.target.value);
+    setType2(e.target.value);
   };
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`mentors/semester/${type}`)
+      .get(`mentors/semester/${type2}`)
       .then((response) => {
-        setCategorySemester(response.data?.mentors);
+        setCategorySemester(response.data);
         setLoading(false);
+        console.log('response', response.data);
       })
       .catch((error) => {
         setLoading(false);
       });
-  }, []);
+  }, [type2]);
 
   const getInitialState = () => {
     let value = item?.option;
@@ -69,7 +70,7 @@ const GoldStore = () => {
       })
       .then((response) => {
         setLoading(false);
-        setAlluser(response.data);
+        setAlluser(response?.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -135,30 +136,64 @@ const GoldStore = () => {
                 <>
                   <div className="container">
                     <div className={styles['home-grid']}>
-                      {!loading &&
+                      {allUser?.mentors?.length == 0 ? (
+                        <h3>لايوجد مستشارين متاحة لهذا القسم</h3>
+                      ) : (
+                        !loading &&
                         allUser?.mentors?.map((item, index) =>
-                          item?.field === value || item?.type == value ? (
-                            <Link
-                              key={index}
-                              to={`/consault-store-item`}
-                              state={{ item: item }}
-                            >
-                              <div className={styles['gold-div']}>
-                                <div className="title-card">
-                                  <LazyLoadImage
-                                    src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                    alt={item?.name}
-                                    loading="lazy"
-                                  />
-                                </div>
-                                <div>
-                                  <h3 className="text-center fw-bold">
-                                    {item.name}
-                                  </h3>
-                                </div>
+                          <Link
+                            key={index}
+                            to={`/consault-store-item`}
+                            state={{ item: item }}
+                          >
+                            <div className={styles['gold-div']}>
+                              <div className="title-card">
+                                <LazyLoadImage
+                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
+                                  alt={item?.name}
+                                  loading="lazy"
+                                />
                               </div>
-                            </Link>
-                          ) : (
+                              <div>
+                                <h3 className="text-center fw-bold">
+                                  {item.name}
+                                </h3>
+                              </div>
+                            </div>
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </>
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="col-md-3 d-flex py-3">
+              <select
+                className="form-select mb-3"
+                aria-label="Default select example"
+                value={type2}
+                onChange={handleChangeType}
+              >
+                <option value="summer">الصيف</option>
+                <option value="winter">الشتاء</option>
+                <option value="spring">الربيع</option>
+                <option value="fall">الخريف</option>
+              </select>
+            </div>
+            <div className="col-md-12">
+              <div className="m-auto d-flex justify-center">
+                <>
+                  <div className="container">
+                    <div className={styles['home-grid']}>
+                      {categorySemester.length == 0?(
+                        <h3> لايوجد استشارين متاحين لهذا الفصل</h3>
+                      ):(
+
+                        !loading &&
+                          categorySemester?.mentors?.map((item, index) =>
                             <Link
                               key={index}
                               to={`/consault-store-item`}
@@ -180,55 +215,7 @@ const GoldStore = () => {
                               </div>
                             </Link>
                           )
-                        )}
-                    </div>
-                  </div>
-                </>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="col-md-3 d-flex py-3">
-              <select
-                className="form-select mb-3"
-                aria-label="Default select example"
-                value={type}
-                onChange={handleChangeType}
-              >
-                <option value="summer">الصيف</option>
-                <option value="winter">الشتاء</option>
-                <option value="spring">الربيع</option>
-                <option value="fall">الخريف</option>
-              </select>
-            </div>
-            <div className="col-md-12">
-              <div className="m-auto d-flex justify-center">
-                <>
-                  <div className="container">
-                    <div className={styles['home-grid']}>
-                      {!loading &&
-                        categorySemester?.map((item, index) =>
-                          <Link
-                            key={index}
-                            to={`/consault-store-item`}
-                            state={{ item: item }}
-                          >
-                            <div className={styles['gold-div']}>
-                              <div className="title-card">
-                                <LazyLoadImage
-                                  src={`${import.meta.env.VITE_IMAGE_URL}${item?.image}`}
-                                  alt={item?.name}
-                                  loading="lazy"
-                                />
-                              </div>
-                              <div>
-                                <h3 className="text-center fw-bold">
-                                  {item.name}
-                                </h3>
-                              </div>
-                            </div>
-                          </Link>
-                        )}
+                      )}
                     </div>
                   </div>
                 </>
