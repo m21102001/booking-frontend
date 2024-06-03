@@ -24,7 +24,7 @@ const Courses = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`courses/field/${value}`)
+      .get(`courses/field?field=${value}`)
       .then((response) => {
         setCategoryShow(response?.data);
         setLoading(false);
