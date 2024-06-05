@@ -157,7 +157,7 @@ axios.get('courses/request')
                         </p>
                         <Link
                           to={`/auth/profile/edit-profile`}
-                          className="btn btn-outline-dark"
+                          className="btn btn-outline-dark mb-3"
                           style={{ zIndex: 1 }}
                           data-mdb-ripple-color="dark"
                         >
