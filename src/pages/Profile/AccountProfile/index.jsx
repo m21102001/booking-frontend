@@ -111,7 +111,7 @@ axios.get('courses/request')
                   style={{ backgroundColor: '#000', height: '200px' }}
                 >
                   <div
-                    className="ms-4 mt-5 d-flex flex-column"
+                    className="ms-4 mt-2 d-flex flex-column"
                     style={{ width: '150px' }}
                   >
                     {user?.role == 'mentor' ? (
